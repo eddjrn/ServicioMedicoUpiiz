@@ -12,4 +12,4 @@ Hola
 @stop
 
 @section('scripts')
-@stop
+@stop 

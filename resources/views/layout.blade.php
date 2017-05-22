@@ -4,7 +4,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>StartUI - Premium Bootstrap 4 Admin Dashboard Template</title>
+	
+	@yield('title')
+	
+	@yield('css')
 
 	<link href="Template/img/favicon.144x144.png" rel="apple-touch-icon" type="image/png" sizes="144x144">
 	<link href="Template/img/favicon.114x114.png" rel="apple-touch-icon" type="image/png" sizes="114x114">
@@ -21,10 +24,14 @@
     <link rel="stylesheet" href="Template/css/lib/font-awesome/font-awesome.min.css">
     <link rel="stylesheet" href="Template/css/main.css">
 </head>
+
 <body class="with-side-menu">
 
 	<header class="site-header">
 	    <div class="container-fluid">
+	    
+	    <div class="container-fluid">hghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</div>
+	    
 	        <a href="#" class="site-logo">
 	            <img class="hidden-md-down" src="img/logo-2.png" alt="">
 	            <img class="hidden-lg-up" src="img/logo-2-mob.png" alt="">
@@ -35,58 +42,6 @@
 	        <div class="site-header-content">
 	            <div class="site-header-content-in">
 	                <div class="site-header-shown">
-	                    <div class="dropdown dropdown-notification notif">
-	                        <a href="#"
-	                           class="header-alarm dropdown-toggle active"
-	                           id="dd-notification"
-	                           data-toggle="dropdown"
-	                           aria-haspopup="true"
-	                           aria-expanded="false">
-	                            <i class="font-icon-alarm"></i>
-	                        </a>
-	                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-notif" aria-labelledby="dd-notification">
-	                            <div class="dropdown-menu-notif-header">
-	                                Notifications
-	                                <span class="label label-pill label-danger">4</span>
-	                            </div>
-	                            <div class="dropdown-menu-notif-list">
-	                                <div class="dropdown-menu-notif-item">
-	                                    <div class="photo">
-	                                        <img src="img/photo-64-1.jpg" alt="">
-	                                    </div>
-	                                    <div class="dot"></div>
-	                                    <a href="#">Morgan</a> was bothering about something
-	                                    <div class="color-blue-grey-lighter">7 hours ago</div>
-	                                </div>
-	                                <div class="dropdown-menu-notif-item">
-	                                    <div class="photo">
-	                                        <img src="img/photo-64-2.jpg" alt="">
-	                                    </div>
-	                                    <div class="dot"></div>
-	                                    <a href="#">Lioneli</a> had commented on this <a href="#">Super Important Thing</a>
-	                                    <div class="color-blue-grey-lighter">7 hours ago</div>
-	                                </div>
-	                                <div class="dropdown-menu-notif-item">
-	                                    <div class="photo">
-	                                        <img src="img/photo-64-3.jpg" alt="">
-	                                    </div>
-	                                    <div class="dot"></div>
-	                                    <a href="#">Xavier</a> had commented on the <a href="#">Movie title</a>
-	                                    <div class="color-blue-grey-lighter">7 hours ago</div>
-	                                </div>
-	                                <div class="dropdown-menu-notif-item">
-	                                    <div class="photo">
-	                                        <img src="img/photo-64-4.jpg" alt="">
-	                                    </div>
-	                                    <a href="#">Lionely</a> wants to go to <a href="#">Cinema</a> with you to see <a href="#">This Movie</a>
-	                                    <div class="color-blue-grey-lighter">7 hours ago</div>
-	                                </div>
-	                            </div>
-	                            <div class="dropdown-menu-notif-more">
-	                                <a href="#">See more</a>
-	                            </div>
-	                        </div>
-	                    </div>
 	
 	                    <div class="dropdown dropdown-notification messages">
 	                        <a href="#"
@@ -172,30 +127,6 @@
 	                            </div>
 	                            <div class="dropdown-menu-notif-more">
 	                                <a href="#">See more</a>
-	                            </div>
-	                        </div>
-	                    </div>
-	
-	                    <div class="dropdown dropdown-lang">
-	                        <button class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                            <span class="flag-icon flag-icon-us"></span>
-	                        </button>
-	                        <div class="dropdown-menu dropdown-menu-right">
-	                            <div class="dropdown-menu-col">
-	                                <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-ru"></span>Русский</a>
-	                                <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-de"></span>Deutsch</a>
-	                                <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-it"></span>Italiano</a>
-	                                <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-es"></span>Español</a>
-	                                <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-pl"></span>Polski</a>
-	                                <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-li"></span>Lietuviu</a>
-	                            </div>
-	                            <div class="dropdown-menu-col">
-	                                <a class="dropdown-item current" href="#"><span class="flag-icon flag-icon-us"></span>English</a>
-	                                <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-fr"></span>Français</a>
-	                                <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-by"></span>Беларускi</a>
-	                                <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-ua"></span>Українська</a>
-	                                <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-cz"></span>Česky</a>
-	                                <a class="dropdown-item" href="#"><span class="flag-icon flag-icon-ch"></span>中國</a>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -409,13 +340,15 @@
 	    </div><!--.container-fluid-->
 	</header><!--.site-header-->
 	
-	
+	@include('SiteBar')
 
 	<div class="page-content">
 		<div class="container-fluid">
             @yield('content')
 		</div><!--.container-fluid-->
 	</div><!--.page-content-->
+	
+	@yield('scripts')
 
 	<script src="Template/js/lib/jquery/jquery.min.js"></script>
 	<script src="Template/js/lib/tether/tether.min.js"></script>
