@@ -76,27 +76,27 @@
 	<div class="mobile-menu-left-overlay"></div>
 	<ul class="main-nav nav nav-inline">
 		<li class="nav-item">
-			<a class="nav-link" href="#">Contact</a>
+			<a class="nav-link active" href="#">Inicio</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link active" href="#">Documents</a>
+			<a class="nav-link" href="#">Documents</a>
 		</li>
 	</ul>
 	
 	<div class="page-content">
 		<div class="container-fluid">
-            <h3 class="with-border">@yield('subHead')</h3>
+            <h3 class="with-border text-center">@yield('subHead')</h3>
             
             @yield('content')
 		</div><!--.container-fluid-->
 	</div><!--.page-content-->
-	
-	@yield('scripts')
 
 	<script src="Template/js/lib/jquery/jquery.min.js"></script>
 	<script src="Template/js/lib/tether/tether.min.js"></script>
 	<script src="Template/js/lib/bootstrap/bootstrap.min.js"></script>
 	<script src="Template/js/plugins.js"></script>
+	
+	@yield('scripts')
 
 <script src="Template/js/app.js"></script>
 </body>
