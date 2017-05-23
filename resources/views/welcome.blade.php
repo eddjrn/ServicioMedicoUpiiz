@@ -21,7 +21,8 @@ Servicio Medico Upiiz
         <p>
             Tenemos como objetivo principal el que los alumnos de nuevo ingreso no batallen con el llendo de la documentación médica.
         </p>
-        <p>mediante instructivos  y para los demás alumnos contar con su expediente completo.</p>
+        <p>mediante instructivos  y para los demás alumnos contar con su expediente completo.
+        Izaccccc</p>
         
     </div>
 </div><!--.box-typical-->
