@@ -85,7 +85,7 @@
 			<a class="nav-link" href="#">Contactanos</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="#">Registrooooooooooooooooooooo</a>
+			<a class="nav-link" href="#">Registro</a>
 		</li>
 	</ul>
 	
