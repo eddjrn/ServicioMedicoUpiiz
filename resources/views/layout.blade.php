@@ -79,7 +79,13 @@
 			<a class="nav-link active" href="#">Inicio</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="#">Documents</a>
+			<a class="nav-link" href="#">Novedades</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Contactanos</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Registro</a>
 		</li>
 	</ul>
 	
