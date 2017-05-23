@@ -29,8 +29,8 @@ Servicio Medico Upiiz
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
+        <div class="col-md-3"></div>
+        <div class="col-md-5">
             <section class="widget">
                 <header class="widget-header-dark">Tasks Completed</header>
                 
@@ -70,7 +70,7 @@ Servicio Medico Upiiz
                 </div>
             </section><!--.widget-->
         </div>
-        <div class="col-md-4"></div>
+        <div class="col-md-3"></div>
     </div>
 </div>
 @stop
