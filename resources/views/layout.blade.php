@@ -25,16 +25,13 @@
     <link rel="stylesheet" href="Template/css/main.css">
 </head>
 
-<body class="with-side-menu">
+<body class="horizontal-navigation">
 
-	<header class="site-header">
+    <header class="site-header">
 	    <div class="container-fluid">
-	    
-	    <div class="container-fluid"></div>
-	    
 	        <a href="#" class="site-logo">
-	            <img class="hidden-md-down" src="img/logo-2.png" alt="">
-	            <img class="hidden-lg-up" src="img/logo-2-mob.png" alt="">
+	            <img class="hidden-md-down" src="Template/img/logo-2.png" alt="">
+	            <img class="hidden-lg-up" src="Template/img/logo-2-mob.png" alt="">
 	        </a>
 	        <button class="hamburger hamburger--htla">
 	            <span>toggle menu</span>
@@ -42,6 +39,7 @@
 	        <div class="site-header-content">
 	            <div class="site-header-content-in">
 	                <div class="site-header-shown">
+	                    
 	
 	                    <div class="dropdown dropdown-notification messages">
 	                        <a href="#"
@@ -75,50 +73,52 @@
 	                                    <i class="font-icon font-icon-pen-square"></i>
 	                                </button>-->
 	                            </div>
+	                            
 	                            <div class="tab-content">
 	                                <div class="tab-pane active" id="tab-incoming" role="tabpanel">
 	                                    <div class="dropdown-menu-messages-list">
 	                                        <a href="#" class="mess-item">
-	                                            <span class="avatar-preview avatar-preview-32"><img src="img/photo-64-2.jpg" alt=""></span>
+	                                            <span class="avatar-preview avatar-preview-32"><img src="Template/img/photo-64-2.jpg" alt=""></span>
 	                                            <span class="mess-item-name">Tim Collins</span>
 	                                            <span class="mess-item-txt">Morgan was bothering about something!</span>
 	                                        </a>
 	                                        <a href="#" class="mess-item">
-	                                            <span class="avatar-preview avatar-preview-32"><img src="img/avatar-2-64.png" alt=""></span>
+	                                            <span class="avatar-preview avatar-preview-32"><img src="Template/img/avatar-2-64.png" alt=""></span>
 	                                            <span class="mess-item-name">Christian Burton</span>
 	                                            <span class="mess-item-txt">Morgan was bothering about something! Morgan was bothering about something.</span>
 	                                        </a>
 	                                        <a href="#" class="mess-item">
-	                                            <span class="avatar-preview avatar-preview-32"><img src="img/photo-64-2.jpg" alt=""></span>
+	                                            <span class="avatar-preview avatar-preview-32"><img src="Template/img/photo-64-2.jpg" alt=""></span>
 	                                            <span class="mess-item-name">Tim Collins</span>
 	                                            <span class="mess-item-txt">Morgan was bothering about something!</span>
 	                                        </a>
 	                                        <a href="#" class="mess-item">
-	                                            <span class="avatar-preview avatar-preview-32"><img src="img/avatar-2-64.png" alt=""></span>
+	                                            <span class="avatar-preview avatar-preview-32"><img src="Template/img/avatar-2-64.png" alt=""></span>
 	                                            <span class="mess-item-name">Christian Burton</span>
 	                                            <span class="mess-item-txt">Morgan was bothering about something...</span>
 	                                        </a>
 	                                    </div>
 	                                </div>
+	                                
 	                                <div class="tab-pane" id="tab-outgoing" role="tabpanel">
 	                                    <div class="dropdown-menu-messages-list">
 	                                        <a href="#" class="mess-item">
-	                                            <span class="avatar-preview avatar-preview-32"><img src="img/avatar-2-64.png" alt=""></span>
+	                                            <span class="avatar-preview avatar-preview-32"><img src="Template/img/avatar-2-64.png" alt=""></span>
 	                                            <span class="mess-item-name">Christian Burton</span>
 	                                            <span class="mess-item-txt">Morgan was bothering about something! Morgan was bothering about something...</span>
 	                                        </a>
 	                                        <a href="#" class="mess-item">
-	                                            <span class="avatar-preview avatar-preview-32"><img src="img/photo-64-2.jpg" alt=""></span>
+	                                            <span class="avatar-preview avatar-preview-32"><img src="Template/img/photo-64-2.jpg" alt=""></span>
 	                                            <span class="mess-item-name">Tim Collins</span>
 	                                            <span class="mess-item-txt">Morgan was bothering about something! Morgan was bothering about something.</span>
 	                                        </a>
 	                                        <a href="#" class="mess-item">
-	                                            <span class="avatar-preview avatar-preview-32"><img src="img/avatar-2-64.png" alt=""></span>
+	                                            <span class="avatar-preview avatar-preview-32"><img src="Template/img/avatar-2-64.png" alt=""></span>
 	                                            <span class="mess-item-name">Christian Burtons</span>
 	                                            <span class="mess-item-txt">Morgan was bothering about something!</span>
 	                                        </a>
 	                                        <a href="#" class="mess-item">
-	                                            <span class="avatar-preview avatar-preview-32"><img src="img/photo-64-2.jpg" alt=""></span>
+	                                            <span class="avatar-preview avatar-preview-32"><img src="Template/img/photo-64-2.jpg" alt=""></span>
 	                                            <span class="mess-item-name">Tim Collins</span>
 	                                            <span class="mess-item-txt">Morgan was bothering about something!</span>
 	                                        </a>
@@ -133,7 +133,7 @@
 	
 	                    <div class="dropdown user-menu">
 	                        <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                            <img src="img/avatar-2-64.png" alt="">
+	                            <img src="Template/img/avatar-2-64.png" alt="">
 	                        </button>
 	                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
 	                            <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-user"></span>Profile</a>
@@ -150,50 +150,79 @@
 	                </div><!--.site-header-shown-->
 	
 	                <div class="mobile-menu-right-overlay"></div>
+	                
 	                <div class="site-header-collapsed">
 	                    <div class="site-header-collapsed-in">
 	                        <div class="dropdown dropdown-typical">
 	                            <div class="dropdown-menu" aria-labelledby="dd-header-sales">
 	                                <a class="dropdown-item" href="#"><span class="font-icon font-icon-home"></span>Quant and Verbal</a>
-	                                <a class="dropdown-item" href="#"><span class="font-icon font-icon-cart"></span>Real Gmat Test</a>
-	                                <a class="dropdown-item" href="#"><span class="font-icon font-icon-speed"></span>Prep Official App</a>
-	                                <a class="dropdown-item" href="#"><span class="font-icon font-icon-users"></span>CATprer Test</a>
-	                                <a class="dropdown-item" href="#"><span class="font-icon font-icon-comments"></span>Third Party Test</a>
 	                            </div>
 	                        </div>
+	                        
 	                        <div class="dropdown dropdown-typical">
 	                            <a class="dropdown-toggle" id="dd-header-marketing" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	                                <span class="font-icon font-icon-cogwheel"></span>
 	                                <span class="lbl">Marketing automation</span>
 	                            </a>
 	
+	                            <div class="dropdown-menu" aria-labelledby="dd-header-marketing">
+	                                <a class="dropdown-item" href="#">Current Search</a>
+	                                <div class="dropdown-more">
+	                                    <div class="dropdown-more-caption padding">more...</div>
+	                                    <div class="dropdown-more-sub">
+	                                        <div class="dropdown-more-sub-in">
+	                                            <a class="dropdown-item" href="#"><span class="font-icon font-icon-home"></span>Quant and Verbal</a>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                                
+	                                <div class="dropdown-divider"></div>
+	                                <a class="dropdown-item" href="#">Import Issues from CSV</a>
+	                            </div>
 	                            
 	                        </div>
-	                        <div class="dropdown dropdown-typical">
-	                            <a class="dropdown-toggle" id="dd-header-social" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                                <span class="font-icon font-icon-share"></span>
-	                                <span class="lbl">Social media</span>
-	                            </a>
-	                        </div>
-	                    
-	
-	                        <div class="dropdown dropdown-typical">
-	                            <a class="dropdown-toggle" id="dd-header-form-builder" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                                <span class="font-icon font-icon-pencil"></span>
-	                                <span class="lbl">Form builder</span>
-	                            </a>
-	                        </div>
-	                        
-	                        
-	                    </div><!--.site-header-collapsed-in-->
-	                </div><!--.site-header-collapsed-->
+                        </div>
+                    </div>
+                    
 	            </div><!--site-header-content-in-->
 	        </div><!--.site-header-content-->
 	    </div><!--.container-fluid-->
 	</header><!--.site-header-->
 	
-
-
+	<div class="mobile-menu-left-overlay"></div>
+	<ul class="main-nav nav nav-inline">
+		<li class="nav-item">
+			<a class="nav-link" href="#">Contact</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Prperties</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link active" href="#">Documents</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Sales</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Projects</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Contact</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Prperties</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Documents</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Sales</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="#">Projects</a>
+		</li>
+	</ul>
+	
 	<div class="page-content">
 		<div class="container-fluid">
             @yield('content')
