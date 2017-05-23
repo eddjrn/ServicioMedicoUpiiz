@@ -11,13 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('Welcome.start');
-});
+Route::get('/', 'startController@index');
+Route::get('/news', 'newsController@index');
 
-Route::get('/news', function () {
-    return view('Welcome.news');
-});
 
 Route::get('/contact', function () {
     return view('Welcome.contact');
