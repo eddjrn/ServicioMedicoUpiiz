@@ -76,16 +76,16 @@
 	<div class="mobile-menu-left-overlay"></div>
 	<ul class="main-nav nav nav-inline">
 		<li class="nav-item">
-			<a class="nav-link active" href="#">Inicio</a>
+			<a class="nav-link active" href="/">Inicio</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="#">Novedades</a>
+			<a class="nav-link" href="/news">Novedades</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="#">Contactanos</a>
+			<a class="nav-link" href="/contact">Contactanos</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="#">Registro</a>
+			<a class="nav-link" href="/register">Registro</a>
 		</li>
 	</ul>
 	
