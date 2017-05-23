@@ -76,16 +76,16 @@
 	<div class="mobile-menu-left-overlay"></div>
 	<ul class="main-nav nav nav-inline">
 		<li class="nav-item">
-			<a class="nav-link active" href="/">Inicio</a>
+			<a class="nav-link @if($index==1)active @endif" href="/">Inicio</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/news">Novedades</a>
+			<a class="nav-link @if($index==2)active @endif" href="/news">Novedades</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/contact">Contactanos</a>
+			<a class="nav-link @if($index==3)active @endif" href="/contact">Contactanos</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="/register">Registro</a>
+			<a class="nav-link @if($index==4)active @endif" href="/register">Registro</a>
 		</li>
 	</ul>
 	

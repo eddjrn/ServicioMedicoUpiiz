@@ -16,7 +16,8 @@ class contactController extends Controller
      */
     public function index()
     {
-        return view('Welcome.contact');
+        $index=3;
+        return view('Welcome.contact',['index' => $index]);
     }
 
     /**

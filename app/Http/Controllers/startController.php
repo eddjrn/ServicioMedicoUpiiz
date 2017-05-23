@@ -16,7 +16,8 @@ class startController extends Controller
      */
     public function index()
     {
-        return view('Welcome.start');
+        $index=1;
+        return view('Welcome.start',['index' => $index]);
     }
 
     /**

@@ -16,7 +16,8 @@ class newsController extends Controller
      */
     public function index()
     {
-        return view('Welcome.news');
+        $index=2;
+        return view('Welcome.news',['index' => $index]);
     }
 
     /**

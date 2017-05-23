@@ -16,7 +16,8 @@ class registerController extends Controller
      */
     public function index()
     {
-        return view('Welcome.register');
+        $index=4;
+        return view('Welcome.register',['index' => $index]);
     }
 
     /**
