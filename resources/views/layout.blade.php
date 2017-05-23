@@ -30,7 +30,7 @@
 	<header class="site-header">
 	    <div class="container-fluid">
 	    
-	    <div class="container-fluid">hghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</div>
+	    <div class="container-fluid"></div>
 	    
 	        <a href="#" class="site-logo">
 	            <img class="hidden-md-down" src="img/logo-2.png" alt="">

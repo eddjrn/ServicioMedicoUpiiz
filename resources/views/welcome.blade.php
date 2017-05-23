@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-Hola
+
 @stop
 
 @section('scripts')
