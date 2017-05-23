@@ -192,7 +192,7 @@
 	    </div><!--.container-fluid-->
 	</header><!--.site-header-->
 	
-	@include('SiteBar')
+
 
 	<div class="page-content">
 		<div class="container-fluid">
