@@ -28,7 +28,7 @@ class signupController extends Controller
     public function create(Request $request)
     {
         $this->validate($request, [
-            'mail'=>'required|mail',
+            'mail'=>'required|email',
             'boleta'=>'required|max:10|numeric|min:10',
             'boleta2'=>'required|max:10|numeric|min:10',
             'clave'=>'required|min:5',
