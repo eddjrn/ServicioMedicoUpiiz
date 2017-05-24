@@ -13,7 +13,6 @@
 
 @section('content')
 
-
 <div class="container-fluid">
             <div class="cards-grid" data-columns="3"><div class="column size-1of3"><div class="card-grid-col">
                     <article class="card-typical">
