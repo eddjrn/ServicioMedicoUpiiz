@@ -27,7 +27,9 @@
 </head>
 
 <body class="horizontal-navigation">
+@yield('popUp')
 
+@unless($index==4)
     <header class="site-header">
 	    <div class="container-fluid">
 	        <a href="#" class="site-logo">
@@ -96,6 +98,7 @@
             @yield('content')
 		</div><!--.container-fluid-->
 	</div><!--.page-content-->
+@endUnless
 
 	<script src="Template/js/lib/jquery/jquery.min.js"></script>
 	<script src="Template/js/lib/tether/tether.min.js"></script>

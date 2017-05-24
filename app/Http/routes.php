@@ -12,7 +12,11 @@
 */
 
 Route::get('/', 'startController@index');
+
 Route::get('/news', 'newsController@index');
+
 Route::get('/contact','contactController@index');
+
 Route::get('/register','registerController@index');
+Route::post('/register', 'registerController@create');
 

@@ -27,7 +27,7 @@ class registerController extends Controller
      */
     public function create()
     {
-        //
+        return "xdxd";
     }
 
     /**
