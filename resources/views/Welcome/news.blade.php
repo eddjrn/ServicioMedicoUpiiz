@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-<title>Inicio servicio medico</title>
+<title>Noticias Servicio Medico</title>
 @stop
 
 @section('css')
@@ -21,7 +21,7 @@
                                 <div class="tbl-row">
                                     <div class="tbl-cell tbl-cell-photo">
                                         <a href="#">
-                                            <img src="img/photo-64-2.jpg" alt="">
+                                            <img src="Template/img/avatar-sign.png" alt="">
                                         </a>
                                     </div>
                                     <div class="tbl-cell">
@@ -36,7 +36,7 @@
                         </div>
                         <div class="card-typical-section card-typical-content">
                             <div class="photo">
-                                <img src="img/gall-img-1.jpg" alt="">
+                                <img src="Template/img/avatar-sign.png" alt="">
                             </div>
                             <header class="title"><a href="#">The Jacobs Ladder of coding</a></header>
                             <p>That’s a great idea! I’m sure we could start this project as soon as possible. Let’s meet tomorow!</p>
@@ -56,7 +56,7 @@
                                 <div class="tbl-row">
                                     <div class="tbl-cell tbl-cell-photo">
                                         <a href="#">
-                                            <img src="img/photo-64-3.jpg" alt="">
+                                            <img src="Template/img/avatar-sign.png" alt="">
                                         </a>
                                     </div>
                                     <div class="tbl-cell">
@@ -216,7 +216,7 @@
                                 <div class="tbl-row">
                                     <div class="tbl-cell tbl-cell-photo">
                                         <a href="#">
-                                            <img src="img/avatar-1-64.png" alt="">
+                                            <img src="Template/img/avatar-sign.png" alt="">
                                         </a>
                                     </div>
                                     <div class="tbl-cell">
@@ -248,7 +248,7 @@
                                 <div class="tbl-row">
                                     <div class="tbl-cell tbl-cell-photo">
                                         <a href="#">
-                                            <img src="img/photo-64-3.jpg" alt="">
+                                            <img src="Template/img/avatar-sign.png" alt="">
                                         </a>
                                     </div>
                                     <div class="tbl-cell">
@@ -295,7 +295,7 @@
                         </div>
                         <div class="card-typical-section card-typical-content">
                             <div class="photo">
-                                <img src="img/gall-img-4.jpg" alt="">
+                               <img src="Template/img/avatar-sign.png" alt="">
                             </div>
                             <header class="title"><a href="#">The Jacobs Ladder of coding</a></header>
                             <p>That’s a great idea! I’m sure we could start this project as soon as possible. Let’s meet tomorow!</p>
@@ -315,7 +315,7 @@
                                 <div class="tbl-row">
                                     <div class="tbl-cell tbl-cell-photo">
                                         <a href="#">
-                                            <img src="img/avatar-3-64.png" alt="">
+                                            <img src="Template/img/avatar-sign.png" alt="">
                                         </a>
                                     </div>
                                     <div class="tbl-cell">
@@ -330,7 +330,7 @@
                         </div>
                         <div class="card-typical-section card-typical-content">
                             <div class="photo">
-                                <img src="img/gall-img-5.jpg" alt="">
+                               <img src="Template/img/avatar-sign.png" alt="">
                             </div>
                             <header class="title"><a href="#">The Jacobs Ladder of coding</a></header>
                             <p>That’s a great idea! I’m sure we could start this project as soon as possible. Let’s meet tomorow!</p>
@@ -365,7 +365,7 @@
                         </div>
                         <div class="card-typical-section card-typical-content">
                             <div class="photo">
-                                <img src="img/gall-img-6.jpg" alt="">
+                               <img src="Template/img/avatar-sign.png" alt="">
                             </div>
                             <header class="title"><a href="#">The Jacobs Ladder of coding</a></header>
                             <p>That’s a great idea! I’m sure we could start this project as soon as possible. Let’s meet tomorow!</p>
@@ -400,7 +400,7 @@
                         </div>
                         <div class="card-typical-section card-typical-content">
                             <div class="photo">
-                                <img src="img/gall-img-7.jpg" alt="">
+                               <img src="Template/img/avatar-sign.png" alt="">
                             </div>
                             <header class="title"><a href="#">The Jacobs Ladder of coding</a></header>
                             <p>That’s a great idea! I’m sure we could start this project as soon as possible. Let’s meet tomorow!</p>

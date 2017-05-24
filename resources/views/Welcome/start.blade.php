@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-<title>Inicio servicio medico</title>
+<title>Inicio Servicio Medico</title>
 @stop
 
 @section('css')
@@ -19,7 +19,7 @@ Servicio Medico Upiiz
     </header>
     <div class="text-block text-block-typical">
         <p>
-            Tenemos como objetivo principal el que los alumnos de nuevo ingreso no batallen con el llendo de la documentación médica.
+           Objetivo principal el que los alumnos de nuevo ingreso no batallen con el llendo de la documentación médica.
         </p>
         <p>mediante instructivos  y para los demás alumnos contar con su expediente completo.</p>
         
