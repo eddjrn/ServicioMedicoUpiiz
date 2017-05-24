@@ -88,7 +88,7 @@
                                 <div class="tbl-row">
                                     <div class="tbl-cell tbl-cell-photo">
                                         <a href="#">
-                                            <img src="img/photo-64-2.jpg" alt="">
+                                           <img src="Template/img/avatar-sign.png" alt="">
                                         </a>
                                     </div>
                                     <div class="tbl-cell">
@@ -120,7 +120,7 @@
                                 <div class="tbl-row">
                                     <div class="tbl-cell tbl-cell-photo">
                                         <a href="#">
-                                            <img src="img/avatar-2-64.png" alt="">
+                                            <<img src="Template/img/avatar-sign.png" alt="">
                                         </a>
                                     </div>
                                     <div class="tbl-cell">
@@ -152,7 +152,7 @@
                                 <div class="tbl-row">
                                     <div class="tbl-cell tbl-cell-photo">
                                         <a href="#">
-                                            <img src="img/avatar-1-64.png" alt="">
+                                           <img src="Template/img/avatar-sign.png" alt="">
                                         </a>
                                     </div>
                                     <div class="tbl-cell">
@@ -184,7 +184,7 @@
                                 <div class="tbl-row">
                                     <div class="tbl-cell tbl-cell-photo">
                                         <a href="#">
-                                            <img src="img/photo-64-4.jpg" alt="">
+                                          <img src="Template/img/avatar-sign.png" alt="">
                                         </a>
                                     </div>
                                     <div class="tbl-cell">
@@ -280,7 +280,7 @@
                                 <div class="tbl-row">
                                     <div class="tbl-cell tbl-cell-photo">
                                         <a href="#">
-                                            <img src="img/avatar-2-64.png" alt="">
+                                            <img src="Template/img/avatar-sign.png" alt="">
                                         </a>
                                     </div>
                                     <div class="tbl-cell">
@@ -350,7 +350,7 @@
                                 <div class="tbl-row">
                                     <div class="tbl-cell tbl-cell-photo">
                                         <a href="#">
-                                            <img src="img/photo-64-2.jpg" alt="">
+                                            <img src="Template/img/avatar-sign.png" alt="">
                                         </a>
                                     </div>
                                     <div class="tbl-cell">
@@ -385,7 +385,7 @@
                                 <div class="tbl-row">
                                     <div class="tbl-cell tbl-cell-photo">
                                         <a href="#">
-                                            <img src="img/avatar-3-64.png" alt="">
+                                            <img src="Template/img/avatar-sign.png" alt="">
                                         </a>
                                     </div>
                                     <div class="tbl-cell">
