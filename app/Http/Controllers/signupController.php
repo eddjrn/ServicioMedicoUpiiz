@@ -25,8 +25,16 @@ class signupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        $this->validate($request, [
+            'mail'=>'required|mail',
+            'boleta'=>'required|max:10|numeric|min:10',
+            'boleta2'=>'required|max:10|numeric|min:10',
+            'clave'=>'required|min:5',
+            'clave2'=>'required|min:5',
+        ]);
+        
         return "xdxd";
     }
 
