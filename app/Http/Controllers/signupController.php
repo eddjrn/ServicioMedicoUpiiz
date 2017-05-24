@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class registerController extends Controller
+class signupController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +17,7 @@ class registerController extends Controller
     public function index()
     {
         $index=4;
-        return view('Welcome.register',['index' => $index]);
+        return view('Welcome.signup',['index' => $index]);
     }
 
     /**

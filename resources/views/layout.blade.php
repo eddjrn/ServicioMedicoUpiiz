@@ -87,7 +87,7 @@
 			<a class="nav-link @if($index==3)active @endif" href="/contact">Contactanos</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link @if($index==4)active @endif" href="/register">Registro</a>
+			<a class="nav-link @if($index==4)active @endif" href="/login">Iniciar sesión</a>
 		</li>
 	</ul>
 	

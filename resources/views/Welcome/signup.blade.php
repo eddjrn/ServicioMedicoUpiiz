@@ -1,23 +1,19 @@
 @extends('layout')
 
 @section('title')
-<title>Inicio servicio medico</title>
+<title>Registro al servicio medico</title>
 @stop
 
 @section('css')
-@stop
-
-@section('subHead')
-Registro de Nuevo Alumno
 @stop
 
 @section('popUp')
 <div class="page-center">
     <div class="page-center-in">
         <div class="container-fluid">
-            {!!Form::open(array('url'=>'/register', 'class'=>'sign-box', 'method'=>'post'))!!}
+            {!!Form::open(array('url'=>'/signup', 'class'=>'sign-box', 'method'=>'post'))!!}
                 <div class="sign-avatar no-photo">&plus;</div>
-                <header class="sign-title">UPIIZ</header>
+                <header class="sign-title">Nuevo usuario</header>
                 <div class="form-group">
                     {!!Form::text('mail', null, ['class'=>'form-control', 'placeholder'=>'E-Mail', 'id'=>'mail'])!!}
                 </div>
@@ -34,7 +30,7 @@ Registro de Nuevo Alumno
                     {!!Form::password('clave2', ['class'=>'form-control', 'placeholder'=>'Repetir contraseña', 'id'=>'clave2'])!!}
                 </div>
                 <button type="submit" class="btn btn-rounded btn-success sign-up">Registrar</button>
-                <p class="sign-note">¿Tienes una cuenta? <a href="sign-in.html">Iniciar sesion</a></p>
+                <p class="sign-note">¿Tienes una cuenta? <a href="/login">Iniciar sesión</a></p>
                 
                 <a href="/"><button type="button" class="close">
                     <span aria-hidden="true">&times;</span>

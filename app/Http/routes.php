@@ -17,6 +17,9 @@ Route::get('/news', 'newsController@index');
 
 Route::get('/contact','contactController@index');
 
-Route::get('/register','registerController@index');
-Route::post('/register', 'registerController@create');
+Route::get('/login', 'loginController@index');
+Route::post('/login', 'loginController@login');
+
+Route::get('/signup','signupController@index');
+Route::post('/signup', 'signupController@create');
 
