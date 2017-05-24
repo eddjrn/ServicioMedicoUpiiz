@@ -98,7 +98,7 @@
             @yield('content')
 		</div><!--.container-fluid-->
 	</div><!--.page-content-->
-@endUnless
+@endunless
 
 	<script src="Template/js/lib/jquery/jquery.min.js"></script>
 	<script src="Template/js/lib/tether/tether.min.js"></script>

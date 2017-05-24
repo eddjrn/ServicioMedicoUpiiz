@@ -25,9 +25,14 @@ class loginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function login()
+    public function login(Request $request)
     {
-        //
+        $this->validate($request, [
+            'boleta'=>'bail|required',
+            'clave'=>'required',
+        ]);
+        
+        return ":D";
     }
 
     /**

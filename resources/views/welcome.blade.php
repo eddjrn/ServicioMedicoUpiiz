@@ -32,7 +32,7 @@ Servicio Medico Upiiz
         <div class="col-md-3"></div>
         <div class="col-md-5">
             <section class="widget">
-                <header class="widget-header-dark">Mapas Imss</header>
+                <header class="widget-header-dark">Mapas del IMSS</header>
                 
 
                 <div class="tab-content widget-tabs-content">
@@ -57,7 +57,7 @@ Servicio Medico Upiiz
                     <ul class="tbl-row" role="tablist">
 
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#w-1-tab-0" role="tab" aria-expanded="false">
+                            <a class="nav-link" data-toggle="tab" href="#w-1-tab-0" role="tab" aria-expanded="true">
                                 <i class="font-icon font-icon-pin"></i>
                                 Sub Delegacion
                             </a>
@@ -76,7 +76,7 @@ Servicio Medico Upiiz
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#w-1-tab-3" role="tab" aria-expanded="true">
+                            <a class="nav-link active" data-toggle="tab" href="#w-1-tab-3" role="tab" aria-expanded="false">
                                 <i class="font-icon font-icon-pin"></i>
                                 Clinica 3
                             </a>
