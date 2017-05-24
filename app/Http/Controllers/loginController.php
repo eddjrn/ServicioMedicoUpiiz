@@ -28,8 +28,8 @@ class loginController extends Controller
     public function login(Request $request)
     {
         $this->validate($request, [
-            'boleta'=>'bail|required',
-            'clave'=>'required',
+            'boleta'=>'required|max:10|numeric|min:10',
+            'clave'=>'required|min:5',
         ]);
         
         return ":D";
