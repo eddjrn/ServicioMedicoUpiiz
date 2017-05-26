@@ -77,7 +77,7 @@
                                 <div class="form-group">
                                     <textarea rows="4" class="form-control" placeholder="Message"></textarea>
                                 </div>
-                                <button type="submit" class="btn btn-rounded">Send</button>
+                                
                             </form>
                             <section class="contacts-page-section">
                                 <header class="box-typical-header-sm">Other way</header>
