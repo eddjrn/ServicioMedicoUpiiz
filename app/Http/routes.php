@@ -17,9 +17,14 @@ Route::get('/news', 'newsController@index');
 
 Route::get('/contact','contactController@index');
 
-Route::get('/login', 'loginController@index');
-Route::post('/login', 'loginController@login');
+Route::get('/login', 'Auth\AuthController@getLogin');
+Route::post('/login', 'Auth\AuthController@postLogin');
 
-Route::get('/signup','signupController@index');
-Route::post('/signup', 'signupController@create');
+Route::get('/signup','Auth\AuthController@getRegister');
+Route::post('/signup', 'Auth\AuthController@postRegister');
 
+Route::get('/logout','Auth\AuthController@getLogout');
+
+Route::get('/profile', 'profileController@index');
+Route::get('/profile/edit', 'profileController@edit');
+Route::post('/profile/edit', 'profileController@update');

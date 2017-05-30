@@ -28,15 +28,15 @@ class user extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['nombre', 'apellidoPa', 'apellidoMa', 'email', 'boleta'];
-    protected $guarded = ['tipo'];
+    protected $fillable = ['nombre', 'apellidoPa', 'apellidoMa', 'email', 'boleta', 'tipo', 'password'];
+    //protected $guarded = ['tipo'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = ['clave'];
+    protected $hidden = ['password'];
     
     
     public function student(){
@@ -57,5 +57,11 @@ class user extends Model implements AuthenticatableContract,
         }
     }
     
+//     public function getAuthPassword() {
+//         return $this->password;
+//     }
     
+    public function setPasswordAttribute($password) {
+        $this->attributes['password'] = bcrypt($password);
+    }
 }

@@ -7,6 +7,12 @@
 @section('css')
 @stop
 
+@section('popUp')
+@stop
+
+@section('subHead')
+@stop
+
 @section('content')
 Hola
 @stop

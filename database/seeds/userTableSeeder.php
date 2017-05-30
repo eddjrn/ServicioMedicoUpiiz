@@ -16,7 +16,7 @@ class userTableSeeder extends Seeder
             'apellidoPa' => 'Peréz',
             'apellidoMa' => 'Pereira',
             'email' => 'mail@correo.com',
-            'clave' => 'admin',
+            'password' => bcrypt('admin'),
             'boleta' => '2014670000',
             'tipo' => '1',
         ]);
@@ -26,7 +26,7 @@ class userTableSeeder extends Seeder
             'apellidoPa' => 'Peréz',
             'apellidoMa' => 'Nóñae',
             'email' => 'JE%_sá@correo.com',
-            'clave' => 'norman',
+            'password' => bcrypt('norman'),
             'boleta' => '2015671234',
             'tipo' => '2',
         ]);

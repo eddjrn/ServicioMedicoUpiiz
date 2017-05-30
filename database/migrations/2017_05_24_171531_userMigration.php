@@ -18,10 +18,11 @@ class UserMigration extends Migration
             $table->string('apellidoPa', 50);
             $table->string('apellidoMa', 50);
             $table->string('email')->unique();
-            $table->string('clave', 50);
-            $table->integer('boleta');
+            $table->string('password', 60);
+            $table->integer('boleta')->unique();
             $table->integer('tipo');
             $table->timestamps();
+            $table->rememberToken();
         });
     }
 
