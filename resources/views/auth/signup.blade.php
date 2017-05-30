@@ -17,8 +17,18 @@
                 @include('alerts.formError')
                 
                 <header class="sign-title">Nuevo usuario</header>
+                
                 <div class="form-group">
-                    {!!Form::text('mail', null, ['class'=>'form-control', 'placeholder'=>'E-Mail', 'id'=>'mail'])!!}
+                    {!!Form::text('nombre', null, ['class'=>'form-control', 'placeholder'=>'Nombre(s)', 'id'=>'nombre'])!!}
+                </div>
+                <div class="form-group">
+                    {!!Form::text('apellidoPa', null, ['class'=>'form-control', 'placeholder'=>'Apellido paterno', 'id'=>'apellidoPa'])!!}
+                </div>
+                <div class="form-group">
+                    {!!Form::text('apellidoMa', null, ['class'=>'form-control', 'placeholder'=>'Apellido materno', 'id'=>'apellidoMa'])!!}
+                </div>
+                <div class="form-group">
+                    {!!Form::text('email', null, ['class'=>'form-control', 'placeholder'=>'E-Mail', 'id'=>'email'])!!}
                 </div>
                 <div class="form-group">
                     {!!Form::text('boleta', null, ['class'=>'form-control', 'placeholder'=>'Boleta', 'id'=>'boleta'])!!}
@@ -27,11 +37,12 @@
                     {!!Form::text('boleta2', null, ['class'=>'form-control', 'placeholder'=>'Repetir boleta', 'id'=>'boleta2'])!!}
                 </div>
                 <div class="form-group">
-                    {!!Form::password('clave', ['class'=>'form-control', 'placeholder'=>'Contraseña', 'id'=>'clave'])!!}
+                    {!!Form::password('password', ['class'=>'form-control', 'placeholder'=>'Contraseña', 'id'=>'password'])!!}
                 </div>
                 <div class="form-group">
-                    {!!Form::password('clave2', ['class'=>'form-control', 'placeholder'=>'Repetir contraseña', 'id'=>'clave2'])!!}
+                    {!!Form::password('password2', ['class'=>'form-control', 'placeholder'=>'Repetir contraseña', 'id'=>'password2'])!!}
                 </div>
+                
                 <button type="submit" class="btn btn-rounded btn-success sign-up">Registrar</button>
                 <p class="sign-note">¿Tienes una cuenta? <a href="/login">Iniciar sesión</a></p>
                 

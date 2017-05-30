@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -17,6 +18,7 @@ class startController extends Controller
     public function index()
     {
         $index=1;
+        
         return view('Welcome.start',['index' => $index]);
     }
 

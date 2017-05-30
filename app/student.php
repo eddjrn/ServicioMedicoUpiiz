@@ -16,7 +16,7 @@ class student extends Model
     }
     
     public function carrer(){
-        return $this->belongTo(carrer::class, 'carrera_id');
+        return $this->belongsTo(carrer::class, 'carrera_id');
     }
     
     public function place(){

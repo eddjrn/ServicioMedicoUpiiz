@@ -23,13 +23,13 @@
                     {!!Form::text('boleta', null, ['class'=>'form-control', 'placeholder'=>'Boleta', 'id'=>'boleta'])!!}
                 </div>
                 <div class="form-group">
-                    {!!Form::password('clave', ['class'=>'form-control', 'placeholder'=>'Contraseña', 'id'=>'clave'])!!}
+                    {!!Form::password('password', ['class'=>'form-control', 'placeholder'=>'Contraseña', 'id'=>'password'])!!}
                 </div>
                 
                 <div class="form-group">
                     <div class="checkbox float-left">
-                        <input type="checkbox" id="signed-in"/>
-                        <label for="signed-in">Recordarme</label>
+                        <input type="checkbox" id="remember" name="remember"/>
+                        <label for="remember">Recordarme</label>
                     </div>
                     <div class="float-right reset">
                         <a href="reset-password.html">¡Olvide mi Contraseña!</a>
@@ -42,7 +42,6 @@
                     <span aria-hidden="true">&times;</span>
                 </button></a>
             {!!Form::close()!!}
-            </form>-->
         </div>
     </div>
 </div><!--.page-center-->

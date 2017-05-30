@@ -9,12 +9,12 @@
 	
 	@yield('css')
 
-	<link href="Template/img/favicon.144x144.png" rel="apple-touch-icon" type="image/png" sizes="144x144">
-	<link href="Template/img/favicon.114x114.png" rel="apple-touch-icon" type="image/png" sizes="114x114">
-	<link href="Template/img/favicon.72x72.png" rel="apple-touch-icon" type="image/png" sizes="72x72">
-	<link href="Template/img/favicon.57x57.png" rel="apple-touch-icon" type="image/png">
-	<link href="Template/img/favicon.png" rel="icon" type="image/png">
-	<link href="Template/img/favicon.ico" rel="shortcut icon">
+	<link href="/Template/img/favicon.144x144.png" rel="apple-touch-icon" type="/image/png" sizes="144x144">
+	<link href="/Template/img/favicon.114x114.png" rel="apple-touch-icon" type="/image/png" sizes="114x114">
+	<link href="/Template/img/favicon.72x72.png" rel="apple-touch-icon" type="/image/png" sizes="72x72">
+	<link href="/Template/img/favicon.57x57.png" rel="apple-touch-icon" type="/image/png">
+	<link href="/Template/img/favicon.png" rel="icon" type="image/png">
+	<link href="/Template/img/favicon.ico" rel="shortcut icon">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -22,19 +22,19 @@
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 	
-    <link rel="stylesheet" href="Template/css/lib/font-awesome/font-awesome.min.css">
-    <link rel="stylesheet" href="Template/css/main.css">
+    <link rel="stylesheet" href="/Template/css/lib/font-awesome/font-awesome.min.css">
+    <link rel="stylesheet" href="/Template/css/main.css">
 </head>
 
 <body class="horizontal-navigation">
 @yield('popUp')
 
-@unless($index==4)
+@unless($index==4) <!--= No se muestra la cabecera-->
     <header class="site-header">
 	    <div class="container-fluid">
 	        <a href="#" class="site-logo">
-	            <img class="hidden-md-down" src="Template/img/logo upiiz estilo ipn_small2.png" alt="">
-	            <img class="hidden-lg-up" src="Template/img/logo upiiz estilo ipn_small3.png" alt="">
+	            <img class="hidden-md-down" src="/Template/img/logo upiiz estilo ipn_small2.png" alt="">
+	            <img class="hidden-lg-up" src="/Template/img/logo upiiz estilo ipn_small3.png" alt="">
 	        </a>       
 	        
 	        <button class="hamburger hamburger--htla">
@@ -46,23 +46,25 @@
 	            <div class="site-header-content-in">
 	                <div class="site-header-shown">
                         
+                        @if(Auth::check()) <!--=Solo se muestra el menu de perfil si se esta iniciado sesion-->
 	                    <div class="dropdown user-menu">
 	                        <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                            <img src="Template/img/avatar-2-64.png" alt="">
+	                            <img src="/Template/img/avatar-2-64.png" alt="">
 	                        </button>
 	                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
-	                            <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-user"></span>Perfil</a>
-	                            <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-cog"></span>Configuración</a>
+	                            <a class="dropdown-item" href="/profile"><span class="font-icon glyphicon glyphicon-user"></span>Perfil</a>
+	                            <a class="dropdown-item" href="/profile/edit"><span class="font-icon glyphicon glyphicon-cog"></span>Configuración</a>
 	                            <div class="dropdown-divider"></div>
-	                            <a class="dropdown-item" href="#"><span class="font-icon font-icon-share"></span>Facebook</a>
-	                            <a class="dropdown-item" href="#"><span class="font-icon font-icon-home"></span>Sitio UPIIZ</a>
+	                            <a class="dropdown-item" href="https://www.facebook.com/verodelarosa.medicaupiiz?hc_ref=SEARCH&fref=nf"><span class="font-icon font-icon-share"></span>Facebook</a>
+	                            <a class="dropdown-item" href="http://www.zacatecas.ipn.mx/Paginas/Inicio.aspx"><span class="font-icon font-icon-home"></span>Sitio UPIIZ</a>
 	                            <div class="dropdown-divider"></div>
-	                            <a class="dropdown-item" href="#"><span class="font-icon glyphicon glyphicon-log-out"></span>Salir</a>
+	                            <a class="dropdown-item" href="/logout"><span class="font-icon glyphicon glyphicon-log-out"></span>Salir</a>
 	                        </div>
 	                    </div>
+	                    @endif
 	                    
 	                    <a href="#" class="site-logo">
-                            <img class="hidden-md-down" src="Template/img/escudo ipn negro_small.png" alt="">
+                            <img class="hidden-md-down" src="/Template/img/escudo ipn negro_small.png" alt="">
                         </a>
 	                    
 	                </div><!--.site-header-shown-->
@@ -75,7 +77,7 @@
 	    </div><!--.container-fluid-->
 	</header><!--.site-header-->
 	
-	<div class="mobile-menu-left-overlay"></div>
+	<div class="mobile-menu-left-overlay"></div> <!--=Index en este caso solo sirve para el estilo CSS-->
 	<ul class="main-nav nav nav-inline">
 		<li class="nav-item">
 			<a class="nav-link @if($index==1)active @endif" href="/">Inicio</a>
@@ -86,27 +88,33 @@
 		<li class="nav-item">
 			<a class="nav-link @if($index==3)active @endif" href="/contact">Contactanos</a>
 		</li>
+		@if(Auth::check())
 		<li class="nav-item">
-			<a class="nav-link @if($index==4)active @endif" href="/login">Iniciar sesión</a>
+			<a class="nav-link @if($index==5)active @endif" href="/docs">Documentos</a>
 		</li>
+		@else
+		<li class="nav-item">
+			<a class="nav-link @if($index==5)active @endif" href="/login">Iniciar sesión</a>
+		</li>
+		@endif
 	</ul>
 	
 	<div class="page-content">
 		<div class="container-fluid">
+            @include('alerts.sessionAlert')
             <h3 class="with-border text-center">@yield('subHead')</h3>
-            
             @yield('content')
 		</div><!--.container-fluid-->
 	</div><!--.page-content-->
 @endunless
 
-	<script src="Template/js/lib/jquery/jquery.min.js"></script>
-	<script src="Template/js/lib/tether/tether.min.js"></script>
-	<script src="Template/js/lib/bootstrap/bootstrap.min.js"></script>
-	<script src="Template/js/plugins.js"></script>
+	<script src="/Template/js/lib/jquery/jquery.min.js"></script>
+	<script src="/Template/js/lib/tether/tether.min.js"></script>
+	<script src="/Template/js/lib/bootstrap/bootstrap.min.js"></script>
+	<script src="/Template/js/plugins.js"></script>
 	
 	@yield('scripts')
 
-<script src="Template/js/app.js"></script>
+    <script src="/Template/js/app.js"></script>
 </body>
 </html> 
