@@ -28,7 +28,7 @@
                     <div role="tabpanel" class="clearfix tab-pane active" id="tab-contact-1">
                         <div class="contacts-page-col-left">
                             <div class="contacts-page-col-left-in">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d1576.23089110793!2d-102.6161092753822!3d22.78330025591424!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86824dfdee323e95%3A0x4b1a2d127500ff5c!2sUnidad+Profesional+Interdisciplinaria+de+Ingenier%C3%ADa+Campus+Zacatecas!5e1!3m2!1ses!2smx!4v1496070098317" width="978" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m11!1m3!1d1576.23089110793!2d-102.6161092753822!3d22.78330025591424!2m2!1f0!2f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86824dfdee323e95%3A0x4b1a2d127500ff5c!2sUnidad+Profesional+Interdisciplinaria+de+Ingenier%C3%ADa+Campus+Zacatecas!5e1!3m2!1ses!2smx!4v1496070098317" width="1425" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
                             </div><!--.contacts-page-col-left-in-->
                         </div><!--.contacts-page-col-left-->
                         <div class="contacts-page-col-right">
