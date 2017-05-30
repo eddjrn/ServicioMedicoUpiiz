@@ -29,3 +29,8 @@ Route::get('/logout','Auth\AuthController@getLogout');
 Route::get('/profile', 'profileController@index');
 Route::get('/profile/edit', 'profileController@edit');
 Route::post('/profile/edit', 'profileController@update');
+
+// ---------------------------------------------------------------------------------------
+
+Route::get('/admin', 'adminController@index');
+Route::get('/admin/lists', 'adminController@lists');
