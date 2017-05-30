@@ -17,6 +17,8 @@ Route::get('/news', 'newsController@index');
 
 Route::get('/contact','contactController@index');
 
+Route::get('/tutorials','tutorialsController@index');
+
 Route::get('/login', 'Auth\AuthController@getLogin');
 Route::post('/login', 'Auth\AuthController@postLogin');
 

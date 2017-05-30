@@ -22,9 +22,15 @@ Servicio Medico Upiiz
     </header>
     <div class="text-block text-block-typical">
         <p>
-           Objetivo principal el que los alumnos de nuevo ingreso no batallen con el llendo de la documentación médica.
+          Nuestra principal labor es la prevención, educación y detección de enfermedades. Se brinda  orientación  sobre las diferentes áreas de la salud, buscando mejorar la capacidad de aprendizaje de la Comunidad Politécnica,  por lo cual  se genera un historial clínico de cada uno de las personas que asisten a Servicio Médico a través de:   
+            <p>• Medicina Preventiva</p>   
+            <p>• Orientación de Nutrición</p>   
+            <p>• Consulta Médica</p>
+          Dentro de los servicios que además proporciona el Área de Servicio médico es:     
+            <p>1. Realizar la afiliación al Instituto Mexicano del Seguro Social (IMSS), a todos los alumnos de la Unidad Académica que no cuenten con alguna Seguridad Social ya sea por parte de sus padres  o de  trabajo, de contar con este servicio se deberá entregar la carta responsiva, ya que es un requisito obligatorio para los alumnos tener Seguro Social  para realizar  salidas  ó prácticas escolares fuera de la Unidad Académica.</p>     
+            <p>2. Todos los alumnos del IPN que  estén inscritos  cuentan con un Seguro de Vida contratado por el IPN, el cual cuenta con una cobertura durante las 24 hrs. de los 365 días del año y en cualquier lugar de la Repblica Mexicana.</p>                     ​  
         </p>
-        <p>mediante instructivos  y para los demás alumnos contar con su expediente completo.</p>
+        <p>Horario de atención: 8:00 – 10:30  y de 11:00 - 15:00hrs  Encargada: Médica Verónica de la Rosa Sánchez </p>
         
     </div>
 </div><!--.box-typical-->
@@ -69,19 +75,19 @@ Servicio Medico Upiiz
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#w-1-tab-1" role="tab" aria-expanded="false">
                                 <i class="font-icon font-icon-pin"></i>
-                                Clinica 1
+                                Clinica 1 (Zacatecas)
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#w-1-tab-2" role="tab" aria-expanded="false">
                                 <i class="font-icon font-icon-pin"></i>
-                                Clinica 4
+                                Clinica 4 (Guadalupe)
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#w-1-tab-3" role="tab" aria-expanded="true">
                                 <i class="font-icon font-icon-pin"></i>
-                                Clinica 3
+                                Clinica 3 (Guadalupe)
                             </a>
                         </li>
                     </ul>

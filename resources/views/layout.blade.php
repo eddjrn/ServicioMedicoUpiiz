@@ -89,7 +89,7 @@
 			<a class="nav-link @if($index==3)active @endif" href="/contact">Contactanos</a>
 		</li>
         <li class="nav-item">
-			<a class="nav-link @if($index==5)active @endif" href="/docs">Tutoriales</a>
+			<a class="nav-link @if($index==6)active @endif" href="/tutorials">Tutoriales</a>
 		</li>
 		@if(Auth::check())
         <li class="nav-item">
