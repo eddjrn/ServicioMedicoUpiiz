@@ -93,10 +93,10 @@
 		</li>
 		@if(Auth::check())
         <li class="nav-item">
-			<a class="nav-link @if($index==5)active @endif" href="/docs">Formularios</a>
+			<a class="nav-link @if($index==7)active @endif" href="/forms">Formularios</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link @if($index==5)active @endif" href="/docs">Seguro de vida</a>
+			<a class="nav-link @if($index==8)active @endif" href="/lifeInsurance">Seguro de vida</a>
 		</li>
 		@else
 		<li class="nav-item">

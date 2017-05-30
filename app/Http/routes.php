@@ -12,12 +12,11 @@
 */
 
 Route::get('/', 'startController@index');
-
 Route::get('/news', 'newsController@index');
-
 Route::get('/contact','contactController@index');
-
 Route::get('/tutorials','tutorialsController@index');
+Route::get('/lifeInsurance', 'lifeInsuranceController@index');
+Route::get('/forms', 'formsController@index');
 
 Route::get('/login', 'Auth\AuthController@getLogin');
 Route::post('/login', 'Auth\AuthController@postLogin');

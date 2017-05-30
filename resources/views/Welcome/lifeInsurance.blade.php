@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-<title>Inicio servicio medico</title>
+<title>Seguro de vida</title>
 @stop
 
 @section('css')
@@ -11,6 +11,7 @@
 @stop
 
 @section('subHead')
+Seguro de vida
 @stop
 
 @section('content')

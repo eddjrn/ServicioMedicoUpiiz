@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-<title>Inicio servicio medico</title>
+<title>Generación de formularios</title>
 @stop
 
 @section('css')
@@ -11,6 +11,7 @@
 @stop
 
 @section('subHead')
+Generación de formularios
 @stop
 
 @section('content')
