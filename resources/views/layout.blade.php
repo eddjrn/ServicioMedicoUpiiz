@@ -88,9 +88,15 @@
 		<li class="nav-item">
 			<a class="nav-link @if($index==3)active @endif" href="/contact">Contactanos</a>
 		</li>
+        <li class="nav-item">
+			<a class="nav-link @if($index==5)active @endif" href="/docs">Tutoriales</a>
+		</li>
 		@if(Auth::check())
+        <li class="nav-item">
+			<a class="nav-link @if($index==5)active @endif" href="/docs">Formularios</a>
+		</li>
 		<li class="nav-item">
-			<a class="nav-link @if($index==5)active @endif" href="/docs">Documentos</a>
+			<a class="nav-link @if($index==5)active @endif" href="/docs">Seguro de vida</a>
 		</li>
 		@else
 		<li class="nav-item">
