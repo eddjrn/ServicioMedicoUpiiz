@@ -25,10 +25,35 @@ Servicio Medico Upiiz
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<div class="fb-video" data-href="https://www.facebook.com/702542226521320/videos/887977814644426/" data-width="500" data-show-text="false"><blockquote cite="https://www.facebook.com/702542226521320/videos/887977814644426/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/702542226521320/videos/887977814644426/"></a><p>Evolution of Johnny depp
+        <div class="container-fluid">
+            
+            <div class="row">
+                <div class="col-xxl-6 col-md-10">
+                    <section class="widget widget-time">
+                        <header class="widget-header-dark with-btn">
+                            Time is Money!
+                        </header>
+                        <div class="widget-time-content">
+                            <div>
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/qFnE2_pEFJo" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </section><!--.widget-time-->
 
-Credit to Ida Engel</p>Posted by <a href="https://www.facebook.com/ZA-Photography-702542226521320/">ZA  Photography</a> on domingo, 17 de abril de 2016</blockquote></div>
-    
+                </div>
+
+                <div class="col-xxl-6 col-md-10">
+                    <section class="widget widget-time">
+                        <header class="widget-header-dark with-btn">
+                            Time is Money!
+                        </header>
+                        <div class="widget-time-content">
+                            <div >
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/qFnE2_pEFJo" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </section><!--.widget-time-->
+            </div><!--.row-->
+
+        </div>
 </div><!--.box-typical-->
 
 

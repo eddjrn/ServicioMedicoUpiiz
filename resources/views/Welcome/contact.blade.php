@@ -48,6 +48,10 @@
                 </div><!--.tab-content-->
             </section><!--.box-typical-->
         </div>
+
+        
+
+        
 @stop
 
 @section('scripts')
