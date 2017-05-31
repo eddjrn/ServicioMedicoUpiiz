@@ -45,10 +45,10 @@
         
         <ul>
             <li class="cs_skeleton"> 
-                <img src="http://cssslider.com/sliders/demo-27/data1/images/polaroid594200_1280.jpg" width="9000" height="315" alt="jQuery  carousel ">
+                <img src="http://cssslider.com/sliders/demo-27/data1/images/polaroid594200_1280.jpg" width="560" height="315" alt="jQuery  carousel ">
             </li>
             <li class="num0 img slide">
-                <img src="https://s-media-cache-ak0.pinimg.com/736x/da/c8/a0/dac8a04852bc10a9341bd30f7a9abc42.jpg" alt="HTML  slider " title="Polaroid">
+                <img src="https://s-media-cache-ak0.pinimg.com/736x/da/c8/a0/dac8a04852bc10a9341bd30f7a9abc42.jpg" width="560" height="315" alt="HTML  slider " title="Polaroid">
             </li>
             <li class="num1 img slide">
                 <img src="http://cssslider.com/sliders/demo-27/data1/images/camera349868_1280.jpg" alt="CSS  carousel " title="Camera">
@@ -77,10 +77,10 @@
             <label class="num3" for="cs_slide1_3"><span><i></i><b></b></span></label>
         </div>
         
-        <!--<div class="cs_bullets">   
+        <div class="cs_bullets">   
             <label class="num0" for="cs_slide1_0">
                 <span class="cs_point"></span>
-                <span class="cs_thumb"><img src="http://cssslider.com/sliders/demo-27/data1/tooltips/polaroid594200_1280.jpg" alt="Wordpress  slider " title="Polaroid"></span>
+                <span class="cs_thumb"><img src="https://s-media-cache-ak0.pinimg.com/736x/da/c8/a0/dac8a04852bc10a9341bd30f7a9abc42.jpg" width="200" height="100" alt="Wordpress  slider " title="Polaroid"></span>
             </label>
             <label class="num1" for="cs_slide1_1">
                 <span class="cs_point"></span>
@@ -104,7 +104,6 @@
                 </div>
             </div>
         </section>
-
 </div>
 
             <div class="card-grid-col"> <!-- Card-->

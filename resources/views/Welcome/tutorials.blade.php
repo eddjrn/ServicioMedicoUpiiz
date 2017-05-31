@@ -35,7 +35,11 @@ Servicio Medico Upiiz
                         </header>
                         <div class="widget-time-content">
                             <div>
+                                <div class="row">
+                                    <div class="col-xs-6 col-md-10">
                                 <iframe width="560" height="315" src="https://www.youtube.com/embed/qFnE2_pEFJo" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                </div>
                         </div>
                     </section><!--.widget-time-->
 
