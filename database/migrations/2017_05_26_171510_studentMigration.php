@@ -37,6 +37,12 @@ class StudentMigration extends Migration
             $table->integer('cp');
             $table->string('localidad');
             
+            $table->string('curp', 18);
+            $table->date('nacimiento');
+            $table->integer('provedorSeguro');
+            $table->integer('noClinica');
+            $table->string('tutor');
+            
             $table->integer('estatus_id')->unsigned()->index()->nullable();
             $table->foreign('estatus_id')->references('id')->on('estatus')->onDelete('set null');
             $table->timestamps();
