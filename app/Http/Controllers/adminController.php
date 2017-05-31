@@ -26,7 +26,57 @@ class adminController extends Controller
     public function lists()
     {
         $index = 2;
-        return view('Admin.lists', ['index'=>$index]);
+        
+        $numbers = array(
+            'One',
+            'Two',
+            'Three',
+            'Four',
+            'Five',
+            'Six',
+            'Seven',
+            'Eight',
+            'Nine',
+            'Ten',
+            'Eleven',
+        );
+        
+        $statusStyle = array(
+            'form-control-orange-fill',
+            'form-control-red-fill',
+            'form-control-green-fill',
+            'form-control-blue-fill',
+            'form-control-danger',
+        );
+        
+        $carrers = \App\carrer::all();
+        $status = \App\status::all();
+        
+        
+        return view('Admin.lists', ['index'=>$index, 'numbers'=>$numbers, 'statusStyle'=>$statusStyle, 'carrers'=>$carrers, 'status'=>$status]);
+    }
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $index = 0;
+        
+        $statusStyle = array(
+            'form-control-orange-fill',
+            'form-control-red-fill',
+            'form-control-green-fill',
+            'form-control-blue-fill',
+            'form-control-danger',
+        );
+        
+        $student = \App\student::find($id);
+        
+        return view('Admin.student', ['index'=>$index, 'statusStyle'=>$statusStyle, 'student'=>$student]);
     }
 
     /**
@@ -50,16 +100,7 @@ class adminController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.

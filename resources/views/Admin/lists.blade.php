@@ -57,109 +57,100 @@ Listas de todos los alumnos en el sistema
 
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane fade in active" id="tabs-1-tab-1">
+        
             <section class="widget widget-accordion" id="accordion" role="tablist" aria-multiselectable="true">
+            <!--{{$x=0}}-->
+            @foreach($carrers as $carrer)
                 <article class="panel">
-                    <div class="panel-heading" role="tab" id="headingOne">
+                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}">
                         <a data-toggle="collapse"
                             data-parent="#accordion"
-                            href="#collapseOne"
-                            aria-expanded="true"
-                            aria-controls="collapseOne">
-                            Collapsible Group Item #1
-                            <i class="font-icon font-icon-arrow-down"></i>
-                        </a>
-                    </div>
-                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                        <div class="panel-collapse-in">
-                            <div class="user-card-row">
-                                <div class="tbl-row">
-                                    <div class="tbl-cell tbl-cell-photo">
-                                        <a href="#">
-                                            <img src="img/photo-64-2.jpg" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="tbl-cell">
-                                        <p class="user-card-row-name"><a href="#">Maurico Estrella</a></p>
-                                        <p class="user-card-row-location">Associate Creative Director @EF</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <header class="title">How a password changed my life</header>
-                            <p>«How could she do something like this to me?» said a voice in my head. All the time. Every day... <a href="#">More</a></p>
-                        </div>
-                    </div>
-                </article>
-                <article class="panel">
-                    <div class="panel-heading" role="tab" id="headingTwo">
-                        <a class="collapsed"
-                            data-toggle="collapse"
-                            data-parent="#accordion"
-                            href="#collapseTwo"
+                            href="#collapse{{$numbers[$x]}}"
                             aria-expanded="false"
-                            aria-controls="collapseTwo">
-                            Collapsible Group Item #2
+                            aria-controls="collapse{{$numbers[$x]}}">
+                            {{$carrer->nombre}}
+                            [{{$carrer->students->count()}}]
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>
-                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                    <div id="collapse{{$numbers[$x]}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$numbers[$x]}}">
                         <div class="panel-collapse-in">
-                            <div class="user-card-row">
-                                <div class="tbl-row">
-                                    <div class="tbl-cell tbl-cell-photo">
-                                        <a href="#">
-                                            <img src="img/avatar-3-64.png" alt="">
-                                        </a>
+                        
+                            <section class="box-typical box-typical-max-280">
+                                <header class="box-typical-header">
+                                    <div class="tbl-row">
+                                        <div class="tbl-cell tbl-cell-title">
+                                            <h3>
+                                                @foreach($status as $s)
+                                                    {{$s->students->count()}}
+                                                @endforeach
+                                            </h3>
+                                        </div>
                                     </div>
-                                    <div class="tbl-cell">
-                                        <p class="user-card-row-name"><a href="#">Michelle Lewis</a></p>
-                                        <p class="user-card-row-location">Company Founder</p>
+                                </header>
+                                <div class="box-typical-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <tbody>
+                                                @foreach($carrer->students as $student)
+                                                <tr>
+                                                    <td>
+                                                        <div class="font-11 color-blue-grey-lighter uppercase">Nombre</div>
+                                                        <a href="/admin/lists/{{$student->id}}">{{$student->user}}</a>
+                                                    </td>
+                                                    <td>
+                                                        <div class="font-11 color-blue-grey-lighter uppercase">Correo electrónico</div>
+                                                        {{$student->user->email}}
+                                                    </td>
+                                                    <td>
+                                                        <div class="font-11 color-blue-grey-lighter uppercase">Boleta</div>
+                                                        {{$student->user->boleta}}
+                                                    </td>
+                                                    <td>
+                                                        <div class="font-11 color-blue-grey-lighter uppercase">Número de seguro</div>
+                                                        {{$student->noSeguro}}
+                                                    </td>
+                                                    <td>
+                                                        <div class="font-11 color-blue-grey-lighter uppercase">Teléfono</div>
+                                                        {{$student->telefono}}
+                                                    </td>
+                                                    <td>
+                                                        <div class="font-11 color-blue-grey-lighter uppercase">Estatus</div>
+                                                        <input type="text" readonly class="form-control @if($student->estatus_id == 1)
+                                                            {{$statusStyle[0]}}
+                                                        @elseif($student->estatus_id == 2)
+                                                            {{$statusStyle[1]}}
+                                                        @elseif($student->estatus_id == 3)
+                                                            {{$statusStyle[2]}}
+                                                        @elseif($student->estatus_id == 4)
+                                                            {{$statusStyle[3]}}
+                                                        @elseif($student->estatus_id == 5)
+                                                            {{$statusStyle[4]}}
+                                                        @endif" value="{{$student->status->nombre}}">
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
                                     </div>
-                                </div>
-                            </div>
-                            <header class="title">How a password changed my life</header>
-                            <p>«How could she do something like this to me?» said a voice in my head. All the time. Every day... <a href="#">More</a></p>
+                                </div><!--.box-typical-body-->
+                            </section><!--.box-typical-->
+                            
                         </div>
                     </div>
                 </article>
-                <article class="panel">
-                    <div class="panel-heading" role="tab" id="headingThree">
-                        <a class="collapsed"
-                            data-toggle="collapse"
-                            data-parent="#accordion"
-                            href="#collapseThree"
-                            aria-expanded="false"
-                            aria-controls="collapseThree">
-                            Collapsible Group Item #3
-                            <i class="font-icon font-icon-arrow-down"></i>
-                        </a>
-                    </div>
-                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                        <div class="panel-collapse-in">
-                            <div class="user-card-row">
-                                <div class="tbl-row">
-                                    <div class="tbl-cell tbl-cell-photo">
-                                        <a href="#">
-                                            <img src="img/avatar-2-64.png" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="tbl-cell">
-                                        <p class="user-card-row-name"><a href="#">Maurico Estrella</a></p>
-                                        <p class="user-card-row-location">Associate Creative Director @EF</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <header class="title">How a password changed my life</header>
-                            <p>«How could she do something like this to me?» said a voice in my head. All the time. Every day... <a href="#">More</a></p>
-                        </div>
-                    </div>
-                </article>
-            </section><!--.widget-accordion-->
+                <!--{{$x++}}-->
+            @endforeach
+            </section>
+            
         </div><!--.tab-pane-->
-        <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-2">Tab 2</div><!--.tab-pane-->
+        <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-2"></div><!--.tab-pane-->
         <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">Tab 3</div><!--.tab-pane-->
         <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-4">Tab 4</div><!--.tab-pane-->
     </div><!--.tab-content-->
 </section><!--.tabs-section-->
+
+
 @stop
 
 @section('scripts')
