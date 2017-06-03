@@ -13,8 +13,6 @@ Servicio Medico Upiiz
 
 @section('content')
 
-@include('alerts.sessionError')
-
 <div class="box-typical box-typical-padding documentation">
     <header class="documentation-header">
         <h2>Objetivo</h2>
