@@ -17,7 +17,8 @@ class newsController extends Controller
     public function index()
     {
         $index=2;
-        return view('Welcome.news',['index' => $index]);
+        $info=\App\info::all();
+        return view('Welcome.news',['index' => $index, 'info'=> $info]);
     }
 
     /**

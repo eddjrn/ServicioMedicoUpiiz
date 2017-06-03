@@ -46,8 +46,7 @@
                 </div><!--.tabs-section-nav-->
 
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade in active" id="tabs-1-tab-1" <div class="col-md-5 col-xs-6" >>Info
-                
+                    <div role="tabpanel" class="tab-pane fade in active" id="tabs-1-tab-1" class="col-md-5 col-xs-6" >
         @foreach($info as $in)
             <div class="card-grid-col"> <!-- Card-->
                     <article class="card-typical">

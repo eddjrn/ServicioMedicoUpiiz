@@ -12,6 +12,6 @@ class info extends Model
 
     public function user()
     {
-    	return $usuario = \App\user::find($this->usuario_id); 
+    	return $informacion = \App\user::find($this->usuario_id); 
     }
 }

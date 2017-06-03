@@ -12,5 +12,11 @@ class InfoTableSeeder extends Seeder
     public function run()
     {
         //
+        DB::table('informacion')->insert([
+            'usuario_id' => '1',
+            'titulo' => 'demonios',
+            'contenido' => 'mmmmm',
+        ]);
+        
     }
 }
