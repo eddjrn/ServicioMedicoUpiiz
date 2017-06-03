@@ -20,7 +20,7 @@ class InfoMigration extends Migration
 
             $table->string('titulo');
             $table->text('contenido');
-            $table->timestamps();
+            //$table->timestamps();
         });
 
     }
