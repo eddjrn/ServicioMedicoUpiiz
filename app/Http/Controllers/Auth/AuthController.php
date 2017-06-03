@@ -197,10 +197,22 @@ class AuthController extends Controller
             return $this->redirectPath;
         }
         
-        session()->flash('message', '¡Bienvenido!');
-        session()->flash('type', 'success');
+        if(Auth::user()->tipo == 1){
+            session()->flash('message', '¡Bienvenido! - Inició sesión como administrador');
+            session()->flash('type', 'warning');
+        
+            return property_exists($this, 'redirectTo') ? $this->redirectTo : '/admin';
+        } else if(Auth::user()->tipo == 2){
+            if(Auth::user()->student){
+                session()->flash('message', '¡Bienvenido!');
+                session()->flash('type', 'success');
 
-        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/';
+                return property_exists($this, 'redirectTo') ? $this->redirectTo : '/';
+            } else{
+                return property_exists($this, 'redirectTo') ? $this->redirectTo : '/profile/newStudent';
+            }
+        }
+        
     }
     
 }

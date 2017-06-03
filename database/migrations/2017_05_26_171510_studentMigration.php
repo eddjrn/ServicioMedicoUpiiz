@@ -37,7 +37,7 @@ class StudentMigration extends Migration
             $table->integer('cp');
             $table->string('localidad');
             
-            $table->string('curp', 18);
+            $table->string('curp');
             $table->date('nacimiento');
             $table->integer('provedorSeguro');
             $table->integer('noClinica');

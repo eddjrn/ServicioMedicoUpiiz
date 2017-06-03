@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\student;
+
+use Carbon\Carbon;
 
 class profileController extends Controller
 {
@@ -81,6 +84,7 @@ class profileController extends Controller
             'colonia'=>$request->colonia,
             'cp'=>$request->cp,
             'localidad'=>$request->localidad,
+            'nacimiento'=>$request->nacimiento,
         ]);
         
         return redirect('/profile');
@@ -122,7 +126,15 @@ class profileController extends Controller
      */
     public function create()
     {
-        //
+        if(Auth::user()->student){
+            session()->flash('message', '¡Bienvenido!');
+            session()->flash('type', 'success');
+
+            return redirect('/');
+        } else{
+            $index = 4;
+            return view('User.completeProfile', ['index'=>$index]);
+        }
     }
 
     /**
@@ -133,7 +145,63 @@ class profileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'telefono'=>'required',
+            'curp'=>'required|unique:alumno,curp',
+            'sexo'=>'required|not_in:0',
+            'nacimiento'=>'required|date|before:tomorrow',
+            'noSeguro'=>'required',
+            'tutor'=>'required',
+            'proveedorSeguro'=>'required',
+            'noClinica'=>'required',
+            'municipio'=>'required',
+            'estado'=>'required',
+            'localidad'=>'required',
+            'cp'=>'required',
+            'calle'=>'required',
+            'colonia'=>'required',
+            'numExt'=>'required',
+            'numInt'=>'required',
+            'carrera'=>'required',
+        ]);
+        
+       // $input = 'd-m-Y';
+       // $date = $request->input('nacimiento');
+        //$output = 'Y-m-d';
+        
+       // $dateFormated = Carbon::createFromFormat($input, $date)->format($output);
+        //return $dateFormated;
+        
+        if(Auth::user()->student){
+            return redirect('/')->withErrors([
+                'El alumno ya existe en la base de datos',
+            ]);
+        } else{
+            student::create([
+                'usuario_id'=>Auth::user()->id,
+                'carrera_id'=>$request->carrera,
+                'municipio_id'=>$request->municipio,
+                'estado_id'=>$request->estado,
+                'noSeguro'=>$request->noSeguro,
+                'sexo'=>$request->sexo,
+                'telefono'=>$request->telefono,
+                'calle'=>$request->calle,
+                'numExt'=>$request->numExt,
+                'numInt'=>$request->numInt,
+                'colonia'=>$request->colonia,
+                'cp'=>$request->cp,
+                'localidad'=>$request->localidad,
+                'curp'=>$request->curp,
+                'nacimiento'=>$request->nacimiento,
+                'provedorSeguro'=>$request->proveedorSeguro,
+                'noClinica'=>$request->noClinica,
+                'tutor'=>$request->tutor,
+                'estatus_id'=>'1',
+            ]);
+            session()->flash('message', '¡Bienvenido! - Nuevo usuario');
+            session()->flash('type', 'success');
+            return redirect('/');
+        }
     }
 
     /**

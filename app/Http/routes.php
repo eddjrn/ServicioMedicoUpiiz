@@ -26,6 +26,8 @@ Route::post('/signup', 'Auth\AuthController@postRegister');
 Route::get('/logout','Auth\AuthController@getLogout');
 
 Route::get('/profile', 'profileController@index');
+Route::get('/profile/newStudent', 'profileController@create');
+Route::post('/profile/newStudent', 'profileController@store');
 Route::get('/profile/edit', 'profileController@edit');
 Route::post('/profile/edit', 'profileController@update');
 

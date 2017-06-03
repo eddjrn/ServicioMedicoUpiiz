@@ -18,8 +18,6 @@ class adminController extends Controller
     {
         $index = 1;
         
-        session()->flash('message', 'Inició sesión como administrador');
-        session()->flash('type', 'warning');
         return view('Admin.start', ['index'=>$index]);
     }
     

@@ -83,7 +83,27 @@ Edición de los datos personales
                     <div class="col-md-4 col-sm-6">
                         <fieldset class="form-group">
                             <label class="form-label" for="exampleInputDisabled">Sexo</label>
-                            {!!Form::select('sexo', array('0'=>'Seleccionar', '1'=>'Masculino', '2'=>'Femenino'), $student->sexo, ['class'=>'bootstrap-select bootstrap-select-arrow'])!!}
+                            {!!Form::select('sexo', array('1'=>'Masculino', '2'=>'Femenino'), $student->sexo, ['class'=>'bootstrap-select bootstrap-select-arrow'])!!}
+                        </fieldset>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <fieldset class="form-group">
+                            <label class="form-label" for="exampleInputDisabled">CURP</label>
+                            {!!Form::text('curp', null, ['class'=>'form-control', 'placeholder'=>'Ej: xxxxxxxxxxxxxxxxxx', 'id'=>'curp'])!!}
+                        </fieldset>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <fieldset class="form-group">
+                            <label class="form-label" for="exampleInputDisabled">Fecha de nacimeinto</label>
+                            <div class='input-group date'>
+                                <input id="date_box" type="text" value="{{$student->nacimiento}}" class="form-control" name="nacimiento">
+                                <span class="input-group-addon">
+                                    <i class="font-icon font-icon-calend"></i>
+                                </span>
+                            </div>
                         </fieldset>
                     </div>
                 </div>
@@ -121,12 +141,6 @@ Edición de los datos personales
                             {!!Form::select('carrera', $carrer, $student->carrera_id, ['class'=>'select2'])!!}
                         </fieldset>
                     </div>
-                    <div class="col-md-4 col-sm-6">
-                        <fieldset class="form-group">
-                            <label class="form-label" for="exampleInputDisabled">Carrera</label>
-                            <input type="text" class="form-control" id="exampleInputDisabled" placeholder="Nombre">
-                        </fieldset>
-                    </div>
                 </div>
                 
                 
@@ -153,6 +167,27 @@ Edición de los datos personales
                         <fieldset class="form-group">
                             <label class="form-label" for="exampleInputDisabled">Número de seguro</label>
                             {!!Form::text('noSeguro', null, ['class'=>'form-control', 'placeholder'=>'Ej: xxx-xxx-xx-xx', 'id'=>'noSeguro'])!!}
+                        </fieldset>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <fieldset class="form-group">
+                            <label class="form-label" for="exampleInputDisabled">Proveedor de seguro</label>
+                            {!!Form::select('proveedorSeguro', array('1'=>'IPN', '2'=>'Padres', '3'=>'Otro'),  $student->provedorSeguro, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+                        </fieldset>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <fieldset class="form-group">
+                            <label class="form-label" for="exampleInputDisabled">Número de clínica</label>
+                            {!!Form::select('noClinica', array('1'=>'Clinica 1', '2'=>'Clinica 2', '3'=>'Clinica 3'), $student->noClinica, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+                        </fieldset>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <fieldset class="form-group">
+                            <label class="form-label" for="exampleInputDisabled">Tutor a cargo</label>
+                            {!!Form::text('tutor', null, ['class'=>'form-control', 'placeholder'=>'Ej: Tutor', 'id'=>'tutor'])!!}
                         </fieldset>
                     </div>
                 </div>
@@ -214,7 +249,7 @@ Edición de los datos personales
                 <div class="row">
                     <div class="col-md-4 col-sm-6">
                         <fieldset class="form-group">
-                            <label class="form-label" for="exampleInputDisabled">Estado</label>
+                            <label class="form-label" for="exampleInputDisabled">Estado de procedencia</label>
                             
                             <!--{{$estate=\App\state::lists('nombre', 'id')}} -->
                             
@@ -223,7 +258,7 @@ Edición de los datos personales
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <fieldset class="form-group">
-                            <label class="form-label" for="exampleInputDisabled">Municipio</label>
+                            <label class="form-label" for="exampleInputDisabled">Municipio donde reside</label>
                             <!--{{$place=\App\place::lists('nombre', 'id')}} -->
                             
                             {!!Form::select('municipio', $place, $student->municipio_id, ['class'=>'select2'])!!}
@@ -284,4 +319,9 @@ Edición de los datos personales
 @section('scripts')
     <script src="/Template/js/lib/bootstrap-select/bootstrap-select.min.js"></script>
     <script src="/Template/js/lib/select2/select2.full.min.js"></script>
+    <script src="/Template/js/custom/completeProfileToggle.js"></script>
+    
+    <script src="/Template/js/lib/clockpicker/bootstrap-clockpicker.min.js"></script>
+    <script src="/Template/js/lib/clockpicker/bootstrap-clockpicker-init.js"></script>
+    <script src="/Template/js/lib/daterangepicker/daterangepicker.js"></script>
 @stop 
