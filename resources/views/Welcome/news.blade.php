@@ -96,7 +96,8 @@
                                         <p class="gallery-item-title">{{$img->titulo}}</p>
                                         <div class="btn-group">
                                             <button type="button" class="btn">
-                                                <a target="_blank" class="font-icon font-icon-cloud" href="{{$img->imagen}}"></a>
+                                                <a target="_blank" class="font-icon font-icon-picture" href="{{$img->imagen}}"></a>
+                                               
                                             </button>
                                         </div>
                                     </div>
