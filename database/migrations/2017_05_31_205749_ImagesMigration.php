@@ -19,6 +19,7 @@ class ImagesMigration extends Migration
             $table->integer('usuario_id')->unsigned()->index();
 
             $table->text('imagen');
+            $table->string('titulo');
             $table->timestamps();
         });
     }

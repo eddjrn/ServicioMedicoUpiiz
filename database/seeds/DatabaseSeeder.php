@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
          $this->call(userTableSeeder::class);
          $this->call(studentTableSeeder::class);
          $this->call(InfoTableSeeder::class);
+         $this->call(imagesTableSeeder::class);
 
         Model::reguard();
     }

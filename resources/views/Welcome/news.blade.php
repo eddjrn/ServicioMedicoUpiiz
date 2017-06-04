@@ -77,7 +77,13 @@
                     </div><!--.tab-pane-->
 
 
-                    <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-2">Imagenes</div><!--.tab-pane-->
+                    <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-2">Imagenes
+
+                        @foreach($images as $img)
+                        {{$img->imagen}}
+                        @endforeach
+
+                    </div><!--.tab-pane-->
                     <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">Videos</div><!--.tab-pane-->
                 </div><!--.tab-content-->
             </section>
