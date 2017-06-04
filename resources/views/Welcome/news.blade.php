@@ -49,6 +49,9 @@
                     <div role="tabpanel" class="tab-pane fade in active" id="tabs-1-tab-1" class="col-md-5 col-xs-6" >
        
         @foreach($info as $in)
+        <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
             <div class="card-grid-col"> <!-- Card-->
                     <article class="card-typical">
                         <div class="card-typical-section">
@@ -73,47 +76,35 @@
                        
                     </article><!--.card-typical-->
                     </div>  
+                    </div>
+                    </div>
                  @endforeach
                     </div><!--.tab-pane-->
 
 
-                    <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-2">Imagenes
+                    <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-2">
 
                         @foreach($images as $img)
-        <div class="container-fluid">
-            
-            <div class="row">
-                <div class="col-xxl-6 col-md-10">
-                    <section class="widget widget-time">
-                        <header class="widget-header-dark with-btn">
-                            Sacar Vigencia de derechos IMSS
-                        </header>
-                        <div class="widget-time-content">
-                            <div>
-                                <div class="row">
-                                    <div class="col-md-12 col-xs-12">
-                                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fverodelarosa.medicaupiiz%2Fvideos%2F1856299047919436%2F&width=500&show_text=false&appId=578903988956921&height=280" width="100%" height="380" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                         <div class="row">
+                            <div class="col-md-1"></div>
+                                 <div class="col-md-2">
+                           <div class="gallery-col">
+                            <article class="gallery-item">
+                                <img class="gallery-picture" src="{{$img->imagen}}" alt="" height="158">
+                                <div class="gallery-hover-layout">
+                                    <div class="gallery-hover-layout-in">
+                                        <p class="gallery-item-title">{{$img->titulo}}</p>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn">
+                                                <a target="_blank" class="font-icon font-icon-cloud" href="{{$img->imagen}}"></a>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
+                            </article>
                         </div>
-                    </section><!--.widget-time-->
-
-                </div>
-
-                <div class="col-xxl-6 col-md-10">
-                    <section class="widget widget-time">
-                        <header class="widget-header-dark with-btn">
-                            Cambiarte de Clinica o UMF IMSS
-                        </header>
-                        <div class="widget-time-content">
-                            <div >
-                                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fverodelarosa.medicaupiiz%2Fvideos%2F1856271931255481%2F&width=500&show_text=false&appId=578903988956921&height=280" width="100%" height="380" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
                         </div>
-                    </section><!--.widget-time-->
-            </div><!--.row-->
-
-        </div>
-</div><!--.box-typical-->
+                        </div>
                         @endforeach
 
                     </div><!--.tab-pane-->
