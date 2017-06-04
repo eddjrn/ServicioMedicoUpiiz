@@ -80,7 +80,40 @@
                     <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-2">Imagenes
 
                         @foreach($images as $img)
-                        {{$img->imagen}}
+        <div class="container-fluid">
+            
+            <div class="row">
+                <div class="col-xxl-6 col-md-10">
+                    <section class="widget widget-time">
+                        <header class="widget-header-dark with-btn">
+                            Sacar Vigencia de derechos IMSS
+                        </header>
+                        <div class="widget-time-content">
+                            <div>
+                                <div class="row">
+                                    <div class="col-md-12 col-xs-12">
+                                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fverodelarosa.medicaupiiz%2Fvideos%2F1856299047919436%2F&width=500&show_text=false&appId=578903988956921&height=280" width="100%" height="380" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                                    </div>
+                                </div>
+                        </div>
+                    </section><!--.widget-time-->
+
+                </div>
+
+                <div class="col-xxl-6 col-md-10">
+                    <section class="widget widget-time">
+                        <header class="widget-header-dark with-btn">
+                            Cambiarte de Clinica o UMF IMSS
+                        </header>
+                        <div class="widget-time-content">
+                            <div >
+                                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fverodelarosa.medicaupiiz%2Fvideos%2F1856271931255481%2F&width=500&show_text=false&appId=578903988956921&height=280" width="100%" height="380" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+                        </div>
+                    </section><!--.widget-time-->
+            </div><!--.row-->
+
+        </div>
+</div><!--.box-typical-->
                         @endforeach
 
                     </div><!--.tab-pane-->
