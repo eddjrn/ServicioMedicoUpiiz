@@ -21,14 +21,10 @@ class DatabaseSeeder extends Seeder
          $this->call(userTableSeeder::class);
          $this->call(studentTableSeeder::class);
          $this->call(InfoTableSeeder::class);
-<<<<<<< Updated upstream
          $this->call(imagesTableSeeder::class);
-=======
          $this->call(clinicTableSeeder::class);
          $this->call(medicalInstitutionTableSeeder::class);
          $this->call(medicalDataTableSeeder::class);
-         
->>>>>>> Stashed changes
 
         Model::reguard();
     }
