@@ -66,10 +66,10 @@ class profileController extends Controller
         $user = \App\user::find($request->studentId);
         $user->update([
             'nombre'=>$request->nombre,
-            'apellidoPa'=>$request->apellidoPa,
-            'apellidoMa'=>$request->apellidoMa,
+            'apellidoPaterno'=>$request->apellidoPa,
+            'apellidoMaterno'=>$request->apellidoMa,
             'email'=>$request->email,
-            'boleta'=>$request->boleta,
+            'identificacion'=>$request->boleta,
         ]);
         
         $student = $user->student;
@@ -77,9 +77,9 @@ class profileController extends Controller
             'carrera_id'=>$request->carrera,
             'municipio_id'=>$request->municipio,
             'estado_id'=>$request->estado,
-            'noSeguro'=>$request->noSeguro,
             'sexo'=>$request->sexo,
             'telefono'=>$request->telefono,
+            'turno'=>$request->turno,
             'calle'=>$request->calle,
             'numExt'=>$request->numExt,
             'numInt'=>$request->numInt,

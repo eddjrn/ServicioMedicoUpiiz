@@ -56,13 +56,13 @@ Edición de los datos personales
                     <div class="col-md-4 col-sm-6">
                         <fieldset class="form-group">
                             <label class="form-label" for="exampleInputDisabled">Apellido paterno</label>
-                            {!!Form::text('apellidoPa', $student->user->apellidoPa, ['class'=>'form-control', 'placeholder'=>'Ej: Apellido', 'id'=>'apellidoPa'])!!}
+                            {!!Form::text('apellidoPaterno', $student->user->apellidoPaterno, ['class'=>'form-control', 'placeholder'=>'Ej: Apellido paterno', 'id'=>'apellidoPaterno'])!!}
                         </fieldset>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <fieldset class="form-group">
                             <label class="form-label" for="exampleInputDisabled">Apellido materno</label>
-                            {!!Form::text('apellidoMa', $student->user->apellidoMa, ['class'=>'form-control', 'placeholder'=>'Ej: Apellido', 'id'=>'apellidoMa'])!!}
+                            {!!Form::text('apellidoMaterno', $student->user->apellidoMaterno, ['class'=>'form-control', 'placeholder'=>'Ej: Apellido materno', 'id'=>'apellidoMaterno'])!!}
                         </fieldset>
                     </div>
                 </div>
@@ -99,7 +99,7 @@ Edición de los datos personales
                         <fieldset class="form-group">
                             <label class="form-label" for="exampleInputDisabled">Fecha de nacimeinto</label>
                             <div class='input-group date'>
-                                <input id="date_box" type="text" value="{{$student->nacimiento}}" class="form-control" name="nacimiento">
+                                <input id="date_box" type="text" value="{{$student->fechaNacimiento}}" class="form-control" name="nacimiento">
                                 <span class="input-group-addon">
                                     <i class="font-icon font-icon-calend"></i>
                                 </span>
@@ -119,31 +119,43 @@ Edición de los datos personales
                 href="#collapseTwo"
                 aria-expanded="false"
                 aria-controls="collapseTwo">
-                Datos escolares
+                Datos del tutor
                 <i class="font-icon font-icon-arrow-down"></i>
             </a>
         </div>
         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-collapse-in">
-                
-                <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                        <fieldset class="form-group">
-                            <label class="form-label" for="exampleInputDisabled">Boleta</label>
-                            {!!Form::text('boleta', $student->user->boleta, ['class'=>'form-control', 'placeholder'=>'Ej: 20XXXXXXXX', 'id'=>'boleta'])!!}
-                        </fieldset>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <fieldset class="form-group">
-                            <label class="form-label" for="exampleInputDisabled">Carrera</label>
-                            <!--{{$carrer=\App\carrer::lists('nombre', 'id')}} -->
-                            
-                            {!!Form::select('carrera', $carrer, $student->carrera_id, ['class'=>'select2'])!!}
-                        </fieldset>
-                    </div>
+            
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <fieldset class="form-group">
+                        <label class="form-label" for="exampleInputDisabled">Nombre del tutor a cargo</label>
+                        {!!Form::text('tutor', null, ['class'=>'form-control', 'placeholder'=>'Ej: Tutor', 'id'=>'tutor'])!!}
+                    </fieldset>
                 </div>
-                
-                
+                <div class="col-md-4 col-sm-6">
+                    <fieldset class="form-group">
+                        <label class="form-label" for="exampleInputDisabled">Teléfono del tutor</label>
+                        {!!Form::text('telefonoTutor', null, ['class'=>'form-control', 'placeholder'=>'Ej: Tutor', 'id'=>'telefonoTutor'])!!}
+                    </fieldset>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <fieldset class="form-group">
+                        <label class="form-label" for="exampleInputDisabled">Teléfono celular del tutor</label>
+                        {!!Form::text('celularTutor', null, ['class'=>'form-control', 'placeholder'=>'Ej: Tutor', 'id'=>'celularTutor'])!!}
+                    </fieldset>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <fieldset class="form-group">
+                        <label class="form-label" for="exampleInputDisabled">Parentesco con el tutor</label>
+                        {!!Form::select('parentesco', array('1'=>'Padre', '2'=>'Hermano'), $student->parentescoTutor, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+                    </fieldset>
+                </div>
+            </div>
+            
             </div>
         </div>
     </article>
@@ -155,7 +167,7 @@ Edición de los datos personales
                 href="#collapseThree"
                 aria-expanded="false"
                 aria-controls="collapseThree">
-                Datos médicos
+                Datos escolares
                 <i class="font-icon font-icon-arrow-down"></i>
             </a>
         </div>
@@ -165,32 +177,26 @@ Edición de los datos personales
                 <div class="row">
                     <div class="col-md-4 col-sm-6">
                         <fieldset class="form-group">
-                            <label class="form-label" for="exampleInputDisabled">Número de seguro</label>
-                            {!!Form::text('noSeguro', null, ['class'=>'form-control', 'placeholder'=>'Ej: xxx-xxx-xx-xx', 'id'=>'noSeguro'])!!}
+                            <label class="form-label" for="exampleInputDisabled">Boleta</label>
+                            {!!Form::text('identifiacion', $student->user->identificacion, ['class'=>'form-control', 'placeholder'=>'Ej: 20XXXXXXXX', 'id'=>'identifiacion'])!!}
                         </fieldset>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <fieldset class="form-group">
-                            <label class="form-label" for="exampleInputDisabled">Proveedor de seguro</label>
-                            {!!Form::select('proveedorSeguro', array('1'=>'IPN', '2'=>'Padres', '3'=>'Otro'),  $student->provedorSeguro, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+                            <label class="form-label" for="exampleInputDisabled">Carrera</label>
+                            <!--{{$carrer=\App\carrer::lists('nombre', 'id')}} -->
+                            
+                            {!!Form::select('carrera', $carrer, $student->carrera_id, ['class'=>'select2'])!!}
                         </fieldset>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <fieldset class="form-group">
-                            <label class="form-label" for="exampleInputDisabled">Número de clínica</label>
-                            {!!Form::select('noClinica', array('1'=>'Clinica 1', '2'=>'Clinica 2', '3'=>'Clinica 3'), $student->noClinica, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+                            <label class="form-label" for="exampleInputDisabled">Turno</label>
+                            {!!Form::select('turno', array('1'=>'Matutino', '2'=>'Vespertino'), $student->turno, ['class'=>'bootstrap-select bootstrap-select-arrow'])!!}
                         </fieldset>
                     </div>
                 </div>
                 
-                <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                        <fieldset class="form-group">
-                            <label class="form-label" for="exampleInputDisabled">Tutor a cargo</label>
-                            {!!Form::text('tutor', null, ['class'=>'form-control', 'placeholder'=>'Ej: Tutor', 'id'=>'tutor'])!!}
-                        </fieldset>
-                    </div>
-                </div>
                 
             </div>
         </div>
@@ -203,11 +209,71 @@ Edición de los datos personales
                 href="#collapseFour"
                 aria-expanded="false"
                 aria-controls="collapseFour">
-                Datos geográficos
+                Datos médicos
                 <i class="font-icon font-icon-arrow-down"></i>
             </a>
         </div>
         <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+            <div class="panel-collapse-in">
+                
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <fieldset class="form-group">
+                            <label class="form-label" for="exampleInputDisabled">Número de seguro</label>
+                            {!!Form::text('numSeguro', $student->user->medicalData->numSeguro, ['class'=>'form-control', 'placeholder'=>'Ej: xxx-xxx-xx-xx', 'id'=>'numSeguro'])!!}
+                        </fieldset>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <fieldset class="form-group">
+                            <label class="form-label" for="exampleInputDisabled">Proveedor de seguro</label>
+                            {!!Form::select('proveedorSeguro', array('1'=>'UPIIZ-IPN', '2'=>'Padres', '3'=>'Trabajo'),  $student->user->medicalData->proveedorSeguro, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+                        </fieldset>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <fieldset class="form-group">
+                            <label class="form-label" for="exampleInputDisabled">Número de clínica</label>
+                            <!-- {{$clinic=\App\clinic::all()}} -->
+                            <?php $list = array('0' => 'Seleccionar'); ?>
+                            @foreach($clinic as $c)
+                            <!--{{array_push($list, $c->__toString())}} -->
+                            @endforeach
+                            {!!Form::select('numClinica', $list, $student->user->medicalData->clinica_id, ['class'=>'select2 form-control'])!!}
+                        </fieldset>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <fieldset class="form-group">
+                            <label class="form-label" for="exampleInputDisabled">Institución que lo asegura</label>
+                            <!--{{$institution=\App\medicalInstitute::lists('nombre', 'id')}} -->
+                            {!!Form::select('institucionClinica', $institution, $student->user->medicalData->institucionSeguro_id, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+                        </fieldset>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <fieldset class="form-group">
+                            <label class="form-label" for="exampleInputDisabled">Tipo de sangre</label>
+                            {!!Form::select('sangre', array('1'=>'A+', '2'=>'A-', '3'=>'B+', '4'=>'B-', '5'=>'O+', '6'=>'O-', '7'=>'AB+', '8'=>'AB-'), $student->user->medicalData->tipoSangre, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+                        </fieldset>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </article>
+    <article class="panel">
+        <div class="panel-heading" role="tab" id="headingFive">
+            <a class="collapsed"
+                data-toggle="collapse"
+                data-parent="#accordion"
+                href="#collapseFive"
+                aria-expanded="false"
+                aria-controls="collapseFive">
+                Datos geográficos
+                <i class="font-icon font-icon-arrow-down"></i>
+            </a>
+        </div>
+        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
             <div class="panel-collapse-in">
                 
                 <div class="row">
@@ -220,13 +286,13 @@ Edición de los datos personales
                     <div class="col-md-4 col-sm-6">
                         <fieldset class="form-group">
                             <label class="form-label" for="exampleInputDisabled">Número exterior</label>
-                            {!!Form::text('numExt', null, ['class'=>'form-control', 'placeholder'=>'Ej: xxx', 'id'=>'numExt'])!!}
+                            {!!Form::text('numExterior', null, ['class'=>'form-control', 'placeholder'=>'Ej: xxx', 'id'=>'numExt'])!!}
                         </fieldset>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <fieldset class="form-group">
                             <label class="form-label" for="exampleInputDisabled">Número interior</label>
-                            {!!Form::text('numInt', null, ['class'=>'form-control', 'placeholder'=>'Ej: xxx', 'id'=>'numInt'])!!}
+                            {!!Form::text('numInterior', null, ['class'=>'form-control', 'placeholder'=>'Ej: xxx', 'id'=>'numInt'])!!}
                         </fieldset>
                     </div>
                 </div>
@@ -241,7 +307,7 @@ Edición de los datos personales
                     <div class="col-md-4 col-sm-6">
                         <fieldset class="form-group">
                             <label class="form-label" for="exampleInputDisabled">Codigo postal</label>
-                            {!!Form::text('cp', null, ['class'=>'form-control', 'placeholder'=>'Ej: xxxxxx', 'id'=>'cp'])!!}
+                            {!!Form::text('codigoPostal', null, ['class'=>'form-control', 'placeholder'=>'Ej: xxxxxx', 'id'=>'codigoPostal'])!!}
                         </fieldset>
                     </div>
                 </div>
