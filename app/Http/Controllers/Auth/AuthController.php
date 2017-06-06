@@ -46,11 +46,11 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             'nombre' => 'required',
-            'apellidoPa' => 'required',
-            'apellidoMa' => 'required',
+            'apellidoPaterno' => 'required',
+            'apellidoMaterno' => 'required',
             'email' => 'required',
-            'boleta' => 'required',
-            'boleta2' => 'required',
+            'identificacion' => 'required',
+            'identificacion2' => 'required',
             'password' => 'required',
             'password2' => 'required',
         ]);
@@ -68,10 +68,10 @@ class AuthController extends Controller
         
         return user::create([
             'nombre' => $data['nombre'],
-            'apellidoPa' => $data['apellidoPa'],
-            'apellidoMa' => $data['apellidoMa'],
+            'apellidoPaterno' => $data['apellidoPaterno'],
+            'apellidoMaterno' => $data['apellidoMaterno'],
             'email' => $data['email'],
-            'boleta' => $data['boleta'],
+            'identificacion' => $data['identificacion'],
             'tipo' => '2',
             'password' => $data['password'],
         ]);
@@ -138,7 +138,7 @@ class AuthController extends Controller
     protected function getCredentials(Request $request){
         //return $request->only($this->loginUsername(), 'password');
         return array(
-            $this->loginUsername() => $request->boleta,
+            $this->loginUsername() => $request->identificacion,
             'password'  => $request->password,
         );
     }
@@ -181,7 +181,7 @@ class AuthController extends Controller
      * @return string
      */
     public function loginUsername(){
-        return property_exists($this, 'username') ? $this->username : 'boleta';
+        return property_exists($this, 'username') ? $this->username : 'identificacion';
     }
     
     //--------------------------------------------------------------------------------------------------------------------------------

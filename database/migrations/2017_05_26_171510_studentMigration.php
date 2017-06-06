@@ -27,24 +27,30 @@ class StudentMigration extends Migration
             $table->integer('estado_id')->unsigned()->index()->nullable();
             $table->foreign('estado_id')->references('id')->on('estado')->onDelete('set null');
             
-            $table->string('noSeguro')->unique();
             $table->integer('sexo');
-            $table->string('telefono');
-            $table->string('calle');
-            $table->integer('numExt');
-            $table->integer('numInt');
-            $table->string('colonia');
-            $table->integer('cp');
-            $table->string('localidad');
+            $table->integer('documentacion');
+            $table->integer('turno');
             
-            $table->string('curp');
-            $table->date('nacimiento');
-            $table->integer('provedorSeguro');
-            $table->integer('noClinica');
-            $table->string('tutor');
+            $table->string('telefono', 15);
+            $table->string('calle', 50);
+            $table->string('numExterior', 8);
+            $table->string('numInterior', 8);
+            $table->string('colonia', 50);
+            $table->integer('codigoPostal');
+            $table->string('localidad', 50);
+            
+            $table->string('curp', 20)->unique();
+            $table->date('fechaNacimiento');
+            
+            $table->string('tutor', 150);
+            $table->string('telefonoTutor', 15);
+            $table->string('celularTutor', 15);
+            $table->integer('parentescoTutor');
+            
             
             $table->integer('estatus_id')->unsigned()->index()->nullable();
             $table->foreign('estatus_id')->references('id')->on('estatus')->onDelete('set null');
+            
             $table->timestamps();
         });
     }

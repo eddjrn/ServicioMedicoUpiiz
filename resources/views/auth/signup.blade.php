@@ -22,19 +22,19 @@
                     {!!Form::text('nombre', null, ['class'=>'form-control', 'placeholder'=>'Nombre(s)', 'id'=>'nombre'])!!}
                 </div>
                 <div class="form-group">
-                    {!!Form::text('apellidoPa', null, ['class'=>'form-control', 'placeholder'=>'Apellido paterno', 'id'=>'apellidoPa'])!!}
+                    {!!Form::text('apellidoPaterno', null, ['class'=>'form-control', 'placeholder'=>'Apellido paterno', 'id'=>'apellidoPaterno'])!!}
                 </div>
                 <div class="form-group">
-                    {!!Form::text('apellidoMa', null, ['class'=>'form-control', 'placeholder'=>'Apellido materno', 'id'=>'apellidoMa'])!!}
+                    {!!Form::text('apellidoMaterno', null, ['class'=>'form-control', 'placeholder'=>'Apellido materno', 'id'=>'apellidoMaterno'])!!}
                 </div>
                 <div class="form-group">
                     {!!Form::text('email', null, ['class'=>'form-control', 'placeholder'=>'E-Mail', 'id'=>'email'])!!}
                 </div>
                 <div class="form-group">
-                    {!!Form::text('boleta', null, ['class'=>'form-control', 'placeholder'=>'Boleta', 'id'=>'boleta'])!!}
+                    {!!Form::text('identificacion', null, ['class'=>'form-control', 'placeholder'=>'Boleta o indentificación', 'id'=>'identificacion'])!!}
                 </div>
                 <div class="form-group">
-                    {!!Form::text('boleta2', null, ['class'=>'form-control', 'placeholder'=>'Repetir boleta', 'id'=>'boleta2'])!!}
+                    {!!Form::text('identificacion2', null, ['class'=>'form-control', 'placeholder'=>'Repetir boleta', 'id'=>'identificacion2'])!!}
                 </div>
                 <div class="form-group">
                     {!!Form::password('password', ['class'=>'form-control', 'placeholder'=>'Contraseña', 'id'=>'password'])!!}

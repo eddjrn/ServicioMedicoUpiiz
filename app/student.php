@@ -10,13 +10,13 @@ class student extends Model
 {
     protected $table = 'alumno';
     
-    protected $fillable = ['usuario_id', 'carrera_id', 'municipio_id', 'estado_id', 'noSeguro', 'sexo', 'telefono', 'calle', 'numExt', 'numInt', 'colonia', 'cp', 'localidad', 'curp', 'nacimiento', 'provedorSeguro', 'noClinica', 'tutor', 'estatus_id'];
+    protected $fillable = ['usuario_id', 'carrera_id', 'municipio_id', 'estado_id', 'sexo', 'documentacion', 'turno', 'telefono', 'calle', 'numExterior', 'numInterior', 'colonia', 'codigoPostal', 'localidad', 'curp', 'fechaNacimiento', 'tutor', 'telefonoTutor', 'celularTutor', 'parentescoTutor', 'estatus_id'];
     //protected $guarded = ['usuario_id'];
     
     protected $dates = [
         'created_at', // Add if you're using timestamps on the model
         'updated_at', // Add if you're using timestamps on the model
-        'nacimiento'
+        'fechaNacimiento'
     ];
     
     public function user(){
@@ -42,48 +42,70 @@ class student extends Model
     public function sex(){
         if($this->sexo == 1){
             return 'Masculino';
-        }
-        
-        if($this->sexo == 2){
+        } elseif($this->sexo == 2){
             return 'Femenino';
         }
     }
     
-    public function clinica(){
-        if($this->noClinica == 1){
-            return 'Clínica #1';
-        } else if($this->noClinica == 2){
-             return 'Clínica #2';
-        } if($this->noClinica == 3){
-             return 'Clínica #3';
+    public function sexTypes(){
+        $types = ['1' => 'Masculino', '2' => 'Femenino'];
+        return $types;
+    }
+    
+    public function documentation(){
+        if($this->documentacion == 1){
+            return 'Completa';
+        } elseif($this->documentacion == 2){
+            return 'Incompleta';
         }
     }
     
-    public function proveedor(){
-        if($this->provedorSeguro == 1){
-            return 'IPN';
-        } else if($this->provedorSeguro == 2){
-            return 'Padres';
-        } if($this->provedorSeguro == 3){
-            return 'Otro';
+    public function documentationTypes(){
+        $types = ['1' => 'Completa', '2' => 'Incompleta'];
+        return $types;
+    }
+    
+    public function turn(){
+        if($this->turno == 1){
+            return 'Matutino';
+        } elseif($this->turno == 2){
+            return 'Vespertino';
         }
     }
     
-    public function setNacimientoAttribute($value){
-        $this->attributes['nacimiento']=Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
+    public function turnTypes(){
+        $types = ['1' => 'Matutino', '2' => 'Vespertino'];
+        return $types;
     }
     
-    public function getNacimientoAttribute($value){
+    public function tutorRelationship(){
+        if($this->parentescoTutor == 1){
+            return 'Padre';
+        } elseif($this->parentescoTutor == 2){
+            return 'Hermano';
+        }
+    }
+    
+    public function tutorRelationshipTypes(){
+        $types = ['1' => 'Padre', '2' => 'Hermano'];
+        return $types;
+    }
+    
+    public function setFechaNacimientoAttribute($value){
+        $this->attributes['fechaNacimiento']=Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
+    }
+    
+    public function getFechaNacimientoAttribute($value){
         return Carbon::parse($value)->format('d-m-Y');
     }
     
     public function formatedNacimiento(){
         Date::setLocale('es');
-        return Date::parse($this->nacimiento)->format('j \\d\\e F \\d\\e\\l Y');
+        return Date::parse($this->fechaNacimiento)->format('j \\d\\e F \\d\\e\\l Y');
     }
     
     public function age(){
-        return Carbon::parse($this->nacimiento)->diffInYears(Carbon::now()).' años';
+        return Carbon::parse($this->fechaNacimiento)->diffInYears(Carbon::now()).' años';
     }
     
 }

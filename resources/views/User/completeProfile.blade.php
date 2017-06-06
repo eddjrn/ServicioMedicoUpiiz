@@ -57,14 +57,14 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6 form-group">
-                        <input type="text" class="form-control" placeholder="Teléfono" name="telefono" id="telefono"/>
+                        {!!Form::text('telefono', null, ['class'=>'form-control', 'id'=>'telefono', 'placeholder'=>'Teléfono'])!!}
                     </div>
                     <div class="col-md-3"></div>
                 </div>
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6 form-group">
-                        <input type="text" class="form-control" placeholder="CURP" name="curp" id="curp"/>
+                        {!!Form::text('curp', null, ['class'=>'form-control', 'id'=>'curp', 'placeholder'=>'CURP'])!!}
                     </div>
                     <div class="col-md-3"></div>
                 </div>
@@ -84,13 +84,43 @@
                     <div class="col-md-4 form-group">
                         <label class="form-label">Fecha de nacimiento</label>
                         <div class='input-group date'>
-                            <input id="date_box" type="text" value="" class="form-control" name="nacimiento">
+                            {!!Form::text('nacimiento', null, ['class'=>'form-control', 'id'=>'date_box', 'placeholder'=>'00/00/0000'])!!}
                             <span class="input-group-addon">
                                 <i class="font-icon font-icon-calend"></i>
                             </span>
                         </div>
                     </div>
                     <div class="col-md-4"></div>
+                </div>
+                <h5 class="m-t-lg with-border">Datos del tutor</h5>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 form-group">
+                        {!!Form::text('tutor', null, ['class'=>'form-control', 'id'=>'tutor', 'placeholder'=>'Nombre del tutor a cargo'])!!}
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 form-group">
+                        {!!Form::text('telefonoTutor', null, ['class'=>'form-control', 'id'=>'telefonoTutor', 'placeholder'=>'Teléfono del tutor'])!!}
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 form-group">
+                        {!!Form::text('celularTutor', null, ['class'=>'form-control', 'id'=>'celularTutor', 'placeholder'=>'Teléfono celular del tutor'])!!}
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 form-group">
+                        <label class="form-label">Parentesco con el tutor</label>
+                        {!!Form::select('parentesco', array('0'=>'Seleccionar', '1'=>'Padre', '2'=>'Hermano'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+                    </div>
+                    <div class="col-md-3"></div>
                 </div>
                 
                 <div class="row">
@@ -152,14 +182,7 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6 form-group">
-                        <input type="text" class="form-control" placeholder="Número de seguro" name="noSeguro" id="noSeguro"/>
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        <input type="text" class="form-control" placeholder="Nombre del tutor a cargo" name="tutor" id="tutor"/>
+                        {!!Form::text('numSeguro', null, ['class'=>'form-control', 'id'=>'numSeguro', 'placeholder'=>'Número de seguro'])!!}
                     </div>
                     <div class="col-md-3"></div>
                 </div>
@@ -167,16 +190,37 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-6 form-group">
                         <label class="form-label" for="exampleInputDisabled">Proveedor de seguro</label>
-                        {!!Form::select('proveedorSeguro', array('0'=>'Seleccionar', '1'=>'IPN', '2'=>'Padres', '3'=>'Otro'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+                        {!!Form::select('proveedorSeguro', array('0'=>'Seleccionar', '1'=>'UPIIZ-IPN', '2'=>'Padres', '3'=>'Trabajo'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
                     </div>
                     <div class="col-md-3"></div>
                 </div>
-                
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 form-group">
+                        <label class="form-label" for="exampleInputDisabled">Institución que lo asegura</label>
+                        <!--{{$institution=\App\medicalInstitute::lists('nombre', 'id')}} -->
+                        {!!Form::select('institucionClinica', $institution->prepend('Seleccionar', 0), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6 form-group">
                         <label class="form-label" for="exampleInputDisabled">Clinica a la que pertenece</label>
-                        {!!Form::select('noClinica', array('0'=>'Seleccionar', '1'=>'Clinica 1', '2'=>'Clinica 2', '3'=>'Clinica 3'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+                        <!-- {{$clinic=\App\clinic::all()}} -->
+                        <?php $list = array('0' => 'Seleccionar'); ?>
+                        @foreach($clinic as $c)
+                        <!--{{array_push($list, $c->__toString())}} -->
+                        @endforeach
+                        {!!Form::select('numClinica', $list, 0, ['class'=>'select2 form-control'])!!}
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 form-group">
+                        <label class="form-label" for="exampleInputDisabled">Tipo de sangre</label>
+                        {!!Form::select('sangre', array('0'=>'Seleccionar', '1'=>'A+', '2'=>'A-', '3'=>'B+', '4'=>'B-', '5'=>'O+', '6'=>'O-', '7'=>'AB+', '8'=>'AB-'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
                     </div>
                     <div class="col-md-3"></div>
                 </div>
@@ -259,38 +303,38 @@
                     <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6 form-group">
-                        <input type="text" class="form-control" placeholder="Localidad" name="localidad" id="localidad"/>
+                        {!!Form::text('localidad', null, ['class'=>'form-control', 'id'=>'localidad', 'placeholder'=>'Localidad'])!!}
                     </div>
                     <div class="col-md-3"></div>
                 </div>
                     <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6 form-group">
-                        <input type="text" class="form-control" placeholder="Código postal" name="cp" id="cp"/>
+                        {!!Form::text('cp', null, ['class'=>'form-control', 'id'=>'cp', 'placeholder'=>'Código postal'])!!}
                     </div>
                     <div class="col-md-3"></div>
                 </div>
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6 form-group">
-                        <input type="text" class="form-control" placeholder="Calle" name="calle" id="calle"/>
+                        {!!Form::text('calle', null, ['class'=>'form-control', 'id'=>'calle', 'placeholder'=>'Calle'])!!}
                     </div>
                     <div class="col-md-3"></div>
                 </div>
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6 form-group">
-                        <input type="text" class="form-control" placeholder="Colonia" name="colonia" id="colonia"/>
+                        {!!Form::text('colonia', null, ['class'=>'form-control', 'id'=>'colonia', 'placeholder'=>'Colonia'])!!}
                     </div>
                     <div class="col-md-3"></div>
                 </div>
                 <div class="row">
                     <div class="col-md-3 form-group"></div>
                     <div class="col-md-3 form-group">
-                        <input type="text" class="form-control" placeholder="Número interior" name="numExt" id="numExt"/>
+                        {!!Form::text('numExt', null, ['class'=>'form-control', 'id'=>'numExt', 'placeholder'=>'Número interior'])!!}
                     </div>
                     <div class="col-md-3 form-group">
-                        <input type="text" class="form-control" placeholder="Número exterior" name="numInt" id="numInt"/>
+                        {!!Form::text('numInt', null, ['class'=>'form-control', 'id'=>'numInt', 'placeholder'=>'Número exteriorr'])!!}
                     </div>
                     <div class="col-md-3 form-group"></div>
                 </div>
@@ -358,6 +402,14 @@
                         <label class="form-label" for="exampleInputDisabled">Programa académico</label>
                         <!--{{$carrer=\App\carrer::lists('nombre', 'id')}} -->
                         {!!Form::select('carrera', $carrer->prepend('Seleccionar', 0), 0, ['class'=>'select2 form-control'])!!}
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 form-group">
+                        <label class="form-label" for="exampleInputDisabled">Turno</label>
+                        {!!Form::select('turno', array('0'=>'Seleccionar', '1'=>'Matutino', '2'=>'Vespertino'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
                     </div>
                     <div class="col-md-3"></div>
                 </div>

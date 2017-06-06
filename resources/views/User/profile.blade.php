@@ -29,7 +29,7 @@ Perfil de usuario
     
     <div class="widget-user-stat hidden-md-down">
         <div class="item">
-            <div class="number">{{$student->noSeguro}}</div>
+            <div class="number">{{$student->user->medicalData->numSeguro}}</div>
             <div class="caption">Número de seguro</div>
         </div>
         <div class="item">
@@ -37,7 +37,7 @@ Perfil de usuario
             <div class="caption">Correo</div>
         </div>
         <div class="item">
-            <div class="number">{{$student->user->boleta}}</div>
+            <div class="number">{{$student->user->identificacion}}</div>
             <div class="caption">Boleta</div>
         </div>
         
@@ -72,8 +72,8 @@ Perfil de usuario
     <div class="row">
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
-                <label class="form-label" for="exampleInputDisabled2">Código postal</label>
-                <input type="text" readonly class="form-control" value="{{$student->cp}}">
+                <label class="form-label" for="exampleInputDisabled2">Estado de documentación</label>
+                <input type="text" readonly class="form-control {{$inputStatus}}" value="{{$student->documentation()}}">
             </fieldset>
         </div>
         <div class="col-md-4 col-sm-6">
@@ -108,12 +108,6 @@ Perfil de usuario
     <div class="row hidden-lg-up">
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
-                <label class="form-label" for="exampleInputDisabled2">Número de seguro</label>
-                <input type="text" readonly class="form-control" value="{{$student->noSeguro}}">
-            </fieldset>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Correo electronico</label>
                 <input type="text" readonly class="form-control" value="{{$student->user->email}}">
             </fieldset>
@@ -121,35 +115,102 @@ Perfil de usuario
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Boleta</label>
-                <input type="text" readonly class="form-control" value="{{$student->user->boleta}}">
+                <input type="text" readonly class="form-control" value="{{$student->user->identificacion}}">
+            </fieldset>
+        </div>
+    </div>
+    
+    <h5 class="m-t-lg with-border">Datos del tutor</h5>
+    
+    <div class="row">
+        <div class="col-md-4 col-sm-6">
+            <fieldset class="form-group">
+                <label class="form-label" for="exampleInputDisabled2">Nombre del tutor</label>
+                <input type="text" readonly class="form-control" value="{{$student->tutor}}">
+            </fieldset>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <fieldset class="form-group">
+                <label class="form-label" for="exampleInputDisabled2">Teléfono del tutor</label>
+                <input type="text" readonly class="form-control" value="{{$student->telefonoTutor}}">
+            </fieldset>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <fieldset class="form-group">
+                <label class="form-label" for="exampleInputDisabled2">Teléfono celular del tutor</label>
+                <input type="text" readonly class="form-control" value="{{$student->celularTutor}}">
+            </fieldset>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4 col-sm-6">
+            <fieldset class="form-group">
+                <label class="form-label" for="exampleInputDisabled2">Parentesco con el tutor</label>
+                <input type="text" readonly class="form-control" value="{{$student->tutorRelationship()}}">
             </fieldset>
         </div>
     </div>
     
     <h5 class="m-t-lg with-border">Datos de médicos</h5>
     
+    <div class="row hidden-lg-up">
+        <div class="col-md-4 col-sm-6">
+            <fieldset class="form-group">
+                <label class="form-label" for="exampleInputDisabled2">Número de seguro</label>
+                <input type="text" readonly class="form-control" value="{{$student->user->medicalData->numSeguro}}">
+            </fieldset>
+        </div>
+    </div>
+    
     <div class="row">
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Proveedor de seguro</label>
-                <input type="text" readonly class="form-control" value="{{$student->proveedor()}}">
-            </fieldset>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <fieldset class="form-group">
-                <label class="form-label" for="exampleInputDisabled2">Tutor a cargo</label>
-                <input type="text" readonly class="form-control" value="{{$student->tutor}}">
+                <input type="text" readonly class="form-control" value="{{$student->user->medicalData->provider()}}">
             </fieldset>
         </div>
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Clínica a la que pertenece</label>
-                <input type="text" readonly class="form-control" value="{{$student->clinica()}}">
+                <input type="text" readonly class="form-control" value="{{$student->user->medicalData->clinic}}">
+            </fieldset>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <fieldset class="form-group">
+                <label class="form-label" for="exampleInputDisabled2">Institución médica a la que pertenece</label>
+                <input type="text" readonly class="form-control" value="{{$student->user->medicalData->institution->nombre}}">
             </fieldset>
         </div>
     </div>
     
-    <h5 class="m-t-lg with-border">Datos de estadía</h5>
+    <div class="row">
+        <div class="col-md-4 col-sm-6">
+            <fieldset class="form-group">
+                <label class="form-label" for="exampleInputDisabled2">Tipo de sangre</label>
+                <input type="text" readonly class="form-control" value="{{$student->user->medicalData->bloodType()}}">
+            </fieldset>
+        </div>
+    </div>
+    
+    <h5 class="m-t-lg with-border">Datos de escolares</h5>
+    
+    <div class="row">
+        <div class="col-md-4 col-sm-6">
+            <fieldset class="form-group">
+                <label class="form-label" for="exampleInputDisabled2">Carrera</label>
+                <input type="text" readonly class="form-control" value="{{$student->carrer->nombre}}">
+            </fieldset>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <fieldset class="form-group">
+                <label class="form-label" for="exampleInputDisabled2">Turno</label>
+                <input type="text" readonly class="form-control" value="{{$student->turn()}}">
+            </fieldset>
+        </div>
+    </div>
+    
+    <h5 class="m-t-lg with-border">Datos de geográficos</h5>
     
     <div class="row">
         <div class="col-md-4 col-sm-6">
@@ -182,13 +243,13 @@ Perfil de usuario
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Número exterior</label>
-                <input type="text" readonly class="form-control" value="{{$student->numExt}}">
+                <input type="text" readonly class="form-control" value="{{$student->numExterior}}">
             </fieldset>
         </div>
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Número interior</label>
-                <input type="text" readonly class="form-control" value="{{$student->numInt}}">
+                <input type="text" readonly class="form-control" value="{{$student->numInterior}}">
             </fieldset>
         </div>
     </div>
@@ -198,6 +259,12 @@ Perfil de usuario
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Colonia</label>
                 <input type="text" readonly class="form-control" value="{{$student->colonia}}">
+            </fieldset>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <fieldset class="form-group">
+                <label class="form-label" for="exampleInputDisabled2">Código postal</label>
+                <input type="text" readonly class="form-control" value="{{$student->codigoPostal}}">
             </fieldset>
         </div>
     </div>

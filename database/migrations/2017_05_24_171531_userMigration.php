@@ -15,11 +15,11 @@ class UserMigration extends Migration
         Schema::create('usuario', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre', 50);
-            $table->string('apellidoPa', 50);
-            $table->string('apellidoMa', 50);
-            $table->string('email')->unique();
+            $table->string('apellidoPaterno', 50);
+            $table->string('apellidoMaterno', 50);
+            $table->string('email', 50)->unique();
             $table->string('password', 60);
-            $table->integer('boleta')->unique();
+            $table->integer('identificacion')->unique();
             $table->integer('tipo');
             $table->timestamps();
             $table->rememberToken();

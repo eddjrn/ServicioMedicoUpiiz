@@ -12,23 +12,19 @@ class statusTableSeeder extends Seeder
     public function run()
     {
         DB::table('estatus')->insert([
-            'nombre' => 'Pendiente',
-        ]);
-        
-        DB::table('estatus')->insert([
-            'nombre' => 'Rechazado',
-        ]);
-        
-        DB::table('estatus')->insert([
-            'nombre' => 'Aprobado',
-        ]);
-        
-        DB::table('estatus')->insert([
             'nombre' => 'Inscrito',
         ]);
         
         DB::table('estatus')->insert([
+            'nombre' => 'No inscrito',
+        ]);
+        
+        DB::table('estatus')->insert([
             'nombre' => 'Baja',
+        ]);
+        
+        DB::table('estatus')->insert([
+            'nombre' => 'Egresado',
         ]);
         
     }

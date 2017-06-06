@@ -12,22 +12,22 @@ class userTableSeeder extends Seeder
     public function run()
     {
         DB::table('usuario')->insert([
-            'nombre' => 'Pepe',
-            'apellidoPa' => 'Peréz',
-            'apellidoMa' => 'Pereira',
+            'nombre' => 'Pepe Pedro',
+            'apellidoPaterno' => 'Peréz',
+            'apellidoMaterno' => 'Pereira',
             'email' => 'mail@correo.com',
             'password' => bcrypt('admin'),
-            'boleta' => '2014670000',
+            'identificacion' => '111128',
             'tipo' => '1',
         ]);
         
         DB::table('usuario')->insert([
-            'nombre' => 'Pedro',
-            'apellidoPa' => 'Peréz',
-            'apellidoMa' => 'Nóñae',
-            'email' => 'JE%_sá@correo.com',
+            'nombre' => 'Juanito',
+            'apellidoPaterno' => 'Hernandéz',
+            'apellidoMaterno' => 'Duarte',
+            'email' => 'Juandsl_w@correo.com',
             'password' => bcrypt('norman'),
-            'boleta' => '2015671234',
+            'identificacion' => '2014670000',
             'tipo' => '2',
         ]);
         

@@ -20,7 +20,7 @@
                 
                 <header class="sign-title">Iniciar sesión</header>
                 <div class="form-group">
-                    {!!Form::text('boleta', null, ['class'=>'form-control', 'placeholder'=>'Boleta', 'id'=>'boleta'])!!}
+                    {!!Form::text('identificacion', null, ['class'=>'form-control', 'placeholder'=>'Boleta o identificación', 'id'=>'identificacion'])!!}
                 </div>
                 <div class="form-group">
                     {!!Form::password('password', ['class'=>'form-control', 'placeholder'=>'Contraseña', 'id'=>'password'])!!}

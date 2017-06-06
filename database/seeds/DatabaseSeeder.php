@@ -14,14 +14,21 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-         $this->call(estateTableSeeder::class);
+         $this->call(stateTableSeeder::class);
          $this->call(placeTableSeeder::class);
          $this->call(carrerTableSeeder::class);
          $this->call(statusTableSeeder::class);
          $this->call(userTableSeeder::class);
          $this->call(studentTableSeeder::class);
          $this->call(InfoTableSeeder::class);
+<<<<<<< Updated upstream
          $this->call(imagesTableSeeder::class);
+=======
+         $this->call(clinicTableSeeder::class);
+         $this->call(medicalInstitutionTableSeeder::class);
+         $this->call(medicalDataTableSeeder::class);
+         
+>>>>>>> Stashed changes
 
         Model::reguard();
     }

@@ -28,7 +28,7 @@ class user extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['nombre', 'apellidoPa', 'apellidoMa', 'email', 'boleta', 'tipo', 'password'];
+    protected $fillable = ['nombre', 'apellidoPaterno', 'apellidoMaterno', 'email', 'identificacion', 'tipo', 'password'];
     //protected $guarded = ['tipo'];
 
     /**
@@ -43,6 +43,10 @@ class user extends Model implements AuthenticatableContract,
         return $this->hasOne(student::class, 'usuario_id');
     }
     
+    public function medicalData(){
+        return $this->hasOne(medicalData::class, 'usuario_id');
+    }
+    
     public function __toString(){
         return $this->nombre.' '.$this->apellidoPa.' '.$this->apellidoMa;
     }
@@ -50,16 +54,15 @@ class user extends Model implements AuthenticatableContract,
     public function type(){
         if($this->tipo == 1){
             return 'Administrador';
-        }
-        
-        if($this->tipo == 2){
+        } elseif($this->tipo == 2){
             return 'Alumno';
         }
     }
     
-//     public function getAuthPassword() {
-//         return $this->password;
-//     }
+    public function getTypes(){
+        $types = ['1' => 'Administrador', '2' => 'Alumno'];
+        return $types;
+    }
     
     public function setPasswordAttribute($password) {
         $this->attributes['password'] = bcrypt($password);
