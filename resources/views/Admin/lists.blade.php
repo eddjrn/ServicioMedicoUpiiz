@@ -82,8 +82,23 @@ Listas de todos los alumnos en el sistema
                                         <div class="tbl-cell tbl-cell-title">
                                             <h3>
                                                 @foreach($status as $s)
-                                                    {{$s->students->count()}}
+                                                    <span class="label 
+                                                        @if($s->id == 1)
+                                                            label-primary
+                                                        @elseif($s->id == 2)
+                                                            label-danger
+                                                        @elseif($s->id == 3)
+                                                            label-info
+                                                        @elseif($s->id == 4)
+                                                            label-warning
+                                                        @elseif($s->id == 5)
+                                                            label-success
+                                                        @endif">{{$s->students->where('carrera_id', $carrer->id)->count()}} {{$s->nombre}}s</span>
                                                 @endforeach
+                                                    
+                                                    <span class="label label-success">Completos: {{$carrer->students->where('documentacion', 1)->count()}}</span>
+                                                    <span class="label label-danger">Incompletos: {{$carrer->students->where('documentacion', 2)->count()}}</span>
+                                                
                                             </h3>
                                         </div>
                                     </div>
@@ -104,11 +119,11 @@ Listas de todos los alumnos en el sistema
                                                     </td>
                                                     <td>
                                                         <div class="font-11 color-blue-grey-lighter uppercase">Boleta</div>
-                                                        {{$student->user->boleta}}
+                                                        {{$student->user->identificacion}}
                                                     </td>
                                                     <td>
                                                         <div class="font-11 color-blue-grey-lighter uppercase">Número de seguro</div>
-                                                        {{$student->noSeguro}}
+                                                        {{$student->user->medicalData->numSeguro}}
                                                     </td>
                                                     <td>
                                                         <div class="font-11 color-blue-grey-lighter uppercase">Teléfono</div>
@@ -127,6 +142,14 @@ Listas de todos los alumnos en el sistema
                                                         @elseif($student->estatus_id == 5)
                                                             {{$statusStyle[4]}}
                                                         @endif" value="{{$student->status->nombre}}">
+                                                    </td>
+                                                    <td>
+                                                        <div class="font-11 color-blue-grey-lighter uppercase">Documentación</div>
+                                                        <input type="text" readonly class="form-control @if($student->documentacion == 1)
+                                                            {{$statusStyle[4]}}
+                                                        @elseif($student->documentacion == 2)
+                                                            {{$statusStyle[1]}}
+                                                        @endif" value="{{$student->documentation()}}">
                                                     </td>
                                                 </tr>
                                                 @endforeach

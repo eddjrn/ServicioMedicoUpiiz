@@ -30,10 +30,10 @@ class profileController extends Controller
         $index = 0;
         
         $student = Auth::user()->student;
-        session()->flash('message', $student->status->nombre);
-        $id = $student->status->id;
+        session()->flash('message', 'Documentación: '.$student->documentation());
+        $id = $student->documentacion;
         
-        if($id == 1){
+        if($id == 5){
             session()->flash('type', 'info');
         } else if($id == 2){
             session()->flash('type', 'danger');
@@ -41,7 +41,7 @@ class profileController extends Controller
             session()->flash('type', 'grey-darker');
         } else if($id == 4){
             session()->flash('type', 'warning');
-        } else if($id == 5){
+        } else if($id == 1){
             session()->flash('type', 'success');
         }
         
@@ -111,10 +111,10 @@ class profileController extends Controller
         $index = 0;
         
         $student = Auth::user()->student;
-        session()->flash('message', $student->status->nombre);
-        $id = $student->status->id;
+        session()->flash('message', 'Documentación: '.$student->documentation());
+        $id = $student->documentacion;
         
-        if($id == 1){
+        if($id == 5){
             session()->flash('type', 'info');
         } else if($id == 2){
             session()->flash('type', 'danger');
@@ -122,7 +122,7 @@ class profileController extends Controller
             session()->flash('type', 'grey-darker');
         } else if($id == 4){
             session()->flash('type', 'warning');
-        } else if($id == 5){
+        } else if($id == 1){
             session()->flash('type', 'success');
         }
         

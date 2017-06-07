@@ -40,11 +40,11 @@ class adminController extends Controller
         );
         
         $statusStyle = array(
-            'form-control-orange-fill',
-            'form-control-red-fill',
-            'form-control-green-fill',
             'form-control-blue-fill',
-            'form-control-danger',
+            'form-control-red-fill',
+            'form-control-purple-fill',
+            'form-control-orange-fill',
+            'form-control-green-fill',
         );
         
         $carrers = \App\carrer::all();
