@@ -73,19 +73,35 @@ Perfil de usuario
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Estado de documentación</label>
-                <input type="text" readonly class="form-control {{$inputStatus}}" value="{{$student->documentation()}}">
+                <input type="text" readonly class="form-control 
+                    @if($student->documentacion == 1)
+                        form-control-blue-fill
+                    @elseif($student->documentacion == 2)
+                        form-control-red-fill
+                    @endif" value="{{$student->documentation()}}">
             </fieldset>
         </div>
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Estatus</label>
-                <input type="text" readonly class="form-control {{$inputStatus}}" value="{{$student->status->nombre}}">
+                <input type="text" readonly class="form-control 
+                    @if($student->estatus_id == 1)
+                        form-control-blue-fill
+                    @elseif($student->estatus_id == 2)
+                        form-control-red-fill
+                    @elseif($student->estatus_id == 3)
+                        form-control-danger
+                    @elseif($student->estatus_id == 4)
+                        form-control-orange-fill
+                    @elseif($student->estatus_id == 5)
+                        form-control-green-fill
+                    @endif" value="{{$student->status->nombre}}">
             </fieldset>
         </div>
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">CURP</label>
-                <input type="text" readonly class="form-control" value="{{$student->curp}}">
+                <input type="text" readonly class="form-control form-control-green-fill" value="{{$student->curp}}">
             </fieldset>
         </div>
     </div>
@@ -110,12 +126,6 @@ Perfil de usuario
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Correo electronico</label>
                 <input type="text" readonly class="form-control" value="{{$student->user->email}}">
-            </fieldset>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <fieldset class="form-group">
-                <label class="form-label" for="exampleInputDisabled2">Boleta</label>
-                <input type="text" readonly class="form-control" value="{{$student->user->identificacion}}">
             </fieldset>
         </div>
     </div>
@@ -194,6 +204,15 @@ Perfil de usuario
     </div>
     
     <h5 class="m-t-lg with-border">Datos de escolares</h5>
+    
+    <div class="row hidden-lg-up">
+        <div class="col-md-4 col-sm-6">
+            <fieldset class="form-group">
+                <label class="form-label" for="exampleInputDisabled2">Boleta</label>
+                <input type="text" readonly class="form-control" value="{{$student->user->identificacion}}">
+            </fieldset>
+        </div>
+    </div>
     
     <div class="row">
         <div class="col-md-4 col-sm-6">

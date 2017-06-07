@@ -27,31 +27,25 @@ class profileController extends Controller
      
     public function index()
     {   
-        $index = 6;
+        $index = 0;
         
         $student = Auth::user()->student;
         session()->flash('message', $student->status->nombre);
         $id = $student->status->id;
-        $inputStatus = 'form-control-blue-fill'; //input type text style
         
         if($id == 1){
-            session()->flash('type', 'warning');
-            $inputStatus = 'form-control-orange-fill';
+            session()->flash('type', 'info');
         } else if($id == 2){
             session()->flash('type', 'danger');
-            $inputStatus = 'form-control-red-fill';
         } else if($id == 3){
-            session()->flash('type', 'success');
-            $inputStatus = 'form-control-green-fill';
-        } else if($id == 4){
-            session()->flash('type', 'info');
-            $inputStatus = 'form-control-blue-fill';
-        } else if($id == 5){
             session()->flash('type', 'grey-darker');
-            $inputStatus = 'form-control-danger';
+        } else if($id == 4){
+            session()->flash('type', 'warning');
+        } else if($id == 5){
+            session()->flash('type', 'success');
         }
         
-        return view('User.profile', ['index'=>$index, 'student'=>$student, 'inputStatus'=>$inputStatus]);
+        return view('User.profile', ['index'=>$index, 'student'=>$student]);
     }
     
     /**
@@ -66,10 +60,10 @@ class profileController extends Controller
         $user = \App\user::find($request->studentId);
         $user->update([
             'nombre'=>$request->nombre,
-            'apellidoPaterno'=>$request->apellidoPa,
-            'apellidoMaterno'=>$request->apellidoMa,
+            'apellidoPaterno'=>$request->apellidoPaterno,
+            'apellidoMaterno'=>$request->apellidoMaterno,
             'email'=>$request->email,
-            'identificacion'=>$request->boleta,
+            'identificacion'=>$request->identificacion,
         ]);
         
         $student = $user->student;
@@ -81,12 +75,26 @@ class profileController extends Controller
             'telefono'=>$request->telefono,
             'turno'=>$request->turno,
             'calle'=>$request->calle,
-            'numExt'=>$request->numExt,
-            'numInt'=>$request->numInt,
+            'numExterior'=>$request->numExterior,
+            'numInterior'=>$request->numInterior,
             'colonia'=>$request->colonia,
-            'cp'=>$request->cp,
+            'codigoPostal'=>$request->codigoPostal,
             'localidad'=>$request->localidad,
-            'nacimiento'=>$request->nacimiento,
+            'curp'=>$request->curp,
+            'fechaNacimiento'=>$request->nacimiento,
+            'tutor'=>$request->tutor,
+            'telefonoTutor'=>$request->telefonoTutor,
+            'celularTutor'=>$request->celularTutor,
+            'parentescoTutor'=>$request->parentesco,
+        ]);
+        
+        $medicalData = $user->medicalData;
+        $medicalData->update([
+            'numSeguro'=>$request->numSeguro,
+            'proveedorSeguro'=>$request->proveedorSeguro,
+            'clinica_id'=>$request->numClinica,
+            'institucionSeguro_id'=>$request->institucionClinica,
+            'tipoSangre'=>$request->sangre,
         ]);
         
         return redirect('/profile');
@@ -100,22 +108,22 @@ class profileController extends Controller
      */
     public function edit()
     {
-        $index = 6;
+        $index = 0;
         
         $student = Auth::user()->student;
         session()->flash('message', $student->status->nombre);
         $id = $student->status->id;
         
         if($id == 1){
-            session()->flash('type', 'warning');
+            session()->flash('type', 'info');
         } else if($id == 2){
             session()->flash('type', 'danger');
         } else if($id == 3){
-            session()->flash('type', 'success');
-        } else if($id == 4){
-            session()->flash('type', 'info');
-        } else if($id == 5){
             session()->flash('type', 'grey-darker');
+        } else if($id == 4){
+            session()->flash('type', 'warning');
+        } else if($id == 5){
+            session()->flash('type', 'success');
         }
         
         return view('User.editProfile', ['index'=>$index, 'student'=>$student]);

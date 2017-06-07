@@ -48,7 +48,7 @@ class user extends Model implements AuthenticatableContract,
     }
     
     public function __toString(){
-        return $this->nombre.' '.$this->apellidoPa.' '.$this->apellidoMa;
+        return $this->nombre.' '.$this->apellidoPaterno.' '.$this->apellidoMaterno;
     }
     
     public function type(){

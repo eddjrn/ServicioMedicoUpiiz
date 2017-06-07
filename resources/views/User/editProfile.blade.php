@@ -94,6 +94,9 @@ Edición de los datos personales
                             <label class="form-label" for="exampleInputDisabled">CURP</label>
                             {!!Form::text('curp', null, ['class'=>'form-control', 'placeholder'=>'Ej: xxxxxxxxxxxxxxxxxx', 'id'=>'curp'])!!}
                         </fieldset>
+                        <div class="form-group">
+                            <a href="https://consultas.curp.gob.mx/CurpSP/inicio2_2.jsp" target="_blank">Consultar CURP</a>
+                        </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <fieldset class="form-group">
@@ -178,16 +181,16 @@ Edición de los datos personales
                     <div class="col-md-4 col-sm-6">
                         <fieldset class="form-group">
                             <label class="form-label" for="exampleInputDisabled">Boleta</label>
-                            {!!Form::text('identifiacion', $student->user->identificacion, ['class'=>'form-control', 'placeholder'=>'Ej: 20XXXXXXXX', 'id'=>'identifiacion'])!!}
+                            {!!Form::text('identificacion', $student->user->identificacion, ['class'=>'form-control', 'placeholder'=>'Ej: 20XXXXXXXX', 'id'=>'identificacion'])!!}
                         </fieldset>
                     </div>
                     <div class="col-md-4 col-sm-6">
-                        <fieldset class="form-group">
+                        <div class="form-group">
                             <label class="form-label" for="exampleInputDisabled">Carrera</label>
                             <!--{{$carrer=\App\carrer::lists('nombre', 'id')}} -->
                             
                             {!!Form::select('carrera', $carrer, $student->carrera_id, ['class'=>'select2'])!!}
-                        </fieldset>
+                        </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <fieldset class="form-group">
@@ -196,7 +199,6 @@ Edición de los datos personales
                         </fieldset>
                     </div>
                 </div>
-                
                 
             </div>
         </div>
@@ -230,7 +232,7 @@ Edición de los datos personales
                         </fieldset>
                     </div>
                     <div class="col-md-4 col-sm-6">
-                        <fieldset class="form-group">
+                        <div class="form-group">
                             <label class="form-label" for="exampleInputDisabled">Número de clínica</label>
                             <!-- {{$clinic=\App\clinic::all()}} -->
                             <?php $list = array('0' => 'Seleccionar'); ?>
@@ -238,7 +240,7 @@ Edición de los datos personales
                             <!--{{array_push($list, $c->__toString())}} -->
                             @endforeach
                             {!!Form::select('numClinica', $list, $student->user->medicalData->clinica_id, ['class'=>'select2 form-control'])!!}
-                        </fieldset>
+                        </div>
                     </div>
                 </div>
                 
@@ -314,21 +316,21 @@ Edición de los datos personales
                 
                 <div class="row">
                     <div class="col-md-4 col-sm-6">
-                        <fieldset class="form-group">
+                        <div class="form-group">
                             <label class="form-label" for="exampleInputDisabled">Estado de procedencia</label>
                             
                             <!--{{$estate=\App\state::lists('nombre', 'id')}} -->
                             
                             {!!Form::select('estado', $estate, $student->estado_id, ['class'=>'select2'])!!}
-                        </fieldset>
+                        </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
-                        <fieldset class="form-group">
+                        <div class="form-group">
                             <label class="form-label" for="exampleInputDisabled">Municipio donde reside</label>
                             <!--{{$place=\App\place::lists('nombre', 'id')}} -->
                             
                             {!!Form::select('municipio', $place, $student->municipio_id, ['class'=>'select2'])!!}
-                        </fieldset>
+                        </div>
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <fieldset class="form-group">
