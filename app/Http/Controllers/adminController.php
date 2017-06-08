@@ -37,6 +37,15 @@ class adminController extends Controller
             'Nine',
             'Ten',
             'Eleven',
+            'Twelve',
+            'Thirteen',
+            'Fourteen',
+            'Fifteen',
+            'Sixteen',
+            'Seventeen',
+            'Eighteen',
+            'Nineteen',
+            'Twenty',
         );
         
         $statusStyle = array(
@@ -49,9 +58,10 @@ class adminController extends Controller
         
         $carrers = \App\carrer::all();
         $status = \App\status::all();
+        $studentAll = \App\student::all();
         
         
-        return view('Admin.lists', ['index'=>$index, 'numbers'=>$numbers, 'statusStyle'=>$statusStyle, 'carrers'=>$carrers, 'status'=>$status]);
+        return view('Admin.lists', ['index'=>$index, 'numbers'=>$numbers, 'statusStyle'=>$statusStyle, 'carrers'=>$carrers, 'status'=>$status, 'studentAll'=>$studentAll]);
     }
     
     /**
