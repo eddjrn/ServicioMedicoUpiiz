@@ -325,6 +325,5 @@ class clinicTableSeeder extends Seeder
             'tipo' => 'HRS',
             'municipio_id' => '48',
         ]);
-
     }
 }
