@@ -83,9 +83,15 @@ class adminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
-        return $id;
+        $student = \App\student::find($id);
+        $student->update([
+            'documentacion'=>$request->documentacion,
+            'estatus_id'=>$request->estatus,
+        ]);
+        
+        return back();
     }
 
     /**

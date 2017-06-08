@@ -29,23 +29,21 @@ Listas de todos los alumnos en el sistema
                 </button>
                 <h4 class="modal-title" id="myModalLabel">Edición del perfil</h4>
             </div>
+            {!!Form::open(array('method'=>'post', 'id'=>'userForm'))!!}
             <div class="modal-body">
-            {!!Form::open(array('url'=>'/admin/lists/{id}', 'method'=>'post'))!!}
-                <input type="hidden" name="userVal" id="userVal" value="">
-                <input type="text" readonly class="form-control" value="" id="nombre">
                 <h5 class="m-t-lg with-border">Estatus en el sistema</h5>
                 <!--{{$estatus=\App\status::lists('nombre', 'id')}} -->
                 {!!Form::select('estatus', $estatus, 1, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'estatus'])!!}
                 <h5 class="m-t-lg with-border">Documentación</h5>
                 {!!Form::select('documentacion', array('1'=>'Completa', '2'=>'Incompleta'), 1, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'documentacion'])!!}
-            {!!Form::close()!!}
             </div>
             <div class="modal-footer">
 <!--                 <button type="button" class="btn btn-rounded btn-default" data-dismiss="modal">Close</button> -->
                 <div class="text-center">
-                    <button type="button" class="btn btn-rounded btn-primary">Guardar cambios</button>
+                    <button type="submit" class="btn btn-rounded btn-primary" formaction="/" id="formi">Guardar cambios</button>
                 </div>
             </div>
+            {!!Form::close()!!}
         </div>
     </div>
 </div><!--.modal-->

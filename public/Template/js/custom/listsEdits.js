@@ -1,9 +1,8 @@
 function updateInputs(id, userName, status, documentation){
-    document.getElementById('nombre').value=userName;
+    document.getElementById('myModalLabel').innerHTML=userName;
     $("#estatus").val(status);
     $("#estatus").change();
     $("#documentacion").val(documentation);
     $("#documentacion").change();
-    document.getElementById('userVal').value=id;
-    //alert(id);
+    document.getElementById("formi").formAction = "/admin/lists/"+id;
 }
