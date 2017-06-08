@@ -15,6 +15,41 @@ Listas de todos los alumnos en el sistema
 @stop
 
 @section('content')
+
+<div class="modal fade bd-example-modal-sm"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="mySmallModalLabel"
+        aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                    <i class="font-icon-close-2"></i>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Edición del perfil</h4>
+            </div>
+            <div class="modal-body">
+            {!!Form::open(array('url'=>'/admin/lists/{id}', 'method'=>'post'))!!}
+                <input type="hidden" name="userVal" id="userVal" value="">
+                <input type="text" readonly class="form-control" value="" id="nombre">
+                <h5 class="m-t-lg with-border">Estatus en el sistema</h5>
+                <!--{{$estatus=\App\status::lists('nombre', 'id')}} -->
+                {!!Form::select('estatus', $estatus, 1, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'estatus'])!!}
+                <h5 class="m-t-lg with-border">Documentación</h5>
+                {!!Form::select('documentacion', array('1'=>'Completa', '2'=>'Incompleta'), 1, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'documentacion'])!!}
+            {!!Form::close()!!}
+            </div>
+            <div class="modal-footer">
+<!--                 <button type="button" class="btn btn-rounded btn-default" data-dismiss="modal">Close</button> -->
+                <div class="text-center">
+                    <button type="button" class="btn btn-rounded btn-primary">Guardar cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--.modal-->
+
 <section class="tabs-section">
     <div class="tabs-section-nav tabs-section-nav-icons">
         <div class="tbl">
@@ -95,7 +130,7 @@ Listas de todos los alumnos en el sistema
                                                             label-success
                                                         @endif">{{$s->students->where('carrera_id', $carrer->id)->count()}} {{$s->nombre}}s</span>
                                                 @endforeach
-                                                    
+                                                    /
                                                     <span class="label label-success">Completos: {{$carrer->students->where('documentacion', 1)->count()}}</span>
                                                     <span class="label label-danger">Incompletos: {{$carrer->students->where('documentacion', 2)->count()}}</span>
                                                 
@@ -151,6 +186,13 @@ Listas de todos los alumnos en el sistema
                                                             {{$statusStyle[1]}}
                                                         @endif" value="{{$student->documentation()}}">
                                                     </td>
+                                                    <td>
+                                                        <div class="font-11 color-blue-grey-lighter uppercase">Editar</div>
+                                                        <button type="button"
+                                                            class="btn btn-inline btn-sm btn-primary"
+                                                            data-toggle="modal"
+                                                            data-target=".bd-example-modal-sm" onclick="updateInputs({{$student->id}},'{{$student->user}}',{{$student->estatus_id}},{{$student->documentacion}})"><span class="font-icon font-icon-pencil"></span></button>
+                                                    </td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
@@ -177,4 +219,6 @@ Listas de todos los alumnos en el sistema
 @stop
 
 @section('scripts')
+    <script src="/Template/js/lib/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="/Template/js/custom/listsEdits.js"></script>
 @stop

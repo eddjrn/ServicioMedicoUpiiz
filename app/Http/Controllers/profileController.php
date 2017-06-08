@@ -45,7 +45,15 @@ class profileController extends Controller
             session()->flash('type', 'success');
         }
         
-        return view('User.profile', ['index'=>$index, 'student'=>$student]);
+        $statusStyle = array(
+            'form-control-blue-fill',
+            'form-control-red-fill',
+            'form-control-purple-fill',
+            'form-control-orange-fill',
+            'form-control-green-fill',
+        );
+        
+        return view('User.profile', ['index'=>$index, 'student'=>$student, 'statusStyle'=>$statusStyle]);
     }
     
     /**

@@ -75,9 +75,9 @@ Perfil de usuario
                 <label class="form-label" for="exampleInputDisabled2">Estado de documentación</label>
                 <input type="text" readonly class="form-control 
                     @if($student->documentacion == 1)
-                        form-control-blue-fill
+                        {{$statusStyle[0]}}
                     @elseif($student->documentacion == 2)
-                        form-control-red-fill
+                        {{$statusStyle[1]}}
                     @endif" value="{{$student->documentation()}}">
             </fieldset>
         </div>
@@ -86,15 +86,15 @@ Perfil de usuario
                 <label class="form-label" for="exampleInputDisabled2">Estatus</label>
                 <input type="text" readonly class="form-control 
                     @if($student->estatus_id == 1)
-                        form-control-blue-fill
+                        {{$statusStyle[0]}}
                     @elseif($student->estatus_id == 2)
-                        form-control-red-fill
+                        {{$statusStyle[1]}}
                     @elseif($student->estatus_id == 3)
-                        form-control-danger
+                        {{$statusStyle[2]}}
                     @elseif($student->estatus_id == 4)
-                        form-control-orange-fill
+                        {{$statusStyle[3]}}
                     @elseif($student->estatus_id == 5)
-                        form-control-green-fill
+                        {{$statusStyle[4]}}
                     @endif" value="{{$student->status->nombre}}">
             </fieldset>
         </div>

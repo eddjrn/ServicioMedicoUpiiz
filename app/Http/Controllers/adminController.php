@@ -65,16 +65,27 @@ class adminController extends Controller
         $index = 0;
         
         $statusStyle = array(
-            'form-control-orange-fill',
-            'form-control-red-fill',
-            'form-control-green-fill',
             'form-control-blue-fill',
-            'form-control-danger',
+            'form-control-red-fill',
+            'form-control-purple-fill',
+            'form-control-orange-fill',
+            'form-control-green-fill',
         );
         
         $student = \App\student::find($id);
         
         return view('Admin.student', ['index'=>$index, 'statusStyle'=>$statusStyle, 'student'=>$student]);
+    }
+    
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        return $id;
     }
 
     /**
@@ -94,19 +105,6 @@ class adminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-    }
-
-    
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
     {
         //
     }

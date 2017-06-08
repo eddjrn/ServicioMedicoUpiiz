@@ -37,3 +37,4 @@ Route::post('/profile/edit', 'profileController@update');
 Route::get('/admin', 'adminController@index');
 Route::get('/admin/lists', 'adminController@lists');
 Route::get('/admin/lists/{id}', 'adminController@show');
+Route::post('/admin/lists/{id}', 'adminController@edit');
