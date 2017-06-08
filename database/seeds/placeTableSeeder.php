@@ -100,7 +100,7 @@ class placeTableSeeder extends Seeder
         ]);
         
         DB::table('municipio')->insert([
-            'nombre' => 'Juchipila',
+           'nombre' => 'Juchipila',
         ]);
         
         DB::table('municipio')->insert([
@@ -152,7 +152,7 @@ class placeTableSeeder extends Seeder
         ]);
         
         DB::table('municipio')->insert([
-            'nombre' => 'Ojocaliente',
+        'nombre' => 'Ojocaliente',
         ]);
         
         DB::table('municipio')->insert([
