@@ -11,6 +11,7 @@ class clinicTableSeeder extends Seeder
      */
     public function run()
     {
+        
         DB::table('clinica')->insert([
             'numero' => '1',
             'tipo' => 'HGZMF',

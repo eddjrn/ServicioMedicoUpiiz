@@ -242,6 +242,5 @@ class placeTableSeeder extends Seeder
         DB::table('municipio')->insert([
             'nombre' => 'Zacatecas',
         ]);
-        
     }
 }
