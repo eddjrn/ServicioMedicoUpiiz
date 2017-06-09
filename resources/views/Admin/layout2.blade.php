@@ -29,6 +29,7 @@
 <body class="horizontal-navigation">
 @yield('popUp')
 
+    @unless($index == -1)
     <header class="site-header">
 	    <div class="container-fluid">
 	        <a href="#" class="site-logo">
@@ -50,7 +51,7 @@
 	                            <img src="/Template/img/avatar-2-64.png" alt="">
 	                        </button>
 	                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
-	                            <a class="dropdown-item" href="/profile"><span class="font-icon glyphicon glyphicon-user"></span>Perfil</a>
+	                            <a class="dropdown-item" href="/admin/profile"><span class="font-icon glyphicon glyphicon-user"></span>Perfil</a>
 	                            <a class="dropdown-item" href="/profile/edit"><span class="font-icon glyphicon glyphicon-cog"></span>Configuración</a>
 	                            <div class="dropdown-divider"></div>
 	                            <a class="dropdown-item" href="/logout"><span class="font-icon glyphicon glyphicon-log-out"></span>Salir</a>
@@ -97,6 +98,8 @@
             @yield('content')
 		</div><!--.container-fluid-->
 	</div><!--.page-content-->
+	
+	@endunless
 
 	<script src="/Template/js/lib/jquery/jquery.min.js"></script>
 	<script src="/Template/js/lib/tether/tether.min.js"></script>

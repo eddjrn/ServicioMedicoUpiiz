@@ -40,3 +40,7 @@ Route::get('/admin/lists/{id}', 'adminController@show');
 Route::post('/admin/lists/{id}', 'adminController@edit');
 
 Route::get('/admin/add', 'adminController@addBlog');
+
+Route::get('/admin/profile', 'adminController@profile');
+Route::post('/admin/profile', 'adminController@profilePassword');
+Route::patch('/admin/profile', 'adminController@editProfile');
