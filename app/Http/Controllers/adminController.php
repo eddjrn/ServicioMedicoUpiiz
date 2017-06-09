@@ -46,6 +46,15 @@ class adminController extends Controller
             'Eighteen',
             'Nineteen',
             'Twenty',
+            'TwentyOne',
+            'TwentyTwo',
+            'TwentyThree',
+            'TwentyFour',
+            'TwentyFive',
+            'TwentySix',
+            'TwentySeven',
+            'TwentyEight',
+            'TwentyNine',
         );
         
         $statusStyle = array(
@@ -59,9 +68,10 @@ class adminController extends Controller
         $carrers = \App\carrer::all();
         $status = \App\status::all();
         $studentAll = \App\student::all();
+        $medicalDatas = \App\medicalData::all();
         
         
-        return view('Admin.lists', ['index'=>$index, 'numbers'=>$numbers, 'statusStyle'=>$statusStyle, 'carrers'=>$carrers, 'status'=>$status, 'studentAll'=>$studentAll]);
+        return view('Admin.lists', ['index'=>$index, 'numbers'=>$numbers, 'statusStyle'=>$statusStyle, 'carrers'=>$carrers, 'status'=>$status, 'studentAll'=>$studentAll, 'medicalDatas'=>$medicalDatas]);
     }
     
     /**
@@ -146,5 +156,13 @@ class adminController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    public function addBlog(){
+        $index = 3;
+        
+        return view('Admin.addBlog', ['index'=>$index]);
     }
 }

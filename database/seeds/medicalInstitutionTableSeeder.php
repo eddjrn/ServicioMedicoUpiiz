@@ -28,6 +28,10 @@ class medicalInstitutionTableSeeder extends Seeder
         ]);
         
         DB::table('institucionSeguro')->insert([
+            'nombre' => 'SEDENA',
+        ]);
+        
+        DB::table('institucionSeguro')->insert([
             'nombre' => 'Particular',
         ]);
     }

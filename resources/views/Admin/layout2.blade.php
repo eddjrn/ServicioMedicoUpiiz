@@ -80,7 +80,7 @@
 			<a class="nav-link @if($index==2)active @endif" href="/admin/lists">Listado</a>
 		</li>
         <li class="nav-item">
-			<a class="nav-link @if($index==3)active @endif" href="/news">Agregar</a>
+			<a class="nav-link @if($index==3)active @endif" href="/admin/add">Agregar</a>
 		</li>
         <li class="nav-item">
 			<a class="nav-link" href="https://www.facebook.com/verodelarosa.medicaupiiz?hc_ref=SEARCH&fref=nf">Facebook</a>

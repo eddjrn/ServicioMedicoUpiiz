@@ -38,3 +38,5 @@ Route::get('/admin', 'adminController@index');
 Route::get('/admin/lists', 'adminController@lists');
 Route::get('/admin/lists/{id}', 'adminController@show');
 Route::post('/admin/lists/{id}', 'adminController@edit');
+
+Route::get('/admin/add', 'adminController@addBlog');
