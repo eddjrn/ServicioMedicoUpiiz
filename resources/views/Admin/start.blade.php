@@ -15,7 +15,136 @@ Vista previa del blog
 @stop
 
 @section('content')
-Hola
+
+<section class="tabs-section">
+                <div class="tabs-section-nav tabs-section-nav-icons">
+                    <div class="tbl">
+                        <ul class="nav" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#tabs-1-tab-1" role="tab" data-toggle="tab">
+                                    <span class="nav-link-in">
+                                        <span class="font-icon font-icon-comment"></span>
+                                        Noticias
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tabs-1-tab-2" role="tab" data-toggle="tab">
+                                    <span class="nav-link-in">
+                                        <span class="font-icon font-icon-picture-double"></span>
+                                        Imagenes
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tabs-1-tab-3" role="tab" data-toggle="tab">
+                                    <span class="nav-link-in">
+                                        <span class="font-icon font-icon-play"></span>
+                                        Videos
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!--.tabs-section-nav-->
+
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="tabs-1-tab-1" class="col-md-5 col-xs-6" >
+       
+        @foreach($info as $in)
+        <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="card-grid-col"> <!-- Card-->
+                    <article class="card-typical">
+                        <div class="card-typical-section">
+                            <div class="user-card-row">
+                                <div class="tbl-row">
+                                    <div class="tbl-cell tbl-cell-photo">
+                                        <a href="#">
+                                            <img src="Template/img/avatar-sign.png" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="tbl-cell">
+                                        <p class="user-card-row-name"><a>@if($in->usuario_id==1) Veronica @endif</a></p>
+                                        <p class="color-blue-grey-lighter"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-typical-section card-typical-content"> <!-- Post-->
+                            <header class="title"><a>{{$in->titulo}}</a></header>
+                            <p>{{$in->contenido}} </p>
+                        </div>
+                       
+                    </article><!--.card-typical-->
+                    </div>  
+                    </div>
+                    </div>
+                 @endforeach
+                    </div><!--.tab-pane-->
+
+
+                    <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-2">
+                    	
+                    	<div class="row">
+                        @foreach($images as $img) 
+                            <div class="col-md-1"></div>
+                                 <div class="col-md-2">
+                           <div class="gallery-col">
+                            <article class="gallery-item">
+                                <img class="gallery-picture" src="{{$img->imagen}}" alt="" height="158">
+                                <div class="gallery-hover-layout">
+                                    <div class="gallery-hover-layout-in">
+                                        <p class="gallery-item-title">{{$img->titulo}}</p>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn">
+                                                <a target="_blank" class="font-icon font-icon-picture" href="{{$img->imagen}}"></a>
+                                               
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        </div>
+                        @endforeach
+                        </div>
+
+                    </div><!--.tab-pane-->
+
+
+                    <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">
+
+                    	<div class="row">
+                        @foreach($video as $vi) 
+                            <div class="col-md-1"></div>
+                                 <div class="col-md-2">
+                           <div class="gallery-col">
+                            <article class="gallery-item">
+                                <img class="gallery-picture" src="{{$vi->imagen}}" alt="" height="158">
+                                <div class="gallery-hover-layout">
+                                    <div class="gallery-hover-layout-in">
+                                        <p class="gallery-item-title">{{$vi->titulo}}</p>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn">
+                                                <a target="_blank" class="font-icon font-icon-picture" href="{{$vi->link}}"></a>
+                                               
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        </div>
+                        @endforeach
+                        </div>
+
+                    </div><!--.tab-pane-->
+
+                </div><!--.tab-content-->
+            </section>
+
 @stop
 
 @section('scripts')

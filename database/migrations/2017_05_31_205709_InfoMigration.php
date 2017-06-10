@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Jenssegers\Date\Date;
 
 class InfoMigration extends Migration
 {
@@ -20,7 +21,7 @@ class InfoMigration extends Migration
 
             $table->string('titulo');
             $table->text('contenido');
-            //$table->timestamps();
+            $table->timestamps();
         });
 
     }

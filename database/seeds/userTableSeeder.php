@@ -30,6 +30,26 @@ class userTableSeeder extends Seeder
             'identificacion' => '2014670000',
             'tipo' => '2',
         ]);
+
+        DB::table('usuario')->insert([
+            'nombre' => 'Izacc',
+            'apellidoPaterno' => 'Belmont',
+            'apellidoMaterno' => 'Juste',
+            'email' => 'Izacc_w@correo.com',
+            'password' => bcrypt('1234'),
+            'identificacion' => '2016670126',
+            'tipo' => '2',
+        ]);
+
+        DB::table('usuario')->insert([
+            'nombre' => 'Ale',
+            'apellidoPaterno' => 'Belmont',
+            'apellidoMaterno' => 'Silva',
+            'email' => 'rebelsw@correo.com',
+            'password' => bcrypt('1234'),
+            'identificacion' => '2016670007',
+            'tipo' => '2',
+        ]);
         
     }
 }

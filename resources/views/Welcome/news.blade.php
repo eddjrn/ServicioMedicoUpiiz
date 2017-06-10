@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="tbl-cell">
                                         <p class="user-card-row-name"><a>@if($in->usuario_id==1) Veronica @endif</a></p>
-                                        <p class="color-blue-grey-lighter">3 days ago - 23 min reader</p>
+                                        <p class="color-blue-grey-lighter"></p>
                                     </div>
                                 </div>
                             </div>

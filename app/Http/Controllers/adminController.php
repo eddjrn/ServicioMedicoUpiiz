@@ -20,8 +20,10 @@ class adminController extends Controller
     public function index()
     {
         $index = 1;
-        
-        return view('Admin.start', ['index'=>$index]);
+        $info=\App\info::all();
+        $images=\App\images::all();
+        $video=\App\video::all();
+        return view('Admin.start', ['index'=>$index,'info'=> $info,'images'=> $images,'video'=> $video]);
     }
     
     public function lists()

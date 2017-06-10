@@ -15,7 +15,7 @@ class InfoTableSeeder extends Seeder
         DB::table('informacion')->insert([
             'usuario_id' => '1',
             'titulo' => 'demonios',
-            'contenido' => 'mmmmm',
+            'contenido' => 'no sale',
         ]);
          DB::table('informacion')->insert([
             'usuario_id' => '1',
@@ -25,7 +25,7 @@ class InfoTableSeeder extends Seeder
           DB::table('informacion')->insert([
             'usuario_id' => '1',
             'titulo' => 'odi',
-            'contenido' => 'mmmmm',
+            'contenido' => 'si salio xD',
         ]);
         
     }
