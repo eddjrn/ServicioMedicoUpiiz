@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
          $this->call(studentTableSeeder::class);
          $this->call(InfoTableSeeder::class);
          $this->call(imagesTableSeeder::class);
+         $this->call(VideoTableSeeder::class);
          $this->call(clinicTableSeeder::class);
          $this->call(medicalInstitutionTableSeeder::class);
          $this->call(medicalDataTableSeeder::class);

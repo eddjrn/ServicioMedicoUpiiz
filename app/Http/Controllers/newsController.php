@@ -19,8 +19,9 @@ class newsController extends Controller
         $index=2;
         $info=\App\info::all();
         $images=\App\images::all();
+        $video=\App\video::all();
 
-        return view('Welcome.news',['index' => $index, 'info'=> $info,'images'=> $images]);
+        return view('Welcome.news',['index' => $index, 'info'=> $info,'images'=> $images,'video'=> $video]);
     }
 
     /**

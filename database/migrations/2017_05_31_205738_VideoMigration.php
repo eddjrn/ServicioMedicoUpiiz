@@ -20,6 +20,7 @@ class VideoMigration extends Migration
 
             $table->string('titulo');
             $table->text('link');
+            $table->text('imagen');
             $table->timestamps();
         });
     }

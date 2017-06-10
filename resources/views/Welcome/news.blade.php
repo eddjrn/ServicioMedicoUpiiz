@@ -83,9 +83,9 @@
 
 
                     <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-2">
-
-                        @foreach($images as $img)
-                         <div class="row">
+                    	
+                    	<div class="row">
+                        @foreach($images as $img) 
                             <div class="col-md-1"></div>
                                  <div class="col-md-2">
                            <div class="gallery-col">
@@ -105,11 +105,40 @@
                             </article>
                         </div>
                         </div>
-                        </div>
                         @endforeach
+                        </div>
 
                     </div><!--.tab-pane-->
-                    <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">Videos</div><!--.tab-pane-->
+
+
+                    <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">
+
+                    	<div class="row">
+                        @foreach($video as $vi) 
+                            <div class="col-md-1"></div>
+                                 <div class="col-md-2">
+                           <div class="gallery-col">
+                            <article class="gallery-item">
+                                <img class="gallery-picture" src="{{$vi->imagen}}" alt="" height="158">
+                                <div class="gallery-hover-layout">
+                                    <div class="gallery-hover-layout-in">
+                                        <p class="gallery-item-title">{{$vi->titulo}}</p>
+                                        <div class="btn-group">
+                                            <button type="button" class="btn">
+                                                <a target="_blank" class="font-icon font-icon-picture" href="{{$vi->link}}"></a>
+                                               
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        </div>
+                        @endforeach
+                        </div>
+
+                    </div><!--.tab-pane-->
+
                 </div><!--.tab-content-->
             </section>
 

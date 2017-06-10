@@ -17,7 +17,7 @@ class medicalDataTableSeeder extends Seeder
             'clinica_id' => '1',
             'proveedorSeguro' => '1',
             'institucionSeguro_id' => '1',
-            'tipoSangre' => '1',
+            'tipoSangre' => '1'
         ]);
     }
 }
