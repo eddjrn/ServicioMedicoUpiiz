@@ -229,4 +229,32 @@ class adminController extends Controller
         
         return redirect('/admin/profile');
     }
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    public function configIndex(){
+        $index = -1;
+        
+        $students = \App\student::all();
+        $carrer = \App\carrer::all();
+        $clinics = \App\clinic::all();
+        $estate = \App\state::all();
+        $institution = \App\medicalInstitute::all();
+        $place = \App\place::all();
+        $medicalDatas = \App\medicalData::all();
+        $status = \App\status::all();
+        
+    
+        return view('Admin.config', [
+            'index'=>$index,
+            'students'=>$students,
+            'carrer'=>$carrer,
+            'clinics'=>$clinics,
+            'estate'=>$estate,
+            'institution'=>$institution,
+            'place'=>$place,
+            'medicalDatas'=>$medicalDatas,
+            'status'=>$status,
+        ]);
+    }
 }

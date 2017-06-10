@@ -14,9 +14,12 @@
 Route::get('/', 'startController@index');
 
 Route::get('/news', 'newsController@index');
-
 Route::get('/contact','contactController@index');
 Route::get('/tutorials','tutorialsController@index');
+Route::get('/maps', 'mapsController@index');
+
+Route::get('/forms', 'formsController@index');
+Route::get('/lifeInsurance', 'lifeInsuranceController@index');
 
 Route::get('/login', 'Auth\AuthController@getLogin');
 Route::post('/login', 'Auth\AuthController@postLogin');
@@ -44,3 +47,5 @@ Route::get('/admin/add', 'adminController@addBlog');
 Route::get('/admin/profile', 'adminController@profile');
 Route::post('/admin/profile', 'adminController@profilePassword');
 Route::patch('/admin/profile', 'adminController@editProfile');
+
+Route::get('/admin/config', 'adminController@configIndex');

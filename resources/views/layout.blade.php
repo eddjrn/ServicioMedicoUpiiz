@@ -91,6 +91,9 @@
         <li class="nav-item">
 			<a class="nav-link @if($index==6)active @endif" href="/tutorials">Tutoriales</a>
 		</li>
+        <li class="nav-item">
+			<a class="nav-link @if($index==9)active @endif" href="/maps">Mapas de las clinicas</a>
+		</li>
 		@if(Auth::check())
         <li class="nav-item">
 			<a class="nav-link @if($index==7)active @endif" href="/forms">Formularios</a>
