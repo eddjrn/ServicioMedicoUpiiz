@@ -12,6 +12,6 @@ class images extends Model
 
     public function user()
     {
-    	return $usuario = \App\user::find($this->usuario_id); 
+    	return $imagenes = \App\user::find($this->usuario_id); 
     }
 }
