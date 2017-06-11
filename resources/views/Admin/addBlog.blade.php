@@ -86,6 +86,7 @@ Edición del blog
             <input type="hidden" name="_token" value="{{Session::token()}}"></input>
             <input type="reset" class="btn btn-default" value="Limpiar"></form>
             </form>
+            
 
         </div>
     </div>
