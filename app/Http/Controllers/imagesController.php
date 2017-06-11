@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\images;
+
 class imagesController extends Controller
 {
     /**
@@ -38,19 +38,7 @@ class imagesController extends Controller
     public function store(Request $request)
     {
         //
-        $usuario_id = '1';
-        $titulo = $request['titulo'];
-        $imagen = $request['imagen'];
 
-        $images = new images();
-        $images->usuario_id = $usuario_id;
-        $images->imagen = $imagen;
-        $images->titulo = $titulo;
-        
-
-        $images->save();
-
-        return redirect()->back();
     }
 
     /**

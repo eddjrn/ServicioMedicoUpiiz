@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\info;
+
 
 class infoController extends Controller
 {
@@ -39,18 +39,7 @@ class infoController extends Controller
     public function store(Request $request)
     {
         //
-        $usuario_id = '1';
-        $titulo = $request['titulo'];
-        $contenido = $request['contenido'];
 
-        $info = new info();
-        $info->usuario_id = $usuario_id;
-        $info->titulo = $titulo;
-        $info->contenido = $contenido;
-
-        $info->save();
-
-        return redirect()->back();
     }
 
     /**

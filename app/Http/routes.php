@@ -51,5 +51,3 @@ Route::patch('/admin/profile', 'adminController@editProfile');
 Route::get('/admin/config', 'adminController@configIndex');
 
 //-----------------
-Route::post('/guardar', ['uses' => 'infoController@store','as' => 'guardar']);
-Route::post('/Iguardar', ['uses' => 'imagesController@store','as' => 'Iguardar']);
