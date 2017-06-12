@@ -21,18 +21,18 @@
                 <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
                     <i class="font-icon-close-2"></i>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">¿Desea editar el perfíl de administrador?</h4>
+                <h4 class="modal-title" id="windowTitle">¿Desea editar?</h4>
             </div>
-            {!!Form::open(array('url'=>'/admin/profile', 'method'=>'post'))!!}
+            {!!Form::open(array('method'=>'post'))!!}
             <div class="modal-body">
                 <div class="form-group">
                     <label class="form-label" for="hide-show-password">Contraseña</label>
-                    <input id="hide-show-password" type="password" class="form-control" value="" name="clave">
+                    <input type="password" class="form-control" value="" name="clave">
                 </div>
             </div>
             <div class="modal-footer">
                 <div class="text-center">
-                    <button type="submit" class="btn btn-rounded btn-primary btn-danger">Editar datos</button>
+                    <button type="submit" class="btn btn-rounded btn-primary btn-danger" formaction="" id="formButton">Editar datos</button>
                 </div>
             </div>
             {!!Form::close()!!}
@@ -96,15 +96,133 @@
 </div>
 
 <div class="container-fluid">
+    
+@include('alerts.formError')
+    
+<div class="row">
+
+    <div class="col-lg-4 col-md-6">
+        <section class="widget">
+            <header class="widget-header-dark with-btn">
+                Carreras registradas en el sistema
+                <button type="button" class="widget-header-btn" data-toggle="modal" data-target=".bd-example-modal-sm" onclick="authUser('Editar carreras', 1);">
+                    <i class="font-icon font-icon-pencil"></i>
+                </button>
+            </header>
+            <div class="tab-content widget-tabs-content">
+                <div class="tab-pane active" id="w-1-tab-1" role="tabpanel">
+                    <div id="pie-chart1"></div> 
+                </div>
+                <div class="tab-pane" id="w-1-tab-2" role="tabpanel">
+                    <center>
+                        <div class="pre-scrollable">
+                            <table class="table table-hover">
+                                <tbody>
+                                    @foreach($carrer as $c)
+                                    <tr>
+                                        <td class="table-check">
+                                            <div class="font-11 color-blue-grey-lighter uppercase">Carrera</div>
+                                            {{$c->nombre}}
+                                        </td>
+                                        <td class="table-check">
+                                            <div class="font-11 color-blue-grey-lighter uppercase">Número de alumnos</div>
+                                            {{$c->students->count()}}
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </center>
+                </div>
+            </div>
+            <div class="widget-tabs-nav bordered">
+                <ul class="tbl-row" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#w-1-tab-1" role="tab">
+                            <i class="font-icon font-icon-chart-3"></i>
+                            Gráfica
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#w-1-tab-2" role="tab">
+                            <i class="font-icon font-icon-notebook-lines"></i>
+                            Lista
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section><!--.widget-->
+    </div> <!--col-lg-4 col-md-6-->
+    
+    <div class="col-lg-4 col-md-6">
+        <section class="widget">
+            <header class="widget-header-dark with-btn">
+                Estados registrados en el sistema
+                <button type="button" class="widget-header-btn" data-toggle="modal" data-target=".bd-example-modal-sm" onclick="authUser('Editar estados', 2);">
+                    <i class="font-icon font-icon-pencil"></i>
+                </button>
+            </header>
+            <div class="tab-content widget-tabs-content">
+                <div class="tab-pane active" id="w-2-tab-1" role="tabpanel">
+                    <div id="pie-chart2"></div> 
+                </div>
+                <div class="tab-pane" id="w-2-tab-2" role="tabpanel">
+                    <center>
+                        <div class="pre-scrollable">
+                            <table class="table table-hover">
+                                <tbody>
+                                    @foreach($state as $s)
+                                    <tr>
+                                        <td class="table-check">
+                                            <div class="font-11 color-blue-grey-lighter uppercase">Carrera</div>
+                                            {{$s->nombre}}
+                                        </td>
+                                        <td class="table-check">
+                                            <div class="font-11 color-blue-grey-lighter uppercase">Número de alumnos</div>
+                                            {{$s->students->count()}}
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </center>
+                </div>
+            </div>
+            <div class="widget-tabs-nav bordered">
+                <ul class="tbl-row" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#w-2-tab-1" role="tab">
+                            <i class="font-icon font-icon-chart-3"></i>
+                            Gráfica
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#w-2-tab-2" role="tab">
+                            <i class="font-icon font-icon-notebook-lines"></i>
+                            Lista
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section><!--.widget-->
+    </div> <!--col-lg-4 col-md-6-->
+    
+</div>
+    
+    
+<!--     --------------------------------------------------------------------------------- -->
+    
     <div class="row">
-        <div class="col-lg-4 col-md-6"></div>
         
         <div class="col-lg-4 col-md-6">
+
         <section class="widget">
             <header class="widget-header-dark with-btn">
                 Carreras registradas en el sistema
                     <button type="button" class="widget-header-btn" data-toggle="modal" data-target=".bd-example-modal-sm" onclick="updateInputs('Agregar nueva carrera');">
-                        <i class="font-icon font-icon-plus"></i>
+                        <i class="font-icon font-icon-pencil"></i>
                     </button>
             </header>
             <div class="tab-content widget-tabs-content">
@@ -145,28 +263,128 @@
                             </div>
                            
                     </center>
+=======
+            <section class="widget">
+                <header class="widget-header-dark with-btn">
+                    Carreras registradas en el sistema
+                        <button type="button" class="widget-header-btn" data-toggle="modal" data-target=".bd-example-modal-sm" onclick="updateForms(1, 'Editar carreras');">
+                            <i class="font-icon font-icon-pencil"></i>
+                        </button>
+                </header>
+                <div class="tab-content widget-tabs-content">
+                    <div class="tab-pane active" id="w-1-tab-1" role="tabpanel">
+                        <center>
+                        <div id="pie-chart1"></div>  
+                        <header class="widget-header-dark with-btn">
+                            Carreras registradas en el sistema
+                                <button type="button" class="widget-header-btn" data-toggle="modal" data-target=".bd-example-modal-sm" onclick="updateForms(2, 'Editar estados');">
+                                    <i class="font-icon font-icon-pencil"></i>
+                                </button>
+                        </header>
+                    <div class="tab-pane" id="w-1-tab-2" role="tabpanel">
+                                <center>
+                                    <div id="pie-chart1"></div>  
+                                </center>
+                                <div class="pre-scrollable">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            @foreach($carrer as $c)
+                                            <tr>
+                                                <td class="table-check">
+                                                    <div class="font-11 color-blue-grey-lighter uppercase">Carrera</div>
+                                                    {{$c->nombre}}
+                                                </td>
+                                                <td class="table-check">
+                                                    <div class="font-11 color-blue-grey-lighter uppercase">Número de alumnos</div>
+                                                    {{$c->students->count()}}
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            
+                        </center>
+                    </div>
                 </div>
-            </div>
-            <div class="widget-tabs-nav bordered">
-                <ul class="tbl-row" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#w-1-tab-1" role="tab">
-                            <i class="font-icon font-icon-chart-3"></i>
-                            Gráfica
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#w-1-tab-2" role="tab">
-                            <i class="font-icon font-icon-notebook-lines"></i>
-                            Lista
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </section><!--.widget-->
+                <div class="widget-tabs-nav bordered">
+                    <ul class="tbl-row" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#w-1-tab-1" role="tab">
+                                <i class="font-icon font-icon-chart-3"></i>
+                                Gráfica
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#w-1-tab-2" role="tab">
+                                <i class="font-icon font-icon-notebook-lines"></i>
+                                Lista
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </section><!--.widget-->
         </div>
         
-        <div class="col-lg-4 col-md-6"></div>
+        <div class="col-lg-4 col-md-6">
+            <section class="widget">
+                <header class="widget-header-dark with-btn">
+                    Estados registradas en el sistema
+                        <button type="button" class="widget-header-btn" data-toggle="modal" data-target=".bd-example-modal-sm" onclick="updateForms(2, 'Editar estados');">
+                            <i class="font-icon font-icon-pencil"></i>
+                        </button>
+                </header>
+                <div class="tab-content widget-tabs-content">
+                    <div class="tab-pane active" id="w-1-tab-3" role="tabpanel">
+                        <center>
+                            <div id="pie-chart2"></div>  
+                        </center>
+                    </div>
+                    <div class="tab-pane" id="w-1-tab-4" role="tabpanel">
+                        <center>
+                        
+                                <div class="pre-scrollable">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                            @foreach($state as $s)
+                                            <tr>
+                                                <td class="table-check">
+                                                    <div class="font-11 color-blue-grey-lighter uppercase">Estado</div>
+                                                    {{$s->nombre}}
+                                                </td>
+                                                <td class="table-check">
+                                                    <div class="font-11 color-blue-grey-lighter uppercase">Número de alumnos</div>
+                                                    {{$s->students->count()}}
+                                                </td>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            
+                        </center>
+                    </div>
+                </div>
+                <div class="widget-tabs-nav bordered">
+                    <ul class="tbl-row" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#w-1-tab-3" role="tab">
+                                <i class="font-icon font-icon-chart-3"></i>
+                                Gráfica
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#w-1-tab-4" role="tab">
+                                <i class="font-icon font-icon-notebook-lines"></i>
+                                Lista
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section><!--.widget-->
+        </div>
+        
     </div>
 </div>
 
@@ -195,6 +413,8 @@
 </div>
 
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+
 
 <div class="container-fluid">
     <div class="row">
@@ -602,11 +822,12 @@ Hola
     <script src="/Template/js/lib/d3/d3.min.js"></script>
     <script src="/Template/js/lib/charts-c3js/c3.min.js"></script>
     <script src="/Template/js/custom/configEdit.js"></script>
+    
     <script>
         $(document).ready(function() {
             console.log(11);
             var pieChart = c3.generate({
-            bindto: '#pie-chart',
+            bindto: '#pie-chart1',
                 data: {
                     columns: [
                         <?php 
@@ -618,6 +839,23 @@ Hola
                     type : 'pie'
                 }
             });
+            var pieChart = c3.generate({
+            bindto: '#pie-chart2',
+                data: {
+                    columns: [
+                        <?php 
+                            foreach($state as $s){
+                                if($s->students->count() > 0){
+                                    echo '["'.$s->nombre.'", '.$s->students->count().'],';
+                                }
+                            }
+                        ?>
+                    ],
+                    type : 'pie'
+                }
+            });
+            
         });
     </script>
+    
 @stop

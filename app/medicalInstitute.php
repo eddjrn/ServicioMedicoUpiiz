@@ -10,6 +10,8 @@ class medicalInstitute extends Model
     
     protected $fillable = ['nombre'];
     
+    public $timestamps = false;
+    
     public function medicalData(){
         return $this->hasMany(medicalData::class, 'institucionSeguro_id');
     }

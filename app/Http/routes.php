@@ -49,5 +49,10 @@ Route::post('/admin/profile', 'adminController@profilePassword');
 Route::patch('/admin/profile', 'adminController@editProfile');
 
 Route::get('/admin/config', 'adminController@configIndex');
+Route::post('/admin/config/{variable}', 'adminController@checkPassword');
+Route::get('/admin/config/insert/{variable}', 'adminController@getRegisterWindow');
+Route::post('/admin/config/insert/{variable}', 'adminController@insertRegister');
+Route::patch('/admin/config/insert/{variable}', 'adminController@updateRegister');
+Route::delete('/admin/config/insert/{variable}', 'adminController@deleteRegister');
 
 //-----------------

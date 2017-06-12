@@ -238,7 +238,7 @@ class adminController extends Controller
         $students = \App\student::all();
         $carrer = \App\carrer::all();
         $clinics = \App\clinic::all();
-        $estate = \App\state::all();
+        $state = \App\state::all();
         $institution = \App\medicalInstitute::all();
         $place = \App\place::all();
         $medicalDatas = \App\medicalData::all();
@@ -250,11 +250,83 @@ class adminController extends Controller
             'students'=>$students,
             'carrer'=>$carrer,
             'clinics'=>$clinics,
-            'estate'=>$estate,
+            'state'=>$state,
             'institution'=>$institution,
             'place'=>$place,
             'medicalDatas'=>$medicalDatas,
             'status'=>$status,
         ]);
+    }
+    
+    public function checkPassword(Request $request, $variable){
+        $this->validate($request, [
+            'clave' => 'required',
+        ]);
+        
+        if(Hash::check($request->clave, Auth::user()->password)){
+            return redirect('/admin/config/insert/'.$variable);
+        } else{
+            return redirect('/admin/config')
+            ->withErrors([
+                $request->clave => 'No coinciden las contraseñas',
+            ]);
+        }
+    }
+    
+    public function getRegisterWindow($variable){
+        $index = -1;
+            
+        return view('Admin.dialogBox', ['index'=>$index, 'variable'=>$variable]);
+    }
+    
+    public function insertRegister(Request $request, $variable){
+        $this->validate($request, [
+            'nombre' => 'required|min:5|max:255',
+        ]);
+
+    
+        if($variable == 1){
+           \App\carrer::create([
+                'nombre' => $request->nombre,
+            ]);
+        } elseif($variable == 2){
+            \App\state::create([
+                'nombre' => $request->nombre,
+            ]);
+        }
+            
+        return redirect('/admin/config/insert/'. $variable);
+    }
+    
+    public function updateRegister(Request $request, $variable){
+        $this->validate($request, [
+            'nombre' => 'required',
+        ]);
+    
+        if($variable == 1){
+            $carrer = \App\carrer::find($request->idVal);
+            $carrer->update([
+                'nombre' => $request->nombre,
+            ]);
+        } elseif($variable == 2){
+            $state = \App\state::find($request->idVal);
+            $state->update([
+                'nombre' => $request->nombre,
+            ]);
+        }
+        
+        return redirect('/admin/config/insert/'. $variable);
+    }
+    
+    public function deleteRegister(Request $request, $variable){
+        if($variable == 1){
+            $carrer = \App\carrer::find($request->idVal2);
+            $carrer->delete();
+        } elseif($variable == 2){
+            $state = \App\state::find($request->idVal2);
+            $state->delete();
+        }
+        
+        return redirect('/admin/config/insert/'. $variable);
     }
 }

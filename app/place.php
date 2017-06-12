@@ -8,6 +8,10 @@ class place extends Model
 {
     protected $table = 'municipio';
     
+    protected $fillable = ['nombre'];
+    
+    public $timestamps = false;
+    
     public function students(){
         return $this->hasMany(student::class, 'municipio_id');
     }
