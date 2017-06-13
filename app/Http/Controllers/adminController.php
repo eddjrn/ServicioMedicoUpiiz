@@ -280,9 +280,19 @@ class adminController extends Controller
     }
     
     public function insertRegister(Request $request, $variable){
-        $this->validate($request, [
-            'nombre' => 'required|min:5|max:255',
-        ]);
+        
+        
+        if($variable == 6){
+            $this->validate($request, [
+                'nombre' => 'required',
+                'numero' => 'required',
+                'municipio' => 'required',
+            ]);
+        } else{
+            $this->validate($request, [
+                'nombre' => 'required|min:5|max:255',
+            ]);
+        }
 
     
         if($variable == 1){
@@ -293,15 +303,41 @@ class adminController extends Controller
             \App\state::create([
                 'nombre' => $request->nombre,
             ]);
+        } elseif($variable == 3){
+            \App\medicalInstitute::create([
+                'nombre' => $request->nombre,
+            ]);
+        } elseif($variable == 4){
+            \App\place::create([
+                'nombre' => $request->nombre,
+            ]);
+        } elseif($variable == 5){
+            \App\status::create([
+                'nombre' => $request->nombre,
+            ]);
+        } elseif($variable == 6){
+            \App\clinic::create([
+                'tipo' => $request->nombre,
+                'numero' => $request->numero,
+                'municipio_id' => $request->municipio,
+            ]);
         }
             
         return redirect('/admin/config/insert/'. $variable);
     }
     
     public function updateRegister(Request $request, $variable){
-        $this->validate($request, [
-            'nombre' => 'required',
-        ]);
+        if($variable == 6){
+            $this->validate($request, [
+                'nombre' => 'required',
+                'numero2' => 'required',
+                'municipio2' => 'required',
+            ]);
+        } else{
+            $this->validate($request, [
+                'nombre' => 'required',
+            ]);
+        }
     
         if($variable == 1){
             $carrer = \App\carrer::find($request->idVal);
@@ -312,6 +348,28 @@ class adminController extends Controller
             $state = \App\state::find($request->idVal);
             $state->update([
                 'nombre' => $request->nombre,
+            ]);
+        } elseif($variable == 3){
+            $medicalInstitute = \App\medicalInstitute::find($request->idVal);
+            $medicalInstitute->update([
+                'nombre' => $request->nombre,
+            ]);
+        } elseif($variable == 4){
+            $place = \App\place::find($request->idVal);
+            $place->update([
+                'nombre' => $request->nombre,
+            ]);
+        } elseif($variable == 5){
+            $status = \App\status::find($request->idVal);
+            $status->update([
+                'nombre' => $request->nombre,
+            ]);
+        } elseif($variable == 6){
+            $clinic = \App\clinic::find($request->idVal);
+            $clinic->update([
+                'tipo' => $request->nombre,
+                'numero' => $request->numero2,
+                'municipio_id' => $request->municipio2,
             ]);
         }
         
@@ -325,6 +383,18 @@ class adminController extends Controller
         } elseif($variable == 2){
             $state = \App\state::find($request->idVal2);
             $state->delete();
+        } elseif($variable == 3){
+            $medicalInstitute = \App\medicalInstitute::find($request->idVal2);
+            $medicalInstitute->delete();
+        } elseif($variable == 4){
+            $place = \App\place::find($request->idVal2);
+            $place->delete();
+        } elseif($variable == 5){
+            $status = \App\status::find($request->idVal2);
+            $status->delete();
+        } elseif($variable == 6){
+            $clinic = \App\clinic::find($request->idVal2);
+            $clinic->delete();
         }
         
         return redirect('/admin/config/insert/'. $variable);
