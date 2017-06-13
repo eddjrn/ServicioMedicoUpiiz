@@ -97,21 +97,24 @@ Edición del blog
                         <th>No</th>
                         <th>Titulo</th>
                         <th>Contenido</th>
+                        <th>Fecha</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-
+                    @foreach($info as $in)
                         <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
+                            <td>{{$in->id}}</td>
+                            <td>{{$in->titulo}}</td>
+                            <td>{{$in->contenido}}</td>
+                            <td>{{$in->FechaCreacion()}}</td>
                             <td>
                                 <a href=""><span class="label label-info">Ver</span></a>
                                 <a href=""><span class="label label-success">Editar</span></a>
                                 <a href=""><span class="label label-danger">Eliminar</span></a>
                             </td>
                         </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

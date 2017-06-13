@@ -167,8 +167,12 @@ class adminController extends Controller
     
     public function addBlog(){
         $index = 3;
+        $info=\App\info::all();
+        $images=\App\images::all();
+        $video=\App\video::all();
         
-        return view('Admin.addBlog', ['index'=>$index]);
+        return view('Admin.addBlog', ['index'=>$index,'info'=> $info,'images'=> $images,'video'=> $video]);
+
     }
     
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
