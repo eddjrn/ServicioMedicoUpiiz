@@ -47,6 +47,10 @@ class user extends Model implements AuthenticatableContract,
         return $this->hasOne(medicalData::class, 'usuario_id');
     }
     
+    public function info(){
+        return $this->hasMany(info::class, 'usuario_id');
+    }
+    
     public function __toString(){
         return $this->nombre.' '.$this->apellidoPaterno.' '.$this->apellidoMaterno;
     }

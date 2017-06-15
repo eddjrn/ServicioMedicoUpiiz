@@ -51,7 +51,7 @@
                             <div class="tbl-row">
                                 <div class="tbl-cell">
                                     <div class="title">Alumnos con documentos completos: {{$students->where('documentacion', 1)->count()}}</div>
-                                    <div class="amount-sm">Total de alumnos: {{$students->count()}}</div>
+                                    <div class="amount-sm">Alumnos con documentos incompletos: {{$students->where('documentacion', 2)->count()}}</div>
                                 </div>
                                 <div class="tbl-cell tbl-cell-progress">
                                     <div class="circle-progress-bar-typical size-56 pieProgress"
@@ -95,28 +95,39 @@
     </header>
 </div>
 
-<div class="row">
-    @foreach($status as $s)
-    <div class="col-lg-3">
-        <section class="widget widget-simple-sm-fill 
-        @if($s->id == 1)
-            blue
-        @elseif($s->id == 2)
-            red
-        @elseif($s->id == 3)
-            purple
-        @elseif($s->id == 4)
-            orange
-        @elseif($s->id == 5)
-            green
-        @endif">
-            <div class="widget-simple-sm-icon">
-                {{$s->students->count()}}
-            </div>
-            <div class="widget-simple-sm-fill-caption">{{$s->nombre}}s</div>
-        </section><!--.widget-simple-sm-fill-->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-offset-1 col-lg-2 col-md-3 col-sm-3 col-xs-6">
+            <section class="widget widget-simple-sm-fill grey">
+                <div class="widget-simple-sm-icon">
+                    {{$students->count()}}
+                </div>
+                <div class="widget-simple-sm-fill-caption">Alumnos</div>
+            </section><!--.widget-simple-sm-fill-->
+        </div>
+        
+        @foreach($status as $s)
+        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-6">
+            <section class="widget widget-simple-sm-fill 
+            @if($s->id == 1)
+                blue
+            @elseif($s->id == 2)
+                red
+            @elseif($s->id == 3)
+                purple
+            @elseif($s->id == 4)
+                orange
+            @elseif($s->id == 5)
+                green
+            @endif">
+                <div class="widget-simple-sm-icon">
+                    {{$s->students->count()}}
+                </div>
+                <div class="widget-simple-sm-fill-caption">{{$s->nombre}}s</div>
+            </section><!--.widget-simple-sm-fill-->
+        </div>
+        @endforeach
     </div>
-    @endforeach
 </div>
 
 <div class="container-fluid">
@@ -413,7 +424,7 @@
             </header>
             <div class="tab-content widget-tabs-content">
                 <div class="tab-pane active" id="w-6-tab-1" role="tabpanel">
-                    <div id="pie-chart6"></div> 
+                        <div id="pie-chart6"></div>
                 </div>
                 <div class="tab-pane" id="w-6-tab-2" role="tabpanel">
                     <center>
@@ -461,107 +472,35 @@
 
 <!-- --------------------------------------------------------------------------------------------------------------------------------------------- -->
 
-
-<div class="col-xxl-3 col-md-6">
+<div class="container">
     <div class="row">
-        <div class="col-xs-6">
-            <section class="widget widget-simple-sm-fill">
-                <div class="widget-simple-sm-icon">
-                    <i class="font-icon font-icon-facebook"></i>
-                </div>
-                <div class="widget-simple-sm-fill-caption">98K Likes</div>
-            </section>
-        </div><!--.widget-simple-sm-fill-->
-        <div class="col-xs-6">
-            <section class="widget widget-simple-sm-fill red">
-                <div class="widget-simple-sm-icon">
-                    <i class="font-icon font-icon-server"></i>
-                </div>
-                <div class="widget-simple-sm-fill-caption">3 Servers</div>
-            </section>
-        </div><!--.widget-simple-sm-fill-->
-    </div><!--.row-->
-
-    <div class="row">
-        <div class="col-xs-6">
-            <section class="widget widget-simple-sm-fill green">
-                <div class="widget-simple-sm-icon">
-                    <i class="font-icon font-icon-facebook"></i>
-                </div>
-                <div class="widget-simple-sm-fill-caption">98K Likes</div>
-            </section><!--.widget-simple-sm-fill-->
-        </div>
-        <div class="col-xs-6">
-            <section class="widget widget-simple-sm-fill orange">
-                <div class="widget-simple-sm-icon">
-                    <i class="font-icon font-icon-server"></i>
-                </div>
-                <div class="widget-simple-sm-fill-caption">3 Servers</div>
-            </section><!--.widget-simple-sm-fill-->
-        </div>
-    </div><!--.row-->
-
-    <div class="row">
-        <div class="col-xs-6">
-            <section class="widget widget-simple-sm-fill purple">
-                <div class="widget-simple-sm-icon">
-                    <i class="font-icon font-icon-facebook"></i>
-                </div>
-                <div class="widget-simple-sm-fill-caption">98K Likes</div>
-            </section><!--.widget-simple-sm-fill-->
-        </div>
-        <div class="col-xs-6">
-            <section class="widget widget-simple-sm-fill grey">
-                <div class="widget-simple-sm-icon">
-                    <i class="font-icon font-icon-server"></i>
-                </div>
-                <div class="widget-simple-sm-fill-caption">3 Servers</div>
-            </section><!--.widget-simple-sm-fill-->
-        </div>
-    </div><!--.row-->
-
-    <div class="row">
-        <div class="col-xs-6">
+        <div class="col-lg-4 col-md-4">
             <section class="widget widget-simple-sm">
                 <div class="widget-simple-sm-icon">
-                    <i class="font-icon font-icon-cloud-download color-green"></i>
+                    <i class="font-icon font-icon-video-fill color-blue"></i>
                 </div>
-                <div class="widget-simple-sm-bottom">98K Likes</div>
+                <div class="widget-simple-sm-bottom">{{\App\video::all()->count()}} videos</div>
             </section><!--.widget-simple-sm-->
         </div>
-        <div class="col-xs-6">
+        <div class="col-lg-4 col-md-4">
             <section class="widget widget-simple-sm">
                 <div class="widget-simple-sm-icon">
-                    <i class="font-icon font-icon-bookmark color-purple"></i>
+                    <i class="font-icon font-icon-post color-red"></i>
                 </div>
-                <div class="widget-simple-sm-bottom">
-                    <a href="#">760 Bookmarks</a>
-                </div>
+                <div class="widget-simple-sm-bottom">{{\App\info::all()->count()}} posts</div>
             </section><!--.widget-simple-sm-->
         </div>
-    </div><!--.row-->
-
-    <div class="row">
-        <div class="col-xs-6">
+        <div class="col-lg-4 col-md-4">
             <section class="widget widget-simple-sm">
                 <div class="widget-simple-sm-icon">
-                    <i class="font-icon font-icon-twitter color-blue"></i>
+                    <i class="font-icon font-icon-picture color-green"></i>
                 </div>
-                <div class="widget-simple-sm-bottom">35K Followers</div>
+                <div class="widget-simple-sm-bottom">{{\App\images::all()->count()}} imágenes</div>
             </section><!--.widget-simple-sm-->
         </div>
-        <div class="col-xs-6">
-            <section class="widget widget-simple-sm">
-                <div class="widget-simple-sm-icon">
-                    <i class="font-icon font-icon-wp color-black-blue"></i>
-                </div>
-                <div class="widget-simple-sm-bottom">
-                    <a href="#">15 Themes</a>
-                </div>
-            </section><!--.widget-simple-sm-->
-        </div>
-    </div><!--.row-->
+    </div>
 </div>
+
 
 @stop
 
@@ -586,7 +525,7 @@ Hola
                     columns: [
                         <?php 
                             foreach($carrer as $c){
-                                echo '["'.$c->nombre.'", '.$c->students->count().'],';
+                                echo '["'.$c->nombre.'['.$c->students->count().']", '.$c->students->count().'],';
                             }
                         ?>
                     ],
@@ -597,12 +536,18 @@ Hola
             bindto: '#pie-chart2',
                 data: {
                     columns: [
-                        <?php 
+                        <?php
+                            $otros = 0;
+                            
                             foreach($state as $s){
-                                if($s->students->count() > 0){
-                                    echo '["'.$s->nombre.'", '.$s->students->count().'],';
+                                if($s->students->count() > 10){
+                                    echo '["'.$s->nombre.'['.$s->students->count().']", '.$s->students->count().'],';
+                                } else{
+                                    $otros = $otros + $s->students->count();
                                 }
                             }
+                            
+                            echo '["Otros['.$otros.']", 0],';
                         ?>
                     ],
                     type : 'pie'
@@ -614,7 +559,7 @@ Hola
                     columns: [
                         <?php 
                             foreach($institution as $in){
-                                echo '["'.$in->nombre.'", '.$in->medicalData->count().'],';
+                                echo '["'.$in->nombre.'['.$in->medicalData->count().']", '.$in->medicalData->count().'],';
                             }
                         ?>
                     ],
@@ -625,12 +570,18 @@ Hola
             bindto: '#pie-chart4',
                 data: {
                     columns: [
-                        <?php 
+                        <?php
+                            $otros = 0;
+                            
                             foreach($place as $p){
-                                if($p->students->count() > 0){
-                                    echo '["'.$p->nombre.'", '.$p->students->count().'],';
+                                if($p->students->count() > 10){
+                                    echo '["'.$p->nombre.'['.$p->students->count().']", '.$p->students->count().'],';
+                                } else{
+                                    $otros = $otros + $p->students->count();
                                 }
                             }
+                            
+                            echo '["Otros['.$otros.']", 0],';
                         ?>
                     ],
                     type : 'pie'
@@ -642,7 +593,7 @@ Hola
                     columns: [
                         <?php 
                             foreach($status as $es){
-                                echo '["'.$es->nombre.'", '.$es->students->count().'],';
+                                echo '["'.$es->nombre.'['.$es->students->count().']", '.$es->students->count().'],';
                             }
                         ?>
                     ],
@@ -653,12 +604,18 @@ Hola
             bindto: '#pie-chart6',
                 data: {
                     columns: [
-                        <?php 
+                        <?php
+                            $otros = 0;
+                            
                             foreach($clinics as $cli){
-                                if($cli->medicalData->count() > 0){
-                                    echo '["'.$cli.'", '.$cli->medicalData->count().'],';
+                                if($cli->medicalData->count() > 10){
+                                    echo '["'.$cli.'['.$cli->medicalData->count().']", '.$cli->medicalData->count().'],';
+                                } else{
+                                    $otros = $otros + $cli->medicalData->count();
                                 }
                             }
+                            
+                            echo '["Otros['.$otros.']", 0],';
                         ?>
                     ],
                     type : 'pie'
