@@ -49,50 +49,62 @@ Vista previa del blog
                 </div><!--.tabs-section-nav-->
 
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade in active" id="tabs-1-tab-1" class="col-md-5 col-xs-6" >
+                    <div role="tabpanel" class="tab-pane fade in active" id="tabs-1-tab-1" class="col-md-5 col-xs-6 " >
        
-        @foreach($info as $in)
-        <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <div class="card-grid-col"> <!-- Card-->
-                    <article class="card-typical">
-                        <div class="card-typical-section">
-                            <div class="user-card-row">
-                                <div class="tbl-row">
-                                    <div class="tbl-cell tbl-cell-photo">
-                                        <a href="#">
-                                            <img src="Template/img/avatar-sign.png" alt="">
-                                        </a>
-                                    </div>
-                                    <div class="tbl-cell">
-                                        <p class="user-card-row-name"><a>@if($in->usuario_id==1) Veronica @endif</a></p>
-                                        <p class="color-blue-grey-lighter"></p>
-                                    </div>
+<div class="container-fluid">
+@foreach($info->sortByDesc('updated_at') as $info) 
+            <section class="activity-line">
+                <article class="activity-line-item box-typical">
+                    <div class="activity-line-date border-primary b-a round">
+                        {{$info->dia()}}<br>
+                       {{$info->Mes()}}
+                    </div>
+                    <header class="activity-line-item-header">
+                        <div class="activity-line-item-user">
+                            <div class="activity-line-item-user-photo">
+                                <a href="#">
+                                    <img src="/template/img/photo-64-2.jpg" alt="">
+                                </a>
+                            </div>
+                            <div class="activity-line-item-user-name">{{$info->user}}</div>
+                            <div class="activity-line-item-user-status">{{$info->user->email}}</div>
+                        </div>
+                    </header>
+                    <div class="activity-line-action-list">
+                        <section class="activity-line-action">
+                            <div class="time">{{$info->hora()}}</div>
+                            <div class="cont">
+                                <div class="cont-in">
+                                    <div class="activity-line-item-user-name text-shadow "><strong>{{$info->titulo}}</strong></div>
+                                    <ul class="previews">
+                                        <div>
+                                           <div class="activity-line-item-user-status">{{$info->contenido}}</div>
+                                        </div>
+                                    </ul>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-typical-section card-typical-content"> <!-- Post-->
-                            <header class="title"><a>{{$in->titulo}}</a></header>
-                            <p>{{$in->contenido}} </p>
-                        </div>
+                        </section><!--.activity-line-action-->
                        
-                    </article><!--.card-typical-->
-                    </div>  
-                    </div>
-                    </div>
-                 @endforeach
+                    </div><!--.activity-line-action-list-->
+                </article><!--.activity-line-item-->
+
+                
+            </section><!--.activity-line-->
+            @endforeach
+        </div>
+
                     </div><!--.tab-pane-->
 
 
                     <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-2">
-                    	
-                    	<div class="row">
-                        @foreach($images as $img) 
-                            <div class="col-md-1"></div>
-                                 <div class="col-md-2">
+                        
+                        <div class="row ">
+                        @foreach($images->sortByDesc('updated_at') as $img) 
+                            <div class="col-md-1 col-sm-6"></div>
+                                 <div class="col-md-2 col-sm-6 ">
                            <div class="gallery-col">
                             <article class="gallery-item">
+                                <p ALIGN=center ><strong>{{$img->titulo}}</strong></p>
                                 <img class="gallery-picture" src="{{$img->imagen}}" alt="" height="158">
                                 <div class="gallery-hover-layout">
                                     <div class="gallery-hover-layout-in">
@@ -111,17 +123,20 @@ Vista previa del blog
                         @endforeach
                         </div>
 
+
+
                     </div><!--.tab-pane-->
 
 
                     <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">
 
-                    	<div class="row">
-                        @foreach($video as $vi) 
+                        <div class="row">
+                        @foreach($video->sortByDesc('update_at') as $vi) 
                             <div class="col-md-1"></div>
                                  <div class="col-md-2">
                            <div class="gallery-col">
                             <article class="gallery-item">
+                            <p ALIGN=center ><strong>{{$vi->titulo}}</strong></p>
                                 <img class="gallery-picture" src="{{$vi->imagen}}" alt="" height="158">
                                 <div class="gallery-hover-layout">
                                     <div class="gallery-hover-layout-in">
@@ -139,6 +154,7 @@ Vista previa del blog
                         </div>
                         @endforeach
                         </div>
+
 
                     </div><!--.tab-pane-->
 

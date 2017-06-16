@@ -98,9 +98,9 @@
         <li class="nav-item">
 			<a class="nav-link @if($index==7)active @endif" href="/forms">Formularios</a>
 		</li>
-		<li class="nav-item">
+		<!--<li class="nav-item">
 			<a class="nav-link @if($index==8)active @endif" href="/lifeInsurance">Seguro de vida</a>
-		</li>
+		</li>-->
 		@else
 		<li class="nav-item">
 			<a class="nav-link @if($index==5)active @endif" href="/login">Iniciar sesión</a>

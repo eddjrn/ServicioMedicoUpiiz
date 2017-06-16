@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use Jenssegers\Date\Date;
 
 class newsController extends Controller
 {
@@ -20,8 +22,9 @@ class newsController extends Controller
         $info=\App\info::all();
         $images=\App\images::all();
         $video=\App\video::all();
+        $user=\App\user::all();
 
-        return view('Welcome.news',['index' => $index, 'info'=> $info,'images'=> $images,'video'=> $video]);
+        return view('Welcome.news',['index' => $index, 'info'=> $info,'images'=> $images,'video'=> $video,'user'=> $user]);
     }
 
     /**

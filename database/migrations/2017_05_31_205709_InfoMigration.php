@@ -17,7 +17,9 @@ class InfoMigration extends Migration
         Schema::create('informacion', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->integer('usuario_id')->unsigned()->index();
+
+             $table->integer('usuario_id')->unsigned()->index();
+            $table->foreign('usuario_id')->references('id')->on('usuario')->onDelete('cascade');
 
             $table->string('titulo');
             $table->text('contenido');
@@ -33,6 +35,10 @@ class InfoMigration extends Migration
      */
    public function down()
     {        
+        Schema::table('informacion', function (Blueprint $table) {
+            $table->dropForeign(['usuario_id']);
+        });
+
         Schema::drop('informacion');
     }
 }

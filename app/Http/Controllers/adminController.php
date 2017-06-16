@@ -166,6 +166,7 @@ class adminController extends Controller
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     public function addBlog(){
+        
         $index = 3;
         $info=\App\info::all();
         $images=\App\images::all();
@@ -173,6 +174,46 @@ class adminController extends Controller
         
         return view('Admin.addBlog', ['index'=>$index,'info'=> $info,'images'=> $images,'video'=> $video]);
 
+    }
+
+    public function updateInfo(Request $request){
+
+        $this->validate($request,[
+
+            'Titulo'=>'required',
+            'Contenido'=>'required'
+
+            ]);
+
+        $post=\App\info::find($request->id_post);
+        $post->update([
+            'titulo'=>$request->Titulo,
+            'contenido'=>$request->Contenido
+            ]);
+        return back();
+
+    }
+
+    public function deletInfo(Request $request)
+    {
+        $post=\App\info::find($request->id_delete);
+        $post->delete();
+        return back();
+    }
+    public function newInfo(Request $request)
+    {
+        $this->validate($request,[
+
+            'Title'=>'required',
+            'Content'=>'required'
+
+            ]);
+        $create=\App\info::create([
+                'usuario_id'=> Auth::user()->id,
+                'titulo' => $request->Title,
+                'contenido'=>$request->Content
+            ]);
+        return back();
     }
     
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

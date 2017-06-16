@@ -13,7 +13,7 @@ class info extends Model
 
     public function user()
     {
-    	return $informacion = \App\user::find($this->usuario_id); 
+    	return $this ->belongsTo(user::class,'usuario_id'); 
     }
 
     public function FechaCreacion()
@@ -21,4 +21,21 @@ class info extends Model
     	Date::setLocale('es');
         return Date::parse($this->created_at)->format('j \\d\\e F \\d\\e\\l Y');
     }
+    public function Mes()
+    {
+            Date::setLocale('es');
+        return Date::parse($this->created_at)->format('F \\ j');
+    }
+    public function dia()
+    {
+            Date::setLocale('es');
+        return Date::parse($this->created_at)->format('l');
+    }
+        public function hora()
+    {
+            Date::setLocale('es');
+        return Date::parse($this->created_at)->format('h:i');
+    }
+
+
 }
