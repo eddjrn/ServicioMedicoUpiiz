@@ -25,6 +25,7 @@ Información del alumno
         <i class="font-icon font-icon-award"></i>
     </div>
     <div>{{$student->carrer->nombre}}</div>
+    <div><a href="{{$student->user->facebook}}" target="_blank">Facebook</a></div>
     
     <div class="widget-user-stat hidden-md-down">
         <div class="item">

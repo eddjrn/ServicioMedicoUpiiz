@@ -31,6 +31,9 @@
                     {!!Form::text('email', null, ['class'=>'form-control', 'placeholder'=>'E-Mail', 'id'=>'email'])!!}
                 </div>
                 <div class="form-group">
+                    {!!Form::text('facebook', null, ['class'=>'form-control', 'placeholder'=>'Link de Facebook', 'id'=>'facebook'])!!}
+                </div>
+                <div class="form-group">
                     {!!Form::text('identificacion', null, ['class'=>'form-control', 'placeholder'=>'Boleta o indentificación', 'id'=>'identificacion'])!!}
                 </div>
                 <div class="form-group">

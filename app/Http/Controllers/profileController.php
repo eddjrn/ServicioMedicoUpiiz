@@ -11,6 +11,7 @@ use App\student;
 use App\medicalData;
 
 use Carbon\Carbon;
+use Hash;
 
 class profileController extends Controller
 {
@@ -63,6 +64,22 @@ class profileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+     
+    public function checkPassword(Request $request){
+        $this->validate($request, [
+            'clave'=>'required',
+        ]);
+        
+        if(Hash::check($request->clave, Auth::user()->password)){
+            return redirect('/profile/edit');
+        } else{
+            return back()
+            ->withErrors([
+                $request->clave => 'No coinciden las contraseñas',
+            ]);
+        }
+    }
+     
     public function update(Request $request)
     {
         $user = \App\user::find($request->studentId);
@@ -71,6 +88,7 @@ class profileController extends Controller
             'apellidoPaterno'=>$request->apellidoPaterno,
             'apellidoMaterno'=>$request->apellidoMaterno,
             'email'=>$request->email,
+            'facebook' =>$request->facebook,
             'identificacion'=>$request->identificacion,
         ]);
         

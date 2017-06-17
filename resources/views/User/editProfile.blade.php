@@ -109,6 +109,15 @@ Edición de los datos personales
                             </div>
                         </fieldset>
                     </div>
+                    <div class="col-md-4 col-sm-6">
+                        <fieldset class="form-group">
+                            <label class="form-label" for="exampleInputDisabled">Facebook</label>
+                            {!!Form::text('facebook', $student->user->facebook, ['class'=>'form-control', 'placeholder'=>'Ej: Link de Facebook', 'id'=>'facebook'])!!}
+                        </fieldset>
+                        <div class="form-group">
+                            <a href="https://www.facebook.com/" target="_blank">Página de Facebook</a>
+                        </div>
+                    </div>
                 </div>
                 
             </div>

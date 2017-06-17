@@ -44,6 +44,31 @@ Listas de todos los alumnos en el sistema
                 </div>
             </div>
             {!!Form::close()!!}
+            
+             <div class="modal-footer">
+                <div class="text-center">
+                    <a onclick="toggle();" id="more">Mostrar más</a>
+                </div>
+            </div>
+            
+            {!!Form::open(array('method'=>'delete', 'style'=>'display:none', 'class'=>'details'))!!}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label">¿Seguro que quiere eliminar el registro?</label>
+                    </div>
+                </div>
+            
+                <input type="hidden" name="idVal2" id="idVal2" value="">
+                <div class="modal-footer">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-rounded btn-primary btn-danger" formaction="/" id="formButton2">Eliminar</button>
+                    </div>
+                    <br/>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-rounded btn-primary" onclick="toggle();">Cancelar</button>
+                    </div>
+                </div>
+            {!!Form::close()!!}
         </div>
     </div>
 </div><!--.modal-->
