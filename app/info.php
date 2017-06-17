@@ -21,6 +21,11 @@ class info extends Model
     	Date::setLocale('es');
         return Date::parse($this->created_at)->format('j \\d\\e F \\d\\e\\l Y');
     }
+    public function FechaActualizacion()
+    {
+        Date::setLocale('es');
+        return Date::parse($this->updated_at)->format('j \\d\\e F \\d\\e\\l Y');
+    }
     public function Mes()
     {
             Date::setLocale('es');

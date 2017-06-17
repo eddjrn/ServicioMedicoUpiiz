@@ -60,3 +60,5 @@ Route::delete('/admin/config/insert/{variable}', 'adminController@deleteRegister
 Route::post('/admin/add/info','adminController@updateInfo');
 Route::delete('/admin/add/info','adminController@deletInfo');
 Route::patch('/admin/add/info','adminController@newInfo');
+
+Route::patch('/admin/add/images','adminController@newImage');

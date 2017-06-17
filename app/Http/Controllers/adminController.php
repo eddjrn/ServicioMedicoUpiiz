@@ -215,6 +215,22 @@ class adminController extends Controller
             ]);
         return back();
     }
+
+    public function newImage(Request $request)
+    {
+        $this->validate($request,[
+
+            'TitleImg'=>'required',
+            'ContentImg'=>'required'
+
+            ]);
+        $create=\App\images::create([
+                'usuario_id'=> Auth::user()->id,
+                'imagen' => $request->TitleImg,
+                'titulo'=>$request->ContentImg
+            ]);
+        return back();
+    }
     
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     

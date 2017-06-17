@@ -18,7 +18,7 @@ class InfoMigration extends Migration
         {
             $table->increments('id');
 
-             $table->integer('usuario_id')->unsigned()->index();
+            $table->integer('usuario_id')->unsigned()->index();
             $table->foreign('usuario_id')->references('id')->on('usuario')->onDelete('cascade');
 
             $table->string('titulo');

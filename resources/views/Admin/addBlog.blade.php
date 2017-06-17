@@ -64,7 +64,7 @@ Edición del blog
 				<div class="col-md-5">
 		<div class="panel-body">
 		<div class="panel-heading">
-            <h4>Agregar</h4>
+            <h4>Agregar Publicacion</h4>
         </div>
        {!!Form::open(array('url'=>'/admin/add/info','method'=>'patch'))!!} 
             <form method="post" action="store">
@@ -113,7 +113,7 @@ Edición del blog
                             
                             <td>{{$in->titulo}}</td>
                             <td>{{$in->contenido}}</td>
-                            <td>{{$in->FechaCreacion()}}</td>
+                            <td>{{$in->FechaActualizacion()}}</td>
                             <td>
 
                           
@@ -284,9 +284,222 @@ Edición del blog
                     </div><!--.tab-pane-->
 
 
-                    <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-2">
+           <!-- SEGUNDO-->         <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-2">
                     	
                     	
+                <section class="widget widget-tabs-compact">
+                        <div class="tab-content widget-tabs-content">
+                            <div class="tab-pane active " id="w-4-tab-3" role="tabpanel" aria-expanded="false">
+                                <div class="user-card-row">
+                                    <div class="tbl-row">
+                <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-5">
+        <div class="panel-body">
+        <div class="panel-heading">
+            <h4>Agregar Imagenes</h4>
+        </div>
+       {!!Form::open(array('url'=>'/admin/add/images','method'=>'patch'))!!} 
+            <form method="post" action="store">
+                <p>
+                    <input type="text" name="TitleImg" placeholder="Titulo" class="form-control" required>
+                </p>
+                <p>
+                    <textarea rows="4" name="ContentImg" class="form-control" placeholder="link de la imagen" class="form-control"required></textarea>
+                </p>
+                <p>
+                    <input type="submit" value="Guardar" class="btn btn-success">
+                </p>
+            </form>
+         {!!Form::close()!!}
+        </div>
+        </div>
+        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                            <div class="tab-pane" id="w-4-tab-4" role="tabpanel" aria-expanded="true">
+    <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-9">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h4>Lista de Publicaciones</h4>
+        </div>
+
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        
+                        <th>Titulo</th>
+                        <th>Link</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($images->sortByDesc('updated_at') as $img)
+                        <tr>
+                            
+                            <td>{{$img->titulo}}</td>
+                            <td>{{$img->imagen}}</td>
+                            <td>{{$img->FechaActualizacion()}}</td>
+                         <td>
+
+                          
+                    <button type="button" 
+                        onclick="verImg('{{$img->titulo}}','{{$img->imagen}}')" 
+                        data-toggle="modal"
+                        data-target=".bd-img-modal-lg"
+                        data-size="s"
+                        class="btn btn-info">Ver</button>
+
+                <div class="modal fade bd-img-modal-lg"
+                     tabindex="-1"
+                     role="dialog"
+                     aria-labelledby="mySmallModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                                    <i class="font-icon-close-2"></i>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Ver</h4>
+                            </div>
+                            <div class="modal-body">
+                        
+                        <div class="row ">
+                   <p ALIGN=center id="linTitle1" name="linTitle1" ><strong>{{$img->titulo}}</strong></p>
+                            <div class="col-md-3 col-sm-6"></div>
+                                 <div class="col-md-12 col-sm-6 ">
+                           <div class="gallery-col" >
+                            <article class="gallery-item">
+                                <img id="linkMu" name="linkMu" class="gallery-picture" src="{{$img->imagen}}" alt="800" weight="800" height="800">
+                                <div class="gallery-hover-layout">
+                                    <div class="gallery-hover-layout-in">
+                                        <p class="gallery-item-title" id="linkTitle2" name="linkTitle2" >{{$img->titulo}}</p>
+                                        <div class="btn-group" >
+                                            <button type="button" class="btn">
+                                            <a id="linkIr" name="linkIr" target="_blank" class="font-icon font-icon-picture" href="{{$img->imagen}}"></a>
+                                               
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        </div>
+                      
+                        </div>
+
+                            </div> <!--model boddy-->
+                        </div>
+                    </div>
+                </div><!--.modal-->
+
+                <button type="button" 
+                        onclick="editarInfo('{{$in->titulo}}','{{$in->contenido}}',{{$in->id}})" 
+                        data-toggle="modal"
+                        data-target=".bd-editar-modal-lg"
+                        class="btn btn-incline btn-success">Editar</button>
+
+                <div class="modal fade bd-editar-modal-lg"
+                     tabindex="-1"
+                     role="dialog"
+                     aria-labelledby="mySmallModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                                    <i class="font-icon-close-2"></i>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Editar</h4>
+                            </div>
+                            <div class="modal-body">
+        {!!Form::open(array('url'=>'/admin/add/info','method'=>'post'))!!}      
+                    <div class="form-group row">
+                        <label class="col-sm-2 form-control-label">Titulo</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static"><input name="Titulo" id="editTitle" type="text" class="form-control"  placeholder="Titulo"></p>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleSelect" class="col-sm-2 form-control-label">Contenido</label>
+                        <div class="col-sm-10">
+                            <textarea rows="4" id="editContent" name="Contenido" class="form-control" placeholder="Contenido"></textarea>
+                        </div>
+                    </div>
+                            </div>
+                            <div class="modal-footer">
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-rounded btn-warning">Guardar</button>
+
+                            </div>
+                            </div>
+             <input type="hidden" name="id_post" id="id_post">
+        {!!Form::close()!!}
+                            <div class="modal-footer">
+                                <div class="text-center">
+                                <a onclick="toggle()" id="more">Mostrar Más</a>
+                                </div>
+                            </div>
+
+                 {!!Form::open(array('url'=>'/admin/add/info','method'=>'delete','class'=>'editTables','style'=>'display:none'))!!}
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="form-label">¿Seguro que quiere eliminar el post?</label>
+                                </div>
+                            </div>
+                <input type="hidden" name="id_delete" id="id_delete">
+                        <div class="modal-footer">
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-rounded btn-danger">Eliminar</button>
+                            </div>
+                            </div>
+
+                 {!!Form::close()!!}
+                        </div>
+                
+                    </div>
+                </div><!--.modal-->
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    </div>
+
+                            </div>
+                        </div>
+                        <div class="widget-tabs-nav bordered">
+                            <ul class="tbl-row" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#w-4-tab-3" role="tab" aria-expanded="false">
+                                        <i class="font-icon font-icon-heart"></i>
+                                        Agregar
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#w-4-tab-4" role="tab" aria-expanded="true">
+                                        <i class="font-icon font-icon-users-two"></i>
+                                        Editar
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+
+
+
+
 
                     </div><!--.tab-pane-->
 
@@ -307,4 +520,5 @@ Edición del blog
 
 @section('scripts')
 <script src="\Template\js\custom\vewInfo.js"></script>
+<script src="\Template\js\custom\vewImg.js"></script>
 @stop
