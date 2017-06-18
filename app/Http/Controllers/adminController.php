@@ -332,7 +332,7 @@ class adminController extends Controller
         $this->validate($request,[
 
             'Titulo_De_La_Imagen'=>'required|min:4',
-            'Link_De_Imagen'=>'required',
+            'Link_De_Imagen'=>'required|min:70',
 
             ]);
         $create=\App\images::create([
@@ -346,7 +346,7 @@ class adminController extends Controller
 
         $this->validate($request,[
 
-            'contenidoImg'=>'required',
+            'contenidoImg'=>'required|min:70',
             'tituloImg'=>'required|min:4'
             
             ]);
@@ -372,8 +372,8 @@ class adminController extends Controller
         $this->validate($request,[
 
             'Titulo_Del_Video'=>'required|min:4',
-            'Link_Del_Video'=>'required',
-            'Link_De_la_imagen'=>'required'
+            'Link_Del_Video'=>'required|min:35',
+            'Link_De_la_imagen'=>'required|min:70'
 
             ]);
         $create=\App\video::create([
@@ -389,8 +389,8 @@ class adminController extends Controller
         $this->validate($request,[
 
             'eTituloVid'=>'required|min:4',
-            'eContenidoVid'=>'required',
-            'eContenidoVidImg'=>'required',
+            'eContenidoVid'=>'required|min:35',
+            'eContenidoVidImg'=>'required|min:70',
             ]);
 
         $post=\App\video::find($request->id_postVid);
