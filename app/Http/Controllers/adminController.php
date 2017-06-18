@@ -220,15 +220,39 @@ class adminController extends Controller
     {
         $this->validate($request,[
 
-            'TitleImg'=>'required',
-            'ContentImg'=>'required'
+            'titleImg'=>'required',
+            'contentImg'=>'required'
 
             ]);
         $create=\App\images::create([
                 'usuario_id'=> Auth::user()->id,
-                'imagen' => $request->TitleImg,
-                'titulo'=>$request->ContentImg
+                'imagen' => $request->contentImg,
+                'titulo'=>$request->titleImg
             ]);
+        return back();
+    }
+       public function updateImage(Request $request){
+
+        $this->validate($request,[
+
+            'contenidoImg'=>'required',
+            'tituloImg'=>'required'
+            
+            ]);
+
+        $post=\App\images::find($request->id_postImg);
+        $post->update([
+            'imagen'=>$request->contenidoImg,
+            'titulo'=>$request->tituloImg
+            ]);
+        return back();
+
+    }
+
+        public function deletImage(Request $request)
+    {
+        $post=\App\images::find($request->id_deleteImg);
+        $post->delete();
         return back();
     }
     

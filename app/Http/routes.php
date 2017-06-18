@@ -63,3 +63,5 @@ Route::delete('/admin/add/info','adminController@deletInfo');
 Route::patch('/admin/add/info','adminController@newInfo');
 
 Route::patch('/admin/add/images','adminController@newImage');
+Route::post('/admin/add/images','adminController@updateImage');
+Route::delete('/admin/add/images','adminController@deletImage');

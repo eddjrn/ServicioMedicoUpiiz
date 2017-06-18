@@ -1,14 +1,21 @@
 
 
-function verImg(imgtitulo,imagen) {
-	document.getElementById('linTitle1').innerHTML=imgtitulo;
-	document.getElementById('linkTitle2').innerHTML=imgtitulo;
-	document.getElementById('linkMu').innerHTML=imagen;
-	document.getElementById('linkIr').innerHTML=imagen;
-	alert(titulo+imagen);
+function verImg(imagen,imgtitulo) {
+	document.getElementById('linM').innerHTML=imagen;
+	
+	document.getElementById('linTitle').innerHTML=imgtitulo;
+	
+	//alert(imgtitulo+imagen);
 }
 
+function editarImg(Eimagen,EtituloImg,id) {
+	document.getElementById('contenidoImg').value=Eimagen;
+	document.getElementById('tituloImg').value=EtituloImg;
+	document.getElementById('id_postImg').value=id;
+	document.getElementById('id_deleteImg').value=id;
+	//alert(Etitulo+Econtenido);
+}
 
 function toggle(){
-    $('.editTables').slideToggle(function(){$('#more').html($('.editTables').is(':visible')?'Ocultar':'Mostrar más');});
+    $('.editTablesImg').slideToggle(function(){$('#more').html($('.editTablesImg').is(':visible')?'Ocultar':'Mostrar más');});
 }

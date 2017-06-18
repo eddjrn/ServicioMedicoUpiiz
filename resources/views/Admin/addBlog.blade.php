@@ -302,13 +302,13 @@ Edición del blog
        {!!Form::open(array('url'=>'/admin/add/images','method'=>'patch'))!!} 
             <form method="post" action="store">
                 <p>
-                    <input type="text" name="TitleImg" placeholder="Titulo" class="form-control" required>
+                    <input type="text" name="titleImg" placeholder="Titulo" class="form-control" required>
                 </p>
                 <p>
-                    <textarea rows="4" name="ContentImg" class="form-control" placeholder="link de la imagen" class="form-control"required></textarea>
+                    <textarea rows="4" name="contentImg" class="form-control" placeholder="link de la imagen" class="form-control"required></textarea>
                 </p>
                 <p>
-                    <input type="submit" value="Guardar" class="btn btn-success">
+                    <input type="submit" id="guardarImg" value="Guardar" class="btn btn-success">
                 </p>
             </form>
          {!!Form::close()!!}
@@ -320,13 +320,13 @@ Edición del blog
                 </div>
 
 
-                            <div class="tab-pane" id="w-4-tab-4" role="tabpanel" aria-expanded="true">
+                <div class="tab-pane" id="w-4-tab-4" role="tabpanel" aria-expanded="true">
     <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-9">
     <div class="panel panel-success">
         <div class="panel-heading">
-            <h4>Lista de Publicaciones</h4>
+            <h4>Lista de Imagenes</h4>
         </div>
 
         <div class="panel-body">
@@ -351,16 +351,16 @@ Edición del blog
 
                           
                     <button type="button" 
-                        onclick="verImg('{{$img->titulo}}','{{$img->imagen}}')" 
+                        onclick="verImg('{{$img->imagen}}','{{$img->titulo}}')" 
                         data-toggle="modal"
-                        data-target=".bd-img-modal-lg"
+                        data-target=".bd-imge-modal-lg"
                         data-size="s"
                         class="btn btn-info">Ver</button>
 
-                <div class="modal fade bd-img-modal-lg"
+                <div class="modal fade bd-imge-modal-lg"
                      tabindex="-1"
                      role="dialog"
-                     aria-labelledby="mySmallModalLabel"
+                     aria-labelledby="mSmallModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -368,28 +368,17 @@ Edición del blog
                                 <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
                                     <i class="font-icon-close-2"></i>
                                 </button>
-                                <h4 class="modal-title" id="myModalLabel">Ver</h4>
+                                <h4 class="modal-title" id="mModalLabel">Ver</h4>
                             </div>
                             <div class="modal-body">
                         
                         <div class="row ">
-                   <p ALIGN=center id="linTitle1" name="linTitle1" ><strong>{{$img->titulo}}</strong></p>
+                   <p ALIGN="center" ><strong id="linTitle" name="linTitle" >{{$img->titulo}}</strong></p>
                             <div class="col-md-3 col-sm-6"></div>
                                  <div class="col-md-12 col-sm-6 ">
-                           <div class="gallery-col" >
-                            <article class="gallery-item">
-                                <img id="linkMu" name="linkMu" class="gallery-picture" src="{{$img->imagen}}" alt="800" weight="800" height="800">
-                                <div class="gallery-hover-layout">
-                                    <div class="gallery-hover-layout-in">
-                                        <p class="gallery-item-title" id="linkTitle2" name="linkTitle2" >{{$img->titulo}}</p>
-                                        <div class="btn-group" >
-                                            <button type="button" class="btn">
-                                            <a id="linkIr" name="linkIr" target="_blank" class="font-icon font-icon-picture" href="{{$img->imagen}}"></a>
-                                               
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                           <div class="gallery-col" id="lol" >
+                            <article class="gallery-item"  id="lolo" >
+                                <img class="gallery-picture" src="{{$img->imagen}}" id="linM" name="linkM" alt="" weight="800" height="800"></img>
                             </article>
                         </div>
                         </div>
@@ -402,12 +391,12 @@ Edición del blog
                 </div><!--.modal-->
 
                 <button type="button" 
-                        onclick="editarInfo('{{$in->titulo}}','{{$in->contenido}}',{{$in->id}})" 
+                        onclick="editarImg('{{$img->imagen}}','{{$img->titulo}}',{{$img->id}})" 
                         data-toggle="modal"
-                        data-target=".bd-editar-modal-lg"
+                        data-target=".bd-editado-modal-lg"
                         class="btn btn-incline btn-success">Editar</button>
 
-                <div class="modal fade bd-editar-modal-lg"
+                <div class="modal fade bd-editado-modal-lg"
                      tabindex="-1"
                      role="dialog"
                      aria-labelledby="mySmallModalLabel"
@@ -415,50 +404,50 @@ Edición del blog
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                                <button type="button" id="editImga" class="modal-close" data-dismiss="modal" aria-label="Close">
                                     <i class="font-icon-close-2"></i>
                                 </button>
-                                <h4 class="modal-title" id="myModalLabel">Editar</h4>
+                                <h4 class="modal-title" id="myModalLabe">Editar</h4>
                             </div>
                             <div class="modal-body">
-        {!!Form::open(array('url'=>'/admin/add/info','method'=>'post'))!!}      
+        {!!Form::open(array('url'=>'/admin/add/images','method'=>'post'))!!}      
                     <div class="form-group row">
                         <label class="col-sm-2 form-control-label">Titulo</label>
                         <div class="col-sm-10">
-                            <p class="form-control-static"><input name="Titulo" id="editTitle" type="text" class="form-control"  placeholder="Titulo"></p>
+                            <p class="form-control-static"><input name="tituloImg" id="tituloImg" type="text" class="form-control"  placeholder="Titulo"></p>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleSelect" class="col-sm-2 form-control-label">Contenido</label>
+                        <label for="exampleSelect" class="col-sm-2 form-control-label">Link: </label>
                         <div class="col-sm-10">
-                            <textarea rows="4" id="editContent" name="Contenido" class="form-control" placeholder="Contenido"></textarea>
+                            <textarea rows="4" id="contenidoImg" name="contenidoImg" class="form-control" placeholder="Link de imagen"></textarea>
                         </div>
                     </div>
                             </div>
                             <div class="modal-footer">
                             <div class="text-center">
-                                <button type="submit" class="btn btn-rounded btn-warning">Guardar</button>
+                                <button type="submit" id="cambiosImg" class="btn btn-rounded btn-warning">Guardar</button>
 
                             </div>
                             </div>
-             <input type="hidden" name="id_post" id="id_post">
+             <input type="hidden" name="id_postImg" id="id_postImg">
         {!!Form::close()!!}
                             <div class="modal-footer">
                                 <div class="text-center">
-                                <a onclick="toggle()" id="more">Mostrar Más</a>
+                                <a onclick="toggle()" id="moreimg">Mostrar Más</a>
                                 </div>
                             </div>
 
-                 {!!Form::open(array('url'=>'/admin/add/info','method'=>'delete','class'=>'editTables','style'=>'display:none'))!!}
+                 {!!Form::open(array('url'=>'/admin/add/images','method'=>'delete','class'=>'editTablesImg','style'=>'display:none'))!!}
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label class="form-label">¿Seguro que quiere eliminar el post?</label>
                                 </div>
                             </div>
-                <input type="hidden" name="id_delete" id="id_delete">
+                <input type="hidden" name="id_deleteImg" id="id_deleteImg">
                         <div class="modal-footer">
                             <div class="text-center">
-                                <button type="submit" class="btn btn-rounded btn-danger">Eliminar</button>
+                                <button type="submit" id="deleteImgo" class="btn btn-rounded btn-danger">Eliminar</button>
                             </div>
                             </div>
 
