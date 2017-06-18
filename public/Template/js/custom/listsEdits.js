@@ -5,7 +5,9 @@ function updateInputs(id, userName, status, documentation){
     $("#documentacion").val(documentation);
     $("#documentacion").change();
     document.getElementById("formi").formAction = "/admin/lists/"+id;
-    //document.getElementById("formi").formAction = "/admin/lists/"+id;
+    
+    document.getElementById("idVal2").value = id;
+    document.getElementById("formButton2").formAction = "/admin/lists";
 }
 
 function toggle(){

@@ -163,6 +163,10 @@
                                             <div class="font-11 color-blue-grey-lighter uppercase">Número de alumnos</div>
                                             {{$c->students->count()}}
                                         </td>
+                                        <td class="table-check">
+                                            <div class="font-11 color-blue-grey-lighter uppercase">Color</div>
+                                            <button type="button" class="btn btn-inline btn-lg" style="background-color: {{$c->color}}; border-color: #D0D0D0;"></button>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>

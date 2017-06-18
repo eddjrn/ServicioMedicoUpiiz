@@ -2,12 +2,15 @@
 
 namespace App;
 
+use Sofa\Eloquence\Eloquence;
 use Illuminate\Database\Eloquent\Model;
 use Jenssegers\Date\Date;
 use Carbon\Carbon;
 
 class student extends Model
 {
+    use Eloquence;
+    
     protected $table = 'alumno';
     
     protected $fillable = ['usuario_id', 'carrera_id', 'municipio_id', 'estado_id', 'sexo', 'documentacion', 'turno', 'telefono', 'calle', 'numExterior', 'numInterior', 'colonia', 'codigoPostal', 'localidad', 'curp', 'fechaNacimiento', 'tutor', 'telefonoTutor', 'celularTutor', 'parentescoTutor', 'estatus_id'];
@@ -17,6 +20,16 @@ class student extends Model
         'created_at', // Add if you're using timestamps on the model
         'updated_at', // Add if you're using timestamps on the model
         'fechaNacimiento'
+    ];
+    
+    protected $searchableColumns = [
+        'curp' => 20,
+        'localidad' => 20,
+        'fechaNacimiento' => 10,
+        'tutor' => 10,
+        'calle' => 5,
+        'colonia' => 5,
+        'codigoPostal' => 5,
     ];
     
     public function user(){

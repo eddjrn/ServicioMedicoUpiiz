@@ -7,7 +7,7 @@
 	
 	@yield('title')
 	
-	@yield('css')
+	
 
 	<link href="/Template/img/favicon.144x144.png" rel="apple-touch-icon" type="/image/png" sizes="144x144">
 	<link href="/Template/img/favicon.114x114.png" rel="apple-touch-icon" type="/image/png" sizes="114x114">
@@ -24,6 +24,8 @@
 	
     <link rel="stylesheet" href="/Template/css/lib/font-awesome/font-awesome.min.css">
     <link rel="stylesheet" href="/Template/css/main.css">
+    
+    @yield('css')
 </head>
 
 <body class="horizontal-navigation">
@@ -84,16 +86,20 @@
 			<a class="nav-link @if($index==3)active @endif" href="/admin/add">Agregar</a>
 		</li>
         <li class="nav-item">
-			<a class="nav-link" href="https://www.facebook.com/verodelarosa.medicaupiiz?hc_ref=SEARCH&fref=nf">Facebook</a>
+			<a class="nav-link @if($index==4)active @endif" href="/admin/search">Buscar</a>
+		</li>
+        <li class="nav-item">
+			<a class="nav-link" href="{{Auth::user()->facebook}}" target="_blank">Facebook</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="http://www.zacatecas.ipn.mx/Paginas/Inicio.aspx">UPIIZ</a>
+			<a class="nav-link" href="http://www.zacatecas.ipn.mx/Paginas/Inicio.aspx" target="_blank">UPIIZ</a>
 		</li>
 	</ul>
 	
 	<div class="page-content">
 		<div class="container-fluid">
             @include('alerts.sessionAlert')
+            @include('alerts.formError')
             <h3 class="with-border text-center">@yield('subHead')</h3>
             @yield('content')
 		</div><!--.container-fluid-->

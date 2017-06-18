@@ -3,6 +3,9 @@
 namespace App;
 
 use Illuminate\Auth\Authenticatable;
+
+use Sofa\Eloquence\Eloquence;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Foundation\Auth\Access\Authorizable;
@@ -15,7 +18,7 @@ class user extends Model implements AuthenticatableContract,
                                     CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword;
-
+    use Eloquence;
     /**
      * The database table used by the model.
      *
@@ -28,7 +31,7 @@ class user extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['nombre', 'apellidoPaterno', 'apellidoMaterno', 'email', 'identificacion', 'tipo', 'password'];
+    protected $fillable = ['nombre', 'apellidoPaterno', 'apellidoMaterno', 'email', 'facebook', 'identificacion', 'tipo', 'password'];
     //protected $guarded = ['tipo'];
 
     /**
@@ -38,6 +41,13 @@ class user extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password'];
     
+    protected $searchableColumns = [
+        'nombre' => 20,
+        'email' => 10,
+        'identificacion' => 10,
+        'apellidoPaterno' => 5,
+        'apellidoMaterno' => 2,
+    ];
     
     public function student(){
         return $this->hasOne(student::class, 'usuario_id');

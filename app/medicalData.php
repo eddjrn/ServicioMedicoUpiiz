@@ -2,13 +2,20 @@
 
 namespace App;
 
+use Sofa\Eloquence\Eloquence;
 use Illuminate\Database\Eloquent\Model;
 
 class medicalData extends Model
 {
+    use Eloquence;
+    
     protected $table = 'datosMedicos';
     
     protected $fillable = ['usuario_id', 'numSeguro', 'proveedorSeguro', 'clinica_id', 'institucionSeguro_id', 'tipoSangre'];
+    
+    protected $searchableColumns = [
+        'numSeguro' => 20,
+    ];
     
     public function user(){
         return $this->belongsTo(user::class, 'usuario_id');

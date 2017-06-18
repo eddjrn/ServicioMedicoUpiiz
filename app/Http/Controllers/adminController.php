@@ -118,6 +118,108 @@ class adminController extends Controller
         
         return back();
     }
+    
+    public function search(){
+        $index = 4;
+        
+        return view('Admin.search', ['index'=>$index]);
+    }
+    
+    public function getSearch(Request $request){
+        $index = 4;
+        
+        switch($request->opc){
+            case 1:
+                $this->validate($request, [
+                    'busqueda' => 'required'
+                ]);
+            
+                $user = \App\user::search($request->busqueda)->where('tipo', 2)->get();
+                
+                if(count($user) == 0){
+                    session()->flash('message', 'No se encontró ningun registro con: '.$request->busqueda);
+                    session()->flash('type', 'danger');
+                }
+                
+                return view('Admin.search', ['index'=>$index, 'user'=>$user]);
+            break;
+            
+            case 2:
+                $this->validate($request, [
+                    'busqueda' => 'required'
+                ]);
+                
+                $user = \App\user::where('identificacion', $request->busqueda)->where('tipo', 2)->get();
+                
+                if(count($user) == 0){
+                    session()->flash('message', 'No se encontró ningun registro con la boleta: '.$request->busqueda);
+                    session()->flash('type', 'danger');
+                }
+                
+                return view('Admin.search', ['index'=>$index, 'user'=>$user]);
+            break;
+            
+            case 3:
+                $this->validate($request, [
+                    'busqueda' => 'required'
+                ]);
+                
+                $medicalData = \App\medicalData::where('numSeguro', 'like', $request->busqueda)->get();
+                
+                if(count($medicalData) == 0){
+                    session()->flash('message', 'No se encontró ningun registro con número: '.$request->busqueda);
+                    session()->flash('type', 'danger');
+                }
+                
+                return view('Admin.search', ['index'=>$index, 'medicalData'=>$medicalData]);
+            break;
+            
+            case 4:
+                $this->validate($request, [
+                    'busqueda' => 'required'
+                ]);
+                
+                $user = \App\user::where('email', $request->busqueda)->where('tipo', 2)->get();
+                
+                if(count($user) == 0){
+                    session()->flash('message', 'No se encontró ningun registro con el correo: '.$request->busqueda);
+                    session()->flash('type', 'danger');
+                }
+                
+                return view('Admin.search', ['index'=>$index, 'user'=>$user]);
+            break;
+            
+            case 5:
+                $this->validate($request, [
+                    'busqueda' => 'required'
+                ]);
+                
+                $medicalData = \App\medicalData::search($request->busqueda)->get();
+                
+                if(count($medicalData) == 0){
+                    session()->flash('message', 'No se encontró ningun registro con número: '.$request->busqueda);
+                    session()->flash('type', 'danger');
+                }
+                
+                return view('Admin.search', ['index'=>$index, 'medicalData'=>$medicalData]);
+            break;
+            
+            case 6:
+                $this->validate($request, [
+                    'busqueda' => 'required'
+                ]);
+            
+                $student = \App\student::search($request->busqueda)->get();
+                
+                if(count($student) == 0){
+                    session()->flash('message', 'No se encontró ningun registro con boleta: '.$request->busqueda);
+                    session()->flash('type', 'danger');
+                }
+                
+                return view('Admin.search', ['index'=>$index, 'student'=>$student]);
+            break;
+        }
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -158,9 +260,18 @@ class adminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $student = \App\student::find($request->idVal2);
+        $user = $student->user;
+        
+        session()->flash('message', 'Se eliminó a: '.$user. ' con boleta de: '. $user->identificacion);
+        
+        $user->delete();
+        
+        session()->flash('type', 'warning');
+        
+        return back();
     }
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -336,6 +447,7 @@ class adminController extends Controller
             'apellidoPaterno' => 'required|min:3|max:50',
             'apellidoMaterno' => 'required|min:3|max:50',
             'email' => 'required|email:min:5|max:50',
+            'facebook' => 'url',
             'identificacion' => 'required|same:identificacion2|max:11|:min:5',
             'identificacion2' => 'required',
             'clave' => 'required|same:clave2|min:6|max:30',
@@ -349,6 +461,7 @@ class adminController extends Controller
             'apellidoPaterno' => $request->apellidoPaterno,
             'apellidoMaterno' => $request->apellidoMaterno,
             'email' => $request->email,
+            'facebook' => $request->facebook,
             'identificacion' => $request->identificacion,
             'password' => $request->clave,
         ]);
@@ -409,9 +522,12 @@ class adminController extends Controller
     }
     
     public function insertRegister(Request $request, $variable){
-        
-        
-        if($variable == 6){
+        if($variable == 1){
+            $this->validate($request, [
+                'nombre' => 'required|min:5|max:255',
+                'color' => 'required',
+            ]);
+        } elseif($variable == 6){
             $this->validate($request, [
                 'nombre' => 'required',
                 'numero' => 'required',
@@ -427,6 +543,7 @@ class adminController extends Controller
         if($variable == 1){
            \App\carrer::create([
                 'nombre' => $request->nombre,
+                'color' => $request->color,
             ]);
         } elseif($variable == 2){
             \App\state::create([
@@ -456,11 +573,16 @@ class adminController extends Controller
     }
     
     public function updateRegister(Request $request, $variable){
-        if($variable == 6){
+        if($variable == 1){
             $this->validate($request, [
                 'nombre' => 'required',
-                'numero2' => 'required',
-                'municipio2' => 'required',
+                'color' => 'required',
+            ]);
+        } elseif($variable == 6){
+            $this->validate($request, [
+                'nombre' => 'required',
+                'numero' => 'required',
+                'municipio' => 'required',
             ]);
         } else{
             $this->validate($request, [
@@ -472,6 +594,7 @@ class adminController extends Controller
             $carrer = \App\carrer::find($request->idVal);
             $carrer->update([
                 'nombre' => $request->nombre,
+                'color' => $request->color,
             ]);
         } elseif($variable == 2){
             $state = \App\state::find($request->idVal);
@@ -497,8 +620,8 @@ class adminController extends Controller
             $clinic = \App\clinic::find($request->idVal);
             $clinic->update([
                 'tipo' => $request->nombre,
-                'numero' => $request->numero2,
-                'municipio_id' => $request->municipio2,
+                'numero' => $request->numero,
+                'municipio_id' => $request->municipio,
             ]);
         }
         

@@ -8,7 +8,7 @@ class carrer extends Model
 {
     protected $table = 'carrera';
     
-    protected $fillable = ['nombre'];
+    protected $fillable = ['nombre', 'color'];
     
     public $timestamps = false;
     

@@ -42,6 +42,7 @@ Route::get('/admin', 'adminController@index');
 Route::get('/admin/lists', 'adminController@lists');
 Route::get('/admin/lists/{id}', 'adminController@show');
 Route::post('/admin/lists/{id}', 'adminController@edit');
+Route::delete('/admin/lists', 'adminController@destroy');
 
 Route::get('/admin/add', 'adminController@addBlog');
 
@@ -56,6 +57,9 @@ Route::post('/admin/config/insert/{variable}', 'adminController@insertRegister')
 Route::patch('/admin/config/insert/{variable}', 'adminController@updateRegister');
 Route::delete('/admin/config/insert/{variable}', 'adminController@deleteRegister');
 
+Route::get('/admin/search', 'adminController@search');
+Route::post('/admin/search', 'adminController@getSearch');
+
 //-----------------
 
 Route::post('/admin/add/info','adminController@updateInfo');
@@ -63,6 +67,7 @@ Route::delete('/admin/add/info','adminController@deletInfo');
 Route::patch('/admin/add/info','adminController@newInfo');
 
 Route::patch('/admin/add/images','adminController@newImage');
+
 Route::post('/admin/add/images','adminController@updateImage');
 Route::delete('/admin/add/images','adminController@deletImage');
 

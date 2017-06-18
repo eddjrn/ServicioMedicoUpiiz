@@ -217,7 +217,9 @@ Información del alumno
     <div class="row">
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
-                <label class="form-label" for="exampleInputDisabled2">Carrera</label>
+                <label class="form-label" for="exampleInputDisabled2">Carrera /
+                    <span class="label" style="background-color: {{$student->carrer->color}}; border-color: #D0D0D0;">____________</span>
+                </label>
                 <input type="text" readonly class="form-control" value="{{$student->carrer->nombre}}">
             </fieldset>
         </div>

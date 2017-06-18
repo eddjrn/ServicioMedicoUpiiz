@@ -93,14 +93,14 @@ Listas de todos los alumnos en el sistema
                         </span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <!--<li class="nav-item">
                     <a class="nav-link" href="#tabs-1-tab-3" role="tab" data-toggle="tab">
                         <span class="nav-link-in">
                             <i class="font-icon font-icon-calend"></i>
                             Generación
                         </span>
                     </a>
-                </li>
+                </li>-->
                 <li class="nav-item">
                     <a class="nav-link" href="#tabs-1-tab-4" role="tab" data-toggle="tab">
                         <span class="nav-link-in">
@@ -119,6 +119,13 @@ Listas de todos los alumnos en el sistema
             <section class="widget widget-accordion" id="accordion" role="tablist" aria-multiselectable="true">
             <!--{{$x=0}}-->
             @foreach($carrers as $carrer)
+            
+            <?php
+                $studentsFiltered = $carrer->students->filter(function ($student){
+                    return $student->estatus_id == 1 || $student->estatus_id == 2;
+                });
+            ?>
+            
                 <article class="panel">
                     <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}">
                         <a data-toggle="collapse"
@@ -127,7 +134,8 @@ Listas de todos los alumnos en el sistema
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
                             {{$carrer->nombre}}
-                            [{{$carrer->students->count()}}]
+                            <span class="label label-pill label-primary">{{$studentsFiltered->count()}}</span>
+                            <span class="label" style="background: {{$carrer->color}};">______________</span>
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>
@@ -154,8 +162,11 @@ Listas de todos los alumnos en el sistema
                                                         @endif">{{$s->students->where('carrera_id', $carrer->id)->count()}} {{$s->nombre}}s</span>
                                                 @endforeach
                                                     /
-                                                    <span class="label label-success">Completos: {{$carrer->students->where('documentacion', 1)->count()}}</span>
-                                                    <span class="label label-danger">Incompletos: {{$carrer->students->where('documentacion', 2)->count()}}</span>
+                                                    <?php
+                                                        $studentsDocuments = $carrer->students;
+                                                    ?>
+                                                    <span class="label label-success">Completos: {{$studentsDocuments->where('documentacion', 1)->count()}}</span>
+                                                    <span class="label label-danger">Incompletos: {{$studentsDocuments->where('documentacion', 2)->count()}}</span>
                                                 
                                             </h3>
                                         </div>
@@ -165,7 +176,7 @@ Listas de todos los alumnos en el sistema
                                     <div class="table-responsive">
                                         <table class="table table-hover">
                                             <tbody>
-                                                @foreach($carrer->students as $student)
+                                                @foreach($studentsFiltered as $student)
                                                 <tr>
                                                     <td>
                                                         <div class="font-11 color-blue-grey-lighter uppercase">Nombre</div>
@@ -244,7 +255,17 @@ Listas de todos los alumnos en el sistema
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
                             {{$statu->nombre}}s
-                            [{{$statu->students->count()}}]
+                            <span class="label label-pill @if($statu->id == 1)
+                                label-primary
+                            @elseif($statu->id == 2)
+                                label-danger
+                            @elseif($statu->id == 3)
+                                label-info
+                            @elseif($statu->id == 4)
+                                label-warning
+                            @elseif($statu->id == 5)
+                                label-success
+                            @endif">{{$statu->students->count()}}</span>
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>
@@ -256,8 +277,11 @@ Listas de todos los alumnos en el sistema
                                     <div class="tbl-row">
                                         <div class="tbl-cell tbl-cell-title">
                                             <h3>
-                                                    <span class="label label-success">Completos: {{$statu->students->where('documentacion', 1)->count()}}</span>
-                                                    <span class="label label-danger">Incompletos: {{$statu->students->where('documentacion', 2)->count()}}</span>
+                                            <?php
+                                                $studentsDocuments = $statu->students;
+                                            ?>
+                                                    <span class="label label-success">Completos: {{$studentsDocuments->where('documentacion', 1)->count()}}</span>
+                                                    <span class="label label-danger">Incompletos: {{$studentsDocuments->where('documentacion', 2)->count()}}</span>
                                                 
                                             </h3>
                                         </div>
@@ -331,7 +355,8 @@ Listas de todos los alumnos en el sistema
                             href="#collapse{{$numbers[$x]}}"
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
-                            Documentación completa [{{$studentAll->where('documentacion', 1)->count()}}]
+                            Documentación completa
+                            <span class="label label-pill label-primary">{{$studentAll->where('documentacion', 1)->count()}}</span>
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>
@@ -431,7 +456,8 @@ Listas de todos los alumnos en el sistema
                             href="#collapse{{$numbers[$x]}}"
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
-                            Documentación incompleta [{{$studentAll->where('documentacion', 2)->count()}}]
+                            Documentación incompleta
+                            <span class="label label-pill label-danger">{{$studentAll->where('documentacion', 2)->count()}}</span>
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>
@@ -529,108 +555,6 @@ Listas de todos los alumnos en el sistema
         </div><!--.tab-pane-->
         <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">
         
-        <section class="widget widget-accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                <article class="panel">
-                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}">
-                        <a data-toggle="collapse"
-                            data-parent="#accordion"
-                            href="#collapse{{$numbers[$x]}}"
-                            aria-expanded="false"
-                            aria-controls="collapse{{$numbers[$x]}}">
-                            Documentación completa [{{$studentAll->where('documentacion', 1)->count()}}]
-                            <i class="font-icon font-icon-arrow-down"></i>
-                        </a>
-                    </div>
-                    <div id="collapse{{$numbers[$x]}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$numbers[$x]}}">
-                        <div class="panel-collapse-in">
-                        
-                            <section class="box-typical box-typical-max-280">
-                                <header class="box-typical-header">
-                                    <div class="tbl-row">
-                                        <div class="tbl-cell tbl-cell-title">
-                                            <h3>
-                                                @foreach($status as $s)
-                                                    <span class="label 
-                                                        @if($s->id == 1)
-                                                            label-primary
-                                                        @elseif($s->id == 2)
-                                                            label-danger
-                                                        @elseif($s->id == 3)
-                                                            label-info
-                                                        @elseif($s->id == 4)
-                                                            label-warning
-                                                        @elseif($s->id == 5)
-                                                            label-success
-                                                        @endif">{{$s->students->where('documentacion', 1)->count()}} {{$s->nombre}}s</span>
-                                                @endforeach
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </header>
-                                <div class="box-typical-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-hover">
-                                            <tbody>
-                                                @foreach($studentAll->where('documentacion', 1) as $student)
-                                                <tr>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Nombre</div>
-                                                        <a href="/admin/lists/{{$student->id}}">{{$student->user}}</a>
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Correo electrónico</div>
-                                                        {{$student->user->email}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Boleta</div>
-                                                        {{$student->user->identificacion}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Número de seguro</div>
-                                                        {{$student->user->medicalData->numSeguro}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Teléfono</div>
-                                                        {{$student->telefono}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Carrera</div>
-                                                        {{$student->carrer->nombre}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Estatus</div>
-                                                        <input type="text" readonly class="form-control @if($student->estatus_id == 1)
-                                                            {{$statusStyle[0]}}
-                                                        @elseif($student->estatus_id == 2)
-                                                            {{$statusStyle[1]}}
-                                                        @elseif($student->estatus_id == 3)
-                                                            {{$statusStyle[2]}}
-                                                        @elseif($student->estatus_id == 4)
-                                                            {{$statusStyle[3]}}
-                                                        @elseif($student->estatus_id == 5)
-                                                            {{$statusStyle[4]}}
-                                                        @endif" value="{{$student->status->nombre}}">
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Editar</div>
-                                                        <button type="button"
-                                                            class="btn btn-inline btn-sm btn-primary"
-                                                            data-toggle="modal"
-                                                            data-target=".bd-example-modal-sm" onclick="updateInputs({{$student->id}},'{{$student->user}}',{{$student->estatus_id}},{{$student->documentacion}})"><span class="font-icon font-icon-pencil"></span></button>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div><!--.box-typical-body-->
-                            </section><!--.box-typical-->
-                            
-                        </div>
-                    </div>
-                </article>
-                <!--{{$x++}}-->
-            </section>
         
         </div><!--.tab-pane-->
         <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-4">
@@ -643,7 +567,8 @@ Listas de todos los alumnos en el sistema
                             href="#collapse{{$numbers[$x]}}"
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
-                            Asegurado por UPIIZ-IPN [{{$medicalDatas->where('proveedorSeguro', 1)->count()}}]
+                            Asegurado por UPIIZ-IPN
+                            <span class="label label-pill label-primary">{{$medicalDatas->where('proveedorSeguro', 1)->count()}}</span>
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>
@@ -734,7 +659,8 @@ Listas de todos los alumnos en el sistema
                             href="#collapse{{$numbers[$x]}}"
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
-                            Asegurado por Padres [{{$medicalDatas->where('proveedorSeguro', 2)->count()}}]
+                            Asegurado por Padres
+                            <span class="label label-pill label-primary">{{$medicalDatas->where('proveedorSeguro', 2)->count()}}</span>
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>
@@ -828,7 +754,8 @@ Listas de todos los alumnos en el sistema
                             href="#collapse{{$numbers[$x]}}"
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
-                            Asegurado por Trabajo [{{$medicalDatas->where('proveedorSeguro', 3)->count()}}]
+                            Asegurado por Trabajo
+                            <span class="label label-pill label-primary">{{$medicalDatas->where('proveedorSeguro', 3)->count()}}</span>
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>

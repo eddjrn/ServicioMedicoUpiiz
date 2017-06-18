@@ -5,6 +5,7 @@
 @stop
 
 @section('css')
+<link rel="stylesheet" href="/Template/css/lib/colorpicker/bootstrap-colorpicker.min.css">
 @stop
 
 @section('popUp')
@@ -29,17 +30,23 @@
                     {!!Form::text('nombre', null, array('class'=>'form-control', 'id'=>'nombre', 'placeholder'=>'Ej: Ingeniería en Sistemas Computacionales'))!!}
                     <input type="hidden" name="idVal" id="idVal" value="">
                 
-            
-                    @if($variable == 6)
+                    @if($variable == 1)
+                        <br/>
+                        <label class="form-label">Color</label>
+                        <div id="cp2" class="input-group colorpicker-component">
+                            <input type="text" value="#00AABB" class="form-control" name="color" id="color2"/> 
+                            <span class="input-group-addon"><i></i></span>
+                        </div>
+                    @elseif($variable == 6)
                     <br/>
                     <label class="form-label" for="exampleInputDisabled2">Municipio</label>
                     <!--{{$place=\App\place::lists('nombre', 'id')}} -->
-                    {!!Form::select('municipio2', $place, 0, ['class'=>'select2 form-control', 'id'=>'municipio2'])!!}
+                    {!!Form::select('municipio', $place, 0, ['class'=>'select2 form-control', 'id'=>'municipio2'])!!}
                     <br/>
                     <br/>
                     <div class="form-group">
                         <label class="form-label" for="exampleInputDisabled2">Numero de clínica</label>
-                        <input id="numero2" type="text" value="" name="numero2">
+                        <input id="numero2" type="text" value="" name="numero">
                     </div>
                     @endif
                 </div>
@@ -61,7 +68,7 @@
             {!!Form::open(array('method'=>'delete', 'style'=>'display:none', 'class'=>'details'))!!}
                 <div class="modal-body">
                     <div class="form-group">
-                        <label class="form-label" for="hide-show-password">¿Seguro que quiere eliminar el registro?</label>
+                        <label class="form-label">¿Seguro que quiere eliminar el registro?</label>
                     </div>
                 </div>
             
@@ -144,7 +151,15 @@ Ej: Inscrito
 @elseif($variable == 6)
 Ej: HGZMF
 @endif" value="">
-                        @if($variable == 6)
+                        
+                        @if($variable == 1)
+                        <br/>
+                            <label class="form-label">Color</label>
+                            <div id="cp3" class="input-group colorpicker-component">
+                                <input type="text" value="#a0125a" class="form-control" name="color" id="color"/> 
+                                <span class="input-group-addon"><i></i></span>
+                            </div>
+                        @elseif($variable == 6)
                         <br/>
                         <!--{{$place=\App\place::lists('nombre', 'id')}} -->
                         <label class="form-label" for="exampleInputDisabled2">Municipio</label>
@@ -199,11 +214,15 @@ Ej: HGZMF
                                         {{$carrer->students->count()}}
                                     </td>
                                     <td class="table-check">
+                                        <div class="font-11 color-blue-grey-lighter uppercase">Color</div>
+                                        <button type="button" class="btn btn-inline btn-lg" style="background-color: {{$carrer->color}}; border-color: #D0D0D0;"></button>
+                                    </td>
+                                    <td class="table-check">
                                         <div class="font-11 color-blue-grey-lighter uppercase">Editar</div>
                                         <button type="button"
                                                     class="btn btn-inline btn-sm btn-primary"
                                                     data-toggle="modal"
-                                                    data-target=".bd-example-modal-sm" onclick="updateInputs('Editar carrera', '{{$carrer->nombre}}', 1, {{$carrer->id}});">
+                                                    data-target=".bd-example-modal-sm" onclick="updateInputs3('Editar carrera', '{{$carrer->nombre}}', 1, {{$carrer->id}}, '{{$carrer->color}}');">
                                                     <span class="font-icon font-icon-pencil"></span>
                                         </button>
                                     </td>
@@ -350,12 +369,18 @@ Hola
 @section('scripts')
     <script src="/Template/js/custom/configEdit.js"></script>
     <script src="/Template/js/lib/select2/select2.full.min.js"></script>
+    <script src="/Template/js/lib/colorpicker/bootstrap-colorpicker.min.js"></script>
+    
     <script>
         $(document).ready(function(){
             $("input[name='numero']").TouchSpin();
         });
         $(document).ready(function(){
             $("input[name='numero2']").TouchSpin();
+        });
+        $(function() {
+            $('#cp2').colorpicker();
+            $('#cp3').colorpicker();
         });
     </script>
 @stop

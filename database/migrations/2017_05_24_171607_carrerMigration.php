@@ -15,6 +15,7 @@ class CarrerMigration extends Migration
         Schema::create('carrera', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
+            $table->string('color', 8);
             //$table->timestamps();
         });
     }

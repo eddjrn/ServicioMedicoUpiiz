@@ -69,6 +69,10 @@
                         {!!Form::text('email', null, ['class'=>'form-control', 'placeholder'=>'Ej: ejemplo@correo.com'])!!}
                     </div>
                     <div class="form-group">
+                        <label class="form-label" for="exampleInputDisabled2">Facebook</label>
+                        {!!Form::text('facebook', null, ['class'=>'form-control', 'placeholder'=>'Ej: ejemplo@correo.com'])!!}
+                    </div>
+                    <div class="form-group">
                         <label class="form-label" for="exampleInputDisabled2">Identificación</label>
                         {!!Form::text('identificacion', null, ['class'=>'form-control', 'placeholder'=>'Ej: xxxxxxxx'])!!}
                     </div>
@@ -115,7 +119,7 @@
                     </div>
                     
                     <button type="button" class="btn btn-rounded btn-warning" data-toggle="modal" data-target=".bd-example-modal-sm">Editar perfíl</button>
-                    <p class="sign-note"><a href="https://www.facebook.com/verodelarosa.medicaupiiz?hc_ref=SEARCH&fref=nf">Facebook</a></p>
+                    <p class="sign-note"><a href="{{$user->facebook}}" target="_blank">Facebook</a></p>
                     
                     <a href="/admin"><button type="button" class="close">
                         <span aria-hidden="true">&times;</span>
