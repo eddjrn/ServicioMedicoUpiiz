@@ -131,7 +131,7 @@ Vista previa del blog
                     <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">
 
                         <div class="row">
-                        @foreach($video->sortByDesc('update_at') as $vi) 
+                        @foreach($video->sortByDesc('updated_at') as $vi) 
                             <div class="col-md-1"></div>
                                  <div class="col-md-2">
                            <div class="gallery-col">

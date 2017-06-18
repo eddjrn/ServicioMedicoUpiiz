@@ -1,11 +1,10 @@
 
 
 function verImg(imagen,imgtitulo) {
-	document.getElementById('linM').innerHTML=imagen;
-	
+	document.getElementById('linM').textContent=imagen;
 	document.getElementById('linTitle').innerHTML=imgtitulo;
 	
-	alert(imagen+imgtitulo);
+	//alert(imagen+imgtitulo);
 }
 
 function editarImg(Eimagen,EtituloImg,id) {

@@ -65,3 +65,7 @@ Route::patch('/admin/add/info','adminController@newInfo');
 Route::patch('/admin/add/images','adminController@newImage');
 Route::post('/admin/add/images','adminController@updateImage');
 Route::delete('/admin/add/images','adminController@deletImage');
+
+Route::patch('/admin/add/video','adminController@newVideo');
+Route::post('/admin/add/video','adminController@updateVideo');
+Route::delete('/admin/add/video','adminController@deletVideo');

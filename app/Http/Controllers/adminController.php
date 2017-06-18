@@ -180,7 +180,7 @@ class adminController extends Controller
 
         $this->validate($request,[
 
-            'Titulo'=>'required',
+            'Titulo'=>'required|min:4',
             'Contenido'=>'required'
 
             ]);
@@ -204,7 +204,7 @@ class adminController extends Controller
     {
         $this->validate($request,[
 
-            'Title'=>'required',
+            'Title'=>'required|min:4',
             'Content'=>'required'
 
             ]);
@@ -220,14 +220,14 @@ class adminController extends Controller
     {
         $this->validate($request,[
 
-            'titleImg'=>'required',
-            'contentImg'=>'required'
+            'Titulo_De_La_Imagen'=>'required|min:4',
+            'Link_De_Imagen'=>'required',
 
             ]);
         $create=\App\images::create([
                 'usuario_id'=> Auth::user()->id,
-                'imagen' => $request->contentImg,
-                'titulo'=>$request->titleImg
+                'imagen' => $request->Link_De_Imagen,
+                'titulo'=>$request->Titulo_De_La_Imagen,
             ]);
         return back();
     }
@@ -236,7 +236,7 @@ class adminController extends Controller
         $this->validate($request,[
 
             'contenidoImg'=>'required',
-            'tituloImg'=>'required'
+            'tituloImg'=>'required|min:4'
             
             ]);
 
@@ -256,6 +256,50 @@ class adminController extends Controller
         return back();
     }
     
+ public function newVideo(Request $request)
+    {
+        $this->validate($request,[
+
+            'Titulo_Del_Video'=>'required|min:4',
+            'Link_Del_Video'=>'required',
+            'Link_De_la_imagen'=>'required'
+
+            ]);
+        $create=\App\video::create([
+                'usuario_id'=> Auth::user()->id,
+                'titulo'=>$request->Titulo_Del_Video,
+                'link'=>$request->Link_Del_Video,
+                'imagen' => $request->Link_De_la_imagen   
+            ]);
+        return back();
+    }
+       public function updateVideo(Request $request){
+
+        $this->validate($request,[
+
+            'eTituloVid'=>'required|min:4',
+            'eContenidoVid'=>'required',
+            'eContenidoVidImg'=>'required',
+            ]);
+
+        $post=\App\video::find($request->id_postVid);
+        $post->update([
+            'titulo'=>$request->eTituloVid,
+            'link'=>$request->eContenidoVid,
+            'imagen'=>$request->eContenidoVidImg
+            
+            ]);
+        return back();
+
+    }
+
+        public function deletVideo(Request $request)
+    {
+        $post=\App\video::find($request->id_deleteVid);
+        $post->delete();
+        return back();
+    }
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     public function profile(){

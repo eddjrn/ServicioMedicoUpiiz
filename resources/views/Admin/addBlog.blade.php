@@ -69,10 +69,10 @@ Edición del blog
        {!!Form::open(array('url'=>'/admin/add/info','method'=>'patch'))!!} 
             <form method="post" action="store">
                 <p>
-                    <input type="text" name="Title" placeholder="Titulo" class="form-control" required>
+                    <input type="text" name="Title" placeholder="Titulo" class="form-control">
                 </p>
                 <p>
-                    <textarea rows="4" name="Content"class="form-control" placeholder="Contenido" class="form-control"required></textarea>
+                    <textarea rows="4" name="Content"class="form-control" placeholder="Contenido" class="form-control"></textarea>
                 </p>
                 <p>
                     <input type="submit" value="Guardar" class="btn btn-success">
@@ -302,10 +302,10 @@ Edición del blog
        {!!Form::open(array('url'=>'/admin/add/images','method'=>'patch'))!!} 
             <form method="post" action="store">
                 <p>
-                    <input type="text" name="titleImg" placeholder="Titulo" class="form-control" required>
+                    <input type="text" name="Titulo_De_La_Imagen" placeholder="Titulo" class="form-control">
                 </p>
                 <p>
-                    <textarea rows="4" name="contentImg" class="form-control" placeholder="link de la imagen" class="form-control"required></textarea>
+                    <textarea rows="4" name="Link_De_Imagen" class="form-control" placeholder="link de la imagen" class="form-control"></textarea>
                 </p>
                 <p>
                     <input type="submit" id="guardarImg" value="Guardar" class="btn btn-success">
@@ -360,7 +360,7 @@ Edición del blog
                 <div class="modal fade bd-img-modal-lg"
                      tabindex="-1"
                      role="dialog"
-                     aria-labelledby="mSmallModalLabel"
+                     aria-labelledby="mySmallModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -368,7 +368,7 @@ Edición del blog
                                 <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
                                     <i class="font-icon-close-2"></i>
                                 </button>
-                                <h4 class="modal-title" id="mModalLabel">Ver</h4>
+                                <h4 class="modal-title" id="myModalLabel">Ver</h4>
                             </div>
                             <div class="modal-body">
                         
@@ -376,9 +376,9 @@ Edición del blog
                    <p ALIGN="center" ><strong id="linTitle" name="linTitle" >{{$img->titulo}}</strong></p>
                             <div class="col-md-3 col-sm-6"></div>
                                  <div class="col-md-6 col-sm-6 ">
-                           <div class="gallery-col"  >
+                           <div class="gallery-col">
                             <article class="gallery-item">
-                                <img  class="gallery-picture" src="{{$img->imagen}}" id="linM" name="linM" alt="" weight="80%" height="80%"></img>
+                                <img class="gallery-picture" src="{{$img->imagen}}" id="linM" name="linM" alt="" weight="80%" height="80%">
                             </article>
 
                         </div>
@@ -494,8 +494,225 @@ Edición del blog
                     </div><!--.tab-pane-->
 
 
-                    <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">
+          <!--Teercero-->          <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">
 
+
+                        <section class="widget widget-tabs-compact">
+                        <div class="tab-content widget-tabs-content">
+                            <div class="tab-pane active " id="w-6-tab-5" role="tabpanel" aria-expanded="false">
+                                <div class="user-card-row">
+                                    <div class="tbl-row">
+                <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-5">
+        <div class="panel-body">
+        <div class="panel-heading">
+            <h4>Agregar Videos</h4>
+        </div>
+       {!!Form::open(array('url'=>'/admin/add/video','method'=>'patch'))!!} 
+            <form method="post" action="store">
+                <p>
+                    <input type="text" name="Titulo_Del_Video" placeholder="Titulo" class="form-control">
+                </p>
+                <p>
+                    <textarea rows="4" name="Link_Del_Video" class="form-control" placeholder="link del Video" class="form-control"></textarea>
+                </p>
+                <p>
+                    <textarea rows="4" name="Link_De_la_imagen" class="form-control" placeholder="link de la imagen" class="form-control"></textarea>
+                </p>
+                <p>
+                    <input type="submit" id="guardarVide" value="Guardar" class="btn btn-success">
+                </p>
+            </form>
+         {!!Form::close()!!}
+        </div>
+        </div>
+        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                            <div class="tab-pane" id="w-6-tab-6" role="tabpanel" aria-expanded="true">
+    <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-9">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h4>Lista de Videos</h4>
+        </div>
+
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        
+                        <th>Titulo</th>
+                        <th>Link del Video</th>
+                        <th>Link de la Imagen</th>
+                        <th>Fecha</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($video->sortByDesc('updated_at') as $vi)
+                        <tr>
+                            
+                            <td>{{$vi->titulo}}</td>
+                            <td>{{$vi->link}}</td>
+                            <td>{{$vi->imagen}}</td>
+                            <td>{{$vi->FechaActualizacion()}}</td>
+                         <td>
+
+                          
+                    <button type="button" 
+                        onclick="verVid('{{$vi->titulo}}','{{$vi->link}}','{{$vi->imagen}}')" 
+                        data-toggle="modal"
+                        data-target=".bd-vid-modal-lg"
+                        data-size="s"
+                        id="vides"
+                        class="btn btn-info">Ver</button>
+
+                <div class="modal fade bd-vid-modal-lg"
+                     tabindex="-1"
+                     role="dialog"
+                     aria-labelledby="mySmallModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                                    <i class="font-icon-close-2"></i>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Ver</h4>
+                            </div>
+                            <div class="modal-body">
+                        
+                        <div class="row">
+                   
+                            <div class="col-md-3"></div>
+                                 <div class="col-md-6">
+                           <div class="gallery-col">
+                           <p ALIGN=center ><strong id="tituloVi">{{$vi->titulo}}</strong></p>
+                            <article class="gallery-item">
+                                <img class="gallery-picture" id="linkVi" src="{{$vi->imagen}}" alt="" height="80%">
+                            </article>
+                        </div>
+                        </div>
+
+                        </div>
+
+                        </div>
+                        </div>
+                      
+                        </div>
+
+                            </div> <!--model boddy-->
+                        </div>
+                    </div>
+                </div><!--.modal-->
+
+                <button type="button" 
+                        onclick="editarVide('{{$vi->titulo}}','{{$vi->link}}','{{$vi->imagen}}',{{$vi->id}})" 
+                        data-toggle="modal"
+                        data-target=".bd-editadiss-modal-lg"
+                        class="btn btn-incline btn-success">Editar</button>
+
+                <div class="modal fade bd-editadiss-modal-lg"
+                     tabindex="-1"
+                     role="dialog"
+                     aria-labelledby="mySmallModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" id="edtVid" class="modal-close" data-dismiss="modal" aria-label="Close">
+                                    <i class="font-icon-close-2"></i>
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">Editar</h4>
+                            </div>
+                            <div class="modal-body">
+        {!!Form::open(array('url'=>'/admin/add/video','method'=>'post'))!!}      
+                    <div class="form-group row">
+                        <label class="col-sm-2 form-control-label">Titulo</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static"><input name="eTituloVid" id="eTituloVid" type="text" class="form-control"  placeholder="Titulo"></p>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleSelect" class="col-sm-2 form-control-label">Link: </label>
+                        <div class="col-sm-10">
+                            <textarea rows="4" id="eContenidoVid" name="eContenidoVid" class="form-control" placeholder="Link del Video"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleSelect" class="col-sm-2 form-control-label">Link: </label>
+                        <div class="col-sm-10">
+                            <textarea rows="4" id="eContenidoVidImg" name="eContenidoVidImg" class="form-control" placeholder="Link de imagen"></textarea>
+                        </div>
+                    </div>
+                            </div>
+                            <div class="modal-footer">
+                            <div class="text-center">
+                                <button type="submit" id="cambiosVid" class="btn btn-rounded btn-warning">Guardar</button>
+
+                            </div>
+                            </div>
+             <input type="hidden" name="id_postVid" id="id_postVid">
+        {!!Form::close()!!}
+                            <div class="modal-footer">
+                                <div class="text-center">
+                                <a onclick="toggle()" id="moreVid">Mostrar Más</a>
+                                </div>
+                            </div>
+
+                 {!!Form::open(array('url'=>'/admin/add/video','method'=>'delete','class'=>'editTablesVideo','style'=>'display:none'))!!}
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="form-label">¿Seguro que quiere eliminar el post?</label>
+                                </div>
+                            </div>
+                <input type="hidden" name="id_deleteVid" id="id_deleteVid">
+                        <div class="modal-footer">
+                            <div class="text-center">
+                                <button type="submit" id="deleteVid" class="btn btn-rounded btn-danger">Eliminar</button>
+                            </div>
+                            </div>
+
+                 {!!Form::close()!!}
+                        </div>
+                
+                    </div>
+                </div><!--.modal-->
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    </div>
+
+                            </div>
+                        </div>
+                        <div class="widget-tabs-nav bordered">
+                            <ul class="tbl-row" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#w-6-tab-5" role="tab" aria-expanded="false">
+                                        <i class="font-icon font-icon-heart"></i>
+                                        Agregar
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#w-6-tab-6" role="tab" aria-expanded="true">
+                                        <i class="font-icon font-icon-users-two"></i>
+                                        Editar
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
                     	
 
                     </div><!--.tab-pane-->
@@ -511,4 +728,5 @@ Edición del blog
 @section('scripts')
 <script src="\Template\js\custom\vewInfo.js"></script>
 <script src="\Template\js\custom\vewImg.js"></script>
+<script src="\Template\js\custom\vewVide.js"></script>
 @stop

@@ -28,7 +28,7 @@ class info extends Model
     }
     public function Mes()
     {
-            Date::setLocale('es');
+        Date::setLocale('es');
         return Date::parse($this->created_at)->format('F \\ j');
     }
     public function dia()
