@@ -46,21 +46,16 @@ Generación de formularios
             </ul>
         </div>
     </div><!--.tabs-section-nav-->
-    En estos casos ambos estan mostrados y organisados por fecha de actualizacion, por ello el updated_at eso noo significa que el numero del telefono y el nombre que aparecen sean de la misma persona, para que sean de la misma persona seria organizarla por created_at en ves de updated_at -> checa pestaña de formato imss
+    
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane fade in active" id="tabs-1-tab-1">
-            Nombre de la base de datos user </br>
-            @foreach($user->sortByDesc('updated_at') as $ur)
-            {{$ur->nombre}}</br>
-            @endforeach
+
+        {{$student->user}}
+        {{$student->user->medicalData->numSeguro}}
 
         </div><!--.tab-pane-->
         <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-2">
             
-            telefono de la base de datos student </br>
-            @foreach($student->sortByDesc('updated_at') as $st)
-            {{$st->telefono}}</br>
-            @endforeach
 
         </div><!--.tab-pane-->
         <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">Tab 3</div><!--.tab-pane-->

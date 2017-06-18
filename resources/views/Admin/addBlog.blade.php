@@ -104,6 +104,7 @@ Edición del blog
                         <th>Titulo</th>
                         <th>Contenido</th>
                         <th>Fecha</th>
+                        <th>hace cuanto</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -114,6 +115,7 @@ Edición del blog
                             <td>{{$in->titulo}}</td>
                             <td>{{$in->contenido}}</td>
                             <td>{{$in->FechaActualizacion()}}</td>
+                            <td>{{$in->created_at->diffForHumans()}}</td>
                             <td>
 
                           
@@ -337,6 +339,7 @@ Edición del blog
                         <th>Titulo</th>
                         <th>Link</th>
                         <th>Fecha</th>
+                        <th>Hace cuanto</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -347,6 +350,7 @@ Edición del blog
                             <td>{{$img->titulo}}</td>
                             <td>{{$img->imagen}}</td>
                             <td>{{$img->FechaActualizacion()}}</td>
+                            <td>{{$img->created_at->diffForHumans()}}</td>
                          <td>
 
                           
@@ -551,6 +555,7 @@ Edición del blog
                         <th>Link del Video</th>
                         <th>Link de la Imagen</th>
                         <th>Fecha</th>
+                        <th>Hace cuanto</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -562,6 +567,7 @@ Edición del blog
                             <td>{{$vi->link}}</td>
                             <td>{{$vi->imagen}}</td>
                             <td>{{$vi->FechaActualizacion()}}</td>
+                            <td>{{$vi->created_at->diffForHumans()}}</td>
                          <td>
 
                           

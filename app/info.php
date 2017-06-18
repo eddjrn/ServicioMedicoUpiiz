@@ -36,10 +36,10 @@ class info extends Model
             Date::setLocale('es');
         return Date::parse($this->created_at)->format('l');
     }
-        public function hora()
+    public function hora()
     {
             Date::setLocale('es');
-        return Date::parse($this->created_at)->format('h:i');
+        return Date::parse($this->created_at)->format('h:i A');
     }
 
 

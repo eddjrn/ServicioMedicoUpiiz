@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Illuminate\Support\Facades\Auth;
+
 class formsController extends Controller
 {
     /**
@@ -23,10 +25,8 @@ class formsController extends Controller
     public function index()
     {
         $index = 7;
-        $student=\App\student::all();
-        $user=\App\user::all();
-
-        return view('Welcome.forms', ['index'=>$index,'user'=> $user,'student'=>$student]);
+        $student = Auth::user()->student;
+        return view('Welcome.forms', ['index'=>$index,'student'=>$student]);
     }
 
     /**
