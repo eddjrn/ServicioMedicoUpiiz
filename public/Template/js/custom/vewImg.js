@@ -5,7 +5,7 @@ function verImg(imagen,imgtitulo) {
 	
 	document.getElementById('linTitle').innerHTML=imgtitulo;
 	
-	//alert(imgtitulo+imagen);
+	alert(imagen+imgtitulo);
 }
 
 function editarImg(Eimagen,EtituloImg,id) {
