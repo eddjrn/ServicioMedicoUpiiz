@@ -23,7 +23,10 @@ class formsController extends Controller
     public function index()
     {
         $index = 7;
-        return view('Welcome.forms', ['index'=>$index]);
+        $student=\App\student::all();
+        $user=\App\user::all();
+
+        return view('Welcome.forms', ['index'=>$index,'user'=> $user,'student'=>$student]);
     }
 
     /**
