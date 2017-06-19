@@ -39,7 +39,7 @@ class profileController extends Controller
         } else if($id == 2){
             session()->flash('type', 'danger');
         } else if($id == 3){
-            session()->flash('type', 'grey-darker');
+            session()->flash('type', 'purple');
         } else if($id == 4){
             session()->flash('type', 'warning');
         } else if($id == 1){
@@ -82,6 +82,36 @@ class profileController extends Controller
      
     public function update(Request $request)
     {
+        $this->validate($request, [
+            'nombre'=>'required',
+            'apellidoPaterno'=>'required',
+            'apellidoMaterno'=>'required',
+            'email'=>'required|email',
+            'facebook'=>'url',
+            'identificacion'=>'required',
+            'carrera'=>'required',
+            'municipio'=>'required',
+            'estado'=>'required',
+            'sexo'=>'required',
+            'telefono'=>'required',
+            'turno'=>'required',
+            'numExterior'=>'required',
+            'numInterior'=>'required',
+            'colonia'=>'required',
+            'codigoPostal'=>'required',
+            'localidad'=>'required',
+            'curp'=>'required',
+            'tutor'=>'required',
+            'telefonoTutor'=>'required',
+            'celularTutor'=>'required',
+            'parentesco'=>'required',
+            'numSeguro'=>'required',
+            'proveedorSeguro'=>'required',
+            'numClinica'=>'required',
+            'institucionClinica'=>'required',
+            'sangre'=>'required',
+        ]);
+        
         $user = \App\user::find($request->studentId);
         $user->update([
             'nombre'=>$request->nombre,

@@ -8,6 +8,62 @@
 @stop
 
 @section('popUp')
+<div class="modal fade bd-example-modal-sm"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="mySmallModalLabel"
+        aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                    <i class="font-icon-close-2"></i>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Edición del perfil</h4>
+            </div>
+            {!!Form::open(array('method'=>'post', 'id'=>'userForm'))!!}
+            <div class="modal-body">
+                <h5 class="m-t-lg with-border">Estatus en el sistema</h5>
+                <!--{{$estatus=\App\status::lists('nombre', 'id')}} -->
+                {!!Form::select('estatus', $estatus, $student->estatus_id, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'estatus'])!!}
+                <h5 class="m-t-lg with-border">Documentación</h5>
+                {!!Form::select('documentacion', array('1'=>'Completa', '2'=>'Incompleta'), $student->documentacion, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'documentacion'])!!}
+            </div>
+            <div class="modal-footer">
+<!--                 <button type="button" class="btn btn-rounded btn-default" data-dismiss="modal">Close</button> -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-rounded btn-primary" formaction="/" id="formi">Guardar cambios</button>
+                </div>
+            </div>
+            {!!Form::close()!!}
+            
+             <div class="modal-footer">
+                <div class="text-center">
+                    <a onclick="toggle();" id="more">Mostrar más</a>
+                </div>
+            </div>
+            
+            {!!Form::open(array('method'=>'delete', 'style'=>'display:none', 'class'=>'details'))!!}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label">¿Seguro que quiere eliminar el registro?</label>
+                    </div>
+                </div>
+            
+                <input type="hidden" name="idVal2" id="idVal2" value="{{$student->id}}">
+                <div class="modal-footer">
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-rounded btn-primary btn-danger" formaction="/" id="formButton2">Eliminar</button>
+                    </div>
+                    <br/>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-rounded btn-primary" onclick="toggle();">Cancelar</button>
+                    </div>
+                </div>
+            {!!Form::close()!!}
+        </div>
+    </div>
+</div><!--.modal-->
 @stop
 
 @section('subHead')
@@ -15,6 +71,7 @@ Información del alumno
 @stop
 
 @section('content')
+
 <section class="widget widget-user">
     <div class="widget-user-bg" style="background-image: url('/Template/img/widget-user-bg.jpg')"></div>
     <div class="widget-user-photo">
@@ -290,8 +347,14 @@ Información del alumno
         </div>
     </div>
     
+    <div class="text-center">
+        <button type="button" class="btn btn-rounded btn-inline btn-warning" data-toggle="modal" data-target=".bd-example-modal-sm" onclick="updateInputsProfile({{$student->id}}, '{{$student->user}}');">Editar</button>
+    </div>
+    
 </div> <!--End box typical-->
 @stop
 
 @section('scripts')
+    <script src="/Template/js/lib/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="/Template/js/custom/listsEdits.js"></script>
 @stop
