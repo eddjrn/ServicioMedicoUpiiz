@@ -60,11 +60,17 @@ class user extends Model implements AuthenticatableContract,
     public function info(){
         return $this->hasMany(info::class, 'usuario_id');
     }
+    
      public function images(){
         return $this->hasMany(images::class, 'usuario_id');
     }
+    
     public function video(){
         return $this->hasMany(video::class, 'usuario_id');
+    }
+    
+    public function message(){
+        return $this->hasMany(message::class, 'usuario_id');
     }
     
     public function __toString(){

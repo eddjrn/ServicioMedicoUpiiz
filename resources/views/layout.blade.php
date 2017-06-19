@@ -144,6 +144,7 @@
 		<div class="container-fluid">
             @include('alerts.sessionAlert')
             @include('alerts.formError')
+            @include('alerts.sessionMessages')
             <h3 class="with-border text-center">@yield('subHead')</h3>
             @yield('content')
 		</div><!--.container-fluid-->
