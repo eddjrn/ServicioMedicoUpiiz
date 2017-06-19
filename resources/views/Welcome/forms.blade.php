@@ -385,8 +385,8 @@ Generación de formularios
 
              <div class="row">
              <div class="col-md-12" align="Center">
-                     
-        <table border="1">
+                    
+                <table border="1">
         <tr>
         <td>
     <table>
@@ -443,15 +443,15 @@ Generación de formularios
                                 <td align="Center">H09-99039-32-5</td>
                             </tr>
                             <tr>
-                                <td>NUMERO DE SEGURO SOCIAL:</td>
+                                <td>NUMERO DE SEGURO SOCIAL: <strong>{{$student->user->medicalData->numSeguro}}</td>
                                 <td>&nbsp</td>
                             </tr>
                             <tr>
-                                <td>CURP:</td>
+                                <td>CURP: <strong>{{$student->curp}}</td>
                                 <td>&nbsp</td>
                             </tr>
                             <tr>
-                                <td>NUMERO DE UMF:</td>
+                                <td>NUMERO DE UMF: <strong>{{$student->user->medicalData->clinic}}</td>
                                 <td>&nbsp</td>
                             </tr>
                         </table>
@@ -469,13 +469,13 @@ Generación de formularios
             </tr>
             <tr>
                 <td>A)</td>
-                <td colspan="2">NOMBRE:_________________</td>
-                <td>_________________</td>
-                <td>_________________</td>
+                <td colspan="2">NOMBRE:<strong>{{$student->user->apellidoPaterno}} {{$student->user->apellidoMaterno}} {{$student->user->nombre}}</strong></td>
+                <td></td>
+                <td></td>
             </tr>
             <tr>
-                <td colspan="3" align="right">APELLIDO PATERNO &nbsp &nbsp &nbsp &nbsp APELLIDO MATERNO </td>
-                <td colspan="2" align="Center">NOMBRES</td>
+                <td colspan="3" align="right"></td>
+                <td colspan="2" align="Center"></td>
             </tr>
             <tr>
                 <td>B)</td>
@@ -485,9 +485,9 @@ Generación de formularios
             <tr>
                 <td>C)</td>
                 <td>FECHA DE NACIMIENTO:</td>
-                <td align="Center">(&nbsp)</td>
-                <td align="Center">(&nbsp)</td>
-                <td>(&nbsp)</td>
+                <td align="Center">(&nbsp___)</td>
+                <td align="Center">(&nbsp___)</td>
+                <td>(&nbsp___)</td>
             </tr>
             <tr>
                 <td colspan="2"></td>
@@ -497,12 +497,12 @@ Generación de formularios
             </tr>
             <tr>
                 <td>D)</td>
-                <td>LUGAR DE NACIMIENTO:</td>
+                <td>LUGAR DE NACIMIENTO: <strong>{{$student->state->nombre}} </td>
                 <td colspan="3"></td>
             </tr>
             <tr>
                 <td>E)</td>
-                <td>DOMICILIO:</td>
+                <td>DOMICILIO:<strong>{{$student->calle}} {{$student->numInterior}} {{$student->colonia}} {{$student->codigoPostal}}</td>
                 <td colspan="3"></td>
             </tr>
             <tr>
@@ -681,10 +681,12 @@ Generación de formularios
         </td>
         </tr>
     </table>
+     
+        
 
-</div>
+            </div>
                
-</div>
+            </div>
 
         </div><!--.tab-pane-->
 
