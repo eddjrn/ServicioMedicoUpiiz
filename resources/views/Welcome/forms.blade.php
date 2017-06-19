@@ -385,8 +385,8 @@ Generación de formularios
 
              <div class="row">
              <div class="col-md-12" align="Center">
-                    
-                <table border="1">
+                     
+        <table border="1">
         <tr>
         <td>
     <table>
@@ -443,15 +443,15 @@ Generación de formularios
                                 <td align="Center">H09-99039-32-5</td>
                             </tr>
                             <tr>
-                                <td>NUMERO DE SEGURO SOCIAL: <strong>{{$student->user->medicalData->numSeguro}}</td>
+                                <td>NUMERO DE SEGURO SOCIAL:</td>
                                 <td>&nbsp</td>
                             </tr>
                             <tr>
-                                <td>CURP: <strong>{{$student->curp}}</td>
+                                <td>CURP:</td>
                                 <td>&nbsp</td>
                             </tr>
                             <tr>
-                                <td>NUMERO DE UMF: <strong>{{$student->user->medicalData->clinic}}</td>
+                                <td>NUMERO DE UMF:</td>
                                 <td>&nbsp</td>
                             </tr>
                         </table>
@@ -469,13 +469,13 @@ Generación de formularios
             </tr>
             <tr>
                 <td>A)</td>
-                <td colspan="2">NOMBRE:<strong>{{$student->user->apellidoPaterno}} {{$student->user->apellidoMaterno}} {{$student->user->nombre}}</strong></td>
-                <td></td>
-                <td></td>
+                <td colspan="2">NOMBRE:_________________</td>
+                <td>_________________</td>
+                <td>_________________</td>
             </tr>
             <tr>
-                <td colspan="3" align="right"></td>
-                <td colspan="2" align="Center"></td>
+                <td colspan="3" align="right">APELLIDO PATERNO &nbsp &nbsp &nbsp &nbsp APELLIDO MATERNO </td>
+                <td colspan="2" align="Center">NOMBRES</td>
             </tr>
             <tr>
                 <td>B)</td>
@@ -485,9 +485,9 @@ Generación de formularios
             <tr>
                 <td>C)</td>
                 <td>FECHA DE NACIMIENTO:</td>
-                <td align="Center">(&nbsp___)</td>
-                <td align="Center">(&nbsp___)</td>
-                <td>(&nbsp___)</td>
+                <td align="Center">(&nbsp)</td>
+                <td align="Center">(&nbsp)</td>
+                <td>(&nbsp)</td>
             </tr>
             <tr>
                 <td colspan="2"></td>
@@ -497,12 +497,12 @@ Generación de formularios
             </tr>
             <tr>
                 <td>D)</td>
-                <td>LUGAR DE NACIMIENTO: <strong>{{$student->state->nombre}} </td>
+                <td>LUGAR DE NACIMIENTO:</td>
                 <td colspan="3"></td>
             </tr>
             <tr>
                 <td>E)</td>
-                <td>DOMICILIO:<strong>{{$student->calle}} {{$student->numInterior}} {{$student->colonia}} {{$student->codigoPostal}}</td>
+                <td>DOMICILIO:</td>
                 <td colspan="3"></td>
             </tr>
             <tr>
@@ -681,43 +681,24 @@ Generación de formularios
         </td>
         </tr>
     </table>
-     
-        
 
-            </div>
+</div>
                
-            </div>
+</div>
 
         </div><!--.tab-pane-->
+<<<<<<< Updated upstream
 
-        <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">
+        <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">Tab 3
        
         <a href="/carta" class="btn btn-inline" target="_blank" >Obtener Carta Responsiva</a>
 
          <div class="row">
-                 <div class="col-md-2"></div>
-                 <div class="col-md-9">
+                 <div class="col-md-3"></div>
+                 <div class="col-md-5">
                      
 
-                   <h1 align="Center">CARTA RESPONSIVA</h1>
-    </br>
-    <h3 align="Center">Zacatecas, Zacatecas a ______ de __________________ del ___________.</h3>
-    </br>
-    <h2>A quien corresponda:</h2>
-    <h3 align="justify">Por este medio me permito hacer constar que por as� convenir, a mis intereses, y despu�s de que las Autoridades de la Unidad Profesional Interdisciplinaria de Ingenier�a Campus Zacatecas (UPIIZ), me informaron de la necesidad de llevar a cabo los tr�mites de Inscripci�n al Seguro Facultativo del Instituto Mexicano del Seguro Social, es mi voluntad  no realizar los tr�mites correspondientes, por tener una cobertura m�dica por parte de mis padres y/o trabajo, al mismo tiempo  que deslindo de toda responsabilidad presente o futura a esta Unidad Acad�mica, que derive de  lo anterior.</h3>
-    <h2>ATENTAMENTE</h2>
-    <h3>NOMBRE DEL ALUMNO: <strong>{{$student->user->nombre}} {{$student->user->apellidoPaterno}} {{$student->user->apellidoMaterno}}</strong></h3>
-    <h3>INSTITUCION QUE PRESTA SERVICIO M�DICO: <strong>{{$student->user->medicalData->provider()}}</strong></h3>
-    <h3>NUMERO DE SEGURIDAD SOCIAL (NSS):<strong>{{$student->user->medicalData->numSeguro}}</strong></h3>
-    <h3>UNIDAD M�DICO FAMILLIAR (UMF):{{$student->user->medicalData->clinic}} LUGAR:_______________</h3>
-    <h3>PROGRAMA ACAD�MICO:<strong>{{$student->carrer->nombre}}</strong></h3>
-    <h3>No. DE BOLETA O PZ PROVISIONAL:<strong>{{$student->user->identificacion}}</strong></h3>
-    <h3>GRUPO:______________________________________________________________</h3>
-    <h3>Correo Electr�nico:<strong>{{$student->user->email}}</strong> tel:<strong>{{$student->telefono}}</strong></h3>
-    <h3>FIRMA DEL ALUMNO:________________________________________________</h3>
-    <h3>NOTA:</h3>
-    <h4 align="justify">ANEXA UNA COPIA DE TU CARTILLA NACIONAL DE SALUD O CARNET DE CITAS DONDE PUEDAS COMPROBAR QUE RECIBES ATENCI�N M�DICA POR TUS PADRES.</br>SI DESCONOCES ALGUNA INFORMACI�N PREGUNTA AL ENTREGAR EL FORMATO EN SERVICIO M�DICO DE LA UPIIZ</h4>
-
+                 ---Tu Codigo Aqui ----
 
 
                  </div>
@@ -725,6 +706,10 @@ Generación de formularios
         
         </div><!--.tab-pane-->
 
+=======
+        
+        <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">Tab 3</div><!--.tab-pane-->
+>>>>>>> Stashed changes
     </div><!--.tab-content-->
 
 </section><!--.tabs-section-->
