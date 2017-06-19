@@ -3500,5 +3500,404 @@ DB::table('datosMedicos')->insert([
 'institucionSeguro_id' => '1',
 'tipoSangre' => '1',
 ]);
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '352',
+'numSeguro' => '11199999352',
+'clinica_id' => '29',
+'proveedorSeguro' => '2',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '353',
+'numSeguro' => '11199999353',
+'clinica_id' => '22',
+'proveedorSeguro' => '3',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '354',
+'numSeguro' => '11199999354',
+'clinica_id' => '44',
+'proveedorSeguro' => '3',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '355',
+'numSeguro' => '11199999355',
+'clinica_id' => '10',
+'proveedorSeguro' => '1',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '356',
+'numSeguro' => '11199999356',
+'clinica_id' => '46',
+'proveedorSeguro' => '2',
+'institucionSeguro_id' => '1',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '357',
+'numSeguro' => '11199999357',
+'clinica_id' => '40',
+'proveedorSeguro' => '3',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '358',
+'numSeguro' => '11199999358',
+'clinica_id' => '4',
+'proveedorSeguro' => '1',
+'institucionSeguro_id' => '1',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '359',
+'numSeguro' => '11199999359',
+'clinica_id' => '5',
+'proveedorSeguro' => '1',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '360',
+'numSeguro' => '11199999360',
+'clinica_id' => '46',
+'proveedorSeguro' => '3',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '361',
+'numSeguro' => '11199999361',
+'clinica_id' => '15',
+'proveedorSeguro' => '2',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '362',
+'numSeguro' => '11199999362',
+'clinica_id' => '26',
+'proveedorSeguro' => '3',
+'institucionSeguro_id' => '1',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '363',
+'numSeguro' => '11199999363',
+'clinica_id' => '28',
+'proveedorSeguro' => '1',
+'institucionSeguro_id' => '1',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '364',
+'numSeguro' => '11199999364',
+'clinica_id' => '10',
+'proveedorSeguro' => '2',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '365',
+'numSeguro' => '11199999365',
+'clinica_id' => '23',
+'proveedorSeguro' => '1',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '366',
+'numSeguro' => '11199999366',
+'clinica_id' => '14',
+'proveedorSeguro' => '1',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '367',
+'numSeguro' => '11199999367',
+'clinica_id' => '51',
+'proveedorSeguro' => '3',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '368',
+'numSeguro' => '11199999368',
+'clinica_id' => '12',
+'proveedorSeguro' => '1',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '369',
+'numSeguro' => '11199999369',
+'clinica_id' => '4',
+'proveedorSeguro' => '2',
+'institucionSeguro_id' => '1',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '370',
+'numSeguro' => '11199999370',
+'clinica_id' => '9',
+'proveedorSeguro' => '1',
+'institucionSeguro_id' => '1',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '371',
+'numSeguro' => '11199999371',
+'clinica_id' => '44',
+'proveedorSeguro' => '3',
+'institucionSeguro_id' => '1',
+'tipoSangre' => '1',
+]);
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '372',
+'numSeguro' => '11199999372',
+'clinica_id' => '51',
+'proveedorSeguro' => '3',
+'institucionSeguro_id' => '1',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '373',
+'numSeguro' => '11199999373',
+'clinica_id' => '45',
+'proveedorSeguro' => '3',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '374',
+'numSeguro' => '11199999374',
+'clinica_id' => '34',
+'proveedorSeguro' => '2',
+'institucionSeguro_id' => '1',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '375',
+'numSeguro' => '11199999375',
+'clinica_id' => '34',
+'proveedorSeguro' => '3',
+'institucionSeguro_id' => '1',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '376',
+'numSeguro' => '11199999376',
+'clinica_id' => '4',
+'proveedorSeguro' => '2',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '377',
+'numSeguro' => '11199999377',
+'clinica_id' => '29',
+'proveedorSeguro' => '3',
+'institucionSeguro_id' => '1',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '378',
+'numSeguro' => '11199999378',
+'clinica_id' => '11',
+'proveedorSeguro' => '3',
+'institucionSeguro_id' => '1',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '379',
+'numSeguro' => '11199999379',
+'clinica_id' => '22',
+'proveedorSeguro' => '2',
+'institucionSeguro_id' => '1',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '380',
+'numSeguro' => '11199999380',
+'clinica_id' => '13',
+'proveedorSeguro' => '1',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '381',
+'numSeguro' => '11199999381',
+'clinica_id' => '35',
+'proveedorSeguro' => '3',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '382',
+'numSeguro' => '11199999382',
+'clinica_id' => '11',
+'proveedorSeguro' => '2',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '383',
+'numSeguro' => '11199999383',
+'clinica_id' => '17',
+'proveedorSeguro' => '2',
+'institucionSeguro_id' => '1',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '384',
+'numSeguro' => '11199999384',
+'clinica_id' => '31',
+'proveedorSeguro' => '1',
+'institucionSeguro_id' => '1',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '385',
+'numSeguro' => '11199999385',
+'clinica_id' => '2',
+'proveedorSeguro' => '2',
+'institucionSeguro_id' => '1',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '386',
+'numSeguro' => '11199999386',
+'clinica_id' => '34',
+'proveedorSeguro' => '3',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '387',
+'numSeguro' => '11199999387',
+'clinica_id' => '49',
+'proveedorSeguro' => '3',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '388',
+'numSeguro' => '11199999388',
+'clinica_id' => '40',
+'proveedorSeguro' => '3',
+'institucionSeguro_id' => '1',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '389',
+'numSeguro' => '11199999389',
+'clinica_id' => '38',
+'proveedorSeguro' => '2',
+'institucionSeguro_id' => '1',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '390',
+'numSeguro' => '11199999390',
+'clinica_id' => '26',
+'proveedorSeguro' => '3',
+'institucionSeguro_id' => '1',
+'tipoSangre' => '1',
+]);
+
+
+DB::table('datosMedicos')->insert([
+'usuario_id' => '391',
+'numSeguro' => '11199999391',
+'clinica_id' => '23',
+'proveedorSeguro' => '2',
+'institucionSeguro_id' => '2',
+'tipoSangre' => '1',
+]);
+
     }
 }

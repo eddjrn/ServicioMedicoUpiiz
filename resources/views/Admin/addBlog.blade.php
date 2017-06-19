@@ -118,7 +118,7 @@ Edición del blog
                             <td>{{$in->created_at->diffForHumans()}}</td>
                             <td>
 
-                          
+                        
                     <button type="button" 
                         onclick="verInfo('{{$in->titulo}}','{{$in->contenido}}','{{$in->dia()}}','{{$in->mes()}}','{{$in->hora()}}')" 
                         data-toggle="modal"
@@ -353,7 +353,7 @@ Edición del blog
                             <td>{{$img->created_at->diffForHumans()}}</td>
                          <td>
 
-                          
+             <!--               
                     <button type="button" 
                         onclick="verImg('{{$img->imagen}}','{{$img->titulo}}')" 
                         data-toggle="modal"
@@ -391,6 +391,7 @@ Edición del blog
                         </div>
 
                             </div> <!--model boddy-->
+                             <!-- 
                         </div>
                     </div>
                 </div><!--.modal-->
@@ -570,7 +571,7 @@ Edición del blog
                             <td>{{$vi->created_at->diffForHumans()}}</td>
                          <td>
 
-                          
+                   <!--         
                     <button type="button" 
                         onclick="verVid('{{$vi->titulo}}','{{$vi->link}}','{{$vi->imagen}}')" 
                         data-toggle="modal"
@@ -614,6 +615,7 @@ Edición del blog
                         </div>
 
                             </div> <!--model boddy-->
+                             <!-- 
                         </div>
                     </div>
                 </div><!--.modal-->

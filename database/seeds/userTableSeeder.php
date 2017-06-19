@@ -3510,5 +3510,402 @@ DB::table('usuario')->insert([
 'password' => '1234',
 'identificacion' => '2016670351',
 ]);
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont352@correo.com',
+'password' => '1234',
+'identificacion' => '2016670352',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont353@correo.com',
+'password' => '1234',
+'identificacion' => '2016670353',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont354@correo.com',
+'password' => '1234',
+'identificacion' => '2016670354',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont355@correo.com',
+'password' => '1234',
+'identificacion' => '2016670355',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont356@correo.com',
+'password' => '1234',
+'identificacion' => '2016670356',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont357@correo.com',
+'password' => '1234',
+'identificacion' => '2016670357',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont358@correo.com',
+'password' => '1234',
+'identificacion' => '2016670358',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont359@correo.com',
+'password' => '1234',
+'identificacion' => '2016670359',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont360@correo.com',
+'password' => '1234',
+'identificacion' => '2016670360',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont361@correo.com',
+'password' => '1234',
+'identificacion' => '2016670361',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont362@correo.com',
+'password' => '1234',
+'identificacion' => '2016670362',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont363@correo.com',
+'password' => '1234',
+'identificacion' => '2016670363',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont364@correo.com',
+'password' => '1234',
+'identificacion' => '2016670364',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont365@correo.com',
+'password' => '1234',
+'identificacion' => '2016670365',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont366@correo.com',
+'password' => '1234',
+'identificacion' => '2016670366',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont367@correo.com',
+'password' => '1234',
+'identificacion' => '2016670367',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont368@correo.com',
+'password' => '1234',
+'identificacion' => '2016670368',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont369@correo.com',
+'password' => '1234',
+'identificacion' => '2016670369',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont370@correo.com',
+'password' => '1234',
+'identificacion' => '2016670370',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont371@correo.com',
+'password' => '1234',
+'identificacion' => '2016670371',
+]);
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont372@correo.com',
+'password' => '1234',
+'identificacion' => '2016670372',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont373@correo.com',
+'password' => '1234',
+'identificacion' => '2016670373',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont374@correo.com',
+'password' => '1234',
+'identificacion' => '2016670374',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont375@correo.com',
+'password' => '1234',
+'identificacion' => '2016670375',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont376@correo.com',
+'password' => '1234',
+'identificacion' => '2016670376',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont377@correo.com',
+'password' => '1234',
+'identificacion' => '2016670377',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont378@correo.com',
+'password' => '1234',
+'identificacion' => '2016670378',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont379@correo.com',
+'password' => '1234',
+'identificacion' => '2016670379',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont380@correo.com',
+'password' => '1234',
+'identificacion' => '2016670380',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont381@correo.com',
+'password' => '1234',
+'identificacion' => '2016670381',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont382@correo.com',
+'password' => '1234',
+'identificacion' => '2016670382',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont383@correo.com',
+'password' => '1234',
+'identificacion' => '2016670383',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont384@correo.com',
+'password' => '1234',
+'identificacion' => '2016670384',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont385@correo.com',
+'password' => '1234',
+'identificacion' => '2016670385',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont386@correo.com',
+'password' => '1234',
+'identificacion' => '2016670386',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont387@correo.com',
+'password' => '1234',
+'identificacion' => '2016670387',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont388@correo.com',
+'password' => '1234',
+'identificacion' => '2016670388',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont389@correo.com',
+'password' => '1234',
+'identificacion' => '2016670389',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont390@correo.com',
+'password' => '1234',
+'identificacion' => '2016670390',
+]);
+
+
+DB::table('usuario')->insert([
+'nombre' => 'B',
+'apellidoPaterno' => 'Belmont',
+'apellidoMaterno' => 'Silva',
+'email' => 'Belmont391@correo.com',
+'password' => '1234',
+'identificacion' => '2016670391',
+]);
     }
 }
