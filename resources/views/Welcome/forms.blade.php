@@ -687,7 +687,6 @@ Generación de formularios
 </div>
 
         </div><!--.tab-pane-->
-<<<<<<< Updated upstream
 
         <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">Tab 3
        
@@ -706,10 +705,8 @@ Generación de formularios
         
         </div><!--.tab-pane-->
 
-=======
         
         <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">Tab 3</div><!--.tab-pane-->
->>>>>>> Stashed changes
     </div><!--.tab-content-->
 
 </section><!--.tabs-section-->
