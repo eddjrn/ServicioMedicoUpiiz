@@ -12,9 +12,9 @@ function editarImg(Eimagen,EtituloImg,id) {
 	document.getElementById('tituloImg').value=EtituloImg;
 	document.getElementById('id_postImg').value=id;
 	document.getElementById('id_deleteImg').value=id;
-	//alert(Etitulo+Econtenido);
+	//alert(Eimagen+EtituloImg,id);
 }
 
-function toggle(){
+function toggleim(){
     $('.editTablesImg').slideToggle(function(){$('#more').html($('.editTablesImg').is(':visible')?'Ocultar':'Mostrar más');});
 }

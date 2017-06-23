@@ -12,7 +12,7 @@ Servicio Medico Upiiz
 @stop
 
 @section('content')
-<div class="box-typical box-typical-padding documentation">
+<div  class="box-typical box-typical-padding documentation">
     <header class="documentation-header">
         <h2>Objetivo</h2>
         <p class="lead color-blue-grey"> </p>

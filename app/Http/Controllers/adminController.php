@@ -339,7 +339,7 @@ class adminController extends Controller
         $this->validate($request,[
 
             'Titulo_De_La_Imagen'=>'required|min:4',
-            'Link_De_Imagen'=>'required|min:70',
+            'Link_De_Imagen'=>'required|min:40',
 
             ]);
         $create=\App\images::create([
@@ -353,7 +353,7 @@ class adminController extends Controller
 
         $this->validate($request,[
 
-            'contenidoImg'=>'required|min:70',
+            'contenidoImg'=>'required|min:40',
             'tituloImg'=>'required|min:4'
             
             ]);
@@ -367,7 +367,7 @@ class adminController extends Controller
 
     }
 
-        public function deletImage(Request $request)
+    public function deletImage(Request $request)
     {
         $post=\App\images::find($request->id_deleteImg);
         $post->delete();
@@ -380,7 +380,7 @@ class adminController extends Controller
 
             'Titulo_Del_Video'=>'required|min:4',
             'Link_Del_Video'=>'required|min:35',
-            'Link_De_la_imagen'=>'required|min:70'
+            'Link_De_la_imagen'=>'required|min:40'
 
             ]);
         $create=\App\video::create([
@@ -397,7 +397,7 @@ class adminController extends Controller
 
             'eTituloVid'=>'required|min:4',
             'eContenidoVid'=>'required|min:35',
-            'eContenidoVidImg'=>'required|min:70',
+            'eContenidoVidImg'=>'required|min:40',
             ]);
 
         $post=\App\video::find($request->id_postVid);

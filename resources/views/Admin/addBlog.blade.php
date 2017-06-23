@@ -230,7 +230,7 @@ Edición del blog
         {!!Form::close()!!}
                             <div class="modal-footer">
                                 <div class="text-center">
-                                <a onclick="toggle()" id="more">Mostrar Más</a>
+                                <a onclick="toggleInf()" id="more">Mostrar Más</a>
                                 </div>
                             </div>
 
@@ -437,14 +437,15 @@ Edición del blog
                             </div>
                             </div>
              <input type="hidden" name="id_postImg" id="id_postImg">
-        {!!Form::close()!!}
+                 {!!Form::close()!!}
                             <div class="modal-footer">
                                 <div class="text-center">
-                                <a onclick="toggle()" id="moreImg">Mostrar Más</a>
+                                <a onclick="toggleim()" id="muchImg">Mostrar Más</a>
                                 </div>
                             </div>
 
-                 {!!Form::open(array('url'=>'/admin/add/images','method'=>'delete','class'=>'editTablesImg','style'=>'display:none'))!!}
+                         
+                  {!!Form::open(array('url'=>'/admin/add/images','method'=>'delete','class'=>'editTablesImg','style'=>'display:none'))!!}
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label class="form-label">¿Seguro que quiere eliminar el post?</label>
@@ -456,7 +457,6 @@ Edición del blog
                                 <button type="submit" id="deleteImg" class="btn btn-rounded btn-danger">Eliminar</button>
                             </div>
                             </div>
-
                  {!!Form::close()!!}
                         </div>
                 

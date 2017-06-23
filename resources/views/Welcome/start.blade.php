@@ -36,16 +36,16 @@ Servicio Medico Upiiz
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
+        <div class="col-md-4 col-xs-2" ></div>
+        <div class="col-md-4 col-xs-12">
             <section class="widget">
                 <header class="widget-header-dark">Mapas del IMSS</header>
                 
 
                 <div class="tab-content widget-tabs-content">
 
-                    <div class="tab-pane active" id="w-1-tab-0" role="tabpanel" aria-expanded="false" >
-                        <center><iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d41623.14776222582!2d-102.59717057394697!3d22.765334713626213!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x86824dfdee323e95%3A0x4b1a2d127500ff5c!2sUPIIZ-IPN%2C+Zacatecas!3m2!1d22.7839529!2d-102.61572989999999!4m5!1s0x86824931098d672b%3A0x81e350358c34bbd9!2sIMSS+Subdelegaci%C3%B3n+Zacatecas%2C+Av.+Solidaridad+2%2C+Militar%2C+98617+Guadalupe%2C+Zac.!3m2!1d22.7581779!2d-102.5222299!5e0!3m2!1ses!2smx!4v1495584465921" width="80%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe></center>
+                    <div class="tab-pane active" id="w-1-tab-0" role="tabpanel" aria-expanded="false">
+                        <center><iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d41623.14776222582!2d-102.59717057394697!3d22.765334713626213!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x86824dfdee323e95%3A0x4b1a2d127500ff5c!2sUPIIZ-IPN%2C+Zacatecas!3m2!1d22.7839529!2d-102.61572989999999!4m5!1s0x86824931098d672b%3A0x81e350358c34bbd9!2sIMSS+Subdelegaci%C3%B3n+Zacatecas%2C+Av.+Solidaridad+2%2C+Militar%2C+98617+Guadalupe%2C+Zac.!3m2!1d22.7581779!2d-102.5222299!5e0!3m2!1ses!2smx!4v1495584465921" width="90%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe></center>
                     </div>
 
                     <div class="tab-pane" id="w-1-tab-1" role="tabpanel" aria-expanded="false">
@@ -92,7 +92,7 @@ Servicio Medico Upiiz
                 </div>
             </section><!--.widget-->
         </div>
-        <div class="col-md-3"></div>
+        <div class="col-md-3 col-sm-6"></div>
     </div>
 </div>
 @stop

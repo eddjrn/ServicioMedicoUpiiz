@@ -78,7 +78,7 @@ Vista previa del blog
                                     <div class="activity-line-item-user-name text-shadow "><strong>{{$info->titulo}}</strong></div>
                                     <ul class="previews">
                                         <div>
-                                           <div class="activity-line-item-user-status">{{$info->contenido}}</div>
+                                           <div class="activity-line-item-user-status"></br>{{$info->contenido}}</div>
                                         </div>
                                     </ul>
                                 </div>

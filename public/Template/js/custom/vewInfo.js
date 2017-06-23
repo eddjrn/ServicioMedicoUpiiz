@@ -20,6 +20,6 @@ function editarInfo(Etitulo,Econtenido,id) {
 
 
 
-function toggle(){
+function toggleInf(){
     $('.editTables').slideToggle(function(){$('#more').html($('.editTables').is(':visible')?'Ocultar':'Mostrar más');});
 }
