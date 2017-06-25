@@ -19,7 +19,7 @@ class newsController extends Controller
     public function index()
     {
         $index=2;
-        $info=\App\info::all();
+        $info=\App\info::paginate(10);
         $images=\App\images::all();
         $video=\App\video::all();
         $user=\App\user::all();

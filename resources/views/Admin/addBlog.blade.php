@@ -255,6 +255,7 @@ Edición del blog
                             </td>
                         </tr>
                     @endforeach
+                    
                 </tbody>
             </table>
         </div>

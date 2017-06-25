@@ -52,12 +52,12 @@ Vista previa del blog
                     <div role="tabpanel" class="tab-pane fade in active" id="tabs-1-tab-1" class="col-md-5 col-xs-6 " >
        
 <div class="container-fluid">
-@foreach($info->sortByDesc('updated_at') as $info) 
+@foreach($info->sortByDesc('updated_at') as $inf) 
             <section class="activity-line">
                 <article class="activity-line-item box-typical">
                     <div class="activity-line-date border-primary b-a round">
-                        {{$info->dia()}}<br>
-                       {{$info->Mes()}}
+                        {{$inf->dia()}}<br>
+                       {{$inf->Mes()}}
                     </div>
                     <header class="activity-line-item-header">
                         <div class="activity-line-item-user">
@@ -66,19 +66,19 @@ Vista previa del blog
                                     <img src="/template/img/photo-64-2.jpg" alt="">
                                 </a>
                             </div>
-                            <div class="activity-line-item-user-name">{{$info->user}}</div>
-                            <div class="activity-line-item-user-status">{{$info->user->email}}</div>
+                            <div class="activity-line-item-user-name">{{$inf->user}}</div>
+                            <div class="activity-line-item-user-status">{{$inf->user->email}}</div>
                         </div>
                     </header>
                     <div class="activity-line-action-list">
                         <section class="activity-line-action">
-                            <div class="time">{{$info->hora()}}</div>
+                            <div class="time">{{$inf->hora()}}</div>
                             <div class="cont">
                                 <div class="cont-in">
-                                    <div class="activity-line-item-user-name text-shadow "><strong>{{$info->titulo}}</strong></div>
+                                    <div class="activity-line-item-user-name text-shadow "><strong>{{$inf->titulo}}</strong></div>
                                     <ul class="previews">
                                         <div>
-                                           <div class="activity-line-item-user-status"></br>{{$info->contenido}}</div>
+                                           <div class="activity-line-item-user-status"></br>{{$inf->contenido}}</div>
                                         </div>
                                     </ul>
                                 </div>
@@ -91,6 +91,7 @@ Vista previa del blog
                 
             </section><!--.activity-line-->
             @endforeach
+            {!!with(new App\Pagination\HDPresenter($info))->render()!!}
         </div>
 
                     </div><!--.tab-pane-->

@@ -27,7 +27,7 @@ class adminController extends Controller
     public function index()
     {
         $index = 1;
-        $info=\App\info::all();
+        $info=\App\info::paginate(10);
         $images=\App\images::all();
         $video=\App\video::all();
         return view('Admin.start', ['index'=>$index,'info'=> $info,'images'=> $images,'video'=> $video]);
