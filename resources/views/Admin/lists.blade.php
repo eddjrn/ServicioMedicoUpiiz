@@ -2,20 +2,13 @@
 
 @section('title')
 <title>Listas de alumnos</title>
+<meta name="csrf-token" content="{{ csrf_token() }}" /> <!--cabecera para que se puedan enviar peticiones POST desde javascript-->
 @stop
 
 @section('css')
 @stop
 
 @section('popUp')
-@stop
-
-@section('subHead')
-Listas de todos los alumnos en el sistema
-@stop
-
-@section('content')
-
 <div class="modal fade bd-example-modal-sm"
         tabindex="-1"
         role="dialog"
@@ -40,7 +33,7 @@ Listas de todos los alumnos en el sistema
             <div class="modal-footer">
 <!--                 <button type="button" class="btn btn-rounded btn-default" data-dismiss="modal">Close</button> -->
                 <div class="text-center">
-                    <button type="submit" class="btn btn-rounded btn-primary" formaction="/" id="formi">Guardar cambios</button>
+                    <button type="button" class="btn btn-rounded btn-warning" formaction="/" id="formi" onclick="upOperation()" data-dismiss="modal">Guardar cambios</button>
                 </div>
             </div>
             {!!Form::close()!!}
@@ -51,7 +44,7 @@ Listas de todos los alumnos en el sistema
                 </div>
             </div>
             
-            {!!Form::open(array('method'=>'delete', 'style'=>'display:none', 'class'=>'details'))!!}
+            {!!Form::open(array('method'=>'delete', 'style'=>'display:none', 'class'=>'details', 'id'=>'formDest'))!!}
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="form-label">¿Seguro que quiere eliminar el registro?</label>
@@ -61,7 +54,7 @@ Listas de todos los alumnos en el sistema
                 <input type="hidden" name="idVal2" id="idVal2" value="">
                 <div class="modal-footer">
                     <div class="text-center">
-                        <button type="submit" class="btn btn-rounded btn-primary btn-danger" formaction="/" id="formButton2">Eliminar</button>
+                        <button type="button" class="btn btn-rounded btn-primary btn-danger" formaction="/" id="formButton2" data-dismiss="modal" onclick="delOperation();">Eliminar</button>
                     </div>
                     <br/>
                     <div class="text-center">
@@ -72,6 +65,13 @@ Listas de todos los alumnos en el sistema
         </div>
     </div>
 </div><!--.modal-->
+@stop
+
+@section('subHead')
+Listas de todos los alumnos en el sistema
+@stop
+
+@section('content')
 
 <section class="tabs-section">
     <div class="tabs-section-nav tabs-section-nav-icons">
@@ -117,17 +117,20 @@ Listas de todos los alumnos en el sistema
         <div role="tabpanel" class="tab-pane fade in active" id="tabs-1-tab-1">
         
             <section class="widget widget-accordion" id="accordion" role="tablist" aria-multiselectable="true">
-            <!--{{$x=0}}-->
+            <!--{{$x=0}} contador del array ($numbers) que viene del controlador y sirve para las clases de los acordeones-->
             @foreach($carrers as $carrer)
             
             <?php
+//                 filtra los estudiantes a solo inscritos y no inscritos para las carreras y los ordena de manera descendente
                 $studentsFiltered = $carrer->students->filter(function ($student){
                     return $student->estatus_id == 1 || $student->estatus_id == 2;
-                });
+                })->sortByDesc('id');
             ?>
             
+            <!--     {{$studentAll3 = $studentsFiltered->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
+                <!--el 1 es el numero de pagina, c{carrer id} es el id del div donde se cargaran las tablas, pagerc{carrer id} es el nav donde se cargaran los botones de navegacion de paginas, se envia un objeto json a la funcion javascript-->
                 <article class="panel">
-                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}">
+                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'c{{$carrer->id}}','pagerc{{$carrer->id}}', {{json_encode($studentAll3)}}, 1);">
                         <a data-toggle="collapse"
                             data-parent="#accordion"
                             href="#collapse{{$numbers[$x]}}"
@@ -147,6 +150,8 @@ Listas de todos los alumnos en el sistema
                                     <div class="tbl-row">
                                         <div class="tbl-cell tbl-cell-title">
                                             <h3>
+                                                <span class="label" id="labelPagec{{$carrer->id}}">pagina</span> <!--info de la pagina de las tablas generado por script-->
+                                                /
                                                 @foreach($status as $s)
                                                     <span class="label 
                                                         @if($s->id == 1)
@@ -167,7 +172,6 @@ Listas de todos los alumnos en el sistema
                                                     ?>
                                                     <span class="label label-success">Completos: {{$studentsDocuments->where('documentacion', 1)->count()}}</span>
                                                     <span class="label label-danger">Incompletos: {{$studentsDocuments->where('documentacion', 2)->count()}}</span>
-                                                
                                             </h3>
                                         </div>
                                     </div>
@@ -176,59 +180,15 @@ Listas de todos los alumnos en el sistema
                                     <div class="table-responsive">
                                         <table class="table table-hover">
                                             <tbody>
-                                                @foreach($studentsFiltered as $student)
-                                                <tr>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Nombre</div>
-                                                        <a href="/admin/lists/{{$student->id}}">{{$student->user}}</a>
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Correo electrónico</div>
-                                                        {{$student->user->email}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Boleta</div>
-                                                        {{$student->user->identificacion}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Número de seguro</div>
-                                                        {{$student->user->medicalData->numSeguro}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Teléfono</div>
-                                                        {{$student->telefono}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Estatus</div>
-                                                        <input type="text" readonly class="form-control @if($student->estatus_id == 1)
-                                                            {{$statusStyle[0]}}
-                                                        @elseif($student->estatus_id == 2)
-                                                            {{$statusStyle[1]}}
-                                                        @elseif($student->estatus_id == 3)
-                                                            {{$statusStyle[2]}}
-                                                        @elseif($student->estatus_id == 4)
-                                                            {{$statusStyle[3]}}
-                                                        @elseif($student->estatus_id == 5)
-                                                            {{$statusStyle[4]}}
-                                                        @endif" value="{{$student->status->nombre}}">
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Documentación</div>
-                                                        <input type="text" readonly class="form-control @if($student->documentacion == 1)
-                                                            {{$statusStyle[4]}}
-                                                        @elseif($student->documentacion == 2)
-                                                            {{$statusStyle[1]}}
-                                                        @endif" value="{{$student->documentation()}}">
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Editar</div>
-                                                        <button type="button"
-                                                            class="btn btn-inline btn-sm btn-primary"
-                                                            data-toggle="modal"
-                                                            data-target=".bd-example-modal-sm" onclick="updateInputs({{$student->id}},'{{$student->user}}',{{$student->estatus_id}},{{$student->documentacion}})"><span class="font-icon font-icon-pencil"></span></button>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
+                                                <div id="c{{$carrer->id}}">
+                                                    <!--Tabla generada por el script .load() de jquery-->
+                                                </div>
+                                                
+                                                <div class="text-center">
+                                                    <nav id="pagerc{{$carrer->id}}">
+                                                        <!--Paginador de la tabla generado por el script innerHTML-->
+                                                    </nav>
+                                                </div>
                                             </tbody>
                                         </table>
                                     </div>
@@ -247,8 +207,9 @@ Listas de todos los alumnos en el sistema
         
          <section class="widget widget-accordion" id="accordion" role="tablist" aria-multiselectable="true">
             @foreach($status as $statu)
+            <!--     {{$studentAll4 = $statu->students->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
                 <article class="panel">
-                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}">
+                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 's{{$statu->id}}','pagers{{$statu->id}}', {{json_encode($studentAll4)}}, 2);">
                         <a data-toggle="collapse"
                             data-parent="#accordion"
                             href="#collapse{{$numbers[$x]}}"
@@ -277,6 +238,8 @@ Listas de todos los alumnos en el sistema
                                     <div class="tbl-row">
                                         <div class="tbl-cell tbl-cell-title">
                                             <h3>
+                                            <span class="label" id="labelPages{{$statu->id}}">pagina</span> <!--info de la pagina de las tablas generado por script-->
+                                                /
                                             <?php
                                                 $studentsDocuments = $statu->students;
                                             ?>
@@ -291,49 +254,15 @@ Listas de todos los alumnos en el sistema
                                     <div class="table-responsive">
                                         <table class="table table-hover">
                                             <tbody>
-                                                @foreach($statu->students as $student)
-                                                <tr>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Nombre</div>
-                                                        <a href="/admin/lists/{{$student->id}}">{{$student->user}}</a>
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Correo electrónico</div>
-                                                        {{$student->user->email}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Boleta</div>
-                                                        {{$student->user->identificacion}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Número de seguro</div>
-                                                        {{$student->user->medicalData->numSeguro}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Teléfono</div>
-                                                        {{$student->telefono}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Carrera</div>
-                                                        {{$student->carrer->nombre}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Documentación</div>
-                                                        <input type="text" readonly class="form-control @if($student->documentacion == 1)
-                                                            {{$statusStyle[4]}}
-                                                        @elseif($student->documentacion == 2)
-                                                            {{$statusStyle[1]}}
-                                                        @endif" value="{{$student->documentation()}}">
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Editar</div>
-                                                        <button type="button"
-                                                            class="btn btn-inline btn-sm btn-primary"
-                                                            data-toggle="modal"
-                                                            data-target=".bd-example-modal-sm" onclick="updateInputs({{$student->id}},'{{$student->user}}',{{$student->estatus_id}},{{$student->documentacion}})"><span class="font-icon font-icon-pencil"></span></button>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
+                                                <div id="s{{$statu->id}}">
+                                                    <!--Tabla generada por el script .load() de jquery-->
+                                                </div>
+                                                
+                                                <div class="text-center">
+                                                    <nav id="pagers{{$statu->id}}">
+                                                        <!--Paginador de la tabla generado por el script innerHTML-->
+                                                    </nav>
+                                                </div>
                                             </tbody>
                                         </table>
                                     </div>
@@ -348,15 +277,16 @@ Listas de todos los alumnos en el sistema
             </section>
             
             <section class="widget widget-accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                <!--     {{$studentAll5 = $studentAll->where('documentacion', 1)->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
                 <article class="panel">
-                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}">
+                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'd1','pagerd1', {{json_encode($studentAll5)}}, 3);">
                         <a data-toggle="collapse"
                             data-parent="#accordion"
                             href="#collapse{{$numbers[$x]}}"
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
                             Documentación completa
-                            <span class="label label-pill label-primary">{{$studentAll->where('documentacion', 1)->count()}}</span>
+                            <span class="label label-pill label-success">{{$studentAll->where('documentacion', 1)->count()}}</span>
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>
@@ -368,6 +298,8 @@ Listas de todos los alumnos en el sistema
                                     <div class="tbl-row">
                                         <div class="tbl-cell tbl-cell-title">
                                             <h3>
+                                                <span class="label" id="labelPaged1">pagina</span> <!--info de la pagina de las tablas generado por script-->
+                                                /
                                                 @foreach($status as $s)
                                                     <span class="label 
                                                         @if($s->id == 1)
@@ -390,55 +322,15 @@ Listas de todos los alumnos en el sistema
                                     <div class="table-responsive">
                                         <table class="table table-hover">
                                             <tbody>
-                                                @foreach($studentAll->where('documentacion', 1) as $student)
-                                                <tr>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Nombre</div>
-                                                        <a href="/admin/lists/{{$student->id}}">{{$student->user}}</a>
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Correo electrónico</div>
-                                                        {{$student->user->email}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Boleta</div>
-                                                        {{$student->user->identificacion}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Número de seguro</div>
-                                                        {{$student->user->medicalData->numSeguro}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Teléfono</div>
-                                                        {{$student->telefono}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Carrera</div>
-                                                        {{$student->carrer->nombre}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Estatus</div>
-                                                        <input type="text" readonly class="form-control @if($student->estatus_id == 1)
-                                                            {{$statusStyle[0]}}
-                                                        @elseif($student->estatus_id == 2)
-                                                            {{$statusStyle[1]}}
-                                                        @elseif($student->estatus_id == 3)
-                                                            {{$statusStyle[2]}}
-                                                        @elseif($student->estatus_id == 4)
-                                                            {{$statusStyle[3]}}
-                                                        @elseif($student->estatus_id == 5)
-                                                            {{$statusStyle[4]}}
-                                                        @endif" value="{{$student->status->nombre}}">
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Editar</div>
-                                                        <button type="button"
-                                                            class="btn btn-inline btn-sm btn-primary"
-                                                            data-toggle="modal"
-                                                            data-target=".bd-example-modal-sm" onclick="updateInputs({{$student->id}},'{{$student->user}}',{{$student->estatus_id}},{{$student->documentacion}})"><span class="font-icon font-icon-pencil"></span></button>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
+                                                <div id="d1">
+                                                    <!--Tabla generada por el script .load() de jquery-->
+                                                </div>
+                                                
+                                                <div class="text-center">
+                                                    <nav id="pagerd1">
+                                                        <!--Paginador de la tabla generado por el script innerHTML-->
+                                                    </nav>
+                                                </div>
                                             </tbody>
                                         </table>
                                     </div>
@@ -449,8 +341,9 @@ Listas de todos los alumnos en el sistema
                     </div>
                 </article>
                 <!--{{$x++}}-->
+                <!--     {{$studentAll6 = $studentAll->where('documentacion', 2)->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
                 <article class="panel">
-                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}">
+                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'd2','pagerd2', {{json_encode($studentAll6)}}, 3);">
                         <a data-toggle="collapse"
                             data-parent="#accordion"
                             href="#collapse{{$numbers[$x]}}"
@@ -469,6 +362,8 @@ Listas de todos los alumnos en el sistema
                                     <div class="tbl-row">
                                         <div class="tbl-cell tbl-cell-title">
                                             <h3>
+                                                <span class="label" id="labelPaged2">pagina</span> <!--info de la pagina de las tablas generado por script-->
+                                                /
                                                 @foreach($status as $s)
                                                     <span class="label 
                                                         @if($s->id == 1)
@@ -491,55 +386,15 @@ Listas de todos los alumnos en el sistema
                                     <div class="table-responsive">
                                         <table class="table table-hover">
                                             <tbody>
-                                                @foreach($studentAll->where('documentacion', 2) as $student)
-                                                <tr>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Nombre</div>
-                                                        <a href="/admin/lists/{{$student->id}}">{{$student->user}}</a>
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Correo electrónico</div>
-                                                        {{$student->user->email}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Boleta</div>
-                                                        {{$student->user->identificacion}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Número de seguro</div>
-                                                        {{$student->user->medicalData->numSeguro}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Teléfono</div>
-                                                        {{$student->telefono}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Carrera</div>
-                                                        {{$student->carrer->nombre}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Estatus</div>
-                                                        <input type="text" readonly class="form-control @if($student->estatus_id == 1)
-                                                            {{$statusStyle[0]}}
-                                                        @elseif($student->estatus_id == 2)
-                                                            {{$statusStyle[1]}}
-                                                        @elseif($student->estatus_id == 3)
-                                                            {{$statusStyle[2]}}
-                                                        @elseif($student->estatus_id == 4)
-                                                            {{$statusStyle[3]}}
-                                                        @elseif($student->estatus_id == 5)
-                                                            {{$statusStyle[4]}}
-                                                        @endif" value="{{$student->status->nombre}}">
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Editar</div>
-                                                        <button type="button"
-                                                            class="btn btn-inline btn-sm btn-primary"
-                                                            data-toggle="modal"
-                                                            data-target=".bd-example-modal-sm" onclick="updateInputs({{$student->id}},'{{$student->user}}',{{$student->estatus_id}},{{$student->documentacion}})"><span class="font-icon font-icon-pencil"></span></button>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
+                                                <div id="d2">
+                                                    <!--Tabla generada por el script .load() de jquery-->
+                                                </div>
+                                                
+                                                <div class="text-center">
+                                                    <nav id="pagerd2">
+                                                        <!--Paginador de la tabla generado por el script innerHTML-->
+                                                    </nav>
+                                                </div>
                                             </tbody>
                                         </table>
                                     </div>
@@ -561,7 +416,19 @@ Listas de todos los alumnos en el sistema
         
         <section class="widget widget-accordion" id="accordion" role="tablist" aria-multiselectable="true">
                 <article class="panel">
-                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}">
+<!--                 {{$studentsM = new Illuminate\Database\Eloquent\Collection()}} -->
+                                                
+                @foreach($medicalDatas->where('proveedorSeguro', 1) as $medicalData)                           
+<!--                     {{$studentsM->push($medicalData)}} -->
+                @endforeach
+                
+                 <!--     {{$studentAll8 = $studentsM->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
+                 
+                 <script>
+                    //alert({{$studentAll8}});
+                 </script>
+                
+                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'm1','pagerm1', {{json_encode($studentAll8)}}, 4);">
                         <a data-toggle="collapse"
                             data-parent="#accordion"
                             href="#collapse{{$numbers[$x]}}"
@@ -580,7 +447,9 @@ Listas de todos los alumnos en el sistema
                                     <div class="tbl-row">
                                         <div class="tbl-cell tbl-cell-title">
                                             <h3>
-                                                    <span class="label label-primary">IMSS</span>
+                                                <span class="label" id="labelPagem1">pagina</span> <!--info de la pagina de las tablas generado por script-->
+                                                /
+                                                <span class="label label-primary">IMSS</span>
                                             </h3>
                                         </div>
                                     </div>
@@ -588,60 +457,16 @@ Listas de todos los alumnos en el sistema
                                 <div class="box-typical-body">
                                     <div class="table-responsive">
                                         <table class="table table-hover">
-                                            <tbody>
-                                                @foreach($medicalDatas->where('proveedorSeguro', 1) as $medicalData)
-                                                <tr>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Nombre</div>
-                                                        <a href="/admin/lists/{{$medicalData->user->student->id}}">{{$medicalData->user}}</a>
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Correo electrónico</div>
-                                                        {{$medicalData->user->email}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Boleta</div>
-                                                        {{$medicalData->user->identificacion}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Número de seguro</div>
-                                                        {{$medicalData->numSeguro}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Teléfono</div>
-                                                        {{$medicalData->user->student->telefono}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Carrera</div>
-                                                        {{$medicalData->user->student->carrer->nombre}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Institución que lo asegura</div>
-                                                        {{$medicalData->institution->nombre}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Estatus</div>
-                                                        <input type="text" readonly class="form-control @if($medicalData->user->student->estatus_id == 1)
-                                                            {{$statusStyle[0]}}
-                                                        @elseif($medicalData->user->student->estatus_id == 2)
-                                                            {{$statusStyle[1]}}
-                                                        @elseif($medicalData->user->student->estatus_id == 3)
-                                                            {{$statusStyle[2]}}
-                                                        @elseif($medicalData->user->student->estatus_id == 4)
-                                                            {{$statusStyle[3]}}
-                                                        @elseif($medicalData->user->student->estatus_id == 5)
-                                                            {{$statusStyle[4]}}
-                                                        @endif" value="{{$medicalData->user->student->status->nombre}}">
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Editar</div>
-                                                        <button type="button"
-                                                            class="btn btn-inline btn-sm btn-primary"
-                                                            data-toggle="modal"
-                                                            data-target=".bd-example-modal-sm" onclick="updateInputs({{$medicalData->user->student->id}},'{{$medicalData->user}}',{{$medicalData->user->student->estatus_id}},{{$medicalData->user->student->documentacion}})"><span class="font-icon font-icon-pencil"></span></button>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
+                                            <tbody>                                                
+                                                <div id="m1">
+                                                    <!--Tabla generada por el script .load() de jquery-->
+                                                </div>
+                                                
+                                                <div class="text-center">
+                                                    <nav id="pagerm1">
+                                                        <!--Paginador de la tabla generado por el script innerHTML-->
+                                                    </nav>
+                                                </div>
                                             </tbody>
                                         </table>
                                     </div>
@@ -653,7 +478,15 @@ Listas de todos los alumnos en el sistema
                 </article>
                 <!--{{$x++}}-->
                 <article class="panel">
-                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}">
+                <!--                 {{$studentsM2 = new Illuminate\Database\Eloquent\Collection()}} -->
+                
+                @foreach($medicalDatas->where('proveedorSeguro', 2) as $medicalData)                           
+<!--                     {{$studentsM2->push($medicalData)}} -->
+                @endforeach
+                
+                 <!--     {{$studentAll9 = $studentsM2->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
+
+                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'm2','pagerm2', {{json_encode($studentAll9)}}, 4);">
                         <a data-toggle="collapse"
                             data-parent="#accordion"
                             href="#collapse{{$numbers[$x]}}"
@@ -672,10 +505,12 @@ Listas de todos los alumnos en el sistema
                                     <div class="tbl-row">
                                         <div class="tbl-cell tbl-cell-title">
                                             <h3>
-                                                    <!-- {{$institution = \App\medicalInstitute::all()}} -->
-                                                    @foreach($institution as $inst)
-                                                        <span class="label label-primary">{{$inst->nombre}}</span>
-                                                    @endforeach
+                                                <span class="label" id="labelPagem2">pagina</span> <!--info de la pagina de las tablas generado por script-->
+                                                /
+                                                <!-- {{$institution = \App\medicalInstitute::all()}} -->
+                                                @foreach($institution as $inst)
+                                                    <span class="label label-primary">{{$inst->nombre}}</span>
+                                                @endforeach
                                             </h3>
                                         </div>
                                     </div>
@@ -684,59 +519,15 @@ Listas de todos los alumnos en el sistema
                                     <div class="table-responsive">
                                         <table class="table table-hover">
                                             <tbody>
-                                                @foreach($medicalDatas->where('proveedorSeguro', 2) as $medicalData)
-                                                <tr>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Nombre</div>
-                                                        <a href="/admin/lists/{{$medicalData->user->student->id}}">{{$medicalData->user}}</a>
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Correo electrónico</div>
-                                                        {{$medicalData->user->email}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Boleta</div>
-                                                        {{$medicalData->user->identificacion}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Número de seguro</div>
-                                                        {{$medicalData->numSeguro}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Teléfono</div>
-                                                        {{$medicalData->user->student->telefono}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Carrera</div>
-                                                        {{$medicalData->user->student->carrer->nombre}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Institución que lo asegura</div>
-                                                        {{$medicalData->institution->nombre}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Estatus</div>
-                                                        <input type="text" readonly class="form-control @if($medicalData->user->student->estatus_id == 1)
-                                                            {{$statusStyle[0]}}
-                                                        @elseif($medicalData->user->student->estatus_id == 2)
-                                                            {{$statusStyle[1]}}
-                                                        @elseif($medicalData->user->student->estatus_id == 3)
-                                                            {{$statusStyle[2]}}
-                                                        @elseif($medicalData->user->student->estatus_id == 4)
-                                                            {{$statusStyle[3]}}
-                                                        @elseif($medicalData->user->student->estatus_id == 5)
-                                                            {{$statusStyle[4]}}
-                                                        @endif" value="{{$medicalData->user->student->status->nombre}}">
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Editar</div>
-                                                        <button type="button"
-                                                            class="btn btn-inline btn-sm btn-primary"
-                                                            data-toggle="modal"
-                                                            data-target=".bd-example-modal-sm" onclick="updateInputs({{$medicalData->user->student->id}},'{{$medicalData->user}}',{{$medicalData->user->student->estatus_id}},{{$medicalData->user->student->documentacion}})"><span class="font-icon font-icon-pencil"></span></button>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
+                                                <div id="m2">
+                                                    <!--Tabla generada por el script .load() de jquery-->
+                                                </div>
+                                                
+                                                <div class="text-center">
+                                                    <nav id="pagerm2">
+                                                        <!--Paginador de la tabla generado por el script innerHTML-->
+                                                    </nav>
+                                                </div>
                                             </tbody>
                                         </table>
                                     </div>
@@ -748,7 +539,15 @@ Listas de todos los alumnos en el sistema
                 </article>
                 <!--{{$x++}}-->
                 <article class="panel">
-                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}">
+<!--                 {{$studentsM3 = new Illuminate\Database\Eloquent\Collection()}} -->
+                                                
+                @foreach($medicalDatas->where('proveedorSeguro', 3) as $medicalData)                           
+<!--                     {{$studentsM3->push($medicalData)}} -->
+                @endforeach
+                
+                 <!--     {{$studentAll9 = $studentsM3->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
+                 
+                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'm3','pagerm3', {{json_encode($studentAll9)}}, 4);">
                         <a data-toggle="collapse"
                             data-parent="#accordion"
                             href="#collapse{{$numbers[$x]}}"
@@ -767,10 +566,12 @@ Listas de todos los alumnos en el sistema
                                     <div class="tbl-row">
                                         <div class="tbl-cell tbl-cell-title">
                                             <h3>
-                                                    <!-- {{$institution = \App\medicalInstitute::all()}} -->
-                                                    @foreach($institution as $inst)
-                                                        <span class="label label-primary">{{$inst->nombre}}</span>
-                                                    @endforeach
+                                                <span class="label" id="labelPagem3">pagina</span> <!--info de la pagina de las tablas generado por script-->
+                                                /
+                                                <!-- {{$institution = \App\medicalInstitute::all()}} -->
+                                                @foreach($institution as $inst)
+                                                    <span class="label label-primary">{{$inst->nombre}}</span>
+                                                @endforeach
                                             </h3>
                                         </div>
                                     </div>
@@ -779,59 +580,15 @@ Listas de todos los alumnos en el sistema
                                     <div class="table-responsive">
                                         <table class="table table-hover">
                                             <tbody>
-                                                @foreach($medicalDatas->where('proveedorSeguro', 3) as $medicalData)
-                                                <tr>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Nombre</div>
-                                                        <a href="/admin/lists/{{$medicalData->user->student->id}}">{{$medicalData->user}}</a>
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Correo electrónico</div>
-                                                        {{$medicalData->user->email}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Boleta</div>
-                                                        {{$medicalData->user->identificacion}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Número de seguro</div>
-                                                        {{$medicalData->numSeguro}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Teléfono</div>
-                                                        {{$medicalData->user->student->telefono}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Carrera</div>
-                                                        {{$medicalData->user->student->carrer->nombre}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Institución que lo asegura</div>
-                                                        {{$medicalData->institution->nombre}}
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Estatus</div>
-                                                        <input type="text" readonly class="form-control @if($medicalData->user->student->estatus_id == 1)
-                                                            {{$statusStyle[0]}}
-                                                        @elseif($medicalData->user->student->estatus_id == 2)
-                                                            {{$statusStyle[1]}}
-                                                        @elseif($medicalData->user->student->estatus_id == 3)
-                                                            {{$statusStyle[2]}}
-                                                        @elseif($medicalData->user->student->estatus_id == 4)
-                                                            {{$statusStyle[3]}}
-                                                        @elseif($medicalData->user->student->estatus_id == 5)
-                                                            {{$statusStyle[4]}}
-                                                        @endif" value="{{$medicalData->user->student->status->nombre}}">
-                                                    </td>
-                                                    <td>
-                                                        <div class="font-11 color-blue-grey-lighter uppercase">Editar</div>
-                                                        <button type="button"
-                                                            class="btn btn-inline btn-sm btn-primary"
-                                                            data-toggle="modal"
-                                                            data-target=".bd-example-modal-sm" onclick="updateInputs({{$medicalData->user->student->id}},'{{$medicalData->user}}',{{$medicalData->user->student->estatus_id}},{{$medicalData->user->student->documentacion}})"><span class="font-icon font-icon-pencil"></span></button>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
+                                                <div id="m3">
+                                                    <!--Tabla generada por el script .load() de jquery-->
+                                                </div>
+                                                
+                                                <div class="text-center">
+                                                    <nav id="pagerm3">
+                                                        <!--Paginador de la tabla generado por el script innerHTML-->
+                                                    </nav>
+                                                </div>
                                             </tbody>
                                         </table>
                                     </div>
@@ -848,10 +605,17 @@ Listas de todos los alumnos en el sistema
     </div><!--.tab-content-->
 </section><!--.tabs-section-->
 
-
 @stop
 
 @section('scripts')
     <script src="/Template/js/lib/bootstrap-select/bootstrap-select.min.js"></script>
     <script src="/Template/js/custom/listsEdits.js"></script>
+    
+    <script> /*script para que se puedan enviar peticiones POST desde javascript*/
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
 @stop

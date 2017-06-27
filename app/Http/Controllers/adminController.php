@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Database\Eloquent\Collection;
 
 use Hash;
 
@@ -86,6 +87,31 @@ class adminController extends Controller
         return view('Admin.lists', ['index'=>$index, 'numbers'=>$numbers, 'statusStyle'=>$statusStyle, 'carrers'=>$carrers, 'status'=>$status, 'studentAll'=>$studentAll, 'medicalDatas'=>$medicalDatas]);
     }
     
+    public function pagination(Request $request, $list){
+        $array = $request->data;
+        $idUniqueSection = $request->id;
+        $indexSection = $request->index;
+        
+        $students = new Collection();
+        
+        foreach($array as $a){
+            $students->push(\App\student::find($a));
+        }
+        
+        $studentsPaginated = $students->forPage($list, 5);
+        
+        $lastPage = count($array) / 5;
+        
+        $statusStyle = array(
+            'form-control-blue-fill',
+            'form-control-red-fill',
+            'form-control-purple-fill',
+            'form-control-orange-fill',
+            'form-control-green-fill',
+        );
+        return view('Admin.list', ['list'=>$list, 'array'=>$array, 'statusStyle'=>$statusStyle, 'studentsPaginated'=>$studentsPaginated, 'lastPage'=>$lastPage, 'idUniqueSection'=>$idUniqueSection, 'indexSection'=>$indexSection]);
+    }
+    
     /**
      * Display the specified resource.
      *
@@ -117,11 +143,25 @@ class adminController extends Controller
      */
     public function edit(Request $request, $id)
     {
+        //abort(500);
+        
+        //return ':v';
+        
         $student = \App\student::find($id);
         $student->update([
             'documentacion'=>$request->documentacion,
             'estatus_id'=>$request->estatus,
         ]);
+        
+        if($request->ajax()){
+            $user = $student->user;
+            return response()->json([
+                "message" => "Se ha actualizado a el usuario:",
+                "userName" => $user->__tostring(),
+                "Id" => $user->identificacion,
+                "carrer" => $student->carrer->nombre,
+            ]);
+        }
         
         return back();
     }
@@ -269,14 +309,27 @@ class adminController extends Controller
      */
     public function destroy(Request $request)
     {
+        //abort(500);
+        
         $student = \App\student::find($request->idVal2);
         $user = $student->user;
+        
+        $user->delete();
+        
+        if($request->ajax()){
+            return response()->json([
+                "message" => "Se ha eliminado a el usuario:",
+                "userName" => $user->__tostring(),
+                "Id" => $user->identificacion,
+                "carrer" => $student->carrer->nombre,
+            ]);
+        }
         
         session()->flash('message', 'Se eliminó a: '.$user. ' con boleta de: '. $user->identificacion);
         
         $user->delete();
         
-        session()->flash('type', 'warning');
+        session()->flash('type', 'danger');
         
         return redirect('/admin/lists');
     }
