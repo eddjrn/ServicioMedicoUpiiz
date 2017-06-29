@@ -11,7 +11,7 @@ class medicalData extends Model
     
     protected $table = 'datosMedicos';
     
-    protected $fillable = ['usuario_id', 'numSeguro', 'proveedorSeguro', 'clinica_id', 'institucionSeguro_id', 'tipoSangre'];
+    protected $fillable = ['usuario_id', 'numSeguro', 'clinica_id', 'proveedorSeguro', 'seguro', 'institucionSeguro_id', 'tipoSangre'];
     
     protected $searchableColumns = [
         'numSeguro' => 20,
@@ -41,6 +41,19 @@ class medicalData extends Model
     
     public function providerTypes(){
         $types = ['1' => 'UPIIZ-IPN', '2' => 'Padres', '3' => 'Trabajo'];
+        return $types;
+    }
+    
+    public function insurance(){
+        if($this->seguro == 1){
+            return 'Si cuenta';
+        } elseif($this->seguro == 2){
+            return 'No cuenta';
+        }
+    }
+    
+    public function insurances(){
+        $types = ['1' => 'Si cuenta', '2' => 'No cuenta'];
         return $types;
     }
     

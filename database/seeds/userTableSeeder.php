@@ -33,16 +33,30 @@ class userTableSeeder extends Seeder
             'tipo' => '2',
         ]);
 
-        DB::table('usuario')->insert([
-            'nombre' => 'Izacc',
-            'apellidoPaterno' => 'Belmont',
-            'apellidoMaterno' => 'Juste',
-            'email' => 'Izacc_w@correo.com',
-            'facebook' => 'https://www.facebook.com/search/top/?q=servicio%20medico%20upiiz',
-            'password' => bcrypt('1234'),
-            'identificacion' => '2016670126',
-            'tipo' => '2',
-        ]);
-
-           }
+        $limit = 50;
+        $word = " abcdefghijklmnopqrstuvwxyzae i o u";
+        $capitalWord = " ABCDEFGHIJKLMNOPQRSTUVWXYZAEIOU";
+        
+        for($i = 0; $i <= $limit; $i++){
+            $name = "";
+            $lastName1 = substr(str_shuffle($word), 0, rand (5 , 10));
+            $lastName2 = substr(str_shuffle($word), 0, rand (5 , 10));
+            $email = substr(str_shuffle($word), 0, rand (5 , 15)).'@correo.com';
+            
+            for($j = 1; $j <= 2;$j++){
+                $name .= substr(str_shuffle($word), 0, rand (5 , 10)). ' ';
+            }
+            
+            DB::table('usuario')->insert([
+                'nombre' => $name,
+                'apellidoPaterno' => $lastName1,
+                'apellidoMaterno' => $lastName2,
+                'email' => $email,
+                'facebook' => 'https://www.facebook.com/search/top/?q=servicio%20medico%20upiiz',
+                'password' => bcrypt('norman'),
+                'identificacion' => '20'.rand(10 , 99).rand(10 , 99).rand(10 , 99).rand(10 , 99),
+                'tipo' => '2',
+            ]);
+        }
+    }
 }

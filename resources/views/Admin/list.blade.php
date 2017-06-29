@@ -12,31 +12,31 @@
             <a href="/admin/lists/{{$student['id']}}">{{$user}}</a>
         </div>
         @if($indexSection == 2 || $indexSection == 3 || $indexSection == 4)
-        <div class="col-lg-2 col-md-2 hidden-lg-down">
+        <div class="col-lg-2 col-md-2 hidden-lg-down helpHighlight" style="word-wrap: break-word;">
             <div class="font-11 color-blue-grey-lighter uppercase">Carrera</div>
             {{\App\carrer::find($student['carrera_id'])->nombre}}
         </div>
         @else
-        <div class="col-lg-2 col-md-2 hidden-lg-down">
+        <div class="col-lg-2 col-md-2 hidden-lg-down helpHighlight" style="word-wrap: break-word;">
             <div class="font-11 color-blue-grey-lighter uppercase">Correo electrónico</div>
             {{$user['email']}}
         </div>
         @endif
-        <div class="col-lg-1 col-md-2 col-xs-12">
+        <div class="col-lg-1 col-md-2 col-xs-12 helpHighlight">
             <div class="font-11 color-blue-grey-lighter uppercase">Boleta</div>
                 {{$user['identificacion']}}
         </div>
-        <div class="col-lg-2 col-md-2 col-xs-12">
+        <div class="col-lg-2 col-md-2 col-xs-12 helpHighlight">
             <div class="font-11 color-blue-grey-lighter uppercase">Número de seguro</div>
             {{$medicalData[0]['numSeguro']}}
         </div>
         @if($indexSection == 4)
-        <div class="col-lg-1 col-md-1 hidden-lg-down">
+        <div class="col-lg-1 col-md-1 hidden-lg-down helpHighlight">
             <div class="font-11 color-blue-grey-lighter uppercase">Institución</div>
             {{\App\medicalInstitute::find($medicalData[0]['institucionSeguro_id'])->nombre}}
         </div>
         @else
-        <div class="col-lg-1 col-md-1 hidden-lg-down">
+        <div class="col-lg-1 col-md-1 hidden-lg-down helpHighlight" style="word-wrap: break-word;">
             <div class="font-11 color-blue-grey-lighter uppercase">Teléfono</div>
             {{$student['telefono']}}
         </div>
@@ -53,7 +53,7 @@
                 {{$statusStyle[3]}}
             @elseif($student['estatus_id'] == 5)
                 {{$statusStyle[4]}}
-            @endif" value="{{\App\status::find($student['estatus_id'])->nombre}}">
+            @endif" value="{{\App\status::find($student['estatus_id'])->nombre}}" style="word-wrap: break-word;">
         </div>
         <div class="col-lg-1 col-md-2 col-xs-6">
             <div class="font-11 color-blue-grey-lighter uppercase">Documentación</div>
@@ -96,7 +96,8 @@
     $(document).ready( function() {
         document.getElementById('cd{{$idUniqueSection}}').value = v; //pone el valor redondeado en un input type hidden que posteriormente toma la vista principal para el paginador
         document.getElementById('labelPage{{$idUniqueSection}}').innerHTML = "Página "+ {{$list}} + " de " +  v; //pone la etiqueta gris de informacion de la pagina en la vista principal con $list=>numero actual de la pagina (desde la URL) y la variable redondeada mas arriba
-        $('[data-toggle="popover"]').popover({ trigger: "hover" }); //Activa los Popovers en la vista de jquery (.load()) por que los desactiva por defecto
+        $('[data-toggle="popover"]').popover({ trigger: "focus, hover" }); //Activa los Popovers en la vista de jquery (.load()) por que los desactiva por defecto
+        //$('[data-toggle="popover"]').popover({ trigger: "hover" }); //Activa los Popovers en la vista de jquery (.load()) por que los desactiva por defecto
     });
 </script>
 
@@ -104,5 +105,8 @@
 <style>
 .moreBtn:hover{ 
     background:#F6F8FA;
+}
+.helpHighlight:hover{
+    text-decoration: underline;
 }
 </style>

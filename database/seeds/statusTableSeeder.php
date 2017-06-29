@@ -20,7 +20,11 @@ class statusTableSeeder extends Seeder
         ]);
         
         DB::table('estatus')->insert([
-            'nombre' => 'Baja',
+            'nombre' => 'Baja temporal',
+        ]);
+        
+        DB::table('estatus')->insert([
+            'nombre' => 'Baja definitiva',
         ]);
         
         DB::table('estatus')->insert([

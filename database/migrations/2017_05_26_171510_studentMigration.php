@@ -29,6 +29,7 @@ class StudentMigration extends Migration
             
             $table->integer('sexo');
             $table->integer('documentacion');
+            $table->text('observaciones')->nullable();
             $table->integer('turno');
             
             $table->string('telefono', 15);

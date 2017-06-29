@@ -13,7 +13,7 @@ class student extends Model
     
     protected $table = 'alumno';
     
-    protected $fillable = ['usuario_id', 'carrera_id', 'municipio_id', 'estado_id', 'sexo', 'documentacion', 'turno', 'telefono', 'calle', 'numExterior', 'numInterior', 'colonia', 'codigoPostal', 'localidad', 'curp', 'fechaNacimiento', 'tutor', 'telefonoTutor', 'celularTutor', 'parentescoTutor', 'estatus_id'];
+    protected $fillable = ['usuario_id', 'carrera_id', 'municipio_id', 'estado_id', 'sexo', 'documentacion', 'observaciones', 'turno', 'telefono', 'calle', 'numExterior', 'numInterior', 'colonia', 'codigoPostal', 'localidad', 'curp', 'fechaNacimiento', 'tutor', 'telefonoTutor', 'celularTutor', 'parentescoTutor', 'estatus_id'];
     //protected $guarded = ['usuario_id'];
     
     protected $dates = [
@@ -96,11 +96,15 @@ class student extends Model
             return 'Padre';
         } elseif($this->parentescoTutor == 2){
             return 'Hermano';
+        } elseif($this->parentescoTutor == 3){
+            return 'Tio';
+        } elseif($this->parentescoTutor == 4){
+            return 'Tutor legal';
         }
     }
     
     public function tutorRelationshipTypes(){
-        $types = ['1' => 'Padre', '2' => 'Hermano'];
+        $types = ['1' => 'Padre', '2' => 'Hermano', '3' => 'Tio', '4' => 'Tutor legal'];
         return $types;
     }
     

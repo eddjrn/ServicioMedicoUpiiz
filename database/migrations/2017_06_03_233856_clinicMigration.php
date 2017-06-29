@@ -20,6 +20,8 @@ class ClinicMigration extends Migration
             $table->integer('municipio_id')->unsigned()->index()->nullable();
             $table->foreign('municipio_id')->references('id')->on('municipio')->onDelete('set null');
             
+            $table->text('mapa')->nullable();
+            
             $table->timestamps();
         });
     }

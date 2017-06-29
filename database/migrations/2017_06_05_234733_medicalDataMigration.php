@@ -20,6 +20,7 @@ class MedicalDataMigration extends Migration
             
             $table->string('numSeguro', 25)->unique();
             $table->integer('proveedorSeguro');
+            $table->integer('seguro');
             
             $table->integer('clinica_id')->unsigned()->index()->nullable();
             $table->foreign('clinica_id')->references('id')->on('clinica')->onDelete('set null');

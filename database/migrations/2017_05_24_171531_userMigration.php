@@ -18,7 +18,7 @@ class UserMigration extends Migration
             $table->string('apellidoPaterno', 50);
             $table->string('apellidoMaterno', 50);
             $table->string('email', 50)->unique();
-            $table->text('facebook');
+            $table->text('facebook')->nullable();
             $table->string('password', 60);
             $table->integer('identificacion')->unique();
             $table->integer('tipo');
