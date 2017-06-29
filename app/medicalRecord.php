@@ -14,4 +14,10 @@ class medicalRecord extends Model
      public function user(){
         return $this->belongsTo(user::class, 'usuario_id');
     }
+
+    public function AntecedentTypes(){
+        $types = ['1' => 'padres', '2' => 'abuelos', '3' => 'tios', '4' => 'hermanos', '5' => 'hijos'];
+        return $types;
+    }
+
 }

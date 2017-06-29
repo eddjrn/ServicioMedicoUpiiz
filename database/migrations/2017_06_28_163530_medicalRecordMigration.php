@@ -27,18 +27,18 @@ class MedicalRecordMigration extends Migration
             $table->text('cirugias');
             $table->text('fracturas');
 
-            $table->text('presionAlta');
-            $table->text('diabetes');
-            $table->text('artritis');
-            $table->text('asma');
-            $table->text('cancer');
-            $table->text('epilepsias');
-            $table->text('enfCorazon');
-            $table->text('sobrePeso');
-            $table->text('enfTiroides');
-            $table->text('bipolaridad');
-            $table->text('esquizofrenia');
-            $table->text('depresion');
+            $table->integer('presionAlta');
+            $table->integer('diabetes');
+            $table->integer('artritis');
+            $table->integer('asma');
+            $table->integer('cancer');
+            $table->integer('epilepsias');
+            $table->integer('enfCorazon');
+            $table->integer('sobrePeso');
+            $table->integer('enfTiroides');
+            $table->integer('bipolaridad');
+            $table->integer('esquizofrenia');
+            $table->integer('depresion');
             
             $table->timestamps();
         });
