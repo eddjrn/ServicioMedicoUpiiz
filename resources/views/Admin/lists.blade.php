@@ -9,12 +9,12 @@
 @stop
 
 @section('popUp')
-<div class="modal fade bd-example-modal-sm"
+<div class="modal fade bd-example-modal-md"
         tabindex="-1"
         role="dialog"
         aria-labelledby="mySmallModalLabel"
         aria-hidden="true">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
@@ -24,11 +24,29 @@
             </div>
             {!!Form::open(array('method'=>'post', 'id'=>'userForm'))!!}
             <div class="modal-body">
-                <h5 class="m-t-lg with-border">Estatus en el sistema</h5>
-                <!--{{$estatus=\App\status::lists('nombre', 'id')}} -->
-                {!!Form::select('estatus', $estatus, 1, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'estatus'])!!}
-                <h5 class="m-t-lg with-border">Documentación</h5>
-                {!!Form::select('documentacion', array('1'=>'Completa', '2'=>'Incompleta'), 1, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'documentacion'])!!}
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1">
+                            <h5 class="m-t-lg with-border">Estatus en el sistema</h5>
+                            <!--{{$estatus=\App\status::lists('nombre', 'id')}} -->
+                            {!!Form::select('estatus', $estatus, 1, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'estatus'])!!}
+                        </div>
+                        <div class="col-lg-5 col-md-5">
+                            <h5 class="m-t-lg with-border">Seguro de vida</h5>
+                            {!!Form::select('seguro', array('1'=>'Si cuenta', '2'=>'No cuenta'), 1, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'seguro'])!!}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1">
+                            <h5 class="m-t-lg with-border">Documentación</h5>
+                            {!!Form::select('documentacion', array('1'=>'Completa', '2'=>'Incompleta'), 1, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'documentacion'])!!}
+                        </div>
+                        <div class="col-lg-5 col-md-5">
+                            <h5 class="m-t-lg with-border">Observaciones</h5>
+                            {!!Form::text('observaciones', null, array('class'=>'form-control', 'id'=>'observaciones', 'placeholder'=>'Observaciones sobre la documentacion'))!!}
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
 <!--                 <button type="button" class="btn btn-rounded btn-default" data-dismiss="modal">Close</button> -->
@@ -44,21 +62,21 @@
                 </div>
             </div>
             
-            {!!Form::open(array('method'=>'delete', 'style'=>'display:none', 'class'=>'details', 'id'=>'formDest'))!!}
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label class="form-label">¿Seguro que quiere eliminar el registro?</label>
-                    </div>
-                </div>
-            
+            {!!Form::open(array('method'=>'delete', 'style'=>'display:none', 'class'=>'details', 'id'=>'formDest'))!!}            
                 <input type="hidden" name="idVal2" id="idVal2" value="">
                 <div class="modal-footer">
-                    <div class="text-center">
-                        <button type="button" class="btn btn-rounded btn-primary btn-danger" formaction="/" id="formButton2" data-dismiss="modal" onclick="delOperation();">Eliminar</button>
-                    </div>
-                    <br/>
-                    <div class="text-center">
-                        <button type="button" class="btn btn-rounded btn-primary" onclick="toggle();">Cancelar</button>
+                    <div class="container text-center">
+                        <div class="form-group">
+                            <h5 class="m-t-lg with-border">¿Seguro que quiere eliminar el registro?</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <button type="button" class="btn btn-rounded btn-primary btn-danger btn-inline" formaction="/" id="formButton2" data-dismiss="modal" onclick="delOperation();">Eliminar</button>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <button type="button" class="btn btn-rounded btn-primary btn-inline" onclick="toggle();">Cancelar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             {!!Form::close()!!}
@@ -215,7 +233,7 @@ Listas de todos los alumnos en el sistema
                             href="#collapse{{$numbers[$x]}}"
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
-                            {{$statu->nombre}}s
+                            {{$statu->nombre}}
                             <span class="label label-pill @if($statu->id == 1)
                                 label-primary
                             @elseif($statu->id == 2)
@@ -414,7 +432,7 @@ Listas de todos los alumnos en el sistema
         </div><!--.tab-pane-->
         <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-4">
         
-        <section class="widget widget-accordion" id="accordion" role="tablist" aria-multiselectable="true">
+            <section class="widget widget-accordion" id="accordion" role="tablist" aria-multiselectable="true">
                 <article class="panel">
 <!--                 {{$studentsM = new Illuminate\Database\Eloquent\Collection()}} -->
                                                 
@@ -586,6 +604,120 @@ Listas de todos los alumnos en el sistema
                                                 
                                                 <div class="text-center">
                                                     <nav id="pagerm3">
+                                                        <!--Paginador de la tabla generado por el script innerHTML-->
+                                                    </nav>
+                                                </div>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div><!--.box-typical-body-->
+                            </section><!--.box-typical-->
+                            
+                        </div>
+                    </div>
+                </article>
+                <!--{{$x++}}-->
+            </section>
+            <section class="widget widget-accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                <article class="panel">
+<!--                 {{$studentsI1 = new Illuminate\Database\Eloquent\Collection()}} -->
+                                                
+                @foreach($medicalDatas->where('seguroVida', 1) as $medicalData)                           
+<!--                     {{$studentsI1->push($medicalData)}} -->
+                @endforeach
+                
+                 <!--     {{$studentAll10 = $studentsI1->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
+                 
+                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'I1','pagerI1', {{json_encode($studentAll10)}}, 5);">
+                        <a data-toggle="collapse"
+                            data-parent="#accordion"
+                            href="#collapse{{$numbers[$x]}}"
+                            aria-expanded="false"
+                            aria-controls="collapse{{$numbers[$x]}}">
+                            Con seguro de vida
+                            <span class="label label-pill label-success">{{$medicalDatas->where('seguroVida', 1)->count()}}</span>
+                            <i class="font-icon font-icon-arrow-down"></i>
+                        </a>
+                    </div>
+                    <div id="collapse{{$numbers[$x]}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$numbers[$x]}}">
+                        <div class="panel-collapse-in">
+                        
+                            <section class="box-typical box-typical-max-280">
+                                <header class="box-typical-header">
+                                    <div class="tbl-row">
+                                        <div class="tbl-cell tbl-cell-title">
+                                            <h3>
+                                                <span class="label" id="labelPageI1">pagina</span> <!--info de la pagina de las tablas generado por script-->
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </header>
+                                <div class="box-typical-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <tbody>
+                                                <div id="I1">
+                                                    <!--Tabla generada por el script .load() de jquery-->
+                                                </div>
+                                                
+                                                <div class="text-center">
+                                                    <nav id="pagerI1">
+                                                        <!--Paginador de la tabla generado por el script innerHTML-->
+                                                    </nav>
+                                                </div>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div><!--.box-typical-body-->
+                            </section><!--.box-typical-->
+                            
+                        </div>
+                    </div>
+                </article>
+                <!--{{$x++}}-->
+                <article class="panel">
+<!--                 {{$studentsI2 = new Illuminate\Database\Eloquent\Collection()}} -->
+                                                
+                @foreach($medicalDatas->where('seguroVida', 2) as $medicalData)                           
+<!--                     {{$studentsI2->push($medicalData)}} -->
+                @endforeach
+                
+                 <!--     {{$studentAll11 = $studentsI2->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
+                 
+                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'I2','pagerI2', {{json_encode($studentAll11)}}, 5);">
+                        <a data-toggle="collapse"
+                            data-parent="#accordion"
+                            href="#collapse{{$numbers[$x]}}"
+                            aria-expanded="false"
+                            aria-controls="collapse{{$numbers[$x]}}">
+                            Sin seguro de vida
+                            <span class="label label-pill label-danger">{{$medicalDatas->where('seguroVida', 2)->count()}}</span>
+                            <i class="font-icon font-icon-arrow-down"></i>
+                        </a>
+                    </div>
+                    <div id="collapse{{$numbers[$x]}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$numbers[$x]}}">
+                        <div class="panel-collapse-in">
+                        
+                            <section class="box-typical box-typical-max-280">
+                                <header class="box-typical-header">
+                                    <div class="tbl-row">
+                                        <div class="tbl-cell tbl-cell-title">
+                                            <h3>
+                                                <span class="label" id="labelPageI2">pagina</span> <!--info de la pagina de las tablas generado por script-->
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </header>
+                                <div class="box-typical-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <tbody>
+                                                <div id="I2">
+                                                    <!--Tabla generada por el script .load() de jquery-->
+                                                </div>
+                                                
+                                                <div class="text-center">
+                                                    <nav id="pagerI2">
                                                         <!--Paginador de la tabla generado por el script innerHTML-->
                                                     </nav>
                                                 </div>

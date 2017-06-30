@@ -1,9 +1,13 @@
-function updateInputs(id, userName, status, documentation){
+function updateInputs(id, userName, status, documentation, text, insurance){
     document.getElementById('myModalLabel').innerHTML=userName;
     $("#estatus").val(status);
     $("#estatus").change();
     $("#documentacion").val(documentation);
     $("#documentacion").change();
+    $('#observaciones').val(text);
+    $('#seguro').val(insurance);
+    $('#seguro').change();
+    
     document.getElementById("formi").formAction = "/admin/lists/"+id;
     
     document.getElementById("idVal2").value = id;
@@ -15,6 +19,7 @@ function upOperation(){
     var data = $('#userForm').serialize();
     var id =  document.getElementById("idVal2").value;
     var name = document.getElementById('myModalLabel').innerHTML;
+    var text = document.getElementById('observaciones').value;
     
     var combo = document.getElementById("estatus");
     var selected = combo.options[combo.selectedIndex].text;
@@ -22,6 +27,10 @@ function upOperation(){
     var combo2 = document.getElementById("documentacion");
     var selected2 =  combo2.options[combo2.selectedIndex].text;
     
+    var combo3 = document.getElementById("seguro");
+    var selected3 =  combo3.options[combo3.selectedIndex].text;
+    
+    //Actualizar color del estatus
     var status = document.getElementById('estatus').value;
     var statusStyle = "";
     
@@ -37,6 +46,7 @@ function upOperation(){
         statusStyle = "form-control form-control-green-fill";
     }
     
+    //Actualizar botones de documentos
     var documentation = document.getElementById("documentacion").value;
     var buttonDocStyle = "";
     var buttonDocIcon = "";
@@ -49,18 +59,38 @@ function upOperation(){
         buttonDocIcon = "font-icon font-icon-del";
     }
     
+    //Actualizar botones de seguro
+    var insurance = document.getElementById("seguro").value;
+    var buttonDocStyle2 = "";
+    var buttonDocIcon2 = "";
+    
+    if(insurance == 1){
+        buttonDocStyle2 = "btn btn-inline btn-sm btn-success";
+        buttonDocIcon2 = "font-icon font-icon-ok";
+    } else if(insurance == 2){
+        buttonDocStyle2 = "btn btn-inline btn-sm btn-danger";
+        buttonDocIcon2 = "font-icon font-icon-del";
+    }
+    
+    //Ejecutar acciones de actualizacion
     $.post(url, data, function(result){
         //alert(result.message);
         //$('#edit'+id).fadeOut();
+        //Actualiza el estatus
         document.getElementById('status'+id).value = selected;
         document.getElementById('status'+id).className = statusStyle;
         
+        //Actualiza el botn de documentos
         document.getElementById('buttonDoc'+id).className = buttonDocStyle;
-        document.getElementById('buttonDoc'+id).setAttribute('data-content', selected2);
+        document.getElementById('buttonDoc'+id).setAttribute('data-content', selected2+':<br/>'+text);
         document.getElementById('spanDoc'+id).className = buttonDocIcon;
-        
-        document.getElementById('edit'+id).setAttribute('onclick', `updateInputs(${id},'${name}',${status},${documentation})`);
-        
+        //Actualiza el boton de seguro de vida
+        document.getElementById('buttonSec'+id).className = buttonDocStyle2;
+        document.getElementById('buttonSec'+id).setAttribute('data-content', selected3);
+        document.getElementById('spanSec'+id).className = buttonDocIcon2;
+        //Actualiza la funcion del boton 'Editar' por si se presiona otra vez
+        document.getElementById('edit'+id).setAttribute('onclick', `updateInputs(${id},'${name}',${status},${documentation}, ${text}, ${insurance})`);
+        //Muestra mensaje en la parte superior de la pantalla
         document.getElementById('AlarmsAlert').className += " alert-success";
         document.getElementById('AlarmsAlertMessage').innerHTML = `${result.message}<ul>\
             <li>De nombre: ${result.userName}</li>\
@@ -71,6 +101,7 @@ function upOperation(){
         $('#AlarmsAlert').show(300);
     }).fail(function (){
         //alert('no se pudo :v');
+        //Muestra mensaje en la parte superior de la pantalla en caso de fallo
         document.getElementById('AlarmsAlert').className += " alert-warning";
         document.getElementById('AlarmsAlertMessage').innerHTML = `No se pudo actualizar a el usuario: ${document.getElementById('myModalLabel').innerHTML}`;
         $('#AlarmsAlert').show(300);
@@ -104,6 +135,7 @@ function delOperation(){
 }
 
 function toggle(){
+    //Intercambia visibilidad de un elemento
     $('.details').slideToggle(function(){$('#more').html($('.details').is(':visible')?'Ocultar':'Mostrar más');});
 }
 
@@ -137,75 +169,115 @@ function loadPages(page, container, buttonsHtml, table, index){
         var id4 = document.getElementById('cd'+container).value; /*saca el valor final y redondeado de un input hidden de las tablas para los botones de navegacion del paginador*/
     
         // alert(table);
-        
-        if(page == 1){
-            document.getElementById(buttonsHtml).innerHTML = `\
-                    <ul class="pagination">\
-                        <li class="page-item disabled">\
-                            <a class="page-link" onclick="loadPages(1, ${container}, ${buttonsHtml}, ${table}, ${index});" aria-label="Previous">\
-                                <span aria-hidden="true">&laquo;</span>\
-                                <span class="sr-only">Previous</span>\
-                            </a>\
-                        </li>\
-                        <li class="page-item active">\
-                            <a class="page-link">${id1} <span class="sr-only">(current)</span></a>\
-                        </li>\
-                        <li class="page-item"><a class="page-link" onclick="loadPages(${id2}, '${container}', '${buttonsHtml}', ${table}, ${index});">${id2}</a></li>\
-                        <li class="page-item"><a class="page-link" onclick="loadPages(${id3}, '${container}', '${buttonsHtml}', ${table}, ${index});">${id3}</a></li>\
-                        <li class="page-item">\
-                            <a class="page-link" onclick="loadPages(${id4}, '${container}', '${buttonsHtml}', ${table}, ${index});" aria-label="Next">\
-                                <span aria-hidden="true">&raquo;</span>\
-                                <span class="sr-only">Next</span>\
-                            </a>\
-                        </li>\
-                    </ul>\
-                `;
-            } else if(page == id4){
-                var id00 = page-2;
-            
-                document.getElementById(buttonsHtml).innerHTML = `\
-                    <ul class="pagination">\
-                        <li class="page-item">\
-                            <a class="page-link" onclick="loadPages(1, '${container}', '${buttonsHtml}', ${table}, ${index});" aria-label="Previous">\
-                                <span aria-hidden="true">&laquo;</span>\
-                                <span class="sr-only">Previous</span>\
-                            </a>\
-                        </li>\
-                        <li class="page-item"><a class="page-link" onclick="loadPages(${id00}, '${container}', '${buttonsHtml}', ${table}, ${index});">${id00}</a></li>\
-                        <li class="page-item"><a class="page-link" onclick="loadPages(${id0}, '${container}', '${buttonsHtml}', ${table}, ${index});">${id0}</a></li>\
-                        <li class="page-item active">\
-                            <a class="page-link"">${id1} <span class="sr-only">(current)</span></a>\
-                        </li>\
-                        <li class="page-item disabled">\
-                            <a class="page-link" aria-label="Next">\
-                                <span aria-hidden="true">&raquo;</span>\
-                                <span class="sr-only">Next</span>\
-                            </a>\
-                        </li>\
-                    </ul>\
-                `;
-            }   else{
-                document.getElementById(buttonsHtml).innerHTML = `\
-                    <ul class="pagination">\
-                        <li class="page-item">\
-                            <a class="page-link" onclick="loadPages(1, '${container}', '${buttonsHtml}', ${table}, ${index});" aria-label="Previous">\
-                                <span aria-hidden="true">&laquo;</span>\
-                                <span class="sr-only">Previous</span>\
-                            </a>\
-                        </li>\
-                        <li class="page-item"><a class="page-link" onclick="loadPages(${id0}, '${container}', '${buttonsHtml}', ${table}, ${index});">${id0}</a></li>\
-                        <li class="page-item active">\
-                            <a class="page-link"">${id1} <span class="sr-only">(current)</span></a>\
-                        </li>\
-                        <li class="page-item"><a class="page-link" onclick="loadPages(${id2}, '${container}', '${buttonsHtml}', ${table}, ${index});">${id2}</a></li>\
-                        <li class="page-item">\
-                            <a class="page-link" onclick="loadPages(${id4}, '${container}', '${buttonsHtml}', ${table}, ${index});" aria-label="Next">\
-                                <span aria-hidden="true">&raquo;</span>\
-                                <span class="sr-only">Next</span>\
-                            </a>\
-                        </li>\
-                    </ul>\
-                `;
+        // Construir paginador
+        if(id4 != 1){ //Debe existir mas de una pagina
+            if(id4 > 2){ //Si hay mas de dos paginas
+                if(page == 1){ //primera pagina
+                    document.getElementById(buttonsHtml).innerHTML = `\
+                            <ul class="pagination">\
+                                <li class="page-item disabled">\
+                                    <a class="page-link" aria-label="Previous">\
+                                        <span aria-hidden="true">&laquo;</span>\
+                                        <span class="sr-only">Previous</span>\
+                                    </a>\
+                                </li>\
+                                <li class="page-item active">\
+                                    <a class="page-link">${id1} <span class="sr-only">(current)</span></a>\
+                                </li>\
+                                <li class="page-item"><a class="page-link" onclick="loadPages(${id2}, '${container}', '${buttonsHtml}', ${table}, ${index});">${id2}</a></li>\
+                                <li class="page-item"><a class="page-link" onclick="loadPages(${id3}, '${container}', '${buttonsHtml}', ${table}, ${index});">${id3}</a></li>\
+                                <li class="page-item">\
+                                    <a class="page-link" onclick="loadPages(${id4}, '${container}', '${buttonsHtml}', ${table}, ${index});" aria-label="Next">\
+                                        <span aria-hidden="true">&raquo;</span>\
+                                        <span class="sr-only">Next</span>\
+                                    </a>\
+                                </li>\
+                            </ul>\
+                        `;  
+                } else if(page == id4){ //ultima pagina
+                    var id00 = page-2;
+                
+                    document.getElementById(buttonsHtml).innerHTML = `\
+                        <ul class="pagination">\
+                            <li class="page-item">\
+                                <a class="page-link" onclick="loadPages(1, '${container}', '${buttonsHtml}', ${table}, ${index});" aria-label="Previous">\
+                                    <span aria-hidden="true">&laquo;</span>\
+                                    <span class="sr-only">Previous</span>\
+                                </a>\
+                            </li>\
+                            <li class="page-item"><a class="page-link" onclick="loadPages(${id00}, '${container}', '${buttonsHtml}', ${table}, ${index});">${id00}</a></li>\
+                            <li class="page-item"><a class="page-link" onclick="loadPages(${id0}, '${container}', '${buttonsHtml}', ${table}, ${index});">${id0}</a></li>\
+                            <li class="page-item active">\
+                                <a class="page-link"">${id1} <span class="sr-only">(current)</span></a>\
+                            </li>\
+                            <li class="page-item disabled">\
+                                <a class="page-link" aria-label="Next">\
+                                    <span aria-hidden="true">&raquo;</span>\
+                                    <span class="sr-only">Next</span>\
+                                </a>\
+                            </li>\
+                        </ul>\
+                    `;
+                }   else{ //paginas medias
+                    document.getElementById(buttonsHtml).innerHTML = `\
+                        <ul class="pagination">\
+                            <li class="page-item">\
+                                <a class="page-link" onclick="loadPages(1, '${container}', '${buttonsHtml}', ${table}, ${index});" aria-label="Previous">\
+                                    <span aria-hidden="true">&laquo;</span>\
+                                    <span class="sr-only">Previous</span>\
+                                </a>\
+                            </li>\
+                            <li class="page-item"><a class="page-link" onclick="loadPages(${id0}, '${container}', '${buttonsHtml}', ${table}, ${index});">${id0}</a></li>\
+                            <li class="page-item active">\
+                                <a class="page-link"">${id1} <span class="sr-only">(current)</span></a>\
+                            </li>\
+                            <li class="page-item"><a class="page-link" onclick="loadPages(${id2}, '${container}', '${buttonsHtml}', ${table}, ${index});">${id2}</a></li>\
+                            <li class="page-item">\
+                                <a class="page-link" onclick="loadPages(${id4}, '${container}', '${buttonsHtml}', ${table}, ${index});" aria-label="Next">\
+                                    <span aria-hidden="true">&raquo;</span>\
+                                    <span class="sr-only">Next</span>\
+                                </a>\
+                            </li>\
+                        </ul>\
+                    `;
+                }
+            } else{ //si hay menos de dos paginas
+                if(page == 1){ //primera pagina
+                    document.getElementById(buttonsHtml).innerHTML = `\
+                            <ul class="pagination">\
+                                <li class="page-item disabled">\
+                                    <a class="page-link" aria-label="Previous">\
+                                        <span aria-hidden="true">&laquo;</span>\
+                                        <span class="sr-only">Previous</span>\
+                                    </a>\
+                                </li>\
+                                <li class="page-item">\
+                                    <a class="page-link" onclick="loadPages(${id4}, '${container}', '${buttonsHtml}', ${table}, ${index});" aria-label="Next">\
+                                        <span aria-hidden="true">&raquo;</span>\
+                                        <span class="sr-only">Next</span>\
+                                    </a>\
+                                </li>\
+                            </ul>\
+                        `;  
+                } else{ //segunda pagina
+                    document.getElementById(buttonsHtml).innerHTML = `\
+                        <ul class="pagination">\
+                            <li class="page-item">\
+                                <a class="page-link" onclick="loadPages(1, '${container}', '${buttonsHtml}', ${table}, ${index});" aria-label="Previous">\
+                                    <span aria-hidden="true">&laquo;</span>\
+                                    <span class="sr-only">Previous</span>\
+                                </a>\
+                            </li>\
+                            <li class="page-item disabled">\
+                                <a class="page-link" aria-label="Next">\
+                                    <span aria-hidden="true">&raquo;</span>\
+                                    <span class="sr-only">Next</span>\
+                                </a>\
+                            </li>\
+                        </ul>\
+                    `; 
+                }
             }
-    }, 500);
+        }
+    }, 600);
 }

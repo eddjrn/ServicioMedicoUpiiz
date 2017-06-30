@@ -11,7 +11,7 @@ class medicalData extends Model
     
     protected $table = 'datosMedicos';
     
-    protected $fillable = ['usuario_id', 'numSeguro', 'clinica_id', 'proveedorSeguro', 'seguro', 'institucionSeguro_id', 'tipoSangre'];
+    protected $fillable = ['usuario_id', 'numSeguro', 'clinica_id', 'proveedorSeguro', 'seguroVida', 'institucionSeguro_id', 'tipoSangre'];
     
     protected $searchableColumns = [
         'numSeguro' => 20,
@@ -45,9 +45,9 @@ class medicalData extends Model
     }
     
     public function insurance(){
-        if($this->seguro == 1){
+        if($this->seguroVida == 1){
             return 'Si cuenta';
-        } elseif($this->seguro == 2){
+        } elseif($this->seguroVida == 2){
             return 'No cuenta';
         }
     }

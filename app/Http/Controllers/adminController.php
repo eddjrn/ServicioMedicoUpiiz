@@ -94,11 +94,16 @@ class adminController extends Controller
         
         $students = new Collection();
         
-        foreach($array as $a){
+        $page = ($list-1) * 5;
+        $slice = array_slice($array,$page,5);
+        
+        //return $slice;
+        
+        foreach($slice as $a){
             $students->push(\App\student::find($a));
         }
         
-        $studentsPaginated = $students->forPage($list, 5);
+        //$studentsPaginated = $students->forPage($list, 5);
         
         $lastPage = count($array) / 5;
         
@@ -109,7 +114,7 @@ class adminController extends Controller
             'form-control-orange-fill',
             'form-control-green-fill',
         );
-        return view('Admin.list', ['list'=>$list, 'array'=>$array, 'statusStyle'=>$statusStyle, 'studentsPaginated'=>$studentsPaginated, 'lastPage'=>$lastPage, 'idUniqueSection'=>$idUniqueSection, 'indexSection'=>$indexSection]);
+        return view('Admin.list', ['list'=>$list, 'array'=>$array, 'statusStyle'=>$statusStyle, 'studentsPaginated'=>$students, 'lastPage'=>$lastPage, 'idUniqueSection'=>$idUniqueSection, 'indexSection'=>$indexSection]);
     }
     
     /**
@@ -151,6 +156,12 @@ class adminController extends Controller
         $student->update([
             'documentacion'=>$request->documentacion,
             'estatus_id'=>$request->estatus,
+            'observaciones'=>$request->observaciones,
+        ]);
+        
+        $medicalData = $student->user->medicalData;
+        $medicalData->update([
+            'seguroVida'=>$request->seguro,
         ]);
         
         if($request->ajax()){
