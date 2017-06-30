@@ -126,6 +126,7 @@ function delOperation(){
         
         $('#AlarmsAlert').show(300);
         
+        document.getElementById('updateList').className = "btn btn-rounded btn-info";
     }).fail(function(){
         //alert('no eliminado');
         document.getElementById('AlarmsAlert').className += " alert-warning";

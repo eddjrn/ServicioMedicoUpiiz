@@ -737,6 +737,10 @@ Listas de todos los alumnos en el sistema
     </div><!--.tab-content-->
 </section><!--.tabs-section-->
 
+<div class="text-center">
+    <a href="/admin/lists" class="btn btn-rounded btn-secondary" id="updateList">Actualizar datos de las tablas</a>
+</div>
+
 @stop
 
 @section('scripts')
