@@ -13,7 +13,7 @@ function editarTutor(EtituloT,ElinkT,EimagenT,id) {
 	document.getElementById('eContenidoTutoImg').value=EimagenT;
 	document.getElementById('id_postTuto').value=id;
 	document.getElementById('id_deleteTuto').value=id;
-	alert(EtituloT+ElinkT+EimagenT);
+	//alert(EtituloT+ElinkT+EimagenT);
 }
 
 

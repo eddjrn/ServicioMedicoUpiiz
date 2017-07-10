@@ -81,7 +81,7 @@
                         @if(Auth::check()) <!--=Solo se muestra el menu de perfil si se esta iniciado sesion-->
 	                    <div class="dropdown user-menu">
 	                        <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                            <img src="/Template/img/avatar-2-64.png" alt="">
+	                            <img src="/Template/img/2-64.png" alt="">
 	                        </button>
 	                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
 	                            <a class="dropdown-item" href="/profile"><span class="font-icon glyphicon glyphicon-user"></span>Perfil</a>

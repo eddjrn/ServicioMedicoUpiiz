@@ -31,7 +31,8 @@ class adminController extends Controller
         $info=\App\info::paginate(10);
         $images=\App\images::all();
         $video=\App\video::all();
-        return view('Admin.start', ['index'=>$index,'info'=> $info,'images'=> $images,'video'=> $video]);
+        $tutorials=\App\tutorials::all();
+        return view('Admin.start', ['index'=>$index,'info'=> $info,'images'=> $images,'video'=> $video,'tutorials'=> $tutorials]);
     }
     
     public function lists()

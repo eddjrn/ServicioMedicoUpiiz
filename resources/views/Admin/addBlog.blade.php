@@ -17,7 +17,7 @@ Edición del blog
 @section('content')
 
 @include('alerts.formError')
-
+<div class="row">
 <section class="tabs-section">
                 <div class="tabs-section-nav tabs-section-nav-icons">
                     <div class="tbl">
@@ -97,8 +97,8 @@ Edición del blog
 
 							<div class="tab-pane" id="w-2-tab-2" role="tabpanel" aria-expanded="true">
 	<div class="row">
-	<div class="col-md-3"></div>
-	<div class="col-md-12">
+	<div class="col-md-2 col-sm-3"></div>
+	<div class="col-md-8 col-sm-9">
 	<div class="panel panel-success">
         <div class="panel-heading">
             <h4>Lista de Publicaciones</h4>
@@ -117,11 +117,24 @@ Edición del blog
                     </tr>
                 </thead>
                 <tbody>
+
+    <style type="text/css">
+       .table td.text {
+    max-width: 177px;
+		}
+		.table td.text span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 100%;
+}       
+       </style>
                     @foreach($info->sortByDesc('updated_at') as $in)
                         <tr>
                             
                             <td>{{$in->titulo}}</td>
-                            <td>{{$in->contenido}}</td>
+                            <td class="text"><span>{{$in->contenido}}</span></td>
                             <td>{{$in->FechaActualizacion()}}</td>
                             <td>{{$in->created_at->diffForHumans()}}</td>
                             <td>
@@ -333,8 +346,8 @@ Edición del blog
 
                             <div class="tab-pane" id="w-4-tab-4" role="tabpanel" aria-expanded="true">
     <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-12">
+    <div class="col-md-2"></div>
+    <div class="col-md-9">
     <div class="panel panel-success">
         <div class="panel-heading">
             <h4>Lista de Imagenes</h4>
@@ -357,7 +370,7 @@ Edición del blog
                         <tr>
                             
                             <td>{{$img->titulo}}</td>
-                            <td>{{$img->imagen}}</td>
+                            <td class="text"><span>{{$img->imagen}}</span></td>
                             <td>{{$img->FechaActualizacion()}}</td>
                             <td>{{$img->created_at->diffForHumans()}}</td>
                          <td>
@@ -549,8 +562,8 @@ Edición del blog
 
         <div class="tab-pane" id="w-6-tab-6" role="tabpanel" aria-expanded="true">
     <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-12">
+    <div class="col-md-2"></div>
+    <div class="col-md-9">
     <div class="panel panel-success">
         <div class="panel-heading">
             <h4>Lista de Videos</h4>
@@ -574,8 +587,8 @@ Edición del blog
                         <tr>
                             
                             <td>{{$vi->titulo}}</td>
-                            <td>{{$vi->link}}</td>
-                            <td>{{$vi->imagen}}</td>
+                            <td class="text"><span>{{$vi->link}}</span></td>
+                            <td class="text"><span>{{$vi->imagen}}</span></td>
                             <td>{{$vi->FechaActualizacion()}}</td>
                             <td>{{$vi->created_at->diffForHumans()}}</td>
                          <td>
@@ -776,8 +789,8 @@ Edición del blog
 
         <div class="tab-pane" id="w-8-tab-8" role="tabpanel" aria-expanded="true">
     <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-12">
+    <div class="col-md-2"></div>
+    <div class="col-md-9">
     <div class="panel panel-success">
         <div class="panel-heading">
             <h4>Lista de Tutoriales</h4>
@@ -801,8 +814,8 @@ Edición del blog
                         <tr>
                             
                             <td>{{$tu->titulo}}</td>
-                            <td>{{$tu->link}}</td>
-                            <td>{{$tu->imagen}}</td>
+                            <td class="text"><span>{{$tu->link}}</span></td>
+                            <td class="text"><span>{{$tu->imagen}}</span></td>
                             <td>{{$tu->FechaActualizacion()}}</td>
                             <td>{{$tu->created_at->diffForHumans()}}</td>
                          <td>
@@ -920,7 +933,7 @@ Edición del blog
 
 
             </section>
-
+</div>
 
 @stop
 

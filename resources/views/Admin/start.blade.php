@@ -44,6 +44,14 @@ Vista previa del blog
                                     </span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tabs-1-tab-4" role="tab" data-toggle="tab">
+                                    <span class="nav-link-in">
+                                        <span class="font-icon font-icon-list-square"></span>
+                                        Tutoriales
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div><!--.tabs-section-nav-->
@@ -154,6 +162,37 @@ Vista previa del blog
                         </div>
                         </div>
                         @endforeach
+                        </div>
+
+
+                    </div><!--.tab-pane-->
+
+                    <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-4">
+
+                        <div class="row">
+                         @foreach($tutorials->sortByDesc('updated_at') as $t)
+                            <div class="col-md-1"></div>
+                                 <div class="col-md-2">
+                           <div class="gallery-col">
+                           
+                            <article class="gallery-item">
+                            <p ALIGN=center ><strong>{{$t->titulo}}</strong></p>
+                                <img class="gallery-picture" src="{{$t->imagen}}" alt="" height="158">
+                                <div class="gallery-hover-layout">
+                                    <div class="gallery-hover-layout-in">
+                                        <p class="gallery-item-title">{{$t->titulo}}</p>
+                                        <div class="btn-group">
+                                            
+                                                <a target="_blank" class="font-icon font-icon-picture" href="{{$t->link}}"></a>
+                                               
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        </div>
+                       @endforeach
                         </div>
 
 
