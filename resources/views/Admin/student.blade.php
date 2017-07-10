@@ -8,12 +8,12 @@
 @stop
 
 @section('popUp')
-<div class="modal fade bd-example-modal-sm"
+<div class="modal fade bd-example-modal-md"
         tabindex="-1"
         role="dialog"
         aria-labelledby="mySmallModalLabel"
         aria-hidden="true">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
@@ -23,11 +23,29 @@
             </div>
             {!!Form::open(array('method'=>'post', 'id'=>'userForm'))!!}
             <div class="modal-body">
-                <h5 class="m-t-lg with-border">Estatus en el sistema</h5>
-                <!--{{$estatus=\App\status::lists('nombre', 'id')}} -->
-                {!!Form::select('estatus', $estatus, $student->estatus_id, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'estatus'])!!}
-                <h5 class="m-t-lg with-border">Documentación</h5>
-                {!!Form::select('documentacion', array('1'=>'Completa', '2'=>'Incompleta'), $student->documentacion, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'documentacion'])!!}
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1">
+                            <h5 class="m-t-lg with-border">Estatus en el sistema</h5>
+                            <!--{{$estatus=\App\status::lists('nombre', 'id')}} -->
+                            {!!Form::select('estatus', $estatus, $student->estatus_id, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'estatus'])!!}
+                        </div>
+                        <div class="col-lg-5 col-md-5">
+                            <h5 class="m-t-lg with-border">Seguro de vida</h5>
+                            {!!Form::select('seguro', $student->user->medicalData->insurances(), $student->user->medicalData->seguroVida, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'seguro'])!!}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1">
+                            <h5 class="m-t-lg with-border">Documentación</h5>
+                            {!!Form::select('documentacion', $student->documentationTypes(), $student->documentacion, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'documentacion'])!!}
+                        </div>
+                        <div class="col-lg-5 col-md-5">
+                            <h5 class="m-t-lg with-border">Observaciones</h5>
+                            {!!Form::text('observaciones', $student->observaciones, array('class'=>'form-control', 'id'=>'observaciones', 'placeholder'=>'Observaciones sobre la documentacion'))!!}
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
 <!--                 <button type="button" class="btn btn-rounded btn-default" data-dismiss="modal">Close</button> -->
@@ -44,20 +62,20 @@
             </div>
             
             {!!Form::open(array('method'=>'delete', 'style'=>'display:none', 'class'=>'details'))!!}
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label class="form-label">¿Seguro que quiere eliminar el registro?</label>
-                    </div>
-                </div>
-            
                 <input type="hidden" name="idVal2" id="idVal2" value="{{$student->id}}">
                 <div class="modal-footer">
-                    <div class="text-center">
-                        <button type="submit" class="btn btn-rounded btn-primary btn-danger" formaction="/" id="formButton2">Eliminar</button>
-                    </div>
-                    <br/>
-                    <div class="text-center">
-                        <button type="button" class="btn btn-rounded btn-primary" onclick="toggle();">Cancelar</button>
+                    <div class="container text-center">
+                        <div class="form-group">
+                            <h5 class="m-t-lg with-border">¿Seguro que quiere eliminar el registro?</h5>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <button type="submit" class="btn btn-rounded btn-primary btn-danger" formaction="/" id="formButton2">Eliminar</button>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <button type="button" class="btn btn-rounded btn-primary" onclick="toggle();">Cancelar</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             {!!Form::close()!!}
@@ -130,12 +148,21 @@ Información del alumno
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Estado de documentación</label>
-                <input type="text" readonly class="form-control 
+                <div class="input-group">
+                    <div class="input-group-addon">
                     @if($student->documentacion == 1)
-                        {{$statusStyle[0]}}
+                        <i class="font-icon font-icon-ok color-green"></i>
+                    @elseif($student->documentacion == 2)
+                        <i class="font-icon font-icon-del color-red"></i>
+                    @endif
+                    {{$student->documentation()}}</div>
+                    <input class="form-control 
+                    @if($student->documentacion == 1)
+                        {{$statusStyle[4]}}
                     @elseif($student->documentacion == 2)
                         {{$statusStyle[1]}}
-                    @endif" value="{{$student->documentation()}}">
+                    @endif" readonly type="text" value="{{$student->observaciones}}">
+                </div>
             </fieldset>
         </div>
         <div class="col-md-4 col-sm-6">
@@ -157,8 +184,20 @@ Información del alumno
         </div>
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
-                <label class="form-label" for="exampleInputDisabled2">CURP</label>
-                <input type="text" readonly class="form-control form-control-green-fill" value="{{$student->curp}}">
+                <label class="form-label" for="exampleInputDisabled2">Seguro de vida</label>
+                <div class="form-control-wrapper form-control-icon-left">
+                    <input class="form-control 
+                    @if($student->user->medicalData->seguroVida == 1)
+                        {{$statusStyle[4]}}
+                    @elseif($student->user->medicalData->seguroVida == 2)
+                        {{$statusStyle[1]}}
+                    @endif" readonly placeholder="Left" type="text" value="{{$student->user->medicalData->insurance()}}">
+                    @if($student->user->medicalData->seguroVida == 1)
+                        <i class="font-icon font-icon-ok color-green"></i>
+                    @elseif($student->user->medicalData->seguroVida == 2)
+                        <i class="font-icon font-icon-del color-red"></i>
+                    @endif
+                </div>
             </fieldset>
         </div>
     </div>
@@ -174,6 +213,12 @@ Información del alumno
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Edad</label>
                 <input type="text" readonly class="form-control" value="{{$student->age()}}">
+            </fieldset>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <fieldset class="form-group">
+                <label class="form-label" for="exampleInputDisabled2">CURP</label>
+                <input type="text" readonly class="form-control" value="{{$student->curp}}">
             </fieldset>
         </div>
     </div>
@@ -348,7 +393,7 @@ Información del alumno
     </div>
     
     <div class="text-center">
-        <button type="button" class="btn btn-rounded btn-inline btn-warning" data-toggle="modal" data-target=".bd-example-modal-sm" onclick="updateInputsProfile({{$student->id}}, '{{$student->user}}');">Editar</button>
+        <button type="button" class="btn btn-rounded btn-inline btn-warning" data-toggle="modal" data-target=".bd-example-modal-md" onclick="updateInputsProfile({{$student->id}}, '{{$student->user}}');">Editar</button>
     </div>
     
 </div> <!--End box typical-->
