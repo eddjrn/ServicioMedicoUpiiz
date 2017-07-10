@@ -73,7 +73,7 @@
 	            <span>toggle menu</span>
 	        </button>
 	        
-	        <div class="site-header-content">
+	        <div  class="site-header-content">
 	        
 	            <div class="site-header-content-in">
 	                <div class="site-header-shown">
@@ -109,7 +109,7 @@
 	    </div><!--.container-fluid-->
 	</header><!--.site-header-->
 	
-	<div class="mobile-menu-left-overlay"></div> <!--=Index en este caso solo sirve para el estilo CSS-->
+	<div class="mobile-menu-left-overlay" ></div> <!--=Index en este caso solo sirve para el estilo CSS-->
 	<ul class="main-nav nav nav-inline">
 		<li class="nav-item">
 			<a class="nav-link @if($index==1)active @endif" href="/">Inicio</a>
@@ -124,7 +124,7 @@
 			<a class="nav-link @if($index==6)active @endif" href="/tutorials">Tutoriales</a>
 		</li>
         <li class="nav-item">
-			<a class="nav-link @if($index==9)active @endif" href="/maps">Mapas de las clinicas</a>
+			<a class="nav-link @if($index==9)active @endif" href="/maps">lista de clinicas IMSS</a>
 		</li>
 		@if(Auth::check())
         <li class="nav-item">

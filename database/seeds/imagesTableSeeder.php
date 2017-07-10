@@ -40,5 +40,24 @@ class imagesTableSeeder extends Seeder
             'titulo' => 'cielo',
         ]);
 
+         DB::table('imagenes')->insert([
+            'usuario_id' => '1',
+            'imagen' => 'https://images-na.ssl-images-amazon.com/images/M/MV5BMTI4NzQ3NTgxNV5BMl5BanBnXkFtZTcwMTMwOTIzMQ@@._V1_UX182_CR0,0,182,268_AL_.jpg',
+            'titulo' => 'the mist',
+        ]);
+
+         DB::table('imagenes')->insert([
+            'usuario_id' => '1',
+            'imagen' => 'http://www.central42.com.br/novo/wp-content/uploads/2014/09/silent-hills.jpg',
+            'titulo' => 'raro',
+        ]);
+
+         DB::table('imagenes')->insert([
+            'usuario_id' => '1',
+            'imagen' => 'http://img13.deviantart.net/3e04/i/2017/130/4/1/silent_hill_by_apanyadong-db8tgca.jpg',
+            'titulo' => 'triztesa',
+        ]);
+
+
     }
 }

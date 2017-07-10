@@ -64,8 +64,8 @@
                                 </a>
                             </div>
                             <div class="activity-line-item-user-name">{{$inf->user}}</div>
-                            <div class="activity-line-item-user-status">{{$inf->user->email}}</div>
                         </div>
+                            <div class="activity-line-item-user-status"></br>{{$inf->user->email}}</div>
                     </header>
                     <div class="activity-line-action-list">
                         <section class="activity-line-action">
@@ -102,18 +102,19 @@
                             <div class="col-md-1 col-sm-6"></div>
                                  <div class="col-md-2 col-sm-6 ">
                            <div class="gallery-col">
-                           <p ALIGN=center ><strong>{{$img->titulo}}</strong></p>
+                           
                             <article class="gallery-item">
-                                
+                                <p ALIGN=center ><strong>{{$img->titulo}}</strong></p>
                                 <img class="gallery-picture" src="{{$img->imagen}}" alt="" height="158">
                                 <div class="gallery-hover-layout">
                                     <div class="gallery-hover-layout-in">
                                         <p class="gallery-item-title">{{$img->titulo}}</p>
                                         <div class="btn-group">
-                                            <button type="button" class="btn">
-                                                <a target="_blank" class="font-icon font-icon-picture" href="{{$img->imagen}}"></a>
+                                        <a target="_blank" href="{{$img->imagen}}" class="font-icon font-icon-picture" ></a>
+                                            
+                                                
                                                
-                                            </button>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -136,18 +137,18 @@
                             <div class="col-md-1"></div>
                                  <div class="col-md-2">
                            <div class="gallery-col">
-                           <p ALIGN=center ><strong>{{$vi->titulo}}</strong></p>
+                           
                             <article class="gallery-item">
-                            
+                            <p ALIGN=center ><strong>{{$vi->titulo}}</strong></p>
                                 <img class="gallery-picture" src="{{$vi->imagen}}" alt="" height="158">
                                 <div class="gallery-hover-layout">
                                     <div class="gallery-hover-layout-in">
                                         <p class="gallery-item-title">{{$vi->titulo}}</p>
                                         <div class="btn-group">
-                                            <button type="button" class="btn">
+                                            
                                                 <a target="_blank" class="font-icon font-icon-picture" href="{{$vi->link}}"></a>
                                                
-                                            </button>
+                                           
                                         </div>
                                     </div>
                                 </div>

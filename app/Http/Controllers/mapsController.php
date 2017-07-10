@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+
 class mapsController extends Controller
 {
     /**
@@ -14,11 +15,12 @@ class mapsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $index = 9;
-        
-        return view('Welcome.maps',['index'=>$index]);
+        $medicalData = \App\medicalData::paginate(11);
+        return view('Welcome.maps',['index'=>$index,'medicalData'=>$medicalData]);
     }
 
     /**

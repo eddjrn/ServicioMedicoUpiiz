@@ -504,9 +504,13 @@
         </div>
     </div>
 </div>
-
-
-@stop
+<div class="row">
+<div class="col-md-7">
+<div class="col-md-10"></div>
+<a href="/admin" class="btn btn-rounded btn-success" style='width:120px; height:40px'>Regresar</a>
+</div>
+</div>
+@stopstyle='width:70px; height:25px'
 
 @section('subHead')
 @stop

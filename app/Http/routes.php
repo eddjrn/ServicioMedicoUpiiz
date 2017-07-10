@@ -80,3 +80,7 @@ Route::delete('/admin/add/images','adminController@deletImage');
 Route::patch('/admin/add/video','adminController@newVideo');
 Route::post('/admin/add/video','adminController@updateVideo');
 Route::delete('/admin/add/video','adminController@deletVideo');
+
+Route::patch('/admin/add/tutorials','adminController@newTuto');
+Route::post('/admin/add/tutorials','adminController@updateTuto');
+Route::delete('/admin/add/tutorials','adminController@deletTuto');

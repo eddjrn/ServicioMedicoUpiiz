@@ -46,6 +46,14 @@ Edición del blog
                                     </span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tabs-1-tab-4" role="tab" data-toggle="tab">
+                                    <span class="nav-link-in">
+                                        <span class="font-icon font-icon-doc"></span>
+                                        Tutoriales
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div><!--.tabs-section-nav-->
@@ -539,7 +547,7 @@ Edición del blog
                 </div>
 
 
-                            <div class="tab-pane" id="w-6-tab-6" role="tabpanel" aria-expanded="true">
+        <div class="tab-pane" id="w-6-tab-6" role="tabpanel" aria-expanded="true">
     <div class="row">
     <div class="col-md-1"></div>
     <div class="col-md-9">
@@ -649,13 +657,13 @@ Edición del blog
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleSelect" class="col-sm-2 form-control-label">Link: </label>
+                        <label for="exampleSelect" class="col-sm-2 form-control-label">Link del Video: </label>
                         <div class="col-sm-10">
                             <textarea rows="4" id="eContenidoVid" name="eContenidoVid" class="form-control" placeholder="Link del Video"></textarea>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="exampleSelect" class="col-sm-2 form-control-label">Link: </label>
+                        <label for="exampleSelect" class="col-sm-2 form-control-label">Link de imagen: </label>
                         <div class="col-sm-10">
                             <textarea rows="4" id="eContenidoVidImg" name="eContenidoVidImg" class="form-control" placeholder="Link de imagen"></textarea>
                         </div>
@@ -726,6 +734,188 @@ Edición del blog
 
                     </div><!--.tab-pane-->
 
+
+       <!--Cuarto-->          <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-4">
+
+
+                        <section class="widget widget-tabs-compact">
+                        <div class="tab-content widget-tabs-content">
+                            <div class="tab-pane active " id="w-8-tab-7" role="tabpanel" aria-expanded="false">
+                                <div class="user-card-row">
+                                    <div class="tbl-row">
+                <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-5">
+        <div class="panel-body">
+        <div class="panel-heading">
+            <h4>Agregar Tutorial</h4>
+        </div>
+       {!!Form::open(array('url'=>'/admin/add/tutorials','method'=>'patch'))!!} 
+            <form method="post" action="store">
+                <p>
+                    <input type="text" name="Titulo_Del_Tutorial" placeholder="Titulo" class="form-control">
+                </p>
+                <p>
+                    <textarea rows="4" name="Link_Del_Tutorial" class="form-control" placeholder="link" class="form-control"></textarea>
+                </p>
+                <p>
+                    <textarea rows="4" name="Link_De_la_imagen_Tutorial" class="form-control" placeholder="link de la imagen" class="form-control"></textarea>
+                </p>
+                <p>
+                    <input type="submit" id="guardarTuto" value="Guardar" class="btn btn-success">
+                </p>
+            </form>
+         {!!Form::close()!!}
+        </div>
+        </div>
+        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+        <div class="tab-pane" id="w-8-tab-8" role="tabpanel" aria-expanded="true">
+    <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-9">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h4>Lista de Tutoriales</h4>
+        </div>
+
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        
+                        <th>Titulo</th>
+                        <th>Link del Video</th>
+                        <th>Link de la Imagen</th>
+                        <th>Fecha</th>
+                        <th>Hace cuanto</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($tutorials->sortByDesc('updated_at') as $tu)
+                        <tr>
+                            
+                            <td>{{$tu->titulo}}</td>
+                            <td>{{$tu->link}}</td>
+                            <td>{{$tu->imagen}}</td>
+                            <td>{{$tu->FechaActualizacion()}}</td>
+                            <td>{{$tu->created_at->diffForHumans()}}</td>
+                         <td>
+
+                   
+
+                <button type="button" 
+                        onclick="editarTutor('{{$tu->titulo}}','{{$tu->link}}','{{$tu->imagen}}',{{$tu->id}})" 
+                        data-toggle="modal"
+                        data-target=".bd-editadiss1-modal-lg"
+                        class="btn btn-incline btn-success">Editar</button>
+
+                <div class="modal fade bd-editadiss1-modal-lg"
+                     tabindex="-1"
+                     role="dialog"
+                     aria-labelledby="mySmallModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" id="edtTutorial" class="modal-close" data-dismiss="modal" aria-label="Close">
+                                    <i class="font-icon-close-2"></i>
+                                </button>
+                                <h4 class="modal-title" id="MyModalLabel">Editar</h4>
+                            </div>
+                            <div class="modal-body">
+        {!!Form::open(array('url'=>'/admin/add/tutorials','method'=>'post'))!!}      
+                    <div class="form-group row">
+                        <label class="col-sm-2 form-control-label">Titulo</label>
+                        <div class="col-sm-10">
+                            <p class="form-control-static"><input name="eTituloTuto" id="eTituloTuto" type="text" class="form-control"  placeholder="Titulo"></p>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleSelect" class="col-sm-2 form-control-label">Link: </label>
+                        <div class="col-sm-10">
+                            <textarea rows="4" id="eContenidoTuto" name="eContenidoTuto" class="form-control" placeholder="Link del Video"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleSelect" class="col-sm-2 form-control-label">Link: </label>
+                        <div class="col-sm-10">
+                            <textarea rows="4" id="eContenidoTutoImg" name="eContenidoTutoImg" class="form-control" placeholder="Link de imagen"></textarea>
+                        </div>
+                    </div>
+                            </div>
+                            <div class="modal-footer">
+                            <div class="text-center">
+                                <button type="submit" id="cambiosTuto" class="btn btn-rounded btn-warning">Guardar</button>
+
+                            </div>
+                            </div>
+             <input type="hidden" name="id_postTuto" id="id_postTuto">
+        {!!Form::close()!!}
+                            <div class="modal-footer">
+                                <div class="text-center">
+                                <a onclick="toggleTuto()" id="moreTuto">Mostrar Más</a>
+                                </div>
+                            </div>
+
+                 {!!Form::open(array('url'=>'/admin/add/tutorials','method'=>'delete','class'=>'editTablesTuto','style'=>'display:none'))!!}
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="form-label">¿Seguro que quiere eliminar el post?</label>
+                                </div>
+                            </div>
+                <input type="hidden" name="id_deleteTuto" id="id_deleteTuto">
+                        <div class="modal-footer">
+                            <div class="text-center">
+                                <button type="submit" id="deleteTuto" class="btn btn-rounded btn-danger">Eliminar</button>
+                            </div>
+                            </div>
+
+                 {!!Form::close()!!}
+                        </div>
+                
+                    </div>
+                </div><!--.modal-->
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+    </div>
+
+                            </div>
+                        </div>
+                        <div class="widget-tabs-nav bordered">
+                            <ul class="tbl-row" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#w-8-tab-7" role="tab" aria-expanded="false">
+                                        <i class="font-icon font-icon-heart"></i>
+                                        Agregar
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#w-8-tab-8" role="tab" aria-expanded="true">
+                                        <i class="font-icon font-icon-users-two"></i>
+                                        Editar
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
+                        
+
+                    </div><!--.tab-pane-->
+
+
+
                 </div><!--.tab-content-->
 
 
@@ -738,4 +928,5 @@ Edición del blog
 <script src="\Template\js\custom\vewInfo.js"></script>
 <script src="\Template\js\custom\vewImg.js"></script>
 <script src="\Template\js\custom\vewVide.js"></script>
+<script src="\Template\js\custom\vewTuto.js"></script>
 @stop

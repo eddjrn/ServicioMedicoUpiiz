@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Jenssegers\Date\Date;
 
 class tutorialsController extends Controller
 {
@@ -17,7 +18,8 @@ class tutorialsController extends Controller
     public function index()
     {
         $index=6;
-        return view('Welcome.tutorials',['index' => $index]);
+        $tutorials=\App\tutorials::all();
+        return view('Welcome.tutorials',['index' => $index,'tutorials'=> $tutorials]);
     }
 
     /**

@@ -28,8 +28,8 @@ class userTableSeeder extends Seeder
             'apellidoMaterno' => 'Duarte',
             'email' => 'Juandsl_w@correo.com',
             'facebook' => 'https://www.facebook.com/search/top/?q=servicio%20medico%20upiiz',
-            'password' => bcrypt('norman'),
-            'identificacion' => '2014670000',
+            'password' => bcrypt('1234'),
+            'identificacion' => '2016670126',
             'tipo' => '2',
         ]);
 

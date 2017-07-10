@@ -17,9 +17,9 @@ Perfil de usuario
 @section('content')
 
 <section class="widget widget-user">
-    <div class="widget-user-bg" style="background-image: url('Template/img/widget-user-bg.jpg')"></div>
+    <div class="widget-user-bg" style="background-image: url('Template/img/user-bg.jpg')"></div>
     <div class="widget-user-photo">
-        <img src="Template/img/avatar-2-256.png" alt="">
+        <img src="Template/img/upiiz_avatar.png" alt="">
     </div>
     <div class="widget-user-name">
         {{$student->user}}

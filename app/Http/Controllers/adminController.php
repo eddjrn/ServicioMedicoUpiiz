@@ -353,8 +353,9 @@ class adminController extends Controller
         $info=\App\info::all();
         $images=\App\images::all();
         $video=\App\video::all();
+        $tutorials=\App\tutorials::all();
         
-        return view('Admin.addBlog', ['index'=>$index,'info'=> $info,'images'=> $images,'video'=> $video]);
+        return view('Admin.addBlog', ['index'=>$index,'info'=> $info,'images'=> $images,'video'=> $video,'tutorials'=> $tutorials]);
 
     }
 
@@ -482,6 +483,50 @@ class adminController extends Controller
         return back();
     }
 
+    public function newTuto(Request $request)
+    {
+        $this->validate($request,[
+
+            'Titulo_Del_Tutorial'=>'required|min:4',
+            'Link_Del_Tutorial'=>'required|min:35',
+            'Link_De_la_imagen_Tutorial'=>'required|min:40'
+
+            ]);
+        $create=\App\tutorials::create([
+                'usuario_id'=> Auth::user()->id,
+                'titulo'=>$request->Titulo_Del_Tutorial,
+                'link'=>$request->Link_Del_Tutorial,
+                'imagen' => $request->Link_De_la_imagen_Tutorial   
+            ]);
+        return back();
+    }
+
+    public function updateTuto(Request $request){
+
+        $this->validate($request,[
+
+            'eTituloTuto'=>'required|min:4',
+            'eContenidoTuto'=>'required|min:35',
+            'eContenidoTutoImg'=>'required|min:40',
+            ]);
+
+        $post=\App\tutorials::find($request->id_postTuto);
+        $post->update([
+            'titulo'=>$request->eTituloTuto,
+            'link'=>$request->eContenidoTuto,
+            'imagen'=>$request->eContenidoTutoImg
+            
+            ]);
+        return back();
+
+    }
+
+        public function deletTuto(Request $request)
+    {
+        $post=\App\tutorials::find($request->id_deleteTuto);
+        $post->delete();
+        return back();
+    }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     public function profile(){

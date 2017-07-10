@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
          $this->call(medicalDataTableSeeder::class);
          $this->call(medicalRecordTableSeeder::class);
          $this->call(messageSeeder::class);
+         $this->call(tutorialTableSeeder::class);
 
         Model::reguard();
     }

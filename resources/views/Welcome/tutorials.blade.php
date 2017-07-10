@@ -14,62 +14,60 @@ Servicio Medico Upiiz
 @section('content')
 
 
+<section class="tabs-section">
+                <div class="tabs-section-nav tabs-section-nav-icons">
+                    <div class="tbl">
+                        <ul class="nav" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#tabs-1-tab-1" role="tab" data-toggle="tab">
+                                    <span class="nav-link-in">
+                                        <span class="font-icon font-icon-list-square"></span>
+                                        Informacion
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div><!--.tabs-section-nav-->
 
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="tabs-1-tab-1" class="col-md-5 col-xs-6 " >
+       
+						<div class="container-fluid">
 
-        <div class="container-fluid">
-            
-            <div class="row">
-                <div class="col-xxl-6 col-md-10">
-                    <section class="widget widget-time">
-                        <header class="widget-header-dark with-btn">
-                            Sacar Vigencia de derechos IMSS
-                        </header>
-                        <div class="widget-time-content">
-                            <div>
-                                <div class="row">
-                                    <div class="col-md-12 col-xs-12">
-                                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fverodelarosa.medicaupiiz%2Fvideos%2F1856299047919436%2F&width=500&show_text=false&appId=578903988956921&height=280" width="100%" height="380" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+							<div class="row">
+                         @foreach($tutorials->sortByDesc('updated_at') as $t)
+                            <div class="col-md-1"></div>
+                                 <div class="col-md-2">
+                           <div class="gallery-col">
+                           
+                            <article class="gallery-item">
+                            <p ALIGN=center ><strong>{{$t->titulo}}</strong></p>
+                                <img class="gallery-picture" src="{{$t->imagen}}" alt="" height="158">
+                                <div class="gallery-hover-layout">
+                                    <div class="gallery-hover-layout-in">
+                                        <p class="gallery-item-title">{{$t->titulo}}</p>
+                                        <div class="btn-group">
+                                            
+                                                <a target="_blank" class="font-icon font-icon-picture" href="{{$t->link}}"></a>
+                                               
+                                           
+                                        </div>
                                     </div>
                                 </div>
+                            </article>
                         </div>
-                    </section><!--.widget-time-->
-
-                </div>
-
-                <div class="col-xxl-6 col-md-10">
-                    <section class="widget widget-time">
-                        <header class="widget-header-dark with-btn">
-                            Cambiarte de Clinica o UMF IMSS
-                        </header>
-                        <div class="widget-time-content">
-                            <div >
-                                <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fverodelarosa.medicaupiiz%2Fvideos%2F1856271931255481%2F&width=500&show_text=false&appId=578903988956921&height=280" width="100%" height="380" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
                         </div>
-                    </section><!--.widget-time-->
-            </div><!--.row-->
+                       @endforeach
+                    
+                        </div>
 
-        </div>
-</div><!--.box-typical-->
+       						 </div>
 
+                    </div><!--.tab-pane-->
 
-
-<section class="box-typical box-typical-padding widget" style="color: #0000; font-size: 1.75rem; text-align: center;">
-
-
-<div class="row"> 
-<h4 >Ejemplos Para llenar Seguros de Vida Grupo y Accidentes</h4>
-    <div class="col-md-3"></div>
-    <div class="col-xs-6 col-md-5">
-
-       
-    <a   target="_blank" href="https://www.dropbox.com/s/ckq1ze5nzlo68j1/seguro%20contra%20accidentes%20personales.pdf?dl=0" class="btn btn-rounded btn-inline">Seguro Contra Accidentes Personales</a>
-
-    <a target="_blank" href="https://www.dropbox.com/s/jgcieuanzdvm071/seguro%20de%20vida%20grupo.pdf?dl=0" class="btn btn-rounded btn-inline">Seguro de Vida Grupo</a>
-
-    </div>
-</div>
-
-</section>
+                </div><!--.tab-content-->
+            </section>
 
 
 @stop
