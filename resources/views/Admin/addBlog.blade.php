@@ -97,8 +97,8 @@ Edición del blog
 
 							<div class="tab-pane" id="w-2-tab-2" role="tabpanel" aria-expanded="true">
 	<div class="row">
-	<div class="col-md-1"></div>
-	<div class="col-md-9">
+	<div class="col-md-3"></div>
+	<div class="col-md-12">
 	<div class="panel panel-success">
         <div class="panel-heading">
             <h4>Lista de Publicaciones</h4>
@@ -333,8 +333,8 @@ Edición del blog
 
                             <div class="tab-pane" id="w-4-tab-4" role="tabpanel" aria-expanded="true">
     <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-9">
+    <div class="col-md-3"></div>
+    <div class="col-md-12">
     <div class="panel panel-success">
         <div class="panel-heading">
             <h4>Lista de Imagenes</h4>
@@ -549,8 +549,8 @@ Edición del blog
 
         <div class="tab-pane" id="w-6-tab-6" role="tabpanel" aria-expanded="true">
     <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-9">
+    <div class="col-md-3"></div>
+    <div class="col-md-12">
     <div class="panel panel-success">
         <div class="panel-heading">
             <h4>Lista de Videos</h4>
@@ -776,8 +776,8 @@ Edición del blog
 
         <div class="tab-pane" id="w-8-tab-8" role="tabpanel" aria-expanded="true">
     <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-9">
+    <div class="col-md-3"></div>
+    <div class="col-md-12">
     <div class="panel panel-success">
         <div class="panel-heading">
             <h4>Lista de Tutoriales</h4>
