@@ -31,7 +31,7 @@ class profileController extends Controller
         $index = 0;
         
         $student = Auth::user()->student;
-        session()->flash('message', 'Documentación: '.$student->documentation());
+        session()->flash('message', 'Documentación: '.$student->documentation().' / '.$student->observaciones);
         $id = $student->documentacion;
         
         if($id == 5){
@@ -46,15 +46,7 @@ class profileController extends Controller
             session()->flash('type', 'success');
         }
         
-        $statusStyle = array(
-            'form-control-blue-fill',
-            'form-control-red-fill',
-            'form-control-purple-fill',
-            'form-control-orange-fill',
-            'form-control-green-fill',
-        );
-        
-        return view('User.profile', ['index'=>$index, 'student'=>$student, 'statusStyle'=>$statusStyle]);
+        return view('User.profile', ['index'=>$index, 'student'=>$student]);
     }
     
     /**
@@ -167,7 +159,7 @@ class profileController extends Controller
         $index = 0;
         
         $student = Auth::user()->student;
-        session()->flash('message', 'Documentación: '.$student->documentation());
+        session()->flash('message', 'Documentación: '.$student->documentation().' / '.$student->observaciones);
         $id = $student->documentacion;
         
         if($id == 5){

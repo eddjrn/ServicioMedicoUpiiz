@@ -171,25 +171,14 @@ Listas de todos los alumnos en el sistema
                                                 <span class="label" id="labelPagec{{$carrer->id}}">pagina</span> <!--info de la pagina de las tablas generado por script-->
                                                 /
                                                 @foreach($status as $s)
-                                                    <span class="label 
-                                                        @if($s->id == 1)
-                                                            label-primary
-                                                        @elseif($s->id == 2)
-                                                            label-danger
-                                                        @elseif($s->id == 3)
-                                                            label-info
-                                                        @elseif($s->id == 4)
-                                                            label-warning
-                                                        @elseif($s->id == 5)
-                                                            label-success
-                                                        @endif">{{$s->students->where('carrera_id', $carrer->id)->count()}} {{$s->nombre}}s</span>
+                                                    <span class="label {{config('global.stateLabel')[$s->id]}}">{{$s->students->where('carrera_id', $carrer->id)->count()}} {{$s->nombre}}</span>
                                                 @endforeach
                                                     /
                                                     <?php
                                                         $studentsDocuments = $carrer->students;
                                                     ?>
-                                                    <span class="label label-success">Completos: {{$studentsDocuments->where('documentacion', 1)->count()}}</span>
-                                                    <span class="label label-danger">Incompletos: {{$studentsDocuments->where('documentacion', 2)->count()}}</span>
+                                                    <span class="label label-{{config('global.hasState')[1]}}">Completos: {{$studentsDocuments->where('documentacion', 1)->count()}}</span>
+                                                    <span class="label label-{{config('global.hasState')[2]}}">Incompletos: {{$studentsDocuments->where('documentacion', 2)->count()}}</span>
                                             </h3>
                                         </div>
                                     </div>
@@ -234,17 +223,7 @@ Listas de todos los alumnos en el sistema
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
                             {{$statu->nombre}}
-                            <span class="label label-pill @if($statu->id == 1)
-                                label-primary
-                            @elseif($statu->id == 2)
-                                label-danger
-                            @elseif($statu->id == 3)
-                                label-info
-                            @elseif($statu->id == 4)
-                                label-warning
-                            @elseif($statu->id == 5)
-                                label-success
-                            @endif">{{$statu->students->count()}}</span>
+                            <span class="label label-pill {{config('global.stateLabel')[$statu->id]}}">{{$statu->students->count()}}</span>
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>
@@ -261,8 +240,8 @@ Listas de todos los alumnos en el sistema
                                             <?php
                                                 $studentsDocuments = $statu->students;
                                             ?>
-                                                    <span class="label label-success">Completos: {{$studentsDocuments->where('documentacion', 1)->count()}}</span>
-                                                    <span class="label label-danger">Incompletos: {{$studentsDocuments->where('documentacion', 2)->count()}}</span>
+                                                    <span class="label label-{{config('global.hasState')[1]}}">Completos: {{$studentsDocuments->where('documentacion', 1)->count()}}</span>
+                                                    <span class="label label-{{config('global.hasState')[2]}}">Incompletos: {{$studentsDocuments->where('documentacion', 2)->count()}}</span>
                                                 
                                             </h3>
                                         </div>
@@ -304,7 +283,7 @@ Listas de todos los alumnos en el sistema
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
                             Documentación completa
-                            <span class="label label-pill label-success">{{$studentAll->where('documentacion', 1)->count()}}</span>
+                            <span class="label label-pill label-{{config('global.hasState')[1]}}">{{$studentAll->where('documentacion', 1)->count()}}</span>
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>
@@ -319,18 +298,7 @@ Listas de todos los alumnos en el sistema
                                                 <span class="label" id="labelPaged1">pagina</span> <!--info de la pagina de las tablas generado por script-->
                                                 /
                                                 @foreach($status as $s)
-                                                    <span class="label 
-                                                        @if($s->id == 1)
-                                                            label-primary
-                                                        @elseif($s->id == 2)
-                                                            label-danger
-                                                        @elseif($s->id == 3)
-                                                            label-info
-                                                        @elseif($s->id == 4)
-                                                            label-warning
-                                                        @elseif($s->id == 5)
-                                                            label-success
-                                                        @endif">{{$s->students->where('documentacion', 1)->count()}} {{$s->nombre}}s</span>
+                                                    <span class="label {{config('global.stateLabel')[$s->id]}}">{{$s->students->where('documentacion', 1)->count()}} {{$s->nombre}}</span>
                                                 @endforeach
                                             </h3>
                                         </div>
@@ -368,7 +336,7 @@ Listas de todos los alumnos en el sistema
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
                             Documentación incompleta
-                            <span class="label label-pill label-danger">{{$studentAll->where('documentacion', 2)->count()}}</span>
+                            <span class="label label-pill label-{{config('global.hasState')[2]}}">{{$studentAll->where('documentacion', 2)->count()}}</span>
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>
@@ -383,18 +351,7 @@ Listas de todos los alumnos en el sistema
                                                 <span class="label" id="labelPaged2">pagina</span> <!--info de la pagina de las tablas generado por script-->
                                                 /
                                                 @foreach($status as $s)
-                                                    <span class="label 
-                                                        @if($s->id == 1)
-                                                            label-primary
-                                                        @elseif($s->id == 2)
-                                                            label-danger
-                                                        @elseif($s->id == 3)
-                                                            label-info
-                                                        @elseif($s->id == 4)
-                                                            label-warning
-                                                        @elseif($s->id == 5)
-                                                            label-success
-                                                        @endif">{{$s->students->where('documentacion', 2)->count()}} {{$s->nombre}}s</span>
+                                                    <span class="label {{config('global.stateLabel')[$s->id]}}">{{$s->students->where('documentacion', 2)->count()}} {{$s->nombre}}</span>
                                                 @endforeach
                                             </h3>
                                         </div>
@@ -635,7 +592,7 @@ Listas de todos los alumnos en el sistema
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
                             Con seguro de vida
-                            <span class="label label-pill label-success">{{$medicalDatas->where('seguroVida', 1)->count()}}</span>
+                            <span class="label label-pill label-{{config('global.hasState')[1]}}">{{$medicalDatas->where('seguroVida', 1)->count()}}</span>
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>
@@ -691,7 +648,7 @@ Listas de todos los alumnos en el sistema
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
                             Sin seguro de vida
-                            <span class="label label-pill label-danger">{{$medicalDatas->where('seguroVida', 2)->count()}}</span>
+                            <span class="label label-pill label-{{config('global.hasState')[2]}}">{{$medicalDatas->where('seguroVida', 2)->count()}}</span>
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>

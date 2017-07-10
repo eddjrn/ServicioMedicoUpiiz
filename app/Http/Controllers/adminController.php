@@ -38,45 +38,7 @@ class adminController extends Controller
     {
         $index = 2;
         
-        $numbers = array(
-            'One',
-            'Two',
-            'Three',
-            'Four',
-            'Five',
-            'Six',
-            'Seven',
-            'Eight',
-            'Nine',
-            'Ten',
-            'Eleven',
-            'Twelve',
-            'Thirteen',
-            'Fourteen',
-            'Fifteen',
-            'Sixteen',
-            'Seventeen',
-            'Eighteen',
-            'Nineteen',
-            'Twenty',
-            'TwentyOne',
-            'TwentyTwo',
-            'TwentyThree',
-            'TwentyFour',
-            'TwentyFive',
-            'TwentySix',
-            'TwentySeven',
-            'TwentyEight',
-            'TwentyNine',
-        );
-        
-        $statusStyle = array(
-            'form-control-blue-fill',
-            'form-control-red-fill',
-            'form-control-purple-fill',
-            'form-control-orange-fill',
-            'form-control-green-fill',
-        );
+        $numbers = config('global.numbers');
         
         $carrers = \App\carrer::all();
         $status = \App\status::all();
@@ -84,7 +46,7 @@ class adminController extends Controller
         $medicalDatas = \App\medicalData::all();
         
         
-        return view('Admin.lists', ['index'=>$index, 'numbers'=>$numbers, 'statusStyle'=>$statusStyle, 'carrers'=>$carrers, 'status'=>$status, 'studentAll'=>$studentAll, 'medicalDatas'=>$medicalDatas]);
+        return view('Admin.lists', ['index'=>$index, 'numbers'=>$numbers, 'carrers'=>$carrers, 'status'=>$status, 'studentAll'=>$studentAll, 'medicalDatas'=>$medicalDatas]);
     }
     
     public function pagination(Request $request, $list){
@@ -107,13 +69,7 @@ class adminController extends Controller
         
         $lastPage = count($array) / 5;
         
-        $statusStyle = array(
-            'form-control-blue-fill',
-            'form-control-red-fill',
-            'form-control-purple-fill',
-            'form-control-orange-fill',
-            'form-control-green-fill',
-        );
+        $statusStyle = config('global.statusStyleTextBox');
         return view('Admin.list', ['list'=>$list, 'array'=>$array, 'statusStyle'=>$statusStyle, 'studentsPaginated'=>$students, 'lastPage'=>$lastPage, 'idUniqueSection'=>$idUniqueSection, 'indexSection'=>$indexSection]);
     }
     
@@ -127,17 +83,9 @@ class adminController extends Controller
     {
         $index = 0;
         
-        $statusStyle = array(
-            'form-control-blue-fill',
-            'form-control-red-fill',
-            'form-control-purple-fill',
-            'form-control-orange-fill',
-            'form-control-green-fill',
-        );
-        
         $student = \App\student::find($id);
         
-        return view('Admin.student', ['index'=>$index, 'statusStyle'=>$statusStyle, 'student'=>$student]);
+        return view('Admin.student', ['index'=>$index, 'student'=>$student]);
     }
     
     /**

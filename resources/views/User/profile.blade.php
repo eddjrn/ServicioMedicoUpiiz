@@ -74,35 +74,28 @@ Perfil de usuario
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Estado de documentación</label>
-                <input type="text" readonly class="form-control 
-                    @if($student->documentacion == 1)
-                        {{$statusStyle[0]}}
-                    @elseif($student->documentacion == 2)
-                        {{$statusStyle[1]}}
-                    @endif" value="{{$student->documentation()}}">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <i class="font-icon {{config('global.hasIconStyle')[$student->documentacion]}} {{config('global.hasColorStyle')[$student->documentacion]}}"></i>
+                        {{$student->documentation()}}
+                    </div>
+                    <input class="form-control {{config('global.hasStyleTextBox')[$student->documentacion]}}" readonly type="text" value="{{$student->observaciones}}">
+                </div>
             </fieldset>
         </div>
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Estatus</label>
-                <input type="text" readonly class="form-control 
-                    @if($student->estatus_id == 1)
-                        {{$statusStyle[0]}}
-                    @elseif($student->estatus_id == 2)
-                        {{$statusStyle[1]}}
-                    @elseif($student->estatus_id == 3)
-                        {{$statusStyle[2]}}
-                    @elseif($student->estatus_id == 4)
-                        {{$statusStyle[3]}}
-                    @elseif($student->estatus_id == 5)
-                        {{$statusStyle[4]}}
-                    @endif" value="{{$student->status->nombre}}">
+                <input type="text" readonly class="form-control {{config('global.statusStyleTextBox')[$student->estatus_id]}}" value="{{$student->status->nombre}}">
             </fieldset>
         </div>
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
-                <label class="form-label" for="exampleInputDisabled2">CURP</label>
-                <input type="text" readonly class="form-control form-control-green-fill" value="{{$student->curp}}">
+                <label class="form-label" for="exampleInputDisabled2">Seguro de vida</label>
+                <div class="form-control-wrapper form-control-icon-left">
+                    <input class="form-control {{config('global.hasStyleTextBox')[$student->user->medicalData->seguroVida]}}" readonly placeholder="Left" type="text" value="{{$student->user->medicalData->insurance()}}">
+                    <i class="font-icon {{config('global.hasIconStyle')[$student->user->medicalData->seguroVida]}} {{config('global.hasColorStyle')[$student->user->medicalData->seguroVida]}}"></i>
+                </div>
             </fieldset>
         </div>
     </div>
@@ -118,6 +111,12 @@ Perfil de usuario
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Edad</label>
                 <input type="text" readonly class="form-control" value="{{$student->age()}}">
+            </fieldset>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <fieldset class="form-group">
+                <label class="form-label" for="exampleInputDisabled2">CURP</label>
+                <input type="text" readonly class="form-control" value="{{$student->curp}}">
             </fieldset>
         </div>
     </div>

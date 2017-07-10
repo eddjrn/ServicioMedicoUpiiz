@@ -44,38 +44,20 @@
         @endif
         <div class="col-lg-2 col-md-2 col-xs-12">
             <div class="font-11 color-blue-grey-lighter uppercase">Estatus</div>
-            <input type="text" id="status{{$student['id']}}" readonly class="form-control @if($student['estatus_id'] == 1)
-                {{$statusStyle[0]}}
-            @elseif($student['estatus_id'] == 2)
-                {{$statusStyle[1]}}
-            @elseif($student['estatus_id'] == 3)
-                {{$statusStyle[2]}}
-            @elseif($student['estatus_id'] == 4)
-                {{$statusStyle[3]}}
-            @elseif($student['estatus_id'] == 5)
-                {{$statusStyle[4]}}
-            @endif" value="{{\App\status::find($student['estatus_id'])->nombre}}" style="word-wrap: break-word;">
+            <input type="text" id="status{{$student['id']}}" readonly class="form-control {{$statusStyle[$student['estatus_id']]}}" value="{{\App\status::find($student['estatus_id'])->nombre}}" style="word-wrap: break-word;">
         </div>
         <div class="col-lg-1 col-md-1 col-xs-4">
             <div class="font-11 color-blue-grey-lighter uppercase hidden-md-down">Seguro-vida</div>
             <div class="font-11 color-blue-grey-lighter uppercase hidden-lg-up">Seguro</div>
             <div class="text-center">
                 <button type="button"
-                        class="btn btn-inline btn-sm @if($medicalData[0]['seguroVida'] == 1)
-                            btn-success
-                        @elseif($medicalData[0]['seguroVida'] == 2)
-                            btn-danger
-                        @endif"
+                        class="btn btn-inline btn-sm btn-{{config('global.hasState')[$medicalData[0]['seguroVida']]}}"
                         title="Seguro de vida"
                         data-container="body"
                         data-toggle="popover"
                         data-placement="top"
                         data-content="{{\App\medicalData::find($medicalData[0]['id'])->insurance()}}" id="buttonSec{{$student['id']}}">
-                        @if($medicalData[0]['seguroVida'] == 1)
-                            <span class="font-icon font-icon-ok" id="spanSec{{$student['id']}}"></span>
-                        @elseif($medicalData[0]['seguroVida'] == 2)
-                            <span class="font-icon font-icon-del" id="spanSec{{$student['id']}}"></span>
-                        @endif
+                        <span class="font-icon {{config('global.hasIconStyle')[$medicalData[0]['seguroVida']]}}" id="spanSec{{$student['id']}}"></span>
                 </button>
             </div>
         </div>
@@ -84,21 +66,13 @@
             <div class="font-11 color-blue-grey-lighter uppercase hidden-lg-up">Doc.</div>
             <div class="text-center">
                 <button type="button"
-                        class="btn btn-inline btn-sm @if($student['documentacion'] == 1)
-                            btn-success
-                        @elseif($student['documentacion'] == 2)
-                            btn-danger
-                        @endif"
+                        class="btn btn-inline btn-sm btn-{{config('global.hasState')[$student['documentacion']]}}"
                         title="Documentación"
                         data-container="body"
                         data-toggle="popover"
                         data-placement="top"
                         data-content="{{\App\student::find($student['id'])->documentation()}}:<br/>{{$student['observaciones']}}" id="buttonDoc{{$student['id']}}">
-                        @if($student['documentacion'] == 1)
-                            <span class="font-icon font-icon-ok" id="spanDoc{{$student['id']}}"></span>
-                        @elseif($student['documentacion'] == 2)
-                            <span class="font-icon font-icon-del" id="spanDoc{{$student['id']}}"></span>
-                        @endif
+                        <span class="font-icon {{config('global.hasIconStyle')[$student['documentacion']]}}" id="spanDoc{{$student['id']}}"></span>
                 </button>
             </div>
         </div>
