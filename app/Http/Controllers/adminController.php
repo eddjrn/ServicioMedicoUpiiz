@@ -571,6 +571,12 @@ class adminController extends Controller
         ]);
         
         if(Hash::check($request->clave, Auth::user()->password)){
+            if($request->ajax()){
+                return response()->json([
+                    "message" => "Se ha eliminado a el usuario:",
+                ]);
+            }
+            
             return redirect('/admin/config/insert/'.$variable);
         } else{
             return redirect('/admin/config')
@@ -578,6 +584,45 @@ class adminController extends Controller
                 $request->clave => 'No coinciden las contraseñas',
             ]);
         }
+    }
+    
+    public function specialFunctions(Request $request){
+        $studentsOpc = $request->input('check-toggle-1', 'false');
+        $postsOpc = $request->input('check-toggle-2', 'false');
+        $imagesOpc = $request->input('check-toggle-3', 'false');
+        $videosOpc = $request->input('check-toggle-4', 'false');
+        
+        if($studentsOpc){
+            $students = \App\student::all();
+            foreach($students as $student){
+                $student->update([
+                    'estatus_id' => 2,
+                ]);
+            }
+        }
+        if($postsOpc){
+            $posts = \App\info::all();
+            foreach($posts as $post){
+                $post->delete();
+            }
+        }
+        if($imagesOpc){
+            $images = \App\images::all();
+            foreach($images as $img){
+                $img->delete();
+            }
+        }
+        if($videosOpc){
+            $videos = \App\video::all();
+            foreach($videos as $video){
+                $video->delete();
+            }
+        }
+        
+        session()->flash('message', 'Operaciones seleccionadas realizadas');
+        session()->flash('type', 'success');
+        
+        return redirect('/admin/config');
     }
     
     public function getRegisterWindow($variable){

@@ -64,6 +64,8 @@ Route::post('/admin/config/insert/{variable}', 'adminController@insertRegister')
 Route::patch('/admin/config/insert/{variable}', 'adminController@updateRegister');
 Route::delete('/admin/config/insert/{variable}', 'adminController@deleteRegister');
 
+Route::post('/admin/extraConfig', 'adminController@specialFunctions');
+
 Route::get('/admin/search', 'adminController@search');
 Route::post('/admin/search', 'adminController@getSearch');
 

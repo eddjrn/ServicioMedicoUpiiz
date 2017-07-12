@@ -10,6 +10,12 @@
 
 @section('popUp')
 
+{!!Form::open(array('method'=>'post', 'id'=>'specialForm'))!!}
+<div id="specialPopUp">
+    
+</div>
+{!!Form::close()!!}
+
 <div class="modal fade bd-example-modal-sm"
         tabindex="-1"
         role="dialog"
@@ -23,16 +29,16 @@
                 </button>
                 <h4 class="modal-title" id="windowTitle">¿Desea editar?</h4>
             </div>
-            {!!Form::open(array('method'=>'post'))!!}
+            {!!Form::open(array('method'=>'post', 'id'=>'passForm'))!!}
             <div class="modal-body">
                 <div class="form-group">
                     <label class="form-label" for="hide-show-password">Contraseña</label>
-                    <input type="password" class="form-control" value="" name="clave">
+                    <input type="password" class="form-control" value="" name="clave" id="clave">
                 </div>
             </div>
             <div class="modal-footer">
                 <div class="text-center">
-                    <button type="submit" class="btn btn-rounded btn-primary btn-danger" formaction="" id="formButton">Editar datos</button>
+                    <button type="submit" class="btn btn-rounded btn-danger" formaction="" id="formButton">Editar datos</button>
                 </div>
             </div>
             {!!Form::close()!!}
@@ -97,7 +103,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-offset-1 col-lg-2 col-md-3 col-sm-3 col-xs-6">
+        <div class="col-lg-offset-0 col-lg-2 col-md-3 col-sm-3 col-xs-6">
             <section class="widget widget-simple-sm-fill grey">
                 <div class="widget-simple-sm-icon">
                     {{$students->count()}}
@@ -123,7 +129,7 @@
                 <div class="widget-simple-sm-icon">
                     {{$s->students->count()}}
                 </div>
-                <div class="widget-simple-sm-fill-caption">{{$s->nombre}}s</div>
+                <div class="widget-simple-sm-fill-caption">{{$s->nombre}}</div>
             </section><!--.widget-simple-sm-fill-->
         </div>
         @endforeach
@@ -133,6 +139,7 @@
 <div class="container-fluid">
     
 @include('alerts.formError')
+@include('alerts.sessionAlert')
     
 <div class="row">
 
@@ -504,13 +511,21 @@
         </div>
     </div>
 </div>
-<div class="row">
-<div class="col-md-7">
-<div class="col-md-10"></div>
-<a href="/admin" class="btn btn-rounded btn-success" style='width:120px; height:40px'>Regresar</a>
+
+<div class="container">
+    <div class="row">
+        <div class="text-center">
+            <div class="col-lg-6 col-md-6">
+                <button type="button" class="btn btn-rounded btn-danger btn-inline" data-toggle="modal" data-target=".bd-example-modal-sm" onclick="authUserSpecialFunctions('Configuraciones especiales', 1);">Más opciones</button>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <a href="/admin" class="btn btn-rounded btn-primary btn-inline">Regresar</a>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-@stopstyle='width:70px; height:25px'
+
+@stop
 
 @section('subHead')
 @stop
