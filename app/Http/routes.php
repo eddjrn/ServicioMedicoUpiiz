@@ -37,9 +37,13 @@ Route::get('/profile', 'profileController@index');
 Route::get('/profile/newStudent', 'profileController@create');
 Route::post('/profile/newStudent', 'profileController@store');
 Route::post('/profile/check', 'profileController@checkPassword');
+
 Route::get('/profile/edit', 'profileController@edit');
 Route::post('/profile/edit', 'profileController@update');
 
+Route::post('/profile/check1', 'profileController@checkPassword1');
+Route::get('/profile/edit1', 'profileController@edit1');
+Route::post('/profile/edit1', 'profileController@update1');
 // ---------------------------------------------------------------------------------------
 
 Route::get('/admin', 'adminController@index');

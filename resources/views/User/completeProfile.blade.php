@@ -413,6 +413,27 @@
                     </div>
                     <div class="col-md-3"></div>
                 </div>
+
+                <h5 class="m-t-lg with-border">Seguridad</h5>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 form-group">
+                    <label class="form-label" for="exampleInputDisabled">La pregunta y respuesta de seguridad permitirá en un futuro cambiar tu contraseña en caso de que la pierdas.</label>
+                    </br>
+                    <label class="form-label" for="exampleInputDisabled">Escribe tu Pregunta de Seguridad</label>
+                        {!!Form::text('pregunta', null, ['class'=>'form-control', 'id'=>'pregunta', 'placeholder'=>'Ej: Villano de Marvel Favorito'])!!}
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6 form-group">
+                     </br>
+                    <label class="form-label" for="exampleInputDisabled">Escribe tu Respuesta</label>
+                        {!!Form::text('respuesta', null, ['class'=>'form-control', 'id'=>'respuesta', 'placeholder'=>'Ej: Carnage'])!!}
+                    </div>
+                    <div class="col-md-3"></div>
+                </div>
                 
                 <div class="row">
                     <div class="col-md-6">

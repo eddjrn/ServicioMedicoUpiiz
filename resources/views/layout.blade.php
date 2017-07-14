@@ -61,6 +61,39 @@
 </div><!--.modal-->
 @endif
 
+@if(Auth::check()) <!--muestra el dialogo de Contraseña solo si esta iniciado sesion-->
+<div class="modal fade bd-examplee-modal-sm"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="mySmallModalLabel"
+        aria-hidden="true"
+        >
+    <div class="modal-dialog modals-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                    <i class="font-icon-close-2"></i>
+                </button>
+                <h4 class="modal-title" id="windowTitle">¿Desea Cambiar Contraseña?</h4>
+            </div>
+            {!!Form::open(array('url'=>'/profile/check1', 'method'=>'post'))!!}
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="hide-show-password">Contraseña</label>
+                    <input type="password" class="form-control" value="" name="clave">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="text-center">
+                    <button type="submit" class="btn btn-rounded btn-primary btn-danger" id="formButton">Cambiar Contraseña</button>
+                </div>
+            </div>
+            {!!Form::close()!!}
+        </div>
+    </div>
+</div><!--.modal-->
+@endif
+
 @unless($index==4) <!--= No se muestra la cabecera-->
     <header class="site-header">
 	    <div class="container-fluid">
@@ -86,9 +119,13 @@
 	                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
 	                            <a class="dropdown-item" href="/profile"><span class="font-icon glyphicon glyphicon-user"></span>Perfil</a>
 	                            <a class="dropdown-item" data-toggle="modal" data-target=".bd-example-modal-sm"><span class="font-icon glyphicon glyphicon-cog"></span>Configuración</a>
+	                            <a class="dropdown-item" data-toggle="modal" data-target=".bd-examplee-modal-sm"><span class="font-icon font-icon-refresh"></span>Cambiar Contraseña</a>
+	                           
+	                            
 	                            <div class="dropdown-divider"></div>
 	                            <a class="dropdown-item" href="https://www.facebook.com/verodelarosa.medicaupiiz?hc_ref=SEARCH&fref=nf"><span class="font-icon font-icon-share"></span>Facebook</a>
 	                            <a class="dropdown-item" href="http://www.zacatecas.ipn.mx/Paginas/Inicio.aspx"><span class="font-icon font-icon-home"></span>Sitio UPIIZ</a>
+	                            
 	                            <div class="dropdown-divider"></div>
 	                            <a class="dropdown-item" href="/logout"><span class="font-icon glyphicon glyphicon-log-out"></span>Salir</a>
 	                        </div>

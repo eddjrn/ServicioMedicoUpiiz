@@ -71,6 +71,49 @@ class profileController extends Controller
             ]);
         }
     }
+    public function checkPassword1(Request $request){
+        $this->validate($request, [
+            'clave'=>'required',
+        ]);
+        
+        if(Hash::check($request->clave, Auth::user()->password)){
+            return redirect('/profile/edit1');
+        } else{
+            return back()
+            ->withErrors([
+                $request->clave => 'No coinciden las contraseñas',
+            ]);
+        }
+    }
+
+    public function edit1()
+    {
+         $index = 0;
+        
+        $student = Auth::user()->student;
+        
+        return view('User.editPassword', ['index'=>$index, 'student'=>$student]);
+    }
+
+    public function update1(Request $request)
+    {
+        $this->validate($request, [
+           
+            'clave' => 'required|same:clave2|min:6|max:30',
+            'clave2' => 'required',
+        ]);
+        
+        $user = \App\user::find($request->studentId);
+        $user->update([
+            'password'=>$request->clave,
+        ]);
+        
+       
+        session()->flash('message', 'Usuario '.$user. ' actualizado correctamente');
+        session()->flash('type', 'success');
+
+        return redirect('/profile');
+    }
      
     public function update(Request $request)
     {
@@ -102,6 +145,9 @@ class profileController extends Controller
             'numClinica'=>'required',
             'institucionClinica'=>'required',
             'sangre'=>'required',
+           
+            'pregunta' => 'required|min:4|max:30',
+            'respuesta' => 'required|min:4|max:30',
         ]);
         
         $user = \App\user::find($request->studentId);
@@ -112,6 +158,7 @@ class profileController extends Controller
             'email'=>$request->email,
             'facebook' =>$request->facebook,
             'identificacion'=>$request->identificacion,
+            
         ]);
         
         $student = $user->student;
@@ -134,6 +181,8 @@ class profileController extends Controller
             'telefonoTutor'=>$request->telefonoTutor,
             'celularTutor'=>$request->celularTutor,
             'parentescoTutor'=>$request->parentesco,
+            'pregunta' => $request->pregunta,
+            'respuesta' => $request->respuesta,
         ]);
         
         $medicalData = $user->medicalData;
@@ -144,7 +193,8 @@ class profileController extends Controller
             'institucionSeguro_id'=>$request->institucionClinica,
             'tipoSangre'=>$request->sangre,
         ]);
-        
+        session()->flash('message', 'Usuario '.$user. ' actualizado correctamente');
+        session()->flash('type', 'success');
         return redirect('/profile');
     }
     
@@ -230,6 +280,9 @@ class profileController extends Controller
             
             'carrera'=>'required',
             'turno'=>'required',
+
+            'pregunta' => 'required',
+            'respuesta' => 'required',
         ]);
         
        // $input = 'd-m-Y';
@@ -266,6 +319,8 @@ class profileController extends Controller
                 'celularTutor'=>$request->celularTutor,
                 'parentescoTutor'=>$request->parentesco,
                 'estatus_id'=>'1',
+                'pregunta' => $request->pregunta ,
+                'respuesta' => $request->respuesta,
             ]);
             
             medicalData::create([

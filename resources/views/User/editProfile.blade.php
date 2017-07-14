@@ -384,6 +384,64 @@ Edición de los datos personales
             </div>
         </div>
     </article>-->
+    <article class="panel">
+        <div class="panel-heading" role="tab" id="headingSix">
+            <a class="collapsed"
+                data-toggle="collapse"
+                data-parent="#accordion"
+                href="#collapseSix"
+                aria-expanded="false"
+                aria-controls="collapseSix">
+                Seguridad
+                <i class="font-icon font-icon-arrow-down"></i>
+            </a>
+        </div>
+        <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+            <div class="panel-collapse-in">
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                    <label class="form-label" for="exampleInputDisabled">Cambiar Pregunta y Respuesta de Seguridad</label>   
+                    </div> 
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <fieldset class="form-group">
+                            <label class="form-label" for="exampleInputDisabled">Pregunta</label>
+                            {!!Form::text('pregunta', null, ['class'=>'form-control', 'placeholder'=>'Ej: Villano de Marvel Favorito', 'id'=>'pregunta'])!!}
+                        </fieldset>
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                        <fieldset class="form-group">
+                            <label class="form-label" for="exampleInputDisabled">Respuesta</label>
+                            {!!Form::text('respuesta', null, ['class'=>'form-control', 'placeholder'=>'Ej: Carnage', 'id'=>'respuesta'])!!}
+                        </fieldset>
+                    </div>
+                </div>
+                
+                <!--<div class="row">
+                    <div class="col-md-4 col-sm-6">
+                    <label class="form-label" for="exampleInputDisabled">Cambiar Contraseña</label>   
+                    </div> 
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <label class="form-label" for="hide-show-password">Nueva Contraseña</label>
+                        <input id="hide-show-password" type="password" class="form-control" value="" name="clave">
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <label class="form-label" for="hide-show-password">Repetir contraseña</label>
+                        <input id="hide-show-password2" type="password" class="form-control" value="" name="clave2">
+                        </div>
+                    </div>-->
+
+                </div>                
+            </div>
+        </div>
+    </article>
 </section><!--.widget-accordion-->
 
 <input type="hidden" value="{{$student->user->id}}" id="studentId" name="studentId">

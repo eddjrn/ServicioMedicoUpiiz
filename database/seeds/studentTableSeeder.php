@@ -35,6 +35,8 @@ class studentTableSeeder extends Seeder
             'celularTutor' => '92-4-30-0-6',
             'parentescoTutor' => '1',
             'estatus_id' => '1',
+            'pregunta' => 'Villano de Marvel Favorito',
+            'respuesta' => 'Carnage',
         ]);
         
         $limit = 50;
@@ -44,12 +46,20 @@ class studentTableSeeder extends Seeder
         for($i = 0; $i <= $limit; $i++){
             $tutorName = "";
             $place = "";
+            $question = "";
+            $answer = "";
             
             for($j = 1; $j <= 4;$j++){
                 $tutorName .= substr(str_shuffle($word), 0, rand (0 , 10)). ' ';
             }
             for($j = 1; $j <= 3;$j++){
                 $place .= substr(str_shuffle($word), 0, rand (0 , 10)). ' ';
+            }
+            for($j = 1; $j <= 5;$j++){
+                $question .= substr(str_shuffle($word), 0, rand (0 , 10)). ' ';
+            }
+            for($j = 1; $j <= 6;$j++){
+                $answer .= substr(str_shuffle($word), 0, rand (0 , 10)). ' ';
             }
         
             DB::table('alumno')->insert([
@@ -75,6 +85,8 @@ class studentTableSeeder extends Seeder
                 'celularTutor' => rand (100 , 999).'-'.rand (100 , 999).'-'.rand (10 , 99).'-'.rand (10 , 99),
                 'parentescoTutor' =>  rand (1 , 4),
                 'estatus_id' =>  rand (1 , 5),
+                'pregunta' => $question,
+                'respuesta' => $answer,
             ]);
         }
 

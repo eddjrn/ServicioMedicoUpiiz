@@ -48,6 +48,8 @@ class StudentMigration extends Migration
             $table->string('celularTutor', 15);
             $table->integer('parentescoTutor');
             
+            $table->text('pregunta',50);
+            $table->text('respuesta',50);
             
             $table->integer('estatus_id')->unsigned()->index()->nullable();
             $table->foreign('estatus_id')->references('id')->on('estatus')->onDelete('set null');

@@ -291,7 +291,6 @@ Perfil de usuario
     </div>
     
 </div> <!--End box typical-->
-
 @stop
 
 @section('scripts')
