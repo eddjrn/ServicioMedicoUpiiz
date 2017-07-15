@@ -19,26 +19,33 @@ class MedicalRecordMigration extends Migration
             $table->integer('usuario_id')->unsigned()->index();
             $table->foreign('usuario_id')->references('id')->on('usuario')->onDelete('cascade');
             
-            $table->text('alergias');
+            $table->text('alergias')->nullable();
 
             $table->integer('fumar');
+            $table->integer('numFumar')->nullable();
+            $table->integer('edadFumar')->nullable();
+            
             $table->integer('alcohol');
+            $table->integer('numAlcohol')->nullable();
+            
             $table->integer('transfusiones');
-            $table->text('cirugias');
-            $table->text('fracturas');
+            $table->integer('edadTransfusiones')->nullable();
+            
+            $table->text('cirugias')->nullable();
+            $table->text('fracturas')->nullable();
 
-            $table->integer('presionAlta');
-            $table->integer('diabetes');
-            $table->integer('artritis');
-            $table->integer('asma');
-            $table->integer('cancer');
-            $table->integer('epilepsias');
-            $table->integer('enfCorazon');
-            $table->integer('sobrePeso');
-            $table->integer('enfTiroides');
-            $table->integer('bipolaridad');
-            $table->integer('esquizofrenia');
-            $table->integer('depresion');
+            $table->integer('presionAlta')->nullable();
+            $table->integer('diabetes')->nullable();
+            $table->integer('artritis')->nullable();
+            $table->integer('asma')->nullable();
+            $table->integer('cancer')->nullable();
+            $table->integer('epilepsias')->nullable();
+            $table->integer('enfCorazon')->nullable();
+            $table->integer('sobrePeso')->nullable();
+            $table->integer('enfTiroides')->nullable();
+            $table->integer('bipolaridad')->nullable();
+            $table->integer('esquizofrenia')->nullable();
+            $table->integer('depresion')->nullable();
             
             $table->timestamps();
         });

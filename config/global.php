@@ -1,6 +1,15 @@
 <?php
 
 return [
+    'nombresAntecedentes' => array(
+        'Ninguno',
+        'Padres',
+        'Abuelos',
+        'Tios',
+        'Hermanos',
+        'Hijos',
+    ),
+    
     'statusStyleTextBox' => array(
         ' ',
         'form-control-blue-fill',

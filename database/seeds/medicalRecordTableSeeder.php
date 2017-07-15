@@ -15,11 +15,18 @@ class medicalRecordTableSeeder extends Seeder
         DB::table('historiaMedica')->insert([
             'usuario_id' => '2',
             
-            'alergias' => 'asma.,polvo,gatos',
+            'alergias' => 'asma,polvo,gatos',
             
             'fumar' => '1',
+            'NumFumar' => '3',
+            'edadFumar' => '17',
+            
             'alcohol' => '1',
+            'numAlcohol' => '2',
+            
             'transfusiones' => '1',
+            'edadTransfusiones' => '18',
+            
             'cirugias' => 'garganta,corazon',
             'fracturas' => 'hombro,brazo',
 
@@ -55,8 +62,15 @@ class medicalRecordTableSeeder extends Seeder
                 'alergias' => $allergy,
                 
                 'fumar' => rand(0 , 1),
+                'NumFumar' => rand(0 , 5),
+                'edadFumar' => rand(15 , 22),
+                
                 'alcohol' => rand(0 , 1),
+                'numAlcohol' => rand(1 , 4),
+                
                 'transfusiones' => rand(0 , 1),
+                'edadTransfusiones' => rand(10 , 23),
+                
                 'cirugias' => substr(str_shuffle($word), 0, rand (0 , 10)),
                 'fracturas' => substr(str_shuffle($word), 0, rand (0 , 10)),
 

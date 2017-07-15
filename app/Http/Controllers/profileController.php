@@ -117,6 +117,8 @@ class profileController extends Controller
      
     public function update(Request $request)
     {
+        //return $request->presion;
+    
         $this->validate($request, [
             'nombre'=>'required',
             'apellidoPaterno'=>'required',
@@ -193,8 +195,61 @@ class profileController extends Controller
             'institucionSeguro_id'=>$request->institucionClinica,
             'tipoSangre'=>$request->sangre,
         ]);
+        
+        //'fumar'=>$request->fumar, 'alcohol'=>$request->alcohol, 'transfusiones'=>$request->transfusiones,
+        
+        $fumar = $request->input('fumar', 'false');
+        $alcohol = $request->input('alcohol', 'false');
+        $transfusiones = $request->input('transfusiones', 'false');
+        
+        $numFumar = null;
+        $edadFumar = null;
+        if($fumar == "true"){
+            $fumar = 1;
+            $numFumar = $request->numFumar;
+            $edadFumar = $request->edadFumar;
+        }
+        $numAlcohol = null;
+        if($alcohol == "true"){
+            $alcohol = 1;
+            $numAlcohol = $request->numAlcohol;
+        }
+        $edadTransfusiones = null;
+        if($transfusiones == "true"){
+            $transfusiones = 1;
+            $edadTransfusiones = $request->edadTransfusiones;
+        }
+        
+        $medicalRecord = $user->medicalRecord;
+        $medicalRecord->update([
+            'alergias'=>$request->alergias,
+            'fumar'=>$fumar,
+            'numFumar'=>$numFumar,
+            'edadFumar'=>$edadFumar,
+            'alcohol'=>$alcohol,
+            'numAlcohol'=>$numAlcohol,
+            'transfusiones'=>$transfusiones,
+            'edadTransfusiones'=>$edadTransfusiones,
+            'cirugias'=>$request->cirugias,
+            'fracturas'=>$request->fracturas,
+            
+            'presionAlta'=>$request->presion,
+            'diabetes'=>$request->diabetes,
+            'artritis'=>$request->artritis,
+            'asma'=>$request->asma,
+            'cancer'=>$request->cancer,
+            'epilepsias'=>$request->epilepsias,
+            'enfCorazon'=>$request->enfCorazon,
+            'sobrePeso'=>$request->sobrePeso,
+            'enfTiroides'=>$request->enfTiroides,
+            'bipolaridad'=>$request->bipolaridad,
+            'esquizofrenia'=>$request->esquizofrenia,
+            'depresion'=>$request->depresion,
+        ]);
+
         session()->flash('message', 'Usuario '.$user. ' actualizado correctamente');
         session()->flash('type', 'success');
+        
         return redirect('/profile');
     }
     

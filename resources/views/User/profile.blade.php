@@ -203,6 +203,242 @@ Perfil de usuario
         </div>
     </div>
     
+    <div class="text-center">
+        <button type="button" class="btn btn-rounded btn-inline btn-info" data-toggle="modal" data-target=".medicalWindow">Más información</button>
+    </div>
+    
+    <div class="modal fade medicalWindow"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="medicalWindow"
+            aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                        <i class="font-icon-close-2"></i>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Datos de médicos de {{$student->user}}</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                    
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Proveedor de seguro</label>
+                                    <input type="text" readonly class="form-control" value="{{$student->user->medicalData->provider()}}">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Clínica a la que pertenece</label>
+                                    <input type="text" readonly class="form-control" value="{{$student->user->medicalData->clinic}}">
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Institución médica a la que pertenece</label>
+                                    <input type="text" readonly class="form-control" value="{{$student->user->medicalData->institution->nombre}}">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Número de seguro médico</label>
+                                    <input type="text" readonly class="form-control" value="{{$student->user->medicalData->numSeguro}}">
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Seguro de vida</label>
+                                    <div class="form-control-wrapper form-control-icon-left">
+                                        <input class="form-control {{config('global.hasStyleTextBox')[$student->user->medicalData->seguroVida]}}" readonly placeholder="Left" type="text" value="{{$student->user->medicalData->insurance()}}">
+                                        <i class="font-icon {{config('global.hasIconStyle')[$student->user->medicalData->seguroVida]}} {{config('global.hasColorStyle')[$student->user->medicalData->seguroVida]}}"></i>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Tipo de sangre</label>
+                                    <input type="text" readonly class="form-control" value="{{$student->user->medicalData->bloodType()}}">
+                                </fieldset>
+                            </div>
+                        </div>
+                        <h5 class="m-t-lg with-border">Historial médico</h5>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Alergias</label>
+                                    <input type="text" readonly class="form-control" value="{{$student->user->medicalRecord->alergias}}">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Cirugías</label>
+                                    <input type="text" readonly class="form-control" value="{{$student->user->medicalRecord->cirugias}}">
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Fracturas</label>
+                                    <input type="text" readonly class="form-control" value="{{$student->user->medicalRecord->fracturas}}">
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Edad</label>
+                                    <input type="text" readonly class="form-control" value="{{$student->age()}}">
+                                </fieldset>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-4">
+                                <article class="profile-info-item">
+                                    <header class="profile-info-item-header">
+                                        <i class="font-icon font-icon-heart"></i>
+                                        Otra información
+                                    </header>
+                                    <ul class="exp-timeline">
+                                        <li class="exp-timeline-item">
+                                            <div class="dot"></div>
+                                            <div class="tbl">
+                                                <div class="tbl-row">
+                                                    <div class="tbl-cell">
+                                                        <div class="exp-timeline-range">{{$student->user->medicalRecord->fumar}}</div>
+                                                        <div class="exp-timeline-status">{{$student->user->medicalRecord->numFumar}}</div>
+                                                        <div class="exp-timeline-status">{{$student->user->medicalRecord->edadFumar}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="exp-timeline-item">
+                                            <div class="dot"></div>
+                                            <div class="tbl">
+                                                <div class="tbl-row">
+                                                    <div class="tbl-cell">
+                                                        <div class="exp-timeline-range">{{$student->user->medicalRecord->alcohol}}</div>
+                                                        <div class="exp-timeline-status">{{$student->user->medicalRecord->numAlcohol}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="exp-timeline-item">
+                                            <div class="dot"></div>
+                                            <div class="tbl">
+                                                <div class="tbl-row">
+                                                    <div class="tbl-cell">
+                                                        <div class="exp-timeline-range">{{$student->user->medicalRecord->transfusiones}}</div>
+                                                        <div class="exp-timeline-status">{{$student->user->medicalRecord->edadTransfusiones}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </article><!--.profile-info-item-->
+                            </div>
+                        </div>
+                        
+                        <h5 class="m-t-lg with-border">Antecedentes de enfermedades en la familia</h5>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Presión alta</label>
+                                    {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->presionAlta, ['class'=>'select2', 'multiple', 'disabled'])!!}
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Diabetes</label>
+                                    {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->diabetes, ['class'=>'select2', 'multiple', 'disabled'])!!}
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Asma</label>
+                                    {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->asma, ['class'=>'select2', 'multiple', 'disabled'])!!}
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Artritis</label>
+                                    {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->artritis, ['class'=>'select2', 'multiple', 'disabled'])!!}
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Cáncer</label>
+                                    {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->cancer, ['class'=>'select2', 'multiple', 'disabled'])!!}
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Epilepsias</label>
+                                    {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->epilepsias, ['class'=>'select2', 'multiple', 'disabled'])!!}
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Enfermedades del corazón</label>
+                                    {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->enfCorazon, ['class'=>'select2', 'multiple', 'disabled'])!!}
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Sobrepeso</label>
+                                    {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->sobrePeso, ['class'=>'select2', 'multiple', 'disabled'])!!}
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Enfermedades de la tiroides</label>
+                                    {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->enfTiroides, ['class'=>'select2', 'multiple', 'disabled'])!!}
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Bipolaridad</label>
+                                    {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->bipolaridad, ['class'=>'select2', 'multiple', 'disabled'])!!}
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Esquizofrenia</label>
+                                    {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->esquizofrenia, ['class'=>'select2', 'multiple', 'disabled'])!!}
+                                </fieldset>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-4">
+                                <fieldset class="form-group">
+                                    <label class="form-label" for="exampleInputDisabled2">Depresión</label>
+                                    {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->depresion, ['class'=>'select2', 'multiple', 'disabled'])!!}
+                                </fieldset>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--.modal-->
+    
     <h5 class="m-t-lg with-border">Datos de escolares</h5>
     
     <div class="row hidden-lg-up">
@@ -294,4 +530,5 @@ Perfil de usuario
 @stop
 
 @section('scripts')
+    <script src="/Template/js/lib/select2/select2.full.min.js"></script>
 @stop 
