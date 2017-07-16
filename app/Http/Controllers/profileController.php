@@ -383,6 +383,7 @@ class profileController extends Controller
                 'usuario_id'=>Auth::user()->id,
                 'numSeguro'=>$request->numSeguro,
                 'proveedorSeguro'=>$request->proveedorSeguro,
+                'seguroVida'=>'2',
                 'clinica_id'=>$request->numClinica,
                 'institucionSeguro_id'=>$request->institucionClinica,
                 'tipoSangre'=>$request->sangre,
