@@ -11,7 +11,7 @@ class medicalRecord extends Model
     //Respuestas con tipos de familiares son antecedentes de la familia como presion alta, diabetes, artritis, asma, cancer, enfCorazon, sobrepeso, epilepsias, enfTiroides, bipolaridad, esquizofrenia, depresion 
     protected $table = 'historiaMedica';
 
-    protected $fillable = ['alergias', 'fumar', 'numFumar', 'edadFumar', 'alcohol', 'numAlcohol', 'transfusiones', 'edadTransfusiones',  'cirugias', 'fracturas', 'presionAlta', 'diabetes', 'artritis', 'asma', 'cancer', 'epilepsias', 'enfCorazon', 'sobrePeso', 'enfTiroides', 'bipolaridad', 'esquizofrenia', 'depresion'];
+    protected $fillable = ['usuario_id', 'alergias', 'fumar', 'numFumar', 'edadFumar', 'alcohol', 'numAlcohol', 'transfusiones', 'edadTransfusiones',  'cirugias', 'fracturas', 'presionAlta', 'diabetes', 'artritis', 'asma', 'cancer', 'epilepsias', 'enfCorazon', 'sobrePeso', 'enfTiroides', 'bipolaridad', 'esquizofrenia', 'depresion'];
 
     public function user(){
         return $this->belongsTo(user::class, 'usuario_id');

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\student;
 use App\medicalData;
+use App\medicalRecord;
 
 use Carbon\Carbon;
 use Hash;
@@ -385,6 +386,13 @@ class profileController extends Controller
                 'clinica_id'=>$request->numClinica,
                 'institucionSeguro_id'=>$request->institucionClinica,
                 'tipoSangre'=>$request->sangre,
+            ]);
+            
+            medicalRecord::create([
+                'usuario_id'=>Auth::user()->id,
+                'fumar'=>'0',
+                'alcohol'=>'0',
+                'transfusiones'=>'0',
             ]);
             
             session()->flash('message', '¡Bienvenido! - Nuevo usuario');
