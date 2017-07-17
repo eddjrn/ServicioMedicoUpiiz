@@ -59,7 +59,7 @@ Busqueda de registro
                             <div class="tbl-row">
                                 <div class="tbl-cell tbl-cell-photo">
                                     <a href="#">
-                                        <img src="/Template/img/photo-64-2.jpg" alt="">
+                                        <img src="/Template/img/2-64.png" alt="">
                                     </a>
                                 </div>
                                 <div class="tbl-cell">
@@ -127,7 +127,7 @@ Busqueda de registro
                             <div class="tbl-row">
                                 <div class="tbl-cell tbl-cell-photo">
                                     <a href="#">
-                                        <img src="/Template/img/photo-64-2.jpg" alt="">
+                                        <img src="/Template/img/2-64.png" alt="">
                                     </a>
                                 </div>
                                 <div class="tbl-cell">
@@ -185,7 +185,7 @@ Busqueda de registro
                             <div class="tbl-row">
                                 <div class="tbl-cell tbl-cell-photo">
                                     <a href="#">
-                                        <img src="/Template/img/photo-64-2.jpg" alt="">
+                                        <img src="/Template/img/2-64.png" alt="">
                                     </a>
                                 </div>
                                 <div class="tbl-cell">

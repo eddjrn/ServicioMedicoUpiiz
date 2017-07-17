@@ -123,8 +123,8 @@
 	                           
 	                            
 	                            <div class="dropdown-divider"></div>
-	                            <a class="dropdown-item" href="https://www.facebook.com/verodelarosa.medicaupiiz?hc_ref=SEARCH&fref=nf"><span class="font-icon font-icon-share"></span>Facebook</a>
-	                            <a class="dropdown-item" href="http://www.zacatecas.ipn.mx/Paginas/Inicio.aspx"><span class="font-icon font-icon-home"></span>Sitio UPIIZ</a>
+	                            <a class="dropdown-item" target="_blank" href="https://www.facebook.com/verodelarosa.medicaupiiz?hc_ref=SEARCH&fref=nf"><span class="font-icon font-icon-share"></span>Facebook</a>
+	                            <a class="dropdown-item" target="_blank" href="http://www.zacatecas.ipn.mx/Paginas/Inicio.aspx"><span class="font-icon font-icon-home"></span>Sitio UPIIZ</a>
 	                            
 	                            <div class="dropdown-divider"></div>
 	                            <a class="dropdown-item" href="/logout"><span class="font-icon glyphicon glyphicon-log-out"></span>Salir</a>

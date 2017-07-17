@@ -32,7 +32,7 @@
                         <label for="remember">Recordarme</label>
                     </div>
                     <div class="float-right reset">
-                        <a href="reset-password.html">¡Olvide mi Contraseña!</a>
+                        <a href="/forgetPass">¡Olvide mi Contraseña!</a>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-rounded">Entrar</button>

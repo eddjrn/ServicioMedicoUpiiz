@@ -90,3 +90,13 @@ Route::delete('/admin/add/video','adminController@deletVideo');
 Route::patch('/admin/add/tutorials','adminController@newTuto');
 Route::post('/admin/add/tutorials','adminController@updateTuto');
 Route::delete('/admin/add/tutorials','adminController@deletTuto');
+
+//-----------------
+
+Route::get('/forgetPass','forgetPassController@search');
+Route::post('/forgetPass','forgetPassController@getSearch');
+
+Route::get('/forget/questionPass/{id}', 'forgetPassController@showInf');
+
+Route::post('/questionPass/edit', 'forgetPassController@update2');
+Route::post('/questionPass/edit1', 'forgetPassController@update3');
