@@ -14,48 +14,64 @@ class imagesTableSeeder extends Seeder
         //
         DB::table('imagenes')->insert([
             'usuario_id' => '1',
-            'imagen' => 'https://images4.alphacoders.com/125/125086.jpg',
-            'titulo' => 'castlevania',
+            'imagen' => 'http://mdkonline.com.mx/uploads/noticias/0rfznn8ks1.jpg',
+            'titulo' => 'Atendiendo a alumnos',
+            'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
         ]);
         DB::table('imagenes')->insert([
             'usuario_id' => '1',
-            'imagen' => 'http://vignette1.wikia.nocookie.net/castlevania/images/c/c9/Castlevania_City.jpg/revision/latest?cb=20140307030446',
-            'titulo' => 'ciudad',
+            'imagen' => 'http://esmomento.org/wp-content/uploads/2016/10/csnk.jpg',
+            'titulo' => 'Dia internacional del cancer de mama',
+            'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
         ]);
          DB::table('imagenes')->insert([
             'usuario_id' => '1',
-            'imagen' => 'http://vignette3.wikia.nocookie.net/castlevania/images/4/4b/Castlevania_Dracula_X.jpg/revision/latest?cb=20150703032137&path-prefix=es',
-            'titulo' => 'castillo',
-        ]);
-
-         DB::table('imagenes')->insert([
-            'usuario_id' => '1',
-            'imagen' => 'https://s-media-cache-ak0.pinimg.com/736x/48/5e/e9/485ee975f0386d3037c12e36d91e6b61.jpg',
-            'titulo' => 'girl',
+            'imagen' => 'http://mx.emedemujer.com/wp-content/uploads/sites/5/2017/05/iStock-625879202.jpg',
+            'titulo' => 'Jornada de prevencion de las ITS',
+            'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
         ]);
 
          DB::table('imagenes')->insert([
             'usuario_id' => '1',
-            'imagen' => 'https://s-media-cache-ak0.pinimg.com/736x/4a/ae/b6/4aaeb6ae48232346af42d2d2b443e8df.jpg',
-            'titulo' => 'cielo',
+            'imagen' => 'http://revistafarmanatur.com/wp-content/uploads/2015/02/fotolia_58601525.jpg',
+            'titulo' => 'Talleres de prevencion de embarazos no deseados',
+            'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
         ]);
 
          DB::table('imagenes')->insert([
             'usuario_id' => '1',
-            'imagen' => 'https://images-na.ssl-images-amazon.com/images/M/MV5BMTI4NzQ3NTgxNV5BMl5BanBnXkFtZTcwMTMwOTIzMQ@@._V1_UX182_CR0,0,182,268_AL_.jpg',
-            'titulo' => 'the mist',
+            'imagen' => 'http://www.cardenista.org/sites/default/files/styles/large/public/field/image/ipn-mx.gif',
+            'titulo' => '¡Actualización del sistema del servicio medico!',
+            'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
         ]);
 
          DB::table('imagenes')->insert([
             'usuario_id' => '1',
-            'imagen' => 'http://www.central42.com.br/novo/wp-content/uploads/2014/09/silent-hills.jpg',
-            'titulo' => 'raro',
+            'imagen' => 'https://www.gob.mx/cms/uploads/image/file/136042/Asma2016.jpg',
+            'titulo' => 'Dia mundial del asma',
+            'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
         ]);
 
          DB::table('imagenes')->insert([
             'usuario_id' => '1',
-            'imagen' => 'http://img13.deviantart.net/3e04/i/2017/130/4/1/silent_hill_by_apanyadong-db8tgca.jpg',
-            'titulo' => 'triztesa',
+            'imagen' => 'http://3.bp.blogspot.com/-FJcnz2caF1o/T7C10eZjHEI/AAAAAAAAFAw/6_ipzefEOPU/s1600/Kelsey_Niziolek_Head.jpg',
+            'titulo' => 'Infografia sobre el cuerpo humano',
+            'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
+        ]);
+
+         DB::table('imagenes')->insert([
+            'usuario_id' => '1',
+            'imagen' => 'https://userscontent2.emaze.com/images/a542584a-a4d2-4bfe-a836-c08952e0850d/4650452b6082f3b761e27894fb5dc267.jpg',
+            'titulo' => 'Jornada de examenes del corazon',
+            'created_at' => \Carbon\Carbon::now()->toDateTimeString(),
+            'updated_at' => \Carbon\Carbon::now()->toDateTimeString(),
         ]);
 
 

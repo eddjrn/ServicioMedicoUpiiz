@@ -7,13 +7,200 @@
 @section('css')
 @stop
 
+@section('popUp')
+
+<div class="modal fade"
+        id="myModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+        aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                    <i class="font-icon-close-2"></i>
+                </button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+                <p class="color-blue-grey-lighter" id="userModal"> </p>
+            </div>
+            <div class="modal-body" id="bodyModal"></div>
+            <div class="modal-footer">
+                <p class="color-blue-grey-lighter" id="dateModal"> </p>
+            </div>
+        </div>
+    </div>
+</div><!--.modal-->
+
+@stop
+
 @section('subHead')
-Servicio Medico Upiiz
+Bienvenido al servicio medico
 @stop
 
 @section('content')
 
-<div class="box-typical box-typical-padding documentation">
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <article class="card-typical">
+            <div class="card-typical-section">
+                <div class="user-card-row">
+                    <div class="tbl-row">
+                        <div class="tbl-cell">
+                            <p class="user-card-row-name">Carteles del más recientes</p>
+                            <p class="color-blue-grey-lighter">Últimos 5</p>
+                        </div>
+                        <div class="tbl-cell tbl-cell-status">
+<!--                             <a href="#" class="glyphicon glyphicon-plus"></a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-typical-section card-typical-content">
+                <div id="carouselExampleIndicators" class="carousel slide text-center" data-ride="carousel">
+                    <?php
+                        $index2 = 0;
+                    ?>
+                    <ol class="carousel-indicators hidden-sm-down" style="z-index:3;">
+                        @foreach($images as $image)
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{$index2}}" class="btn btn-primary-outline btn-sm @if($index2 == 0) active @endif"></li>
+                        <?php
+                            $index2++;
+                        ?>
+                        @endforeach
+                    </ol>
+                    
+                    <?php
+                        $index2 = 0;
+                    ?>
+                    <div class="carousel-inner" role="listbox">
+                        @foreach($images as $image)
+                        
+                       
+                        
+                        <div class="carousel-item  @if($index2 == 0) active @endif">
+                            <header class="title"><a href="{{$image->imagen}}" target="_blank">{{$image->titulo}}</a></header>
+                            <article class="gallery-item">
+                                <img class="gallery-picture d-block img-fluid img-size" src="{{$image->imagen}}" alt="{{$image->titulo}}">
+                                <div class="gallery-hover-layout">
+                                    <div class="gallery-hover-layout-in">
+                                        <p class="gallery-item-title">{{$image->titulo}}</p>
+                                        <p>Autor: {{$image->user}}</p>
+                                        <div class="btn-group">
+                                            <a href="{{$image->imagen}}" class="btn" target="_blank">
+                                                <i class="font-icon font-icon-eye"></i>
+                                            </a>
+                                        </div>
+                                        <p>Fecha de actualización: {{$image->FechaActualizacion()}}</p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <?php
+                            $index2++;
+                        ?>
+                        @endforeach
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-xs-6">
+                            <a class="btn btn-sm" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <span class="font-icon font-icon-arrow-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-6">
+                            <a class="btn btn-sm" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <span class="font-icon font-icon-arrow-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <br/>
+                    <br/>
+                </div>
+            </div>
+        </article><!--.card-typical-->
+    </div>
+</div>
+<br/>
+
+<h4 class="with-border text-center">Tareas <span class="label label-pill label-default"><strong>{{$messages->count()}}</strong></span></h4>
+
+<div class="container">
+    <div class="row" >
+        @foreach($messages as $message)
+        <div class="col-lg-3 col-md-4">
+            <section class="box-typical task-card task" style="border-top-color:{{$message->color}};">
+                <!--<div class="task-card-photo">
+                    <img src="/Template/img/img-task.jpg" alt="">
+                </div>-->
+                <div class="task-card-in">
+                    <div class="task-card-title">
+                        {{$message->titulo}}
+                        <br/>
+                        <span class="task-card-title-label">{{$message->user}}</span>
+                        <br/>
+                        <br/>
+                        <div class="progress-compact-style-label">{{$message->contenido}}</div>
+                    </div>
+                </div>
+                
+                <div class="task-card-footer">
+                    <div class="task-card-meta-item"><i class="font-icon font-icon-calend"></i>{{$message->dateUpdate()}}</div>
+                    
+                    <div class="avatar-preview avatar-preview-32">
+                        <a href="#">
+                            <img src="/Template/img/photo-64-2.jpg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </section><!--.task-card-->
+        </div> <!--col-->
+        @endforeach
+    </div><!--row-->
+</div>
+
+<h4 class="with-border text-center">Información reciente <span class="label label-pill label-default"><strong>{{$infos->count()}}</strong></span></h4>
+
+<div class="container">
+    <div class="row">
+        @foreach($infos as $info)
+            <div class="col-lg-4 col-md-6" style="padding:20px;">
+                <article class="card-typical">
+                    <div class="card-typical-section">
+                        <div class="user-card-row">
+                            <div class="tbl-row">
+                                <div class="tbl-cell tbl-cell-photo">
+                                    <a href="#">
+                                        <img src="/Template/img/avatar-1-64.png" alt="">
+                                    </a>
+                                </div>
+                                <div class="tbl-cell">
+                                    <p class="user-card-row-name"><a href="#">{{$info->user}}</a></p>
+                                    <p class="color-blue-grey-lighter">{{$info->FechaActualizacion()}}</p>
+                                </div>
+                                <div class="tbl-cell tbl-cell-status">
+                                    <a class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal" onclick="update('{{$info->user}}', '{{$info->FechaActualizacion()}}', '{{$info->titulo}}', '{{$info->contenido}}');"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-typical-section card-typical-content">
+                        <header class="title"><a href="#">{{$info->titulo}}</a></header>
+                        <p>{{str_limit($info->contenido, $limit = 255, $end = "...")}}</p>
+                    </div>
+                    <div class="card-typical-section">
+                        <div class="card-typical-linked"><a href="{{$info->user->facebook}}" target="_blank">Facebook</a></div>
+                    </div>
+                </article><!--.card-typical-->
+            </div>
+        @endforeach
+    </div>
+</div>
+
+<!--<div class="box-typical box-typical-padding documentation">
     <header class="documentation-header">
         <h2>Objetivo</h2>
         <p class="lead color-blue-grey"> </p>
@@ -31,72 +218,105 @@ Servicio Medico Upiiz
         <p>Horario de atención: 7:00 - 17:00hrs  Encargada: Médica Verónica de la Rosa Sánchez </p>
         
     </div>
-</div><!--.box-typical-->
+</div>--><!--.box-typical-->
 
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-4 col-xs-2" ></div>
-        <div class="col-md-4 col-xs-12">
-            <section class="widget">
-                <header class="widget-header-dark">Mapas del IMSS</header>
-                
-
-                <div class="tab-content widget-tabs-content">
-
-                    <div class="tab-pane active" id="w-1-tab-0" role="tabpanel" aria-expanded="false">
-                        <center><iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d41623.14776222582!2d-102.59717057394697!3d22.765334713626213!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x86824dfdee323e95%3A0x4b1a2d127500ff5c!2sUPIIZ-IPN%2C+Zacatecas!3m2!1d22.7839529!2d-102.61572989999999!4m5!1s0x86824931098d672b%3A0x81e350358c34bbd9!2sIMSS+Subdelegaci%C3%B3n+Zacatecas%2C+Av.+Solidaridad+2%2C+Militar%2C+98617+Guadalupe%2C+Zac.!3m2!1d22.7581779!2d-102.5222299!5e0!3m2!1ses!2smx!4v1495584465921" width="90%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe></center>
-                    </div>
-
-                    <div class="tab-pane" id="w-1-tab-1" role="tabpanel" aria-expanded="false">
-                        <center><iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d12373.766879175771!2d-102.58526506211027!3d22.77492056162897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x86824dfdee323e95%3A0x4b1a2d127500ff5c!2sUPIIZ-IPN%2C+Zacatecas!3m2!1d22.7839529!2d-102.61572989999999!4m5!1s0x86824e93068b2cb3%3A0xe9af7064ac9c92b7!2sIMSS%2C+Avenida+Universidad+102%2C+Lomas+del+Patrocinio%2C+98060+Zacatecas%2C+Zac.!3m2!1d22.7662625!2d-102.5598576!5e0!3m2!1ses!2smx!4v1495545674418" width="80%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe></center>
-                    </div>
-                    <div class="tab-pane" id="w-1-tab-2" role="tabpanel" aria-expanded="false">
-                        <center><iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d58863.39533191359!2d-102.61268627254599!3d22.76678373115269!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x86824dfdee323e95%3A0x4b1a2d127500ff5c!2sUPIIZ-IPN%2C+Zacatecas!3m2!1d22.7839529!2d-102.61572989999999!4m5!1s0x86824ec8e848a215%3A0x37337628f866ac2e!2sAv.+M%C3%A9xico%2C+Guadalupe%2C+Zac.!3m2!1d22.7608093!2d-102.5396004!5e0!3m2!1ses!2smx!4v1495583519603" width="80%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe></center>
-                    </div>
-                    <div class="tab-pane" id="w-1-tab-3" role="tabpanel" aria-expanded="true">
-                        <center><iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d58866.371709448445!2d-102.59695057258196!3d22.759879582056154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e6!4m5!1s0x86824dfdee323e95%3A0x4b1a2d127500ff5c!2sUnidad+Profesional+Interdisciplinaria+de+Ingenier%C3%ADa+Campus+Zacatecas%2C+Cerro+del+Gato+Ejido+la+Escondida%2C+Col.+Ciudad+Administrativa%2C+Boulevard+El+Bote+S%2FN%2C+98160+Zacatecas%2C+Zac.!3m2!1d22.7839529!2d-102.61572989999999!4m5!1s0x14075c6919446cab%3A0x24ebe537d6f1b527!2sIMSS%2C+Calle+1910+123%2C+Centro%2C+98600+Guadalupe%2C+Zac.!3m2!1d22.7469552!2d-102.5122234!5e0!3m2!1ses!2smx!4v1495568557449" width="80%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe></center>
-                    </div>
-
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+        <section class="widget">
+            <header class="widget-header-dark">Mapas del IMSS</header>
+            <div class="tab-content widget-tabs-content">
+                <div class="tab-pane active" id="w-1-tab-1" role="tabpanel">
+                    <center>
+                        {!!$subdel->mapa!!}
+                    </center>
                 </div>
-                
-                <div class="widget-tabs-nav bordered">
-                    <ul class="tbl-row" role="tablist">
-
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#w-1-tab-0" role="tab" aria-expanded="false">
-                                <i class="font-icon font-icon-pin"></i>
-                                Sub Delegacion
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#w-1-tab-1" role="tab" aria-expanded="false">
-                                <i class="font-icon font-icon-pin"></i>
-                                Clinica 1 (Zacatecas)
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#w-1-tab-2" role="tab" aria-expanded="false">
-                                <i class="font-icon font-icon-pin"></i>
-                                Clinica 4 (Guadalupe)
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#w-1-tab-3" role="tab" aria-expanded="true">
-                                <i class="font-icon font-icon-pin"></i>
-                                Clinica 3 (Guadalupe)
-                            </a>
-                        </li>
-                    </ul>
+                <div class="tab-pane" id="w-1-tab-2" role="tabpanel">
+                    <center>
+                        {!!$clinic1->mapa!!}
+                    </center>
                 </div>
-            </section><!--.widget-->
-        </div>
-        <div class="col-md-3 col-sm-6"></div>
+                <div class="tab-pane" id="w-1-tab-3" role="tabpanel">
+                    <center>
+                        {!!$clinic2->mapa!!}
+                    </center>
+                </div>
+                <div class="tab-pane" id="w-1-tab-4" role="tabpanel">
+                    <center>
+                        {!!$clinic3->mapa!!}
+                    </center>
+                </div>
+            </div>
+            <div class="widget-tabs-nav bordered">
+                <ul class="tbl-row" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#w-1-tab-1" role="tab">
+                            <i class="font-icon font-icon-pin"></i>
+                            <div class="hidden-sm-down">Sub Delegacion</div>
+                            <div class="hidden-sm-up">Sub Del.</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#w-1-tab-2" role="tab">
+                            <i class="font-icon font-icon-pin"></i>
+                            <div class="hidden-sm-down">{{$clinic1->name()}} ({{$clinic1->place->nombre}})</div>
+                            <div class="hidden-sm-up">{{$clinic1->name()}}</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#w-1-tab-3" role="tab">
+                            <i class="font-icon font-icon-pin"></i>
+                            <div class="hidden-sm-down">{{$clinic2->name()}} ({{$clinic2->place->nombre}})</div>
+                            <div class="hidden-sm-up">{{$clinic2->name()}}</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#w-1-tab-4" role="tab">
+                            <i class="font-icon font-icon-pin"></i>
+                            <div class="hidden-sm-down">{{$clinic3->name()}} ({{$clinic3->place->nombre}})</div>
+                            <div class="hidden-sm-up">{{$clinic3->name()}}</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section><!--.widget-->
+    </div>
+    <div class="col-lg-1 col-md-12">
+        <p class="color-blue-grey-lighter">*Información de los mapas con sus respectivas rutas desde la escuela</p>
     </div>
 </div>
+
 @stop
 
 @section('scripts')
-    <script src="Template/js/lib/select2/select2.full.min.js"></script>
+    <script src="/Template/js/lib/select2/select2.full.min.js"></script>
+    <script src="/Template/js/lib/salvattore/salvattore.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            checkPosition();
+        });
+        
+        function checkPosition() {
+            if (window.matchMedia('(max-width: 768px)').matches) {
+                $('.img-size').css({
+                    'height':'180px',
+                    'width':'auto',
+                    'margin':'auto',
+                });
+            } else {
+                $('.img-size').css({
+                    'height':'400px',
+                    'width':'auto',
+                    'margin':'auto',
+                });
+            }
+        }
+        
+        function update(user, date,  title, content){
+            document.getElementById('myModalLabel').innerHTML = title;
+            document.getElementById('bodyModal').innerHTML = content;
+            document.getElementById('dateModal').innerHTML = date;
+            document.getElementById('userModal').innerHTML = 'Autor: '+user;
+        }
+    </script>
 @stop

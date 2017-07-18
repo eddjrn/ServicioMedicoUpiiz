@@ -17,7 +17,16 @@ class startController extends Controller
     public function index()
     {
         $index=1;
-        return view('Welcome.start',['index' => $index]);
+        $images = \App\images::all()->sortByDesc('updated_at')->take(5);
+        $messages = \App\message::all()->sortByDesc('updated_at')->take(6);
+        $infos = \App\info::all()->sortByDesc('updated_at')->take(6);
+        
+        $subdel = \App\clinic::find(1);
+        $clinic1 = \App\clinic::find(2);
+        $clinic2 = \App\clinic::find(5);
+        $clinic3 = \App\clinic::find(6);
+        
+        return view('Welcome.start',['index' => $index, 'images'=>$images, 'messages'=>$messages, 'infos'=>$infos, 'subdel'=>$subdel, 'clinic1'=>$clinic1, 'clinic2'=>$clinic2, 'clinic3'=>$clinic3]);
     }
 
     /**

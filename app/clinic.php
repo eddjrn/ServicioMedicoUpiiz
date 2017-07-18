@@ -21,4 +21,8 @@ class clinic extends Model
     public function __toString(){
         return $this->tipo.' No.'.$this->numero.' - '.$this->place->nombre;
     }
+    
+    public function name(){
+        return 'Clínica '.$this->numero;
+    }
 }
