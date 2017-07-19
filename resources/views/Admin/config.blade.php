@@ -485,28 +485,44 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-4 col-md-4">
+        <div class="col-lg-2 col-lg-offset-1 col-md-2 col-md-offset-1 col-xs-6">
             <section class="widget widget-simple-sm">
                 <div class="widget-simple-sm-icon">
                     <i class="font-icon font-icon-video-fill color-blue"></i>
                 </div>
-                <div class="widget-simple-sm-bottom">{{\App\video::all()->count()}} videos</div>
+                <div class="widget-simple-sm-bottom">{{\App\video::all()->count()}} <br class="hidden-lg-up"/> videos</div>
             </section><!--.widget-simple-sm-->
         </div>
-        <div class="col-lg-4 col-md-4">
+        <div class="col-lg-2 col-md-2 col-xs-6">
             <section class="widget widget-simple-sm">
                 <div class="widget-simple-sm-icon">
                     <i class="font-icon font-icon-post color-red"></i>
                 </div>
-                <div class="widget-simple-sm-bottom">{{\App\info::all()->count()}} posts</div>
+                <div class="widget-simple-sm-bottom">{{\App\info::all()->count()}} <br class="hidden-lg-up"/> posts</div>
             </section><!--.widget-simple-sm-->
         </div>
-        <div class="col-lg-4 col-md-4">
+        <div class="col-lg-2 col-md-2 col-xs-6">
             <section class="widget widget-simple-sm">
                 <div class="widget-simple-sm-icon">
                     <i class="font-icon font-icon-picture color-green"></i>
                 </div>
-                <div class="widget-simple-sm-bottom">{{\App\images::all()->count()}} imágenes</div>
+                <div class="widget-simple-sm-bottom">{{\App\images::all()->count()}} <br class="hidden-lg-up"/> imágenes</div>
+            </section><!--.widget-simple-sm-->
+        </div>
+        <div class="col-lg-2 col-md-2 col-xs-6">
+            <section class="widget widget-simple-sm">
+                <div class="widget-simple-sm-icon">
+                    <i class="font-icon font-icon-play color-black-blue"></i>
+                </div>
+                <div class="widget-simple-sm-bottom">{{\App\tutorials::all()->count()}} <br class="hidden-lg-up"/> Tutoriales</div>
+            </section><!--.widget-simple-sm-->
+        </div>
+        <div class="col-lg-2 col-md-2 col-xs-6">
+            <section class="widget widget-simple-sm">
+                <div class="widget-simple-sm-icon">
+                    <i class="font-icon font-icon-notebook-bird color-purple"></i>
+                </div>
+                <div class="widget-simple-sm-bottom">{{\App\message::all()->count()}} <br class="hidden-lg-up"/> Tareas</div>
             </section><!--.widget-simple-sm-->
         </div>
     </div>

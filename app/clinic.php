@@ -8,7 +8,7 @@ class clinic extends Model
 {
     protected $table = 'clinica';
     
-    protected $fillable = ['numero', 'tipo', 'municipio_id'];
+    protected $fillable = ['numero', 'tipo', 'municipio_id', 'mapa'];
     
     public function place(){
         return $this->belongsTo(place::class, 'municipio_id');
@@ -24,5 +24,20 @@ class clinic extends Model
     
     public function name(){
         return 'Clínica '.$this->numero;
+    }
+    
+    public function setMapaAttribute($value){
+        if($value == 'No tiene mapa'){
+            $this->attributes['mapa'] = null;
+        } else{
+            $this->attributes['mapa'] = $value;
+        }
+    }
+    public function getMapaAttribute($value){
+        if($value == null){
+            return 'No tiene mapa';
+        } else{
+            return $value;
+        }
     }
 }

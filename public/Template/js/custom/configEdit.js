@@ -13,7 +13,7 @@ function  updateInputs(title, name, variable, id){
 //     document.getElementById("formi").formAction = "/admin/lists/"+id;
 }
 
-function  updateInputs2(title, name, variable, id, place, number){
+function  updateInputs2(title, name, variable, id, place, number, mapa){
     document.getElementById('windowTitle').innerHTML=title;
     document.getElementById('nombre').value = name;
     document.getElementById('idVal').value = id;
@@ -25,6 +25,7 @@ function  updateInputs2(title, name, variable, id, place, number){
     $("#municipio2").val(place);
     $("#municipio2").change();
     
+    document.getElementById('mapa').value = mapa;
 //     $("#documentacion").val(documentation);
 //     $("#documentacion").change();
 //     document.getElementById("formi").formAction = "/admin/lists/"+id;
@@ -63,7 +64,7 @@ function openWindow(){
     var url = '/admin/config/7';
     $('.bd-example-modal-sm').modal('hide');
     $.post(url, data, function(result){
-        alert('x');
+        //alert('x');
         document.getElementById('specialPopUp').innerHTML = `\
         <div class="modal fade bd-example-modal-sm2"\
                 tabindex="-1"\
@@ -96,6 +97,10 @@ function openWindow(){
                                 <div class="checkbox-toggle">\
                                     <input type="checkbox" id="check-toggle-4" name="check-toggle-4" value="true"/>\
                                     <label for="check-toggle-4">Eliminar todos los videos</label>\
+                                </div>\
+                                <div class="checkbox-toggle">\
+                                    <input type="checkbox" id="check-toggle-5" name="check-toggle-5" value="true"/>\
+                                    <label for="check-toggle-5">Eliminar todas las tareas</label>\
                                 </div>\
                             </div>\
                         </div>\

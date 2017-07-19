@@ -48,6 +48,8 @@
                         <label class="form-label" for="exampleInputDisabled2">Numero de clínica</label>
                         <input id="numero2" type="text" value="" name="numero">
                     </div>
+                    <label class="form-label" for="hide-show-password">Mapa de la ubicación (opcional)</label>
+                    {!!Form::textarea('mapa', null, array('class'=>'form-control', 'id'=>'mapa', 'placeholder'=>'Ej: <iframe></iframe>', 'size'=>'3x5'))!!}
                     @endif
                 </div>
             </div>
@@ -118,8 +120,7 @@
             
                 {!!Form::open(array('method'=>'post'))!!}
                 <div class="row">
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-10">
+                    <div class="col-lg-10 col-lg-offset-1">
                         <div class="form-group">
                             <label class="form-label" for="exampleInputDisabled2">Nombre de
                                 @if($variable == 1)
@@ -170,11 +171,12 @@ Ej: HGZMF
                             <label class="form-label" for="exampleInputDisabled2">Numero de clínica</label>
                             <input id="numero" type="text" value="" name="numero">
                         </div>
+                        <label class="form-label" for="hide-show-password">Mapa de la ubicación (opcional)</label>
+                        {!!Form::textarea('mapa', null, array('class'=>'form-control', 'id'=>'mapa', 'placeholder'=>'Ej: <iframe></iframe>', 'size'=>'3x5'))!!}
                         @endif
                         
                         </div>
                     </div>
-                    <div class="col-lg-1"></div>
                 </div>
                 
                 <div class="text-center">
@@ -336,7 +338,7 @@ Ej: HGZMF
                                         <button type="button"
                                                     class="btn btn-inline btn-sm btn-primary"
                                                     data-toggle="modal"
-                                                    data-target=".bd-example-modal-sm" onclick="updateInputs2('Editar clínicas', '{{$clinic->tipo}}', 6, {{$clinic->id}}, {{$clinic->municipio_id}}, {{$clinic->numero}});">
+                                                    data-target=".bd-example-modal-sm" onclick="updateInputs2('Editar clínicas', '{{$clinic->tipo}}', 6, {{$clinic->id}}, {{$clinic->municipio_id}}, {{$clinic->numero}}, '{{$clinic->mapa}}');">
                                                     <span class="font-icon font-icon-pencil"></span>
                                         </button>
                                     </td>

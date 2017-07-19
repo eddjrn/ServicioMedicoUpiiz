@@ -591,8 +591,9 @@ class adminController extends Controller
         $postsOpc = $request->input('check-toggle-2', 'false');
         $imagesOpc = $request->input('check-toggle-3', 'false');
         $videosOpc = $request->input('check-toggle-4', 'false');
+        $tareasOpc = $request->input('check-toggle-5', 'false');
         
-        if($studentsOpc){
+        if($studentsOpc == 'true'){
             $students = \App\student::all();
             foreach($students as $student){
                 $student->update([
@@ -600,22 +601,28 @@ class adminController extends Controller
                 ]);
             }
         }
-        if($postsOpc){
+        if($postsOpc == 'true'){
             $posts = \App\info::all();
             foreach($posts as $post){
                 $post->delete();
             }
         }
-        if($imagesOpc){
+        if($imagesOpc == 'true'){
             $images = \App\images::all();
             foreach($images as $img){
                 $img->delete();
             }
         }
-        if($videosOpc){
+        if($videosOpc == 'true'){
             $videos = \App\video::all();
             foreach($videos as $video){
                 $video->delete();
+            }
+        }
+        if($tareasOpc == 'true'){
+            $tareas = \App\message::all();
+            foreach($tareas as $tarea){
+                $tarea->delete();
             }
         }
         
@@ -676,6 +683,7 @@ class adminController extends Controller
                 'tipo' => $request->nombre,
                 'numero' => $request->numero,
                 'municipio_id' => $request->municipio,
+                'mapa' => $request->mapa,
             ]);
         }
             
@@ -732,6 +740,7 @@ class adminController extends Controller
                 'tipo' => $request->nombre,
                 'numero' => $request->numero,
                 'municipio_id' => $request->municipio,
+                'mapa' => $request->mapa,
             ]);
         }
         

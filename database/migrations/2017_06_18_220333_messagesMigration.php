@@ -18,8 +18,8 @@ class MessagesMigration extends Migration
             $table->integer('usuario_id')->unsigned()->index();
             $table->foreign('usuario_id')->references('id')->on('usuario')->onDelete('cascade');
             
-            $table->string('titulo', 30);
-            $table->text('contenido');
+            $table->string('titulo', 40);
+            $table->string('contenido', 200);
             $table->string('color', 8);
             
             $table->timestamps();
