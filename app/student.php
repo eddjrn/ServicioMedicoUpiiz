@@ -53,11 +53,14 @@ class student extends Model
     }
     
     public function sex(){
-        if($this->sexo == 1){
-            return 'Masculino';
-        } elseif($this->sexo == 2){
-            return 'Femenino';
-        }
+        return 'xxxxxxxxxxxx';
+    }
+    
+    public function getSexoAttribute($value){
+        return config('global.sexos')[$value];
+    }
+    public function sexo(){
+        return $this->getOriginal('sexo');
     }
     
     public function sexTypes(){
@@ -66,11 +69,14 @@ class student extends Model
     }
     
     public function documentation(){
-        if($this->documentacion == 1){
-            return 'Completa';
-        } elseif($this->documentacion == 2){
-            return 'Incompleta';
-        }
+        return 'xxxxxxxxxxxxxxxxx';
+    }
+    
+    public function getDocumentacionAttribute($value){
+        return $value;
+    }
+    public function documentacion(){
+        return config('global.documentacion')[$this->documentacion];
     }
     
     public function documentationTypes(){
@@ -79,12 +85,16 @@ class student extends Model
     }
     
     public function turn(){
-        if($this->turno == 1){
-            return 'Matutino';
-        } elseif($this->turno == 2){
-            return 'Vespertino';
-        }
+        return 'xxxxxxxxxxxxxx';
+    }////////////buscar metodoas
+    
+    public function getTurnoAttribute($value){
+        return config('global.turnos')[$value];
     }
+    public function turno(){
+        return $this->getOriginal('turno');
+    }
+    
     
     public function turnTypes(){
         $types = ['1' => 'Matutino', '2' => 'Vespertino'];
@@ -92,15 +102,14 @@ class student extends Model
     }
     
     public function tutorRelationship(){
-        if($this->parentescoTutor == 1){
-            return 'Padre';
-        } elseif($this->parentescoTutor == 2){
-            return 'Hermano';
-        } elseif($this->parentescoTutor == 3){
-            return 'Tio';
-        } elseif($this->parentescoTutor == 4){
-            return 'Tutor legal';
-        }
+        return 'xxxxxxxxxxxxxxxx';
+    }
+    
+    public function getParentescoTutorAttribute($value){
+        return config('global.familiar')[$value];
+    }
+    public function parentescoTutor(){
+        return $this->getOriginal('parentescoTutor');
     }
     
     public function tutorRelationshipTypes(){
@@ -123,6 +132,56 @@ class student extends Model
     
     public function age(){
         return Carbon::parse($this->fechaNacimiento)->diffInYears(Carbon::now()).' años';
+    }
+    
+    public function setCalleAttribute($value){
+        $this->attributes['calle'] = ucwords($value);
+    }
+    
+    public function setNumExteriorAttribute($value){
+        if($value == 'No tiene'){
+            $this->attributes['numExterior'] = null;
+        } else{
+            $this->attributes['numExterior'] = $value;
+        }
+    }
+    public function getNumExteriorAttribute($value){
+        if($value == null){
+            return 'No tiene';
+        } else{
+            return $value;
+        }
+    }
+    
+    public function setNumInteriorAttribute($value){
+        if($value == 'No tiene'){
+            $this->attributes['numInterior'] = null;
+        } else{
+            $this->attributes['numInterior'] = $value;
+        }
+    }
+    public function getNumInteriorAttribute($value){
+        if($value == null){
+            return 'No tiene';
+        } else{
+            return $value;
+        }
+    }
+    
+    public function setColoniaAttribute($value){
+        $this->attributes['colonia'] = ucwords($value);
+    }
+    
+    public function setLocalidadAttribute($value){
+        $this->attributes['localidad'] = ucwords($value);
+    }
+    
+    public function setCurpAttribute($value){
+        $this->attributes['curp'] = strtoupper($value);
+    }
+    
+    public function setTutorAttribute($value){
+        $this->attributes['tutor'] = ucwords($value);
     }
     
 }

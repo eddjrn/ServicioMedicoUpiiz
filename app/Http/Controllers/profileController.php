@@ -32,7 +32,7 @@ class profileController extends Controller
         $index = 0;
         
         $student = Auth::user()->student;
-        session()->flash('message', 'Documentación: '.$student->documentation().' / '.$student->observaciones);
+        session()->flash('message', 'Documentación: '.$student->documentacion().' / '.$student->observaciones);
         $id = $student->documentacion;
         
         if($id == 5){
@@ -265,7 +265,17 @@ class profileController extends Controller
         $index = 0;
         
         $student = Auth::user()->student;
-        session()->flash('message', 'Documentación: '.$student->documentation().' / '.$student->observaciones);
+        $carrer=\App\carrer::lists('nombre', 'id');
+        $clinic=\App\clinic::all();
+        $listClinics = array('0' => 'Seleccionar');
+        foreach($clinic as $c){
+            array_push($listClinics, $c->__toString());
+        }
+        $institution=\App\medicalInstitute::lists('nombre', 'id');
+        $estate=\App\state::lists('nombre', 'id');
+        $place=\App\place::lists('nombre', 'id');
+        
+        session()->flash('message', 'Documentación: '.$student->documentacion().' / '.$student->observaciones);
         $id = $student->documentacion;
         
         if($id == 5){
@@ -280,7 +290,7 @@ class profileController extends Controller
             session()->flash('type', 'success');
         }
         
-        return view('User.editProfile', ['index'=>$index, 'student'=>$student]);
+        return view('User.editProfile', ['index'=>$index, 'student'=>$student, 'carrer'=>$carrer, 'list'=>$listClinics, 'institution'=>$institution, 'estate'=>$estate, 'place'=>$place]);
     }
 
     /**
@@ -331,8 +341,8 @@ class profileController extends Controller
             'cp'=>'required',
             'calle'=>'required',
             'colonia'=>'required',
-            'numExt'=>'required',
-            'numInt'=>'required',
+            'numExt'=>'',
+            'numInt'=>'',
             
             'carrera'=>'required',
             'turno'=>'required',

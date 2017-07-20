@@ -75,7 +75,7 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-6 form-group">
                         <label class="form-label">Sexo</label>
-                        {!!Form::select('sexo', array('0'=>'Seleccionar', '1'=>'Masculino', '2'=>'Femenino'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+                        {!!Form::select('sexo', config('global.sexos'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
                     </div>
                     <div class="col-md-3"></div>
                 </div>
@@ -118,7 +118,7 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-6 form-group">
                         <label class="form-label">Parentesco con el tutor</label>
-                        {!!Form::select('parentesco', array('0'=>'Seleccionar', '1'=>'Padre', '2'=>'Hermano'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+                        {!!Form::select('parentesco', config('global.familiar'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
                     </div>
                     <div class="col-md-3"></div>
                 </div>
@@ -190,7 +190,7 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-6 form-group">
                         <label class="form-label" for="exampleInputDisabled">Proveedor de seguro</label>
-                        {!!Form::select('proveedorSeguro', array('0'=>'Seleccionar', '1'=>'UPIIZ-IPN', '2'=>'Padres', '3'=>'Trabajo'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+                        {!!Form::select('proveedorSeguro', config('global.proveedores'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
                     </div>
                     <div class="col-md-3"></div>
                 </div>
@@ -220,7 +220,7 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-6 form-group">
                         <label class="form-label" for="exampleInputDisabled">Tipo de sangre</label>
-                        {!!Form::select('sangre', array('0'=>'Seleccionar', '1'=>'A+', '2'=>'A-', '3'=>'B+', '4'=>'B-', '5'=>'O+', '6'=>'O-', '7'=>'AB+', '8'=>'AB-'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+                        {!!Form::select('sangre', config('global.tiposSangre'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
                     </div>
                     <div class="col-md-3"></div>
                 </div>
@@ -409,7 +409,7 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-6 form-group">
                         <label class="form-label" for="exampleInputDisabled">Turno</label>
-                        {!!Form::select('turno', array('0'=>'Seleccionar', '1'=>'Matutino', '2'=>'Vespertino'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+                        {!!Form::select('turno', config('global.turnos'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
                     </div>
                     <div class="col-md-3"></div>
                 </div>

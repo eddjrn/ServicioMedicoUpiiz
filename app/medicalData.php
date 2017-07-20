@@ -30,13 +30,14 @@ class medicalData extends Model
     }
     
     public function provider(){
-        if($this->proveedorSeguro == 1){
-            return 'UPIIZ-IPN';
-        } elseif($this->proveedorSeguro == 2){
-            return 'Padres';
-        } if($this->proveedorSeguro == 3){
-            return 'Trabajo';
-        }
+        return 'xxxxxxxxxx';
+    }
+    
+    public function getProveedorSeguroAttribute($value){
+        return config('global.proveedores')[$value];
+    }
+    public function proveedorSeguro(){
+        return $this->getOriginal('proveedorSeguro');
     }
     
     public function providerTypes(){
@@ -45,11 +46,13 @@ class medicalData extends Model
     }
     
     public function insurance(){
-        if($this->seguroVida == 1){
-            return 'Si cuenta';
-        } elseif($this->seguroVida == 2){
-            return 'No cuenta';
-        }
+        return 'xxxxxxxx';
+    }
+    public function getSeguroVidaAttribute($value){
+        return $value;
+    }
+    public function seguroVida(){
+        return config('global.SeguroVida')[$this->seguroVida];
     }
     
     public function insurances(){
@@ -58,23 +61,13 @@ class medicalData extends Model
     }
     
     public function bloodType(){
-        if($this->tipoSangre == 1){
-            return 'A+';
-        } elseif($this->tipoSangre == 2){
-            return 'A-';
-        } elseif($this->tipoSangre == 3){
-            return 'B+';
-        } elseif($this->tipoSangre == 4){
-            return 'B-';
-        } elseif($this->tipoSangre == 5){
-            return 'O+';
-        } elseif($this->tipoSangre == 6){
-            return 'O-';
-        } elseif($this->tipoSangre == 7){
-            return 'AB+';
-        } elseif($this->tipoSangre == 8){
-            return 'AB-';
-        }
+        return 'xxxxxxxx';
+    }
+    public function getTipoSangreAttribute($value){
+        return config('global.tiposSangre')[$value];
+    }
+    public function tipoSangre(){
+        return $this->getOriginal('tipoSangre');
     }
     
     public function bloodTypes(){

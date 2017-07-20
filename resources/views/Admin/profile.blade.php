@@ -107,7 +107,7 @@
                     
                     <div class="form-group">
                         <label class="form-label" for="exampleInputDisabled2">Tipo de usuario</label>
-                        <input type="text" class="form-control" readonly placeholder="" value="{{$user->type()}}"/>
+                        <input type="text" class="form-control" readonly placeholder="" value="{{$user->tipo}}"/>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="exampleInputDisabled2">Correo electrónico</label>

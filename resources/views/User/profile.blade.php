@@ -17,9 +17,9 @@ Perfil de usuario
 @section('content')
 
 <section class="widget widget-user">
-    <div class="widget-user-bg" style="background-image: url('Template/img/user-bg.jpg')"></div>
+    <div class="widget-user-bg" style="background-image: url('/Template/img/user-bg.jpg')"></div>
     <div class="widget-user-photo">
-        <img src="Template/img/upiiz_avatar.png" alt="">
+        <img src="/Template/img/upiiz_avatar.png" alt="">
     </div>
     <div class="widget-user-name">
         {{$student->user}}
@@ -53,13 +53,13 @@ Perfil de usuario
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Tipo de usuario</label>
-                <input type="text" readonly class="form-control" value="{{$student->user->type()}}">
+                <input type="text" readonly class="form-control" value="{{$student->user->tipo}}">
             </fieldset>
         </div>
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Sexo</label>
-                <input type="text" readonly class="form-control" value="{{$student->sex()}}">
+                <input type="text" readonly class="form-control" value="{{$student->sexo}}">
             </fieldset>
         </div>
         <div class="col-md-4 col-sm-6">
@@ -77,7 +77,7 @@ Perfil de usuario
                 <div class="input-group">
                     <div class="input-group-addon">
                         <i class="font-icon {{config('global.hasIconStyle')[$student->documentacion]}} {{config('global.hasColorStyle')[$student->documentacion]}}"></i>
-                        {{$student->documentation()}}
+                        {{$student->documentacion()}}
                     </div>
                     <input class="form-control {{config('global.hasStyleTextBox')[$student->documentacion]}}" readonly type="text" value="{{$student->observaciones}}">
                 </div>
@@ -93,7 +93,7 @@ Perfil de usuario
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Seguro de vida</label>
                 <div class="form-control-wrapper form-control-icon-left">
-                    <input class="form-control {{config('global.hasStyleTextBox')[$student->user->medicalData->seguroVida]}}" readonly placeholder="Left" type="text" value="{{$student->user->medicalData->insurance()}}">
+                    <input class="form-control {{config('global.hasStyleTextBox')[$student->user->medicalData->seguroVida]}}" readonly placeholder="Left" type="text" value="{{$student->user->medicalData->seguroVida()}}">
                     <i class="font-icon {{config('global.hasIconStyle')[$student->user->medicalData->seguroVida]}} {{config('global.hasColorStyle')[$student->user->medicalData->seguroVida]}}"></i>
                 </div>
             </fieldset>
@@ -157,7 +157,7 @@ Perfil de usuario
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Parentesco con el tutor</label>
-                <input type="text" readonly class="form-control" value="{{$student->tutorRelationship()}}">
+                <input type="text" readonly class="form-control" value="{{$student->parentescoTutor}}">
             </fieldset>
         </div>
     </div>
@@ -177,7 +177,7 @@ Perfil de usuario
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Proveedor de seguro</label>
-                <input type="text" readonly class="form-control" value="{{$student->user->medicalData->provider()}}">
+                <input type="text" readonly class="form-control" value="{{$student->user->medicalData->proveedorSeguro}}">
             </fieldset>
         </div>
         <div class="col-md-4 col-sm-6">
@@ -198,7 +198,7 @@ Perfil de usuario
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Tipo de sangre</label>
-                <input type="text" readonly class="form-control" value="{{$student->user->medicalData->bloodType()}}">
+                <input type="text" readonly class="form-control" value="{{$student->user->medicalData->tipoSangre}}">
             </fieldset>
         </div>
     </div>
@@ -227,7 +227,7 @@ Perfil de usuario
                             <div class="col-lg-6 col-md-6 col-sm-4">
                                 <fieldset class="form-group">
                                     <label class="form-label" for="exampleInputDisabled2">Proveedor de seguro</label>
-                                    <input type="text" readonly class="form-control" value="{{$student->user->medicalData->provider()}}">
+                                    <input type="text" readonly class="form-control" value="{{$student->user->medicalData->proveedorSeguro}}">
                                 </fieldset>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-4">
@@ -256,7 +256,7 @@ Perfil de usuario
                                 <fieldset class="form-group">
                                     <label class="form-label" for="exampleInputDisabled2">Seguro de vida</label>
                                     <div class="form-control-wrapper form-control-icon-left">
-                                        <input class="form-control {{config('global.hasStyleTextBox')[$student->user->medicalData->seguroVida]}}" readonly placeholder="Left" type="text" value="{{$student->user->medicalData->insurance()}}">
+                                        <input class="form-control {{config('global.hasStyleTextBox')[$student->user->medicalData->seguroVida]}}" readonly placeholder="Left" type="text" value="{{$student->user->medicalData->seguroVida()}}">
                                         <i class="font-icon {{config('global.hasIconStyle')[$student->user->medicalData->seguroVida]}} {{config('global.hasColorStyle')[$student->user->medicalData->seguroVida]}}"></i>
                                     </div>
                                 </fieldset>
@@ -264,7 +264,7 @@ Perfil de usuario
                             <div class="col-lg-6 col-md-6 col-sm-4">
                                 <fieldset class="form-group">
                                     <label class="form-label" for="exampleInputDisabled2">Tipo de sangre</label>
-                                    <input type="text" readonly class="form-control" value="{{$student->user->medicalData->bloodType()}}">
+                                    <input type="text" readonly class="form-control" value="{{$student->user->medicalData->tipoSangre}}">
                                 </fieldset>
                             </div>
                         </div>
@@ -462,7 +462,7 @@ Perfil de usuario
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Turno</label>
-                <input type="text" readonly class="form-control" value="{{$student->turn()}}">
+                <input type="text" readonly class="form-control" value="{{$student->turno}}">
             </fieldset>
         </div>
     </div>
@@ -522,23 +522,6 @@ Perfil de usuario
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Código postal</label>
                 <input type="text" readonly class="form-control" value="{{$student->codigoPostal}}">
-            </fieldset>
-        </div>
-    </div>
-
-    <h5 class="m-t-lg with-border">Seguridad</h5>
-    
-    <div class="row">
-        <div class="col-md-4 col-sm-6">
-            <fieldset class="form-group">
-                <label class="form-label" for="exampleInputDisabled2">Pregunta de Seguridad</label>
-                <input type="text" readonly class="form-control" value="{{$student->pregunta}}">
-            </fieldset>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <fieldset class="form-group">
-                <label class="form-label" for="exampleInputDisabled2">Respuesta de Seguridad</label>
-                <input type="text" readonly class="form-control" value="{{$student->respuesta}}">
             </fieldset>
         </div>
     </div>

@@ -199,12 +199,12 @@ class AuthController extends Controller
             return $this->redirectPath;
         }
         
-        if(Auth::user()->tipo == 1){
+        if(Auth::user()->tipo() == 1){
             session()->flash('message', '¡Bienvenido! - Inició sesión como administrador');
             session()->flash('type', 'warning');
         
             return property_exists($this, 'redirectTo') ? $this->redirectTo : '/admin';
-        } else if(Auth::user()->tipo == 2){
+        } else if(Auth::user()->tipo() == 2){
             if(Auth::user()->student){
                 session()->flash('message', '¡Bienvenido!');
                 session()->flash('type', 'success');

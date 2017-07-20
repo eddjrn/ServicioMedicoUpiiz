@@ -32,13 +32,13 @@
                         </div>
                         <div class="col-lg-5 col-md-5">
                             <h5 class="m-t-lg with-border">Seguro de vida</h5>
-                            {!!Form::select('seguro', $student->user->medicalData->insurances(), $student->user->medicalData->seguroVida, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'seguro'])!!}
+                            {!!Form::select('seguro', config('global.SeguroVida'), $student->user->medicalData->seguroVida, ['class'=>'bootstrap-select bootstrap-select-arrow form-control remove-example', 'id'=>'seguro'])!!}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1">
                             <h5 class="m-t-lg with-border">Documentación</h5>
-                            {!!Form::select('documentacion', $student->documentationTypes(), $student->documentacion, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'documentacion'])!!}
+                            {!!Form::select('documentacion', config('global.documentacion'), $student->documentacion, ['class'=>'bootstrap-select bootstrap-select-arrow form-control remove-example', 'id'=>'documentacion'])!!}
                         </div>
                         <div class="col-lg-5 col-md-5">
                             <h5 class="m-t-lg with-border">Observaciones</h5>
@@ -127,13 +127,13 @@ Información del alumno
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Tipo de usuario</label>
-                <input type="text" readonly class="form-control" value="{{$student->user->type()}}">
+                <input type="text" readonly class="form-control" value="{{$student->user->tipo}}">
             </fieldset>
         </div>
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Sexo</label>
-                <input type="text" readonly class="form-control" value="{{$student->sex()}}">
+                <input type="text" readonly class="form-control" value="{{$student->sexo}}">
             </fieldset>
         </div>
         <div class="col-md-4 col-sm-6">
@@ -151,7 +151,7 @@ Información del alumno
                 <div class="input-group">
                     <div class="input-group-addon">
                         <i class="font-icon {{config('global.hasIconStyle')[$student->documentacion]}} {{config('global.hasColorStyle')[$student->documentacion]}}"></i>
-                        {{$student->documentation()}}
+                        {{$student->documentacion()}}
                     </div>
                     <input class="form-control {{config('global.hasStyleTextBox')[$student->documentacion]}}" readonly type="text" value="{{$student->observaciones}}">
                 </div>
@@ -167,7 +167,7 @@ Información del alumno
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Seguro de vida</label>
                 <div class="form-control-wrapper form-control-icon-left">
-                    <input class="form-control {{config('global.hasStyleTextBox')[$student->user->medicalData->seguroVida]}}" readonly placeholder="Left" type="text" value="{{$student->user->medicalData->insurance()}}">
+                    <input class="form-control {{config('global.hasStyleTextBox')[$student->user->medicalData->seguroVida]}}" readonly placeholder="Left" type="text" value="{{$student->user->medicalData->seguroVida()}}">
                     <i class="font-icon {{config('global.hasIconStyle')[$student->user->medicalData->seguroVida]}} {{config('global.hasColorStyle')[$student->user->medicalData->seguroVida]}}"></i>
                 </div>
             </fieldset>
@@ -231,7 +231,7 @@ Información del alumno
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Parentesco con el tutor</label>
-                <input type="text" readonly class="form-control" value="{{$student->tutorRelationship()}}">
+                <input type="text" readonly class="form-control" value="{{$student->parentescoTutor}}">
             </fieldset>
         </div>
     </div>
@@ -251,7 +251,7 @@ Información del alumno
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Proveedor de seguro</label>
-                <input type="text" readonly class="form-control" value="{{$student->user->medicalData->provider()}}">
+                <input type="text" readonly class="form-control" value="{{$student->user->medicalData->proveedorSeguro}}">
             </fieldset>
         </div>
         <div class="col-md-4 col-sm-6">
@@ -272,7 +272,7 @@ Información del alumno
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Tipo de sangre</label>
-                <input type="text" readonly class="form-control" value="{{$student->user->medicalData->bloodType()}}">
+                <input type="text" readonly class="form-control" value="{{$student->user->medicalData->tipoSangre}}">
             </fieldset>
         </div>
     </div>
@@ -301,7 +301,7 @@ Información del alumno
                             <div class="col-lg-6 col-md-6 col-sm-4">
                                 <fieldset class="form-group">
                                     <label class="form-label" for="exampleInputDisabled2">Proveedor de seguro</label>
-                                    <input type="text" readonly class="form-control" value="{{$student->user->medicalData->provider()}}">
+                                    <input type="text" readonly class="form-control" value="{{$student->user->medicalData->proveedorSeguro}}">
                                 </fieldset>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-4">
@@ -330,7 +330,7 @@ Información del alumno
                                 <fieldset class="form-group">
                                     <label class="form-label" for="exampleInputDisabled2">Seguro de vida</label>
                                     <div class="form-control-wrapper form-control-icon-left">
-                                        <input class="form-control {{config('global.hasStyleTextBox')[$student->user->medicalData->seguroVida]}}" readonly placeholder="Left" type="text" value="{{$student->user->medicalData->insurance()}}">
+                                        <input class="form-control {{config('global.hasStyleTextBox')[$student->user->medicalData->seguroVida]}}" readonly placeholder="Left" type="text" value="{{$student->user->medicalData->seguroVida()}}">
                                         <i class="font-icon {{config('global.hasIconStyle')[$student->user->medicalData->seguroVida]}} {{config('global.hasColorStyle')[$student->user->medicalData->seguroVida]}}"></i>
                                     </div>
                                 </fieldset>
@@ -338,7 +338,7 @@ Información del alumno
                             <div class="col-lg-6 col-md-6 col-sm-4">
                                 <fieldset class="form-group">
                                     <label class="form-label" for="exampleInputDisabled2">Tipo de sangre</label>
-                                    <input type="text" readonly class="form-control" value="{{$student->user->medicalData->bloodType()}}">
+                                    <input type="text" readonly class="form-control" value="{{$student->user->medicalData->tipoSangre}}">
                                 </fieldset>
                             </div>
                         </div>
@@ -536,7 +536,7 @@ Información del alumno
         <div class="col-md-4 col-sm-6">
             <fieldset class="form-group">
                 <label class="form-label" for="exampleInputDisabled2">Turno</label>
-                <input type="text" readonly class="form-control" value="{{$student->turn()}}">
+                <input type="text" readonly class="form-control" value="{{$student->turno}}">
             </fieldset>
         </div>
     </div>
@@ -599,23 +599,6 @@ Información del alumno
             </fieldset>
         </div>
     </div>
-
-    <h5 class="m-t-lg with-border">Seguridad</h5>
-    
-    <div class="row">
-        <div class="col-md-4 col-sm-6">
-            <fieldset class="form-group">
-                <label class="form-label" for="exampleInputDisabled2">Pregunta de Seguridad</label>
-                <input type="text" readonly class="form-control" value="{{$student->pregunta}}">
-            </fieldset>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <fieldset class="form-group">
-                <label class="form-label" for="exampleInputDisabled2">Respuesta de Seguridad</label>
-                <input type="text" readonly class="form-control" value="{{$student->respuesta}}">
-            </fieldset>
-        </div>
-    </div>
     
     <div class="text-center">
         <button type="button" class="btn btn-rounded btn-inline btn-warning" data-toggle="modal" data-target=".bd-example-modal-md" onclick="updateInputsProfile({{$student->id}}, '{{$student->user}}');">Editar</button>
@@ -628,4 +611,9 @@ Información del alumno
     <script src="/Template/js/lib/bootstrap-select/bootstrap-select.min.js"></script>
     <script src="/Template/js/lib/select2/select2.full.min.js"></script>
     <script src="/Template/js/custom/listsEdits.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.remove-example').find('[value=0]').remove();
+        });
+    </script>
 @stop

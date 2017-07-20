@@ -15,7 +15,7 @@ class AdminAuth
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->tipo != 1){
+        if(Auth::user()->tipo() != 1){
             return redirect('/');
         }
     

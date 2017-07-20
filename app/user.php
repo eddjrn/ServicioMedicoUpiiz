@@ -81,20 +81,35 @@ class user extends Model implements AuthenticatableContract,
         return $this->nombre.' '.$this->apellidoPaterno.' '.$this->apellidoMaterno;
     }
     
-    public function type(){
-        if($this->tipo == 1){
-            return 'Administrador';
-        } elseif($this->tipo == 2){
-            return 'Alumno';
-        }
+    public function getTipoAttribute($value){
+        return config('global.tipos')[$value];
+    }
+    public function tipo(){
+        return $this->getOriginal('tipo');
     }
     
-    public function getTypes(){
-        $types = ['1' => 'Administrador', '2' => 'Alumno'];
-        return $types;
+    public function setNombreAttribute($value){
+        $this->attributes['nombre'] = ucwords($value);
+    }
+    
+    public function setApellidoPaternoAttribute($value){
+        $this->attributes['apellidoPaterno'] = ucfirst($value);
+    }
+    
+    public function setApellidoMaternoAttribute($value){
+        $this->attributes['apellidoMaterno'] = ucfirst($value);
     }
     
     public function setPasswordAttribute($password) {
         $this->attributes['password'] = bcrypt($password);
+    }
+    
+    public function generation(){
+        if($this->tipo() == 2){
+            $int = 2014670079;
+            return substr($int, 0, 4);
+        } else{
+            return "No es alumno";
+        }
     }
 }

@@ -33,13 +33,13 @@
                         </div>
                         <div class="col-lg-5 col-md-5">
                             <h5 class="m-t-lg with-border">Seguro de vida</h5>
-                            {!!Form::select('seguro', array('1'=>'Si cuenta', '2'=>'No cuenta'), 1, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'seguro'])!!}
+                            {!!Form::select('seguro', config('global.SeguroVida'), 1, ['class'=>'bootstrap-select bootstrap-select-arrow form-control remove-example', 'id'=>'seguro'])!!}
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1">
                             <h5 class="m-t-lg with-border">Documentación</h5>
-                            {!!Form::select('documentacion', array('1'=>'Completa', '2'=>'Incompleta'), 1, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'documentacion'])!!}
+                            {!!Form::select('documentacion', config('global.documentacion'), 1, ['class'=>'bootstrap-select bootstrap-select-arrow form-control remove-example', 'id'=>'documentacion'])!!}
                         </div>
                         <div class="col-lg-5 col-md-5">
                             <h5 class="m-t-lg with-border">Observaciones</h5>
@@ -393,7 +393,7 @@ Listas de todos los alumnos en el sistema
                 <article class="panel">
 <!--                 {{$studentsM = new Illuminate\Database\Eloquent\Collection()}} -->
                                                 
-                @foreach($medicalDatas->where('proveedorSeguro', 1) as $medicalData)                           
+                @foreach($medicalDatas->where('proveedorSeguro', 'UPIIZ-IPN') as $medicalData)                           
 <!--                     {{$studentsM->push($medicalData)}} -->
                 @endforeach
                 
@@ -410,7 +410,7 @@ Listas de todos los alumnos en el sistema
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
                             Asegurado por UPIIZ-IPN
-                            <span class="label label-pill label-primary">{{$medicalDatas->where('proveedorSeguro', 1)->count()}}</span>
+                            <span class="label label-pill label-primary">{{$medicalDatas->where('proveedorSeguro', 'UPIIZ-IPN')->count()}}</span>
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>
@@ -455,7 +455,7 @@ Listas de todos los alumnos en el sistema
                 <article class="panel">
                 <!--                 {{$studentsM2 = new Illuminate\Database\Eloquent\Collection()}} -->
                 
-                @foreach($medicalDatas->where('proveedorSeguro', 2) as $medicalData)                           
+                @foreach($medicalDatas->where('proveedorSeguro', 'Padres') as $medicalData)                           
 <!--                     {{$studentsM2->push($medicalData)}} -->
                 @endforeach
                 
@@ -468,7 +468,7 @@ Listas de todos los alumnos en el sistema
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
                             Asegurado por Padres
-                            <span class="label label-pill label-primary">{{$medicalDatas->where('proveedorSeguro', 2)->count()}}</span>
+                            <span class="label label-pill label-primary">{{$medicalDatas->where('proveedorSeguro', 'Padres')->count()}}</span>
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>
@@ -516,7 +516,7 @@ Listas de todos los alumnos en el sistema
                 <article class="panel">
 <!--                 {{$studentsM3 = new Illuminate\Database\Eloquent\Collection()}} -->
                                                 
-                @foreach($medicalDatas->where('proveedorSeguro', 3) as $medicalData)                           
+                @foreach($medicalDatas->where('proveedorSeguro', 'Trabajo') as $medicalData)                           
 <!--                     {{$studentsM3->push($medicalData)}} -->
                 @endforeach
                 
@@ -529,7 +529,7 @@ Listas de todos los alumnos en el sistema
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
                             Asegurado por Trabajo
-                            <span class="label label-pill label-primary">{{$medicalDatas->where('proveedorSeguro', 3)->count()}}</span>
+                            <span class="label label-pill label-primary">{{$medicalDatas->where('proveedorSeguro', 'Trabajo')->count()}}</span>
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>
@@ -709,6 +709,10 @@ Listas de todos los alumnos en el sistema
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
+        });
+        
+        $(document).ready(function(){
+            $('.remove-example').find('[value=0]').remove();
         });
     </script>
 @stop

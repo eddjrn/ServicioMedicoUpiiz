@@ -5,6 +5,11 @@
 @foreach($studentsPaginated as $student)
 <!-- {{$user = \App\user::find($student['usuario_id'])}} -->
 <!-- {{$medicalData = \App\medicalData::where('usuario_id', $user['id'])->get()}} -->
+<pre>
+<?php
+   // return print_r($medicalData[0]['seguroVida']);
+?></pre>
+
 <div id="row{{$student['id']}}">
     <div class="row moreBtn">
         <div class="col-lg-2 col-md-2 col-xs-12">
@@ -56,7 +61,7 @@
                         data-container="body"
                         data-toggle="popover"
                         data-placement="top"
-                        data-content="{{\App\medicalData::find($medicalData[0]['id'])->insurance()}}" id="buttonSec{{$student['id']}}">
+                        data-content="{{\App\medicalData::find($medicalData[0]['id'])->seguroVida()}}" id="buttonSec{{$student['id']}}">
                         <span class="font-icon {{config('global.hasIconStyle')[$medicalData[0]['seguroVida']]}}" id="spanSec{{$student['id']}}"></span>
                 </button>
             </div>
@@ -71,7 +76,7 @@
                         data-container="body"
                         data-toggle="popover"
                         data-placement="top"
-                        data-content="{{\App\student::find($student['id'])->documentation()}}:<br/>{{$student['observaciones']}}" id="buttonDoc{{$student['id']}}">
+                        data-content="{{\App\student::find($student['id'])->documentacion()}}:<br/>{{$student['observaciones']}}" id="buttonDoc{{$student['id']}}">
                         <span class="font-icon {{config('global.hasIconStyle')[$student['documentacion']]}}" id="spanDoc{{$student['id']}}"></span>
                 </button>
             </div>

@@ -65,6 +65,7 @@ class adminController extends Controller
         foreach($slice as $a){
             $students->push(\App\student::find($a));
         }
+        //return print_r($students);
         
         //$studentsPaginated = $students->forPage($list, 5);
         
