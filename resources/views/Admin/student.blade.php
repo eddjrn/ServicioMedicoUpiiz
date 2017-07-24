@@ -599,7 +599,24 @@ Información del alumno
             </fieldset>
         </div>
     </div>
+
+    <h5 class="m-t-lg with-border">Seguridad</h5>
     
+    <div class="row">
+        <div class="col-md-4 col-sm-6">
+            <fieldset class="form-group">
+                <label class="form-label" for="exampleInputDisabled2">Pregunta de Seguridad</label>
+                <input type="text" readonly class="form-control" value="{{$student->pregunta}}">
+            </fieldset>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <fieldset class="form-group">
+                <label class="form-label" for="exampleInputDisabled2">Respuesta de Seguridad</label>
+                <input type="text" readonly class="form-control" value="{{$student->respuesta}}">
+            </fieldset>
+        </div>
+    </div>
+    </br>
     <div class="text-center">
         <button type="button" class="btn btn-rounded btn-inline btn-warning" data-toggle="modal" data-target=".bd-example-modal-md" onclick="updateInputsProfile({{$student->id}}, '{{$student->user}}');">Editar</button>
     </div>
