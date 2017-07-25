@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-<title>Inicio Servicio Medico Tutoriales</title>
+<title>Tutoriales Servicio Medico Tutoriales</title>
 @stop
 
 @section('css')

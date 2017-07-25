@@ -18,6 +18,8 @@ Route::get('/contact','contactController@index');
 Route::get('/tutorials','tutorialsController@index');
 Route::get('/maps', 'mapsController@index');
 
+Route::get('/credits', 'creditsController@index');
+
 Route::get('/antecedentes','antecedentesController@index');
 Route::get('/imss','imssController@index');
 Route::get('/carta','cartaController@index');

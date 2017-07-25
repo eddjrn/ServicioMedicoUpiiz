@@ -52,6 +52,7 @@ Generación de formularios
 
     <a href="/antecedentes" class="btn btn-inline" target="_blank" >Obtener Historia Clinica</a>
 
+
         <div class="row" id="intento">
         <div class="col-md-3"></div>
         <div class="col-md-5">
@@ -72,39 +73,43 @@ Generación de formularios
         <tr>
             <td colspan="3">TURNO: </td>
             <td colspan="2">MATUTINO </td>
-            <td colspan="2"></td>
+            <td colspan="2">@if($student->turno == 'Matutino')
+                       <strong> X
+                 @endif</td>
             <td colspan="2">VESPERTINO </td>
-            <td colspan="2"></td>
+            <td colspan="2">@if($student->turno == 'Vespertino')
+                       <strong> X
+                 @endif</td></td>
         </tr>
         <tr>
             <td>ING. </td>
             <td>MECATRONICA</td>
             <td> @if($student->carrera_id == 2)
-                        X
+                      <strong>  X
                  @endif
             </td>
             <td>SISTEMAS</td>
             <td>
                 @if($student->carrera_id == 1)
-                        X
+                      <strong>  X
                  @endif
             </td>
             <td>AMBIENTAL</td>
             <td>
                 @if($student->carrera_id == 5)
-                        X
+                       <strong> X
                  @endif
             </td>
             <td>ALIMENTOS</td>
             <td>
                 @if($student->carrera_id == 3)
-                        X
+                       <strong> X
                  @endif
             </td>
             <td>METAL.</td>
             <td>
                 @if($student->carrera_id == 4)
-                        X
+                       <strong> X
                  @endif
             </td>
         </tr>
@@ -118,29 +123,41 @@ Generación de formularios
         </tr>
         <tr>
             <td><strong>NOMBRE: </strong></td>
-            <td colspan="4">{{$student->user->apellidoPaterno}} {{$student->user->apellidoMaterno}} {{$student->user->nombre}} </td>
+            <td colspan="4"><strong>{{$student->user->apellidoPaterno}} {{$student->user->apellidoMaterno}} {{$student->user->nombre}} </td>
             <td>EDAD: </td>
             <td>{{$student->age()}}</td>
             <td>SEXO: </td>
             <td>H</td>
-            <td></td>
+            <td>@if($student->sexo == 'Masculino')
+                     <strong>   X
+                 @endif</td>
             <td>M</td>
-            <td></td>
+            <td>@if($student->sexo == 'Femenino')
+                       <strong> X
+                 @endif</td>
         </tr>
         <tr>
             <td>No. de PZ o BOLETA</td>
-            <td colspan="4">{{$student->user->identificacion}}</td>
+            <td colspan="4"><strong>{{$student->user->identificacion}}</td>
             <td>CURP</td>
-            <td colspan="6">{{$student->curp}}</td>
+            <td colspan="6"><strong>{{$student->curp}}</td>
         </tr>
         <tr>
             <td>Seguridad Social por:</td>
             <td>ESCUELA</td>
-            <td></td>
+            <td>@if($student->user->medicalData->proveedorSeguro == 'UPIIZ-IPN')
+                       <strong> X
+                @endif</td>
             <td>PADRES</td>
-            <td colspan="2"></td>
+            <td colspan="2">@if($student->user->medicalData->proveedorSeguro == 'Padres')
+                      <strong>  X
+                @endif</td>
             <td>TRABAJO</td>
-            <td colspan="2"></td>
+            <td colspan="2">
+                @if($student->user->medicalData->proveedorSeguro == 'Trabajo')
+                      <strong>  X
+                @endif
+            </td>
             <td>PROPIO</td>
             <td colspan="2"></td>
         </tr>
@@ -157,9 +174,9 @@ Generación de formularios
         </tr>
         <tr>
             <td colspan="3">NUMERO DE SEGURIDAD SOCIAL:</td>
-            <td colspan="3">{{$student->user->medicalData->numSeguro}}</td>
+            <td colspan="3"><strong>{{$student->user->medicalData->numSeguro}}</td>
             <td colspan="3">UNIDAD MEDICO FAMILIAR:</td>
-            <td colspan="3">{{$student->user->medicalData->clinic}}</td>
+            <td colspan="3"><strong>{{$student->user->medicalData->clinic}}</td>
         </tr>
         <tr>
             <td colspan="2">OTRO:</td>
@@ -188,7 +205,7 @@ Generación de formularios
             <td align="Center">MG</td>
             <td align="Center">DOSIS</td>
             <td align="Center">Alergias:</td>
-            <td colspan="6"></td>
+            <td colspan="6"><strong>{{$student->user->medicalRecord->alergias}}</td>
         </tr>
         <tr>
             <td colspan="2"></td>
@@ -211,7 +228,7 @@ Generación de formularios
             <td></td>
             <td>Tipo de sangre</td>
             <td>GPO</td>
-            <td colspan="2"></td>
+            <td colspan="2"><strong>{{$student->user->medicalData->tipoSangre}}</td>
             <td>RH</td>
             <td colspan="2"></td>
         </tr>
@@ -225,88 +242,132 @@ Generación de formularios
         </tr>
         <tr>
             <td>Presión alta</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                                    {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->presionAlta, ['class'=>'select2', 'multiple', 'disabled'])!!}
+            </td>
             <td>Fumas</td>
             <td>SI</td>
-            <td></td>
+            <td>@if($student->user->medicalRecord->fumar()==1)
+           <strong> X
+            @endif
+            </td>
             <td>NO</td>
-            <td></td>
-            <td>CUANTOS X MES</td>
-            <td></td>
+            <td>
+                @if($student->user->medicalRecord->fumar()==0)
+           <strong> X
+            @endif
+            </td>
+            <td>CUANTOS X MES </td>
+            <td> <strong>{{$student->user->medicalRecord->numFumar()}}</td>
         </tr>
         <tr>
             <td>Diabetes</td>
-            <td colspan="4"></td>
+            <td colspan="4">{!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->diabetes, ['class'=>'select2', 'multiple', 'disabled'])!!}
+            </td>
             <td colspan="2">DESDE QUE EDAD:</td>
-            <td colspan="5"></td>
+            <td colspan="5"><strong>{{$student->user->medicalRecord->edadFumar()}}</td>
         </tr>
         <tr>
             <td>Artritis</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->artritis, ['class'=>'select2', 'multiple', 'disabled'])!!}
+            </td>
         </tr>
         <tr>
             <td>Asma</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                 {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->asma, ['class'=>'select2', 'multiple', 'disabled'])!!}
+            </td>
             <td>Tomas Alcohol</td>
             <td>SI</td>
-            <td></td>
+            <td>@if($student->user->medicalRecord->alcohol()==1)
+           <strong> X
+            @endif
+            </td>
             <td>NO</td>
-            <td></td>
+            <td>
+                @if($student->user->medicalRecord->alcohol()==0)
+          <strong>  X
+            @endif
+            </td>
             <td>CUANTO X MES</td>
-            <td></td>
+            <td><strong>{{$student->user->medicalRecord->numAlcohol()}}</td>
         </tr>
         <tr>
             <td>Cáncer</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->cancer, ['class'=>'select2', 'multiple', 'disabled'])!!}
+            </td>
             <td>Transfusiones</td>
             <td>SI</td>
-            <td></td>
+            <td>@if($student->user->medicalRecord->transfusiones()==1)
+            <strong>X
+            @endif
+            </td>
             <td>NO</td>
-            <td></td>
+            <td>
+                @if($student->user->medicalRecord->transfusiones()==0)
+                 <strong>   X
+                @endif
+            </td>
             <td>A QUE EDAD:</td>
-            <td></td>
+            <td><strong>{{$student->user->medicalRecord->edadTransfusiones()}}</td>
         </tr>
         <tr>
             <td>Epilepsias</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                 {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->epilepsias, ['class'=>'select2', 'multiple', 'disabled'])!!}
+            </td>
         </tr>
         <tr>
             <td>Enf. del Corazón</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->enfCorazon, ['class'=>'select2', 'multiple', 'disabled'])!!}
+            </td>
             <td>Cirugías</td>
             <td>SI</td>
             <td></td>
             <td>NO</td>
             <td></td>
-            <td colspan="2">DONDE:</td>
+            <td colspan="2">DONDE: <strong>{{$student->user->medicalRecord->cirugias}}</td>
         </tr>
         <tr>
             <td>Sobrepeso / Obesidad</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->sobrePeso, ['class'=>'select2', 'multiple', 'disabled'])!!}
+            </td>
             <td colspan="7"></td>
         </tr>
         <tr>
             <td>Enf. de Tiroides</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->enfTiroides, ['class'=>'select2', 'multiple', 'disabled'])!!}
+            </td>
             <td>Fracturas</td>
             <td>SI</td>
             <td></td>
             <td>NO</td>
             <td></td>
-            <td colspan="2">DONDE:</td>
+            <td colspan="2">DONDE: <strong>{{$student->user->medicalRecord->fracturas}}</td>
         </tr>
         <tr>
             <td>Bopolaridad</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->bipolaridad, ['class'=>'select2', 'multiple', 'disabled'])!!}
+            </td>
             <td colspan="7"></td>
         </tr>
         <tr>
             <td>Esquizofrenia</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->esquizofrenia, ['class'=>'select2', 'multiple', 'disabled'])!!}
+            </td>
         </tr>
         <tr>
             <td>Depresión</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                 {!!Form::select('presion', config('global.nombresAntecedentes'), $student->user->medicalRecord->depresion, ['class'=>'select2', 'multiple', 'disabled'])!!}
+            </td>
             <td rowspan="2" colspan="7" align="Center"><strong>PERSONA QUE SE AVISARÁ EN CASO DE</br> URGENCIA:</strong></td>
         </tr>
         <tr>
@@ -322,7 +383,7 @@ Generación de formularios
             <td></td>
             <td></td>
             <td>Nombre:</td>
-            <td colspan="6">{{$student->tutor}}</td>
+            <td colspan="6"><strong>{{$student->tutor}}</td>
         </tr>
         <tr>
             <td colspan="2">Hepatitis</td>
@@ -330,7 +391,7 @@ Generación de formularios
             <td></td>
             <td></td>
             <td colspan="2">TELEFONO:</td>
-            <td colspan="5">{{$student->telefonoTutor}}</td>
+            <td colspan="5"><strong>{{$student->telefonoTutor}}</td>
         </tr>
         <tr>
             <td colspan="2">SR</td>
@@ -338,7 +399,7 @@ Generación de formularios
             <td></td>
             <td></td>
             <td colspan="2">CELULAR:</td>
-            <td colspan="5">{{$student->celularTutor}}</td>
+            <td colspan="5"><strong>{{$student->celularTutor}}</td>
         </tr>
         <tr>
             <td colspan="2">Influenza</td>
@@ -346,7 +407,7 @@ Generación de formularios
             <td></td>
             <td></td>
             <td colspan="2">PARENTESCO:</td>
-            <td colspan="5">{{$student->tutorRelationship()}}</td>
+            <td colspan="5"><strong>{{$student->parentescoTutor}}</td>
         </tr>
         <tr>
             <td colspan="2">Otra</td>
@@ -356,7 +417,7 @@ Generación de formularios
         </tr>
         <tr>
             <td colspan="2">CORREO @ ALUMNO:</td>
-            <td colspan="4">{{$student->user->email}}</td>
+            <td colspan="4"><strong>{{$student->user->email}}</td>
             <td colspan="2">FACEBOOK</td>
             <td colspan="4"></td>
         </tr>
@@ -386,7 +447,7 @@ Generación de formularios
              <div class="row">
              <div class="col-md-12" align="Center">
                      
-        <table border="1">
+       <table border="1">
         <tr>
         <td>
     <table>
@@ -443,15 +504,15 @@ Generación de formularios
                                 <td align="Center">H09-99039-32-5</td>
                             </tr>
                             <tr>
-                                <td>NUMERO DE SEGURO SOCIAL:</td>
+                                <td>NUMERO DE SEGURO SOCIAL: <strong>{{$student->user->medicalData->numSeguro}}</td>
                                 <td>&nbsp</td>
                             </tr>
                             <tr>
-                                <td>CURP:</td>
+                                <td>CURP: <strong>{{$student->curp}}</td>
                                 <td>&nbsp</td>
                             </tr>
                             <tr>
-                                <td>NUMERO DE UMF:</td>
+                                <td>NUMERO DE UMF: <strong>{{$student->user->medicalData->clinic}}</td>
                                 <td>&nbsp</td>
                             </tr>
                         </table>
@@ -469,13 +530,13 @@ Generación de formularios
             </tr>
             <tr>
                 <td>A)</td>
-                <td colspan="2">NOMBRE:_________________</td>
-                <td>_________________</td>
-                <td>_________________</td>
+                <td colspan="2">NOMBRE:<strong>{{$student->user->apellidoPaterno}} {{$student->user->apellidoMaterno}} {{$student->user->nombre}}</strong></td>
+                <td></td>
+                <td></td>
             </tr>
             <tr>
-                <td colspan="3" align="right">APELLIDO PATERNO &nbsp &nbsp &nbsp &nbsp APELLIDO MATERNO </td>
-                <td colspan="2" align="Center">NOMBRES</td>
+                <td colspan="3" align="right"></td>
+                <td colspan="2" align="Center"></td>
             </tr>
             <tr>
                 <td>B)</td>
@@ -485,9 +546,9 @@ Generación de formularios
             <tr>
                 <td>C)</td>
                 <td>FECHA DE NACIMIENTO:</td>
-                <td align="Center">(&nbsp)</td>
-                <td align="Center">(&nbsp)</td>
-                <td>(&nbsp)</td>
+                <td align="Center">(&nbsp___)</td>
+                <td align="Center">(&nbsp___)</td>
+                <td>(&nbsp___)</td>
             </tr>
             <tr>
                 <td colspan="2"></td>
@@ -497,12 +558,12 @@ Generación de formularios
             </tr>
             <tr>
                 <td>D)</td>
-                <td>LUGAR DE NACIMIENTO:</td>
+                <td>LUGAR DE NACIMIENTO: <strong>{{$student->state->nombre}} </td>
                 <td colspan="3"></td>
             </tr>
             <tr>
                 <td>E)</td>
-                <td>DOMICILIO:</td>
+                <td>DOMICILIO:<strong>{{$student->calle}} {{$student->numInterior}} {{$student->colonia}} {{$student->codigoPostal}}</td>
                 <td colspan="3"></td>
             </tr>
             <tr>
@@ -713,4 +774,5 @@ Generación de formularios
 @stop
 
 @section('scripts')
+    <script src="/Template/js/lib/select2/select2.full.min.js"></script>
 @stop

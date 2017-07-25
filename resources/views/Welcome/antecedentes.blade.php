@@ -1,7 +1,6 @@
 
 
 
-
 <input type="button" value="Imprime esta pagina" onclick="window.print()"> 
 
 <div class="row">
@@ -24,9 +23,13 @@
         <tr>
             <td colspan="3">TURNO: </td>
             <td colspan="2">MATUTINO </td>
-            <td colspan="2"></td>
+            <td colspan="2">@if($student->turno == 'Matutino')
+                        X
+                 @endif</td>
             <td colspan="2">VESPERTINO </td>
-            <td colspan="2"></td>
+            <td colspan="2">@if($student->turno == 'Vespertino')
+                        X
+                 @endif</td></td>
         </tr>
         <tr>
             <td>ING. </td>
@@ -75,9 +78,13 @@
             <td>{{$student->age()}}</td>
             <td>SEXO: </td>
             <td>H</td>
-            <td></td>
+            <td>@if($student->sexo == 'Masculino')
+                        X
+                 @endif</td>
             <td>M</td>
-            <td></td>
+            <td>@if($student->sexo == 'Femenino')
+                        X
+                 @endif</td>
         </tr>
         <tr>
             <td>No. de PZ o BOLETA</td>
@@ -88,11 +95,19 @@
         <tr>
             <td>Seguridad Social por:</td>
             <td>ESCUELA</td>
-            <td></td>
+            <td>@if($student->user->medicalData->proveedorSeguro == 'UPIIZ-IPN')
+                        X
+                @endif</td>
             <td>PADRES</td>
-            <td colspan="2"></td>
+            <td colspan="2">@if($student->user->medicalData->proveedorSeguro == 'Padres')
+                        X
+                @endif</td>
             <td>TRABAJO</td>
-            <td colspan="2"></td>
+            <td colspan="2">
+                @if($student->user->medicalData->proveedorSeguro == 'Trabajo')
+                        X
+                @endif
+            </td>
             <td>PROPIO</td>
             <td colspan="2"></td>
         </tr>
@@ -140,7 +155,7 @@
             <td align="Center">MG</td>
             <td align="Center">DOSIS</td>
             <td align="Center">Alergias:</td>
-            <td colspan="6"></td>
+            <td colspan="6">{{$student->user->medicalRecord->alergias}}</td>
         </tr>
         <tr>
             <td colspan="2"></td>
@@ -163,7 +178,7 @@
             <td></td>
             <td>Tipo de sangre</td>
             <td>GPO</td>
-            <td colspan="2"></td>
+            <td colspan="2">{{$student->user->medicalData->tipoSangre}}</td>
             <td>RH</td>
             <td colspan="2"></td>
         </tr>
@@ -177,88 +192,132 @@
         </tr>
         <tr>
             <td>Presión alta</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                                    
+            </td>
             <td>Fumas</td>
             <td>SI</td>
-            <td></td>
+            <td>@if($student->user->medicalRecord->fumar()==1)
+            X
+            @endif
+            </td>
             <td>NO</td>
-            <td></td>
-            <td>CUANTOS X MES</td>
-            <td></td>
+            <td>
+                @if($student->user->medicalRecord->fumar()==0)
+            X
+            @endif
+            </td>
+            <td>CUANTOS X MES </td>
+            <td> {{$student->user->medicalRecord->numFumar()}}</td>
         </tr>
         <tr>
             <td>Diabetes</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+            </td>
             <td colspan="2">DESDE QUE EDAD:</td>
-            <td colspan="5"></td>
+            <td colspan="5">{{$student->user->medicalRecord->edadFumar()}}</td>
         </tr>
         <tr>
             <td>Artritis</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                
+            </td>
         </tr>
         <tr>
             <td>Asma</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                 
+            </td>
             <td>Tomas Alcohol</td>
             <td>SI</td>
-            <td></td>
+            <td>@if($student->user->medicalRecord->alcohol()==1)
+            X
+            @endif
+            </td>
             <td>NO</td>
-            <td></td>
+            <td>
+                @if($student->user->medicalRecord->alcohol()==0)
+            X
+            @endif
+            </td>
             <td>CUANTO X MES</td>
-            <td></td>
+            <td>{{$student->user->medicalRecord->numAlcohol()}}</td>
         </tr>
         <tr>
             <td>Cáncer</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                
+            </td>
             <td>Transfusiones</td>
             <td>SI</td>
-            <td></td>
+            <td>@if($student->user->medicalRecord->transfusiones()==1)
+            X
+            @endif
+            </td>
             <td>NO</td>
-            <td></td>
+            <td>
+                @if($student->user->medicalRecord->transfusiones()==0)
+                    X
+                @endif
+            </td>
             <td>A QUE EDAD:</td>
-            <td></td>
+            <td>{{$student->user->medicalRecord->edadTransfusiones()}}</td>
         </tr>
         <tr>
             <td>Epilepsias</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                 
+            </td>
         </tr>
         <tr>
             <td>Enf. del Corazón</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                
+            </td>
             <td>Cirugías</td>
             <td>SI</td>
             <td></td>
             <td>NO</td>
             <td></td>
-            <td colspan="2">DONDE:</td>
+            <td colspan="2">DONDE: {{$student->user->medicalRecord->cirugias}}</td>
         </tr>
         <tr>
             <td>Sobrepeso / Obesidad</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                
+            </td>
             <td colspan="7"></td>
         </tr>
         <tr>
             <td>Enf. de Tiroides</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                
+            </td>
             <td>Fracturas</td>
             <td>SI</td>
             <td></td>
             <td>NO</td>
             <td></td>
-            <td colspan="2">DONDE:</td>
+            <td colspan="2">DONDE: {{$student->user->medicalRecord->fracturas}}</td>
         </tr>
         <tr>
             <td>Bopolaridad</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                
+            </td>
             <td colspan="7"></td>
         </tr>
         <tr>
             <td>Esquizofrenia</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                
+            </td>
         </tr>
         <tr>
             <td>Depresión</td>
-            <td colspan="4"></td>
+            <td colspan="4">
+                 
+            </td>
             <td rowspan="2" colspan="7" align="Center"><strong>PERSONA QUE SE AVISARÁ EN CASO DE</br> URGENCIA:</strong></td>
         </tr>
         <tr>
@@ -298,7 +357,7 @@
             <td></td>
             <td></td>
             <td colspan="2">PARENTESCO:</td>
-            <td colspan="5">{{$student->tutorRelationship()}}</td>
+            <td colspan="5">{{$student->parentescoTutor}}</td>
         </tr>
         <tr>
             <td colspan="2">Otra</td>
@@ -327,6 +386,4 @@
         </div>
             
         </div>
-
-
 

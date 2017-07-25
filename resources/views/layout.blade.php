@@ -163,6 +163,9 @@
         <li class="nav-item">
 			<a class="nav-link @if($index==9)active @endif" href="/maps">lista de clinicas IMSS</a>
 		</li>
+		<li class="nav-item">
+			<a class="nav-link @if($index==12)active @endif" href="/credits">Creditos</a>
+		</li>
 		@if(Auth::check())
         <li class="nav-item">
 			<a class="nav-link @if($index==7)active @endif" href="/forms">Formularios</a>

@@ -101,11 +101,11 @@
                         @foreach($images->sortByDesc('updated_at') as $img) 
                             <div class="col-md-1 col-sm-6"></div>
                                  <div class="col-md-2 col-sm-6 ">
-                           <div class="gallery-col">
+                           <div class="gallery-col ">
                            
                             <article class="gallery-item">
                                 <p ALIGN=center ><strong>{{$img->titulo}}</strong></p>
-                                <img class="gallery-picture" src="{{$img->imagen}}" alt="" height="158">
+                                <img class="gallery-picture " src="{{$img->imagen}}" alt="" height="158">
                                 <div class="gallery-hover-layout">
                                     <div class="gallery-hover-layout-in">
                                         <p class="gallery-item-title">{{$img->titulo}}</p>
