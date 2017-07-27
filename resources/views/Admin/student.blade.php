@@ -8,6 +8,36 @@
 @stop
 
 @section('popUp')
+
+<div class="modal fade"
+        id="messageBox"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="messageBoxWindow"
+        aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                    <i class="font-icon-close-2"></i>
+                </button>
+                <h4 class="modal-title" id="messageBoxWindow">Nuevo mensaje para: </br> {{$student->user}}</h4>
+            </div>
+            {!!Form::open(array('url'=>'/admin/newMessage', 'method'=>'post'))!!}
+            <div class="modal-body">
+                <input type="hidden" value="{{$student->id}}" name="usuarioMensaje">
+                <input class="form-control" id="tituloMensaje" placeholder="Titulo" type="text" name="tituloMensaje">
+                <br/>
+                <textarea rows="4" class="form-control" placeholder="Contenido" name="contenidoMensaje"></textarea>
+            </div>
+            <div class="modal-footer text-center">
+                <button type="submit" class="btn btn-rounded btn-info">Envíar</button>
+            </div>
+            {!!Form::close()!!}
+        </div>
+    </div>
+</div><!--.modal-->
+
 <div class="modal fade bd-example-modal-md"
         tabindex="-1"
         role="dialog"
@@ -617,8 +647,14 @@ Información del alumno
         </div>
     </div>
     </br>
-    <div class="text-center">
-        <button type="button" class="btn btn-rounded btn-inline btn-warning" data-toggle="modal" data-target=".bd-example-modal-md" onclick="updateInputsProfile({{$student->id}}, '{{$student->user}}');">Editar</button>
+    
+    <div class="row text-center">
+        <div class="col-lg-6 col-md-6">
+            <button type="button" class="btn btn-rounded btn-inline btn-warning" data-toggle="modal" data-target=".bd-example-modal-md" onclick="updateInputsProfile({{$student->id}}, '{{$student->user}}');">Editar</button>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <button type="button" class="btn btn-rounded btn-inline btn-primary" data-toggle="modal" data-target="#messageBox" onclick="updateInputsProfile({{$student->id}}, '{{$student->user}}');">Envíar mensaje</button>
+        </div>
     </div>
     
 </div> <!--End box typical-->

@@ -51,11 +51,12 @@
                         <div class="dropdown dropdown-notification messages">
                             
                             <?php
-                                $messages = \App\message::all();
+                                //$messages = \App\message::all()->where('destino', null)->sortByDesc('updated_at');
+                                $messages = Auth::user()->messages->where('destino', null)->sortByDesc('updated_at');
                             ?>
                             
 	                        <a href="#"
-	                           class="header-alarm dropdown-toggle active"
+	                           class="header-alarm dropdown-toggle @if($messages->count() >= 1) active @endif"
 	                           id="dd-messages"
 	                           data-toggle="dropdown"
 	                           aria-haspopup="true"
@@ -70,8 +71,8 @@
 	                                           data-toggle="tab"
 	                                           href="#tab-incoming"
 	                                           role="tab">
-	                                            Tareas
-	                                            <span class="label label-pill label-danger">{{$messages->count()}}</span>
+	                                            Avisos
+	                                            <span class="label label-pill @if($messages->count() >= 1) label-danger @endif">{{$messages->count()}}</span>
 	                                        </a>
 	                                    </li>
 	                                    <li class="nav-item">
@@ -99,13 +100,13 @@
 	                                <div class="tab-pane" id="tab-outgoing" role="tabpanel">
 	                                    <div class="dropdown-menu-messages-list">
 	                                        <a href="#">
-                                                {!!Form::open(array('url'=>'/', 'method'=>'post'))!!}
-	                                            <input class="form-control" id="inputPassword" placeholder="Titulo" type="text">
+                                                {!!Form::open(array('url'=>'/admin', 'method'=>'post'))!!}
+	                                            <input class="form-control" id="titulo" placeholder="Titulo" type="text" name="titulo">
 	                                          
-	                                            <textarea rows="2" class="form-control" placeholder="Contenido"></textarea>
+	                                            <textarea rows="2" class="form-control" placeholder="Contenido" id="contenido" name="contenido"></textarea>
 	                                            <br/>
 	                                            <div class="text-center">
-                                                    <button type="submit" class="btn btn-rounded btn-inline btn-primary">Aceptar</button>
+                                                    <button type="submit" class="btn btn-rounded btn-inline btn-primary">Envíar</button>
 	                                            </div>
 	                                            {!!Form::close()!!}
 	                                        </a>
@@ -113,7 +114,7 @@
 	                                </div>
 	                            </div>
 	                            <div class="dropdown-menu-notif-more">
-	                                <a href="#">Ver más</a>
+	                                <a href="/admin/messages">Ver más</a>
 	                            </div>
 	                        </div>
 	                    </div>

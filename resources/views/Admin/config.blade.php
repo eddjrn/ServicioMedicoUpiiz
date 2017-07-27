@@ -522,7 +522,7 @@
                 <div class="widget-simple-sm-icon">
                     <i class="font-icon font-icon-notebook-bird color-purple"></i>
                 </div>
-                <div class="widget-simple-sm-bottom">{{\App\message::all()->count()}} <br class="hidden-lg-up"/> Tareas</div>
+                <div class="widget-simple-sm-bottom">{{Auth::user()->messages->count()}} <br class="hidden-lg-up"/> Avisos</div>
             </section><!--.widget-simple-sm-->
         </div>
     </div>

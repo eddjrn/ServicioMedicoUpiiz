@@ -51,6 +51,10 @@ Route::post('/profile/edit1', 'profileController@update1');
 Route::get('/admin', 'adminController@index');
 Route::get('/admin/lists', 'adminController@lists');
 
+Route::post('/admin', 'adminController@message');
+Route::get('/admin/messages', 'adminController@getMessages');
+Route::post('/admin/newMessage', 'adminController@newMessage');
+
 Route::post('/admin/pagination/{list}', 'adminController@pagination');
 
 Route::get('/admin/lists/{id}', 'adminController@show');

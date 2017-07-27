@@ -35,6 +35,51 @@ class adminController extends Controller
         return view('Admin.start', ['index'=>$index,'info'=> $info,'images'=> $images,'video'=> $video,'tutorials'=> $tutorials]);
     }
     
+    public function getMessages(){
+        $index = 0;
+        //$messages = \App\message::all()->where('usuario_id', Auth::user()->id)->sortByDesc('updated_at');
+        $messages = Auth::user()->messages->sortByDesc('updated_at');
+        
+        return view('Admin.messages', ['index'=>$index, 'messages'=>$messages]);
+    }
+    
+    public function newMessage(Request $request){
+        $this->validate($request, [
+            'tituloMensaje' => 'required',
+            'contenidoMensaje' => 'required',
+        ]);
+        
+        $message = \App\message::create([
+            'usuario_id' => Auth::user()->id,
+            'titulo' => $request->tituloMensaje,
+            'contenido' => $request->contenidoMensaje,
+            'destino' => $request->usuarioMensaje,
+        ]);
+        
+        session()->flash('message', 'Se creó nuevo aviso con el titulo: '. $request->tituloMensaje);
+        session()->flash('type', 'success');
+        
+        return back();
+    }
+    
+    public function message(Request $request){
+        $this->validate($request, [
+            'titulo' => 'required',
+            'contenido' => 'required',
+        ]);
+    
+        $message = \App\message::create([
+            'usuario_id' => Auth::user()->id,
+            'titulo' => $request->titulo,
+            'contenido' => $request->contenido,
+        ]);
+        
+        session()->flash('message', 'Se creó nuevo aviso para toda la comunidad con el titulo: '. $request->titulo);
+        session()->flash('type', 'success');
+        
+        return back();
+    }
+    
     public function lists()
     {
         $index = 2;
@@ -621,7 +666,7 @@ class adminController extends Controller
             }
         }
         if($tareasOpc == 'true'){
-            $tareas = \App\message::all();
+            $tareas = Auth::user()->messages;
             foreach($tareas as $tarea){
                 $tarea->delete();
             }

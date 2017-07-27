@@ -73,7 +73,7 @@ class user extends Model implements AuthenticatableContract,
         return $this->hasMany(video::class, 'usuario_id');
     }
     
-    public function message(){
+    public function messages(){
         return $this->hasMany(message::class, 'usuario_id');
     }
     

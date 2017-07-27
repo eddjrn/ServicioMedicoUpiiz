@@ -100,7 +100,7 @@ function openWindow(){
                                 </div>\
                                 <div class="checkbox-toggle">\
                                     <input type="checkbox" id="check-toggle-5" name="check-toggle-5" value="true"/>\
-                                    <label for="check-toggle-5">Eliminar todas las tareas</label>\
+                                    <label for="check-toggle-5">Eliminar todos los avisos</label>\
                                 </div>\
                             </div>\
                         </div>\

@@ -141,7 +141,9 @@ Bienvenido al servicio medico
                     <div class="task-card-title">
                         {{$message->titulo}}
                         <br/>
-                        <span class="task-card-title-label">{{$message->user}}</span>
+                        <span class="task-card-title-label">{{$message->usuario()}}</span>
+                        <br/>
+                        <span class="task-card-title-label">{{$message->destino()}}</span>
                         <br/>
                         <br/>
                         <div class="progress-compact-style-label">{{$message->contenido}}</div>
@@ -172,7 +174,9 @@ Bienvenido al servicio medico
                         <div class="task-card-title">
                             {{$message->titulo}}
                             <br/>
-                            <span class="task-card-title-label">{{$message->user}}</span>
+                            <span class="task-card-title-label">{{$message->usuario()}}</span>
+                            <br/>
+                            <span class="task-card-title-label">{{$message->destino()}}</span>
                             <br/>
                             <br/>
                             <div class="progress-compact-style-label">{{$message->contenido}}</div>
