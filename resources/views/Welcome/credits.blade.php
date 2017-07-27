@@ -59,10 +59,10 @@ Creditos
 						</div>
 						<div class="card-typical-section card-typical-content">
 							<header class="title"></header>
-							<p>Titulo : Servicio Medico Upiiz</p>
-							</br><p>Direccion : Isaul Ibarra Belmonte</p>
-							<p>Produccion : Eduardo Javier reyes norman</p>
-							<p>Diseño : Olga Alejandra Beltran Silva</p>
+							<p>Proyecto : Servicio Medico Upiiz</p>
+							</br><p> Isaul Ibarra Belmonte</p>
+							<p> Eduardo Javier reyes norman</p>
+							<p> Olga Alejandra Beltran Silva</p>
 						</div>
 						<div class="card-typical-section">
 							<div class="card-typical-linked">
