@@ -77,7 +77,7 @@ function openWindow(){
                         <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">\
                             <i class="font-icon-close-2"></i>\
                         </button>\
-                        <h4 class="modal-title" id="windowTitle">¿Desea editar?</h4>\
+                        <h4 class="modal-title" id="windowTitle">Configuración sensible</h4>\
                     </div>\
                         <div class="modal-body">\
                             <div class="form-group">\

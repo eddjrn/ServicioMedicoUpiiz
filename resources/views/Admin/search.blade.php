@@ -99,7 +99,7 @@ Busqueda de registro
                                     @elseif($u->student->documentacion == 2)
                                         color-red
                                     @endif">
-                                        Documentación: {{$u->student->documentation()}}
+                                        Documentación: {{$u->student->documentacion()}}
                                     </p>
                                 </div>
                             </div>
@@ -141,7 +141,7 @@ Busqueda de registro
                                         Número de seguro: {{$m->numSeguro}}
                                     </p>
                                     <p>
-                                        Proveedor de seguro: {{$m->provider()}}
+                                        Proveedor de seguro: {{$m->proveedorSeguro}}
                                     </p>
                                     <p>
                                         Boleta: {{$m->user->identificacion}}
@@ -157,7 +157,7 @@ Busqueda de registro
                                     @elseif($m->user->student->documentacion == 2)
                                         color-red
                                     @endif">
-                                        Documentación: {{$m->user->student->documentation()}}
+                                        Documentación: {{$m->user->student->documentacion()}}
                                     </p>
                                 </div>
                             </div>
@@ -218,7 +218,7 @@ Busqueda de registro
                                     @elseif($s->documentacion == 2)
                                         color-red
                                     @endif">
-                                        Documentación: {{$s->documentation()}}
+                                        Documentación: {{$s->documentacion()}}
                                     </p>
                                 </div>
                             </div>

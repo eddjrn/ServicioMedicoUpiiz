@@ -273,17 +273,24 @@ Listas de todos los alumnos en el sistema
             @endforeach
             </section>
             
-            <section class="widget widget-accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                <!--     {{$studentAll5 = $studentAll->where('documentacion', 1)->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
+        
+        <section class="widget widget-accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                <?php
+                    $on = false;
+                    $docStyle = 0;
+                ?>
+                @foreach(config('global.documentacion') as $doc)
+                @if($on == true)
+                <!--     {{$studentAll5 = $studentAll->where('documentacion', $docStyle)->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
                 <article class="panel">
-                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'd1','pagerd1', {{json_encode($studentAll5)}}, 3);">
+                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'd{{$docStyle}}','pagerd{{$docStyle}}', {{json_encode($studentAll5)}}, 3);">
                         <a data-toggle="collapse"
                             data-parent="#accordion"
                             href="#collapse{{$numbers[$x]}}"
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
-                            Documentación completa
-                            <span class="label label-pill label-{{config('global.hasState')[1]}}">{{$studentAll->where('documentacion', 1)->count()}}</span>
+                            Documentación {{$doc}}
+                            <span class="label label-pill label-{{config('global.hasState')[$docStyle]}}">{{$studentAll->where('documentacion', $docStyle)->count()}}</span>
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>
@@ -295,10 +302,10 @@ Listas de todos los alumnos en el sistema
                                     <div class="tbl-row">
                                         <div class="tbl-cell tbl-cell-title">
                                             <h3>
-                                                <span class="label" id="labelPaged1">pagina</span> <!--info de la pagina de las tablas generado por script-->
+                                                <span class="label" id="labelPaged{{$docStyle}}">pagina</span> <!--info de la pagina de las tablas generado por script-->
                                                 /
                                                 @foreach($status as $s)
-                                                    <span class="label {{config('global.stateLabel')[$s->id]}}">{{$s->students->where('documentacion', 1)->count()}} {{$s->nombre}}</span>
+                                                    <span class="label {{config('global.stateLabel')[$s->id]}}">{{$s->students->where('documentacion', $docStyle)->count()}} {{$s->nombre}}</span>
                                                 @endforeach
                                             </h3>
                                         </div>
@@ -308,12 +315,12 @@ Listas de todos los alumnos en el sistema
                                     <div class="table-responsive">
                                         <table class="table table-hover">
                                             <tbody>
-                                                <div id="d1">
+                                                <div id="d{{$docStyle}}">
                                                     <!--Tabla generada por el script .load() de jquery-->
                                                 </div>
                                                 
                                                 <div class="text-center">
-                                                    <nav id="pagerd1">
+                                                    <nav id="pagerd{{$docStyle}}">
                                                         <!--Paginador de la tabla generado por el script innerHTML-->
                                                     </nav>
                                                 </div>
@@ -327,59 +334,12 @@ Listas de todos los alumnos en el sistema
                     </div>
                 </article>
                 <!--{{$x++}}-->
-                <!--     {{$studentAll6 = $studentAll->where('documentacion', 2)->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
-                <article class="panel">
-                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'd2','pagerd2', {{json_encode($studentAll6)}}, 3);">
-                        <a data-toggle="collapse"
-                            data-parent="#accordion"
-                            href="#collapse{{$numbers[$x]}}"
-                            aria-expanded="false"
-                            aria-controls="collapse{{$numbers[$x]}}">
-                            Documentación incompleta
-                            <span class="label label-pill label-{{config('global.hasState')[2]}}">{{$studentAll->where('documentacion', 2)->count()}}</span>
-                            <i class="font-icon font-icon-arrow-down"></i>
-                        </a>
-                    </div>
-                    <div id="collapse{{$numbers[$x]}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$numbers[$x]}}">
-                        <div class="panel-collapse-in">
-                        
-                            <section class="box-typical box-typical-max-280">
-                                <header class="box-typical-header">
-                                    <div class="tbl-row">
-                                        <div class="tbl-cell tbl-cell-title">
-                                            <h3>
-                                                <span class="label" id="labelPaged2">pagina</span> <!--info de la pagina de las tablas generado por script-->
-                                                /
-                                                @foreach($status as $s)
-                                                    <span class="label {{config('global.stateLabel')[$s->id]}}">{{$s->students->where('documentacion', 2)->count()}} {{$s->nombre}}</span>
-                                                @endforeach
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </header>
-                                <div class="box-typical-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-hover">
-                                            <tbody>
-                                                <div id="d2">
-                                                    <!--Tabla generada por el script .load() de jquery-->
-                                                </div>
-                                                
-                                                <div class="text-center">
-                                                    <nav id="pagerd2">
-                                                        <!--Paginador de la tabla generado por el script innerHTML-->
-                                                    </nav>
-                                                </div>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div><!--.box-typical-body-->
-                            </section><!--.box-typical-->
-                            
-                        </div>
-                    </div>
-                </article>
-                <!--{{$x++}}-->
+                @endif
+                <?php
+                    $on = true;
+                    $docStyle++;
+                ?>
+                @endforeach
             </section>
         
         </div><!--.tab-pane-->
@@ -389,11 +349,20 @@ Listas de todos los alumnos en el sistema
         </div><!--.tab-pane-->
         <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-4">
         
+            
+            
+            
             <section class="widget widget-accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                <?php
+                    $on = false;
+                    $medicStyle = 0;
+                ?>
+                @foreach(config('global.proveedores') as $prov)
+                @if($on == true)
                 <article class="panel">
 <!--                 {{$studentsM = new Illuminate\Database\Eloquent\Collection()}} -->
                                                 
-                @foreach($medicalDatas->where('proveedorSeguro', 'UPIIZ-IPN') as $medicalData)                           
+                @foreach($medicalDatas->where('proveedorSeguro', $prov) as $medicalData)                           
 <!--                     {{$studentsM->push($medicalData)}} -->
                 @endforeach
                 
@@ -403,14 +372,14 @@ Listas de todos los alumnos en el sistema
                     //alert({{$studentAll8}});
                  </script>
                 
-                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'm1','pagerm1', {{json_encode($studentAll8)}}, 4);">
+                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'm{{$medicStyle}}','pagerm{{$medicStyle}}', {{json_encode($studentAll8)}}, 4);">
                         <a data-toggle="collapse"
                             data-parent="#accordion"
                             href="#collapse{{$numbers[$x]}}"
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
-                            Asegurado por UPIIZ-IPN
-                            <span class="label label-pill label-primary">{{$medicalDatas->where('proveedorSeguro', 'UPIIZ-IPN')->count()}}</span>
+                            Asegurado por {{$prov}}
+                            <span class="label label-pill label-primary">{{$medicalDatas->where('proveedorSeguro', $prov)->count()}}</span>
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>
@@ -422,9 +391,16 @@ Listas de todos los alumnos en el sistema
                                     <div class="tbl-row">
                                         <div class="tbl-cell tbl-cell-title">
                                             <h3>
-                                                <span class="label" id="labelPagem1">pagina</span> <!--info de la pagina de las tablas generado por script-->
+                                                <span class="label" id="labelPagem{{$medicStyle}}">pagina</span> <!--info de la pagina de las tablas generado por script-->
                                                 /
-                                                <span class="label label-primary">IMSS</span>
+                                                @if($medicStyle > 1)
+                                                    <!-- {{$institution = \App\medicalInstitute::all()}} -->
+                                                    @foreach($institution as $inst)
+                                                        <span class="label label-primary">{{$inst->nombre}}</span>
+                                                    @endforeach
+                                                @else
+                                                    <span class="label label-primary">IMSS</span>
+                                                @endif
                                             </h3>
                                         </div>
                                     </div>
@@ -433,12 +409,12 @@ Listas de todos los alumnos en el sistema
                                     <div class="table-responsive">
                                         <table class="table table-hover">
                                             <tbody>                                                
-                                                <div id="m1">
+                                                <div id="m{{$medicStyle}}">
                                                     <!--Tabla generada por el script .load() de jquery-->
                                                 </div>
                                                 
                                                 <div class="text-center">
-                                                    <nav id="pagerm1">
+                                                    <nav id="pagerm{{$medicStyle}}">
                                                         <!--Paginador de la tabla generado por el script innerHTML-->
                                                     </nav>
                                                 </div>
@@ -452,147 +428,39 @@ Listas de todos los alumnos en el sistema
                     </div>
                 </article>
                 <!--{{$x++}}-->
-                <article class="panel">
-                <!--                 {{$studentsM2 = new Illuminate\Database\Eloquent\Collection()}} -->
-                
-                @foreach($medicalDatas->where('proveedorSeguro', 'Padres') as $medicalData)                           
-<!--                     {{$studentsM2->push($medicalData)}} -->
+                @endif
+                <?php
+                    $on = true;
+                    $medicStyle++;
+                ?>
                 @endforeach
-                
-                 <!--     {{$studentAll9 = $studentsM2->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
-
-                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'm2','pagerm2', {{json_encode($studentAll9)}}, 4);">
-                        <a data-toggle="collapse"
-                            data-parent="#accordion"
-                            href="#collapse{{$numbers[$x]}}"
-                            aria-expanded="false"
-                            aria-controls="collapse{{$numbers[$x]}}">
-                            Asegurado por Padres
-                            <span class="label label-pill label-primary">{{$medicalDatas->where('proveedorSeguro', 'Padres')->count()}}</span>
-                            <i class="font-icon font-icon-arrow-down"></i>
-                        </a>
-                    </div>
-                    <div id="collapse{{$numbers[$x]}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$numbers[$x]}}">
-                        <div class="panel-collapse-in">
-                        
-                            <section class="box-typical box-typical-max-280">
-                                <header class="box-typical-header">
-                                    <div class="tbl-row">
-                                        <div class="tbl-cell tbl-cell-title">
-                                            <h3>
-                                                <span class="label" id="labelPagem2">pagina</span> <!--info de la pagina de las tablas generado por script-->
-                                                /
-                                                <!-- {{$institution = \App\medicalInstitute::all()}} -->
-                                                @foreach($institution as $inst)
-                                                    <span class="label label-primary">{{$inst->nombre}}</span>
-                                                @endforeach
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </header>
-                                <div class="box-typical-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-hover">
-                                            <tbody>
-                                                <div id="m2">
-                                                    <!--Tabla generada por el script .load() de jquery-->
-                                                </div>
-                                                
-                                                <div class="text-center">
-                                                    <nav id="pagerm2">
-                                                        <!--Paginador de la tabla generado por el script innerHTML-->
-                                                    </nav>
-                                                </div>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div><!--.box-typical-body-->
-                            </section><!--.box-typical-->
-                            
-                        </div>
-                    </div>
-                </article>
-                <!--{{$x++}}-->
-                <article class="panel">
-<!--                 {{$studentsM3 = new Illuminate\Database\Eloquent\Collection()}} -->
-                                                
-                @foreach($medicalDatas->where('proveedorSeguro', 'Trabajo') as $medicalData)                           
-<!--                     {{$studentsM3->push($medicalData)}} -->
-                @endforeach
-                
-                 <!--     {{$studentAll9 = $studentsM3->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
-                 
-                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'm3','pagerm3', {{json_encode($studentAll9)}}, 4);">
-                        <a data-toggle="collapse"
-                            data-parent="#accordion"
-                            href="#collapse{{$numbers[$x]}}"
-                            aria-expanded="false"
-                            aria-controls="collapse{{$numbers[$x]}}">
-                            Asegurado por Trabajo
-                            <span class="label label-pill label-primary">{{$medicalDatas->where('proveedorSeguro', 'Trabajo')->count()}}</span>
-                            <i class="font-icon font-icon-arrow-down"></i>
-                        </a>
-                    </div>
-                    <div id="collapse{{$numbers[$x]}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$numbers[$x]}}">
-                        <div class="panel-collapse-in">
-                        
-                            <section class="box-typical box-typical-max-280">
-                                <header class="box-typical-header">
-                                    <div class="tbl-row">
-                                        <div class="tbl-cell tbl-cell-title">
-                                            <h3>
-                                                <span class="label" id="labelPagem3">pagina</span> <!--info de la pagina de las tablas generado por script-->
-                                                /
-                                                <!-- {{$institution = \App\medicalInstitute::all()}} -->
-                                                @foreach($institution as $inst)
-                                                    <span class="label label-primary">{{$inst->nombre}}</span>
-                                                @endforeach
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </header>
-                                <div class="box-typical-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-hover">
-                                            <tbody>
-                                                <div id="m3">
-                                                    <!--Tabla generada por el script .load() de jquery-->
-                                                </div>
-                                                
-                                                <div class="text-center">
-                                                    <nav id="pagerm3">
-                                                        <!--Paginador de la tabla generado por el script innerHTML-->
-                                                    </nav>
-                                                </div>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div><!--.box-typical-body-->
-                            </section><!--.box-typical-->
-                            
-                        </div>
-                    </div>
-                </article>
-                <!--{{$x++}}-->
-            </section>
+            </section>  
+            
+            
             <section class="widget widget-accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                <?php
+                    $on = false;
+                    $segStyle = 0;
+                ?>
+                @foreach(config('global.SeguroVida') as $seg)
+                @if($on == true)
                 <article class="panel">
 <!--                 {{$studentsI1 = new Illuminate\Database\Eloquent\Collection()}} -->
                                                 
-                @foreach($medicalDatas->where('seguroVida', 1) as $medicalData)                           
+                @foreach($medicalDatas->where('seguroVida', $segStyle) as $medicalData)                           
 <!--                     {{$studentsI1->push($medicalData)}} -->
                 @endforeach
                 
                  <!--     {{$studentAll10 = $studentsI1->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
                  
-                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'I1','pagerI1', {{json_encode($studentAll10)}}, 5);">
+                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'I{{$segStyle}}','pagerI{{$segStyle}}', {{json_encode($studentAll10)}}, 5);">
                         <a data-toggle="collapse"
                             data-parent="#accordion"
                             href="#collapse{{$numbers[$x]}}"
                             aria-expanded="false"
                             aria-controls="collapse{{$numbers[$x]}}">
-                            Con seguro de vida
-                            <span class="label label-pill label-{{config('global.hasState')[1]}}">{{$medicalDatas->where('seguroVida', 1)->count()}}</span>
+                            {{$seg}} con seguro de vida
+                            <span class="label label-pill label-{{config('global.hasState')[$segStyle]}}">{{$medicalDatas->where('seguroVida', $segStyle)->count()}}</span>
                             <i class="font-icon font-icon-arrow-down"></i>
                         </a>
                     </div>
@@ -604,7 +472,7 @@ Listas de todos los alumnos en el sistema
                                     <div class="tbl-row">
                                         <div class="tbl-cell tbl-cell-title">
                                             <h3>
-                                                <span class="label" id="labelPageI1">pagina</span> <!--info de la pagina de las tablas generado por script-->
+                                                <span class="label" id="labelPageI{{$segStyle}}">pagina</span> <!--info de la pagina de las tablas generado por script-->
                                             </h3>
                                         </div>
                                     </div>
@@ -613,12 +481,12 @@ Listas de todos los alumnos en el sistema
                                     <div class="table-responsive">
                                         <table class="table table-hover">
                                             <tbody>
-                                                <div id="I1">
+                                                <div id="I{{$segStyle}}">
                                                     <!--Tabla generada por el script .load() de jquery-->
                                                 </div>
                                                 
                                                 <div class="text-center">
-                                                    <nav id="pagerI1">
+                                                    <nav id="pagerI{{$segStyle}}">
                                                         <!--Paginador de la tabla generado por el script innerHTML-->
                                                     </nav>
                                                 </div>
@@ -632,62 +500,12 @@ Listas de todos los alumnos en el sistema
                     </div>
                 </article>
                 <!--{{$x++}}-->
-                <article class="panel">
-<!--                 {{$studentsI2 = new Illuminate\Database\Eloquent\Collection()}} -->
-                                                
-                @foreach($medicalDatas->where('seguroVida', 2) as $medicalData)                           
-<!--                     {{$studentsI2->push($medicalData)}} -->
+                @endif
+                <?php
+                    $on = true;
+                    $segStyle++;
+                ?>
                 @endforeach
-                
-                 <!--     {{$studentAll11 = $studentsI2->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
-                 
-                    <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'I2','pagerI2', {{json_encode($studentAll11)}}, 5);">
-                        <a data-toggle="collapse"
-                            data-parent="#accordion"
-                            href="#collapse{{$numbers[$x]}}"
-                            aria-expanded="false"
-                            aria-controls="collapse{{$numbers[$x]}}">
-                            Sin seguro de vida
-                            <span class="label label-pill label-{{config('global.hasState')[2]}}">{{$medicalDatas->where('seguroVida', 2)->count()}}</span>
-                            <i class="font-icon font-icon-arrow-down"></i>
-                        </a>
-                    </div>
-                    <div id="collapse{{$numbers[$x]}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$numbers[$x]}}">
-                        <div class="panel-collapse-in">
-                        
-                            <section class="box-typical box-typical-max-280">
-                                <header class="box-typical-header">
-                                    <div class="tbl-row">
-                                        <div class="tbl-cell tbl-cell-title">
-                                            <h3>
-                                                <span class="label" id="labelPageI2">pagina</span> <!--info de la pagina de las tablas generado por script-->
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </header>
-                                <div class="box-typical-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-hover">
-                                            <tbody>
-                                                <div id="I2">
-                                                    <!--Tabla generada por el script .load() de jquery-->
-                                                </div>
-                                                
-                                                <div class="text-center">
-                                                    <nav id="pagerI2">
-                                                        <!--Paginador de la tabla generado por el script innerHTML-->
-                                                    </nav>
-                                                </div>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div><!--.box-typical-body-->
-                            </section><!--.box-typical-->
-                            
-                        </div>
-                    </div>
-                </article>
-                <!--{{$x++}}-->
             </section>
         
         </div><!--.tab-pane-->

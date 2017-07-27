@@ -20,7 +20,7 @@ class MessagesMigration extends Migration
             
             $table->string('titulo', 40);
             $table->string('contenido', 200);
-            $table->string('color', 8);
+            $table->integer('destino')->nullable();
             
             $table->timestamps();
         });

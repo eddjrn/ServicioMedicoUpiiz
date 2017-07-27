@@ -48,6 +48,76 @@
 	            <div class="site-header-content-in">
 	                <div class="site-header-shown">
 	                
+                        <div class="dropdown dropdown-notification messages">
+                            
+                            <?php
+                                $messages = \App\message::all();
+                            ?>
+                            
+	                        <a href="#"
+	                           class="header-alarm dropdown-toggle active"
+	                           id="dd-messages"
+	                           data-toggle="dropdown"
+	                           aria-haspopup="true"
+	                           aria-expanded="false">
+	                            <i class="font-icon-mail"></i>
+	                        </a>
+	                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-messages" aria-labelledby="dd-messages">
+	                            <div class="dropdown-menu-messages-header">
+	                                <ul class="nav" role="tablist">
+	                                    <li class="nav-item">
+	                                        <a class="nav-link active"
+	                                           data-toggle="tab"
+	                                           href="#tab-incoming"
+	                                           role="tab">
+	                                            Tareas
+	                                            <span class="label label-pill label-danger">{{$messages->count()}}</span>
+	                                        </a>
+	                                    </li>
+	                                    <li class="nav-item">
+	                                        <a class="nav-link"
+	                                           data-toggle="tab"
+	                                           href="#tab-outgoing"
+	                                           role="tab">/ Nuevo
+	                                           <i class="font-icon font-icon-pen-square"></i>
+	                                           </a>
+	                                    </li>
+	                                </ul>
+	                            </div>
+	                            <div class="tab-content">
+	                                <div class="tab-pane active" id="tab-incoming" role="tabpanel">
+	                                    <div class="dropdown-menu-messages-list">
+                                            @foreach($messages->take(4) as $message)
+	                                        <a href="#" class="mess-item">
+	                                            <span class="avatar-preview avatar-preview-32"><img src="/Template/img/photo-64-2.jpg" alt=""></span>
+	                                            <span class="mess-item-name">{{$message->titulo}}</span>
+	                                            <span class="mess-item-txt">{{$message->contenido}}</span>
+	                                        </a>
+	                                        @endforeach
+	                                    </div>
+	                                </div>
+	                                <div class="tab-pane" id="tab-outgoing" role="tabpanel">
+	                                    <div class="dropdown-menu-messages-list">
+	                                        <a href="#">
+                                                {!!Form::open(array('url'=>'/', 'method'=>'post'))!!}
+	                                            <input class="form-control" id="inputPassword" placeholder="Titulo" type="text">
+	                                          
+	                                            <textarea rows="2" class="form-control" placeholder="Contenido"></textarea>
+	                                            <br/>
+	                                            <div class="text-center">
+                                                    <button type="submit" class="btn btn-rounded btn-inline btn-primary">Aceptar</button>
+	                                            </div>
+	                                            {!!Form::close()!!}
+	                                        </a>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <div class="dropdown-menu-notif-more">
+	                                <a href="#">Ver más</a>
+	                            </div>
+	                        </div>
+	                    </div>
+	                
 	                    <div class="dropdown user-menu">
 	                        <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	                            <img src="/Template/img/2-64.png" alt="">

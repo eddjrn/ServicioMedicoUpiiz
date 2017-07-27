@@ -1,7 +1,12 @@
 <?php
 
 return [
-    ///Constantes
+    //Desarrollo
+    'desarrollo' => true,
+    'limite' => 500,
+    //Fin desarrollo
+    
+    //Constantes
     'nombresAntecedentes' => array(
         'Ninguno',
         'Padres',
@@ -59,8 +64,9 @@ return [
         'AB+',
         'AB-',
     ),
-    ///fin constantes
+    //fin constantes
     
+    //Estilos
     'statusStyleTextBox' => array(
         ' ',
         'form-control-blue-fill',
@@ -128,4 +134,5 @@ return [
         'TwentyEight',
         'TwentyNine',
     ),
+    //Fin estilos
 ];

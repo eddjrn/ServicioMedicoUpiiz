@@ -77,13 +77,13 @@
                         <div class="tbl tbl-item">
                             <div class="tbl-row">
                                 <div class="tbl-cell">
-                                    <div class="title">Alumnos asegurados por UPIIZ-IPN: {{$medicalDatas->where('proveedorSeguro', 1)->count()}}</div>
-                                    <div class="amount-sm">Alumnos asegurados por padres: {{$medicalDatas->where('proveedorSeguro', 2)->count()}}</div>
-                                    <div class="amount-sm">Alumnos asegurados por trabajo: {{$medicalDatas->where('proveedorSeguro', 3)->count()}}</div>
+                                    <div class="title">Alumnos asegurados por UPIIZ-IPN: {{$medicalDatas->where('proveedorSeguro', 'UPIIZ-IPN')->count()}}</div>
+                                    <div class="amount-sm">Alumnos asegurados por padres: {{$medicalDatas->where('proveedorSeguro', 'Padres')->count()}}</div>
+                                    <div class="amount-sm">Alumnos asegurados por trabajo: {{$medicalDatas->where('proveedorSeguro', 'Trabajo')->count()}}</div>
                                 </div>
                                 <div class="tbl-cell tbl-cell-progress">
                                     <div class="circle-progress-bar-typical size-56 pieProgress"
-                                            role="progressbar" data-goal="{{$medicalDatas->where('proveedorSeguro', 1)->count()}}"
+                                            role="progressbar" data-goal="{{$medicalDatas->where('proveedorSeguro', 'UPIIZ-IPN')->count()}}"
                                             data-barcolor="#AA3167"
                                             data-barsize="10"
                                             aria-valuemin="0"

@@ -126,13 +126,14 @@ Bienvenido al servicio medico
 </div>
 <br/>
 
-<h4 class="with-border text-center">Tareas <span class="label label-pill label-default"><strong>{{$messages->count()}}</strong></span></h4>
+<h4 class="with-border text-center">Avisos <span class="label label-pill label-default"><strong>{{$messages->count()}}</strong></span>
+@if(Auth::check()) / Mensajes <span class="label label-pill label-default"><strong>{{$messages2->count()}}</strong></span> @endif </h4>
 
 <div class="container">
     <div class="row" >
         @foreach($messages as $message)
-        <div class="col-lg-3 col-md-4">
-            <section class="box-typical task-card task" style="border-top-color:{{$message->color}};">
+        <div class="col-lg-3 col-md-4 tasks-grid-col purple">
+            <section class="box-typical task-card task">
                 <!--<div class="task-card-photo">
                     <img src="/Template/img/img-task.jpg" alt="">
                 </div>-->
@@ -159,6 +160,38 @@ Bienvenido al servicio medico
             </section><!--.task-card-->
         </div> <!--col-->
         @endforeach
+        
+        @if(Auth::check())
+            @foreach($messages2 as $message)
+            <div class="col-lg-3 col-md-4 tasks-grid-col red">
+                <section class="box-typical task-card task">
+                    <!--<div class="task-card-photo">
+                        <img src="/Template/img/img-task.jpg" alt="">
+                    </div>-->
+                    <div class="task-card-in">
+                        <div class="task-card-title">
+                            {{$message->titulo}}
+                            <br/>
+                            <span class="task-card-title-label">{{$message->user}}</span>
+                            <br/>
+                            <br/>
+                            <div class="progress-compact-style-label">{{$message->contenido}}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="task-card-footer">
+                        <div class="task-card-meta-item"><i class="font-icon font-icon-calend"></i>{{$message->dateUpdate()}}</div>
+                        
+                        <div class="avatar-preview avatar-preview-32">
+                            <a href="#">
+                                <img src="/Template/img/photo-64-2.jpg" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </section><!--.task-card-->
+            </div> <!--col-->
+            @endforeach
+        @endif
     </div><!--row-->
 </div>
 
