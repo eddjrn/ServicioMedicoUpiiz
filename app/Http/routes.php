@@ -54,6 +54,8 @@ Route::get('/admin/lists', 'adminController@lists');
 Route::post('/admin', 'adminController@message');
 Route::get('/admin/messages', 'adminController@getMessages');
 Route::post('/admin/newMessage', 'adminController@newMessage');
+Route::post('/admin/messageEdit/{message}', 'adminController@editMessage');
+Route::post('/admin/messageDel', 'adminController@destroyMessage');
 
 Route::post('/admin/pagination/{list}', 'adminController@pagination');
 

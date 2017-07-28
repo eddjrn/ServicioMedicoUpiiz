@@ -101,12 +101,12 @@
 	                                    <div class="dropdown-menu-messages-list">
 	                                        <a href="#">
                                                 {!!Form::open(array('url'=>'/admin', 'method'=>'post'))!!}
-	                                            <input class="form-control" id="titulo" placeholder="Titulo" type="text" name="titulo">
-	                                          
+	                                            <input class="form-control" id="titulo" placeholder="Título" type="text" name="titulo">
+	                                            <br/>
 	                                            <textarea rows="2" class="form-control" placeholder="Contenido" id="contenido" name="contenido"></textarea>
 	                                            <br/>
 	                                            <div class="text-center">
-                                                    <button type="submit" class="btn btn-rounded btn-inline btn-primary">Envíar</button>
+                                                    <button type="submit" class="btn btn-rounded btn-inline btn-primary btn-sm">Envíar</button>
 	                                            </div>
 	                                            {!!Form::close()!!}
 	                                        </a>

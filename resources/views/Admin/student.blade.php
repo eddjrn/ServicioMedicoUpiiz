@@ -15,7 +15,7 @@
         role="dialog"
         aria-labelledby="messageBoxWindow"
         aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
@@ -26,7 +26,7 @@
             {!!Form::open(array('url'=>'/admin/newMessage', 'method'=>'post'))!!}
             <div class="modal-body">
                 <input type="hidden" value="{{$student->id}}" name="usuarioMensaje">
-                <input class="form-control" id="tituloMensaje" placeholder="Titulo" type="text" name="tituloMensaje">
+                <input class="form-control" id="tituloMensaje" placeholder="Título" type="text" name="tituloMensaje">
                 <br/>
                 <textarea rows="4" class="form-control" placeholder="Contenido" name="contenidoMensaje"></textarea>
             </div>

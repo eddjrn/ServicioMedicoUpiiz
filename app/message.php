@@ -32,4 +32,17 @@ class message extends Model
     public function usuario(){
         return "De: ".$this->user;
     }
+    
+    public function alumnoId(){
+        $student = \App\student::find($this->destino)->id;
+        return $student;
+    }
+    
+    public function setTituloAttribute($value){
+        $this->attributes['titulo'] = ucfirst($value);
+    }
+    
+    public function setContenidoAttribute($value){
+        $this->attributes['contenido'] = ucfirst($value);
+    }
 }

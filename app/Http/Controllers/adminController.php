@@ -80,6 +80,34 @@ class adminController extends Controller
         return back();
     }
     
+    public function editMessage(Request $request, $message){
+        $this->validate($request, [
+            'tituloMensaje' => 'required',
+            'contenidoMensaje' => 'required',
+        ]);
+        
+        $updateMessage = \App\message::find($message);
+        $updateMessage->update([
+            'titulo' => $request->tituloMensaje,
+            'contenido' => $request->contenidoMensaje,
+        ]);
+    
+        session()->flash('message', 'Se actualizó mensaje con el titulo: '. $request->tituloMensaje);
+        session()->flash('type', 'success');
+        
+        return back();
+    }
+    
+    public function destroyMessage(Request $request){
+        $message = \App\message::find($request->message);
+        $message->delete();
+        
+        session()->flash('message', 'Se elimió el mensaje con el titulo: '. $request->tituloMensaje);
+        session()->flash('type', 'danger');
+        
+        return back();
+    }
+    
     public function lists()
     {
         $index = 2;
