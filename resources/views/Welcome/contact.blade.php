@@ -33,6 +33,10 @@
                         </div><!--.contacts-page-col-left-->
                         <div class="contacts-page-col-right">
                             <section class="contacts-page-section">
+                                <div class="sign-avatar text-center">
+                                    <img src="Template/img/LogoSMquestion.svg" alt="" style="height:100px;width:auto;">
+                                </div>
+                                <hr/>
                                 <header class="box-typical-header-sm">Contacto en redes sociales:</header>
                                 <a href="https://www.facebook.com/verodelarosa.medicaupiiz" class="contact">
                                     <i class="font-icon font-icon-facebook"></i>

@@ -12,7 +12,9 @@
     <div class="page-center-in">
         <div class="container-fluid">
             {!!Form::open(array('url'=>'/signup', 'class'=>'sign-box', 'method'=>'post'))!!}
-                <div class="sign-avatar no-photo">&plus;</div>
+                <div class="sign-avatar no-photo">
+                    <img src="Template/img/LogoSMplus.svg" alt="">
+                </div>
                 
                 @include('alerts.formError')
                 

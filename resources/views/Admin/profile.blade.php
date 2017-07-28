@@ -98,7 +98,7 @@
                 @else
                  <form class="sign-box">
                     <div class="sign-avatar">
-                        <img src="/Template/img/avatar-sign.png" alt="">
+                        <img src="/Template/img/LogoSMadmin.svg" alt="">
                     </div>
                     <header class="sign-title">{{$user}}</header>
                     

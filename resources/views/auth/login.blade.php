@@ -13,7 +13,7 @@
         <div class="container-fluid">
             {!!Form::open(array('url'=>'/login', 'class'=>'sign-box', 'method'=>'post'))!!}
                 <div class="sign-avatar">
-                    <img src="Template/img/avatar-sign.png" alt="">
+                    <img src="Template/img/LogoSMUPIIZ.svg" alt="">
                 </div>
                 
                 @include('alerts.formError')

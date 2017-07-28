@@ -68,13 +68,13 @@
         aria-labelledby="mySmallModalLabel"
         aria-hidden="true"
         >
-    <div class="modal-dialog modals-sm">
+    <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
                     <i class="font-icon-close-2"></i>
                 </button>
-                <h4 class="modal-title" id="windowTitle">¿Desea Cambiar Contraseña?</h4>
+                <h4 class="modal-title" id="windowTitle">¿Desea Cambiar contraseña?</h4>
             </div>
             {!!Form::open(array('url'=>'/profile/check1', 'method'=>'post'))!!}
             <div class="modal-body">
@@ -114,7 +114,7 @@
                         @if(Auth::check()) <!--=Solo se muestra el menu de perfil si se esta iniciado sesion-->
 	                    <div class="dropdown user-menu">
 	                        <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                            <img src="/Template/img/2-64.png" alt="">
+	                            <img src="/Template/img/LogoSMUPIIZ.svg" alt="">
 	                        </button>
 	                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
 	                            <a class="dropdown-item" href="/profile"><span class="font-icon glyphicon glyphicon-user"></span>Perfil</a>

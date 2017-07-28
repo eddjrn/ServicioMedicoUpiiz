@@ -35,6 +35,9 @@
 @stop
 
 @section('subHead')
+<div class="sign-avatar">
+    <img src="Template/img/LogoSMUPIIZ.svg" alt="" style="height:120px;width:auto;">
+</div>
 Bienvenido al servicio medico
 @stop
 
