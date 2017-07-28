@@ -155,7 +155,7 @@ Bienvenido al servicio medico
                     
                     <div class="avatar-preview avatar-preview-32">
                         <a href="#">
-                            <img src="/Template/img/photo-64-2.jpg" alt="">
+                            <img src="/Template/img/avatar-1-64.png" alt="">
                         </a>
                     </div>
                 </div>
@@ -188,7 +188,7 @@ Bienvenido al servicio medico
                         
                         <div class="avatar-preview avatar-preview-32">
                             <a href="#">
-                                <img src="/Template/img/photo-64-2.jpg" alt="">
+                                <img src="/Template/img/avatar-1-64.png" alt="">
                             </a>
                         </div>
                     </div>

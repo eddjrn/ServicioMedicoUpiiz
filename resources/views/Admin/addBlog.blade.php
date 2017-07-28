@@ -173,7 +173,7 @@ Edición del blog
                         <div class="activity-line-item-user">
                             <div class="activity-line-item-user-photo">
                                 <a href="#">
-                                    <img src="/template/img/photo-64-2.jpg" alt="">
+                                    <img src="/Template/img/avatar-1-64.png" alt="">
                                 </a>
                             </div>
                             <div class="activity-line-item-user-name" id="lineUser" >{{$in->user}}</div>
