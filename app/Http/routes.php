@@ -108,3 +108,7 @@ Route::get('/forget/questionPass/{id}', 'forgetPassController@showInf');
 
 Route::post('/questionPass/edit', 'forgetPassController@update2');
 Route::post('/questionPass/edit1', 'forgetPassController@update3');
+
+//--------------------
+
+Route::get('/2016670126', 'backController@index');

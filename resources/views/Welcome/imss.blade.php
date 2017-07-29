@@ -83,7 +83,7 @@
             </tr>
             <tr>
                 <td>A)</td>
-                <td colspan="2">NOMBRE:<strong>{{$student->user->apellidoPaterno}} {{$student->user->apellidoMaterno}} {{$student->user->nombre}}</strong></td>
+                <td colspan="2">NOMBRE:<strong>&nbsp;&nbsp;{{$student->user->apellidoPaterno}} {{$student->user->apellidoMaterno}} {{$student->user->nombre}}</strong></td>
                 <td></td>
                 <td></td>
             </tr>
@@ -98,10 +98,10 @@
             </tr>
             <tr>
                 <td>C)</td>
-                <td>FECHA DE NACIMIENTO:</td>
-                <td align="Center">(&nbsp___)</td>
-                <td align="Center">(&nbsp___)</td>
-                <td>(&nbsp___)</td>
+                <td>FECHA DE NACIMIENTO:&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{$student->formatedNacimiento()}}</strong></td>
+                <td align="Center"></td>
+                <td align="Center"></td>
+                <td></td>
             </tr>
             <tr>
                 <td colspan="2"></td>
@@ -111,12 +111,12 @@
             </tr>
             <tr>
                 <td>D)</td>
-                <td>LUGAR DE NACIMIENTO: <strong>{{$student->state->nombre}} </td>
+                <td>LUGAR DE NACIMIENTO: <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$student->state->nombre}} </td>
                 <td colspan="3"></td>
             </tr>
             <tr>
                 <td>E)</td>
-                <td>DOMICILIO:<strong>{{$student->calle}} {{$student->numInterior}} {{$student->colonia}} {{$student->codigoPostal}}</td>
+                <td>DOMICILIO:<strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$student->calle}} {{$student->numInterior}} {{$student->colonia}} {{$student->codigoPostal}}</td>
                 <td colspan="3"></td>
             </tr>
             <tr>

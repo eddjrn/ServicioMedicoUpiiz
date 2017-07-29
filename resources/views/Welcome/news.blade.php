@@ -96,6 +96,13 @@
                     </div><!--.tab-pane-->
 
                     <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-2">
+                    <style>
+                        #mdialTamanio{
+                            width: 80% !important;
+                            }
+                    </style>
+
+
                     	
                     	<div class="row ">
                         @foreach($images->sortByDesc('updated_at') as $img) 
@@ -105,7 +112,7 @@
                            
                             <article class="gallery-item">
                                 <p ALIGN=center ><strong>{{$img->titulo}}</strong></p>
-                                <img class="gallery-picture " src="{{$img->imagen}}" alt="" height="158">
+                                <img class="gallery-picture " src="{{$img->imagen}}" alt="50" height="auto">
                                 <div class="gallery-hover-layout">
                                     <div class="gallery-hover-layout-in">
                                         <p class="gallery-item-title">{{$img->titulo}}</p>
