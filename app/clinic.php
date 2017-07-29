@@ -35,7 +35,7 @@ class clinic extends Model
     }
     public function getMapaAttribute($value){
         if($value == null){
-            return 'No tiene mapa';
+            return 'Mapa no disponible';
         } else{
             return $value;
         }

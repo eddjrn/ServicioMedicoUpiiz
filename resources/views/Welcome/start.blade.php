@@ -270,28 +270,28 @@ Bienvenido al servicio medico
                 <ul class="tbl-row" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#w-1-tab-1" role="tab">
-                            <i class="font-icon font-icon-pin"></i>
-                            <div class="hidden-sm-down">Sub Delegacion</div>
+                            <i class="font-icon font-icon-map"></i>
+                            <div class="hidden-sm-down">Sub Delegación</div>
                             <div class="hidden-sm-up">Sub Del.</div>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#w-1-tab-2" role="tab">
-                            <i class="font-icon font-icon-pin"></i>
+                            <i class="font-icon font-icon-map"></i>
                             <div class="hidden-sm-down">{{$clinic1->name()}} ({{$clinic1->place->nombre}})</div>
                             <div class="hidden-sm-up">{{$clinic1->name()}}</div>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#w-1-tab-3" role="tab">
-                            <i class="font-icon font-icon-pin"></i>
+                            <i class="font-icon font-icon-map"></i>
                             <div class="hidden-sm-down">{{$clinic2->name()}} ({{$clinic2->place->nombre}})</div>
                             <div class="hidden-sm-up">{{$clinic2->name()}}</div>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#w-1-tab-4" role="tab">
-                            <i class="font-icon font-icon-pin"></i>
+                            <i class="font-icon font-icon-map"></i>
                             <div class="hidden-sm-down">{{$clinic3->name()}} ({{$clinic3->place->nombre}})</div>
                             <div class="hidden-sm-up">{{$clinic3->name()}}</div>
                         </a>

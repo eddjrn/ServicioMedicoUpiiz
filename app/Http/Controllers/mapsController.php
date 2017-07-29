@@ -19,8 +19,9 @@ class mapsController extends Controller
     public function index()
     {
         $index = 9;
-        $medicalData = \App\medicalData::paginate(11);
-        return view('Welcome.maps',['index'=>$index,'medicalData'=>$medicalData]);
+        //$clinic = \App\clinic::paginate(11);
+        $clinic = \App\clinic::orderBy('numero', 'asc')->paginate(11);
+        return view('Welcome.maps',['index'=>$index,'clinic'=>$clinic]);
     }
 
     /**
