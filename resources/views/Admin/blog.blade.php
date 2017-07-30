@@ -1,14 +1,17 @@
-@extends('layout')
+@extends('Admin.layout2')
 
 @section('title')
-<title>Noticias Servicio Medico</title>
+<title>Administración servicio medico</title>
 @stop
 
 @section('css')
 @stop
 
-@section('subHead')
+@section('popUp')
+@stop
 
+@section('subHead')
+Vista previa del blog
 @stop
 
 @section('content')
@@ -41,6 +44,14 @@
                                     </span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#tabs-1-tab-4" role="tab" data-toggle="tab">
+                                    <span class="nav-link-in">
+                                        <span class="font-icon font-icon-play"></span>
+                                        Tutoriales
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div><!--.tabs-section-nav-->
@@ -64,8 +75,9 @@
                                 </a>
                             </div>
                             <div class="activity-line-item-user-name">{{$inf->user}}</div>
+                           
                         </div>
-                            <div class="activity-line-item-user-status"></br>{{$inf->user->email}}</div>
+                         </br><div class="activity-line-item-user-status">{{$inf->user->email}}</div>
                     </header>
                     <div class="activity-line-action-list">
                         <section class="activity-line-action">
@@ -84,14 +96,15 @@
                        
                     </div><!--.activity-line-action-list-->
                 </article><!--.activity-line-item-->
+
+                
             </section><!--.activity-line-->
             @endforeach
-                {!!with(new App\Pagination\HDPresenter($info))->render()!!}
+            {!!with(new App\Pagination\HDPresenter($info))->render()!!}
         </div>
-       <!-- {{!!$info->render()!!}} -->
-
 
                     </div><!--.tab-pane-->
+
 
                     <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-2">
                         <div class="row">
@@ -119,6 +132,7 @@
                         </div><!--.gallery-col-->
                     </div><!--.tab-pane-->
 
+
                     <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">
                         <div class="row">
                             @foreach($video->sortByDesc('update_at') as $vi)
@@ -145,11 +159,36 @@
                         </div><!--.gallery-col-->
                     </div><!--.tab-pane-->
 
+                    <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-4">
+                        <div class="row">
+                            @foreach($tutorials->sortByDesc('updated_at') as $t)
+                            <div class="col-lg-3 col-md-4">
+                                <article class="gallery-item">
+                                    <p class="gallery-item-title text-center">{{$t->titulo}}</p>
+                                    <img class="gallery-picture" src="{{$t->imagen}}" alt="{{$t->titulo}}" style="height:200px;width:auto;margin:auto;">
+                                    <div class="gallery-hover-layout">
+                                        <div class="gallery-hover-layout-in">
+                                            <p class="gallery-item-title">{{$t->titulo}}</p>
+                                            <p>{{$t->user}}</p>
+                                            <div class="btn-group">
+                                                <a href="{{$t->link}}" target="_blank"><button type="button" class="btn">
+                                                    <i class="font-icon font-icon-play"></i>
+                                                </button></a>
+                                            </div>
+                                            <p>{{$t->FechaActualizacion()}}</p>
+                                        </div>
+                                    </div>
+                                </article>
+                                <br/>
+                            </div><!--.gallery-col-->
+                            @endforeach
+                        </div><!--.gallery-col-->
+                    </div><!--.tab-pane-->
+
                 </div><!--.tab-content-->
             </section>
 
 @stop
 
 @section('scripts')
-    <script src="Template/js/lib/select2/select2.full.min.js"></script>
 @stop

@@ -106,7 +106,7 @@ Listas de todos los alumnos en el sistema
                 <li class="nav-item">
                     <a class="nav-link" href="#tabs-1-tab-2" role="tab" data-toggle="tab">
                         <span class="nav-link-in">
-                            <span class="font-icon font-icon-eye"></span>
+                            <span class="font-icon font-icon-bookmark"></span>
                             Estatus
                         </span>
                     </a>
@@ -123,7 +123,7 @@ Listas de todos los alumnos en el sistema
                     <a class="nav-link" href="#tabs-1-tab-4" role="tab" data-toggle="tab">
                         <span class="nav-link-in">
                             <i class="font-icon font-icon-build"></i>
-                            Asegurado por
+                            Aseguración
                         </span>
                     </a>
                 </li>

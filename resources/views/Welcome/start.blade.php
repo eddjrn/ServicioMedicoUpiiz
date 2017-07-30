@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-<title>Inicio Servicio Medico</title>
+<title>Inicio Servicio Médico</title>
 @stop
 
 @section('css')
@@ -38,7 +38,7 @@
 <div class="sign-avatar">
     <img src="Template/img/LogoSMUPIIZ.svg" alt="" style="height:120px;width:auto;">
 </div>
-Bienvenido al servicio medico
+Bienvenido al servicio médico
 @stop
 
 @section('content')

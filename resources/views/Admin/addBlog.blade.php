@@ -25,7 +25,7 @@ Edición del blog
                             <li class="nav-item">
                                 <a class="nav-link active" href="#tabs-1-tab-1" role="tab" data-toggle="tab">
                                     <span class="nav-link-in">
-                                        <span class="font-icon font-icon-comment"></span>
+                                        <span class="font-icon font-icon-post"></span>
                                         Noticias
                                     </span>
                                 </a>
@@ -33,7 +33,7 @@ Edición del blog
                             <li class="nav-item">
                                 <a class="nav-link" href="#tabs-1-tab-2" role="tab" data-toggle="tab">
                                     <span class="nav-link-in">
-                                        <span class="font-icon font-icon-picture-double"></span>
+                                        <span class="font-icon font-icon-picture"></span>
                                         Imagenes
                                     </span>
                                 </a>
@@ -41,7 +41,7 @@ Edición del blog
                             <li class="nav-item">
                                 <a class="nav-link" href="#tabs-1-tab-3" role="tab" data-toggle="tab">
                                     <span class="nav-link-in">
-                                        <span class="font-icon font-icon-play"></span>
+                                        <span class="font-icon font-icon-video-fill"></span>
                                         Videos
                                     </span>
                                 </a>
@@ -49,7 +49,7 @@ Edición del blog
                             <li class="nav-item">
                                 <a class="nav-link" href="#tabs-1-tab-4" role="tab" data-toggle="tab">
                                     <span class="nav-link-in">
-                                        <span class="font-icon font-icon-doc"></span>
+                                        <span class="font-icon font-icon-play"></span>
                                         Tutoriales
                                     </span>
                                 </a>

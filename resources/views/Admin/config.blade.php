@@ -520,7 +520,7 @@
         <div class="col-lg-2 col-md-2 col-xs-6">
             <section class="widget widget-simple-sm">
                 <div class="widget-simple-sm-icon">
-                    <i class="font-icon font-icon-notebook-bird color-purple"></i>
+                    <i class="font-icon font-icon-mail color-purple"></i>
                 </div>
                 <div class="widget-simple-sm-bottom">{{Auth::user()->messages->count()}} <br class="hidden-lg-up"/> Avisos</div>
             </section><!--.widget-simple-sm-->

@@ -21,8 +21,8 @@ Servicio Medico Upiiz
                             <li class="nav-item">
                                 <a class="nav-link active" href="#tabs-1-tab-1" role="tab" data-toggle="tab">
                                     <span class="nav-link-in">
-                                        <span class="font-icon font-icon-list-square"></span>
-                                        Informacion
+                                        <span class="font-icon font-icon-play"></span>
+                                        Tutoriales IMSS
                                     </span>
                                 </a>
                             </li>
@@ -32,38 +32,29 @@ Servicio Medico Upiiz
 
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active" id="tabs-1-tab-1" class="col-md-5 col-xs-6 " >
-       
-						<div class="container-fluid">
-
-							<div class="row">
-                         @foreach($tutorials->sortByDesc('updated_at') as $t)
-                            <div class="col-md-1"></div>
-                                 <div class="col-md-2">
-                           <div class="gallery-col">
-                           
-                            <article class="gallery-item">
-                            <p ALIGN=center ><strong>{{$t->titulo}}</strong></p>
-                                <img class="gallery-picture" src="{{$t->imagen}}" alt="" height="158">
-                                <div class="gallery-hover-layout">
-                                    <div class="gallery-hover-layout-in">
-                                        <p class="gallery-item-title">{{$t->titulo}}</p>
-                                        <div class="btn-group">
-                                            
-                                                <a target="_blank" class="font-icon font-icon-picture" href="{{$t->link}}"></a>
-                                               
-                                           
+                        <div class="row">
+                            @foreach($tutorials->sortByDesc('updated_at') as $t)
+                            <div class="col-lg-3 col-md-4">
+                                <article class="gallery-item">
+                                    <p class="gallery-item-title text-center">{{$t->titulo}}</p>
+                                    <img class="gallery-picture" src="{{$t->imagen}}" alt="{{$t->titulo}}" style="height:200px;width:auto;margin:auto;">
+                                    <div class="gallery-hover-layout">
+                                        <div class="gallery-hover-layout-in">
+                                            <p class="gallery-item-title">{{$t->titulo}}</p>
+                                            <p>{{$t->user}}</p>
+                                            <div class="btn-group">
+                                                <a href="{{$t->link}}" target="_blank"><button type="button" class="btn">
+                                                    <i class="font-icon font-icon-play"></i>
+                                                </button></a>
+                                            </div>
+                                            <p>{{$t->FechaActualizacion()}}</p>
                                         </div>
                                     </div>
-                                </div>
-                            </article>
-                        </div>
-                        </div>
-                       @endforeach
-                    
-                        </div>
-
-       						 </div>
-
+                                </article>
+                                <br/>
+                            </div><!--.gallery-col-->
+                            @endforeach
+                        </div><!--.gallery-col-->
                     </div><!--.tab-pane-->
 
                 </div><!--.tab-content-->

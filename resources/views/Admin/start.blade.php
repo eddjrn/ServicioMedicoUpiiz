@@ -1,207 +1,307 @@
 @extends('Admin.layout2')
 
 @section('title')
-<title>Administración servicio medico</title>
+<title>Inicio Servicio Médico</title>
 @stop
 
 @section('css')
 @stop
 
 @section('popUp')
+
+<div class="modal fade"
+        id="myModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+        aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                    <i class="font-icon-close-2"></i>
+                </button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+                <p class="color-blue-grey-lighter" id="userModal"> </p>
+            </div>
+            <div class="modal-body" id="bodyModal"></div>
+            <div class="modal-footer">
+                <p class="color-blue-grey-lighter" id="dateModal"> </p>
+            </div>
+        </div>
+    </div>
+</div><!--.modal-->
+
 @stop
 
 @section('subHead')
-Vista previa del blog
+<div class="sign-avatar">
+    <img src="Template/img/LogoSMadmin.svg" alt="" style="height:120px;width:auto;">
+</div>
+Bienvenido al servicio médico
 @stop
 
 @section('content')
 
-<section class="tabs-section">
-                <div class="tabs-section-nav tabs-section-nav-icons">
-                    <div class="tbl">
-                        <ul class="nav" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#tabs-1-tab-1" role="tab" data-toggle="tab">
-                                    <span class="nav-link-in">
-                                        <span class="font-icon font-icon-comment"></span>
-                                        Noticias
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#tabs-1-tab-2" role="tab" data-toggle="tab">
-                                    <span class="nav-link-in">
-                                        <span class="font-icon font-icon-picture-double"></span>
-                                        Imagenes
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#tabs-1-tab-3" role="tab" data-toggle="tab">
-                                    <span class="nav-link-in">
-                                        <span class="font-icon font-icon-play"></span>
-                                        Videos
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#tabs-1-tab-4" role="tab" data-toggle="tab">
-                                    <span class="nav-link-in">
-                                        <span class="font-icon font-icon-list-square"></span>
-                                        Tutoriales
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div><!--.tabs-section-nav-->
-
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade in active" id="tabs-1-tab-1" class="col-md-5 col-xs-6 " >
-       
-<div class="container-fluid">
-@foreach($info->sortByDesc('updated_at') as $inf) 
-            <section class="activity-line">
-                <article class="activity-line-item box-typical">
-                    <div class="activity-line-date border-primary b-a round">
-                        {{$inf->dia()}}<br>
-                       {{$inf->Mes()}}
-                    </div>
-                    <header class="activity-line-item-header">
-                        <div class="activity-line-item-user">
-                            <div class="activity-line-item-user-photo">
-                                <a href="#">
-                                    <img src="/Template/img/avatar-1-64.png" alt="">
-                                </a>
-                            </div>
-                            <div class="activity-line-item-user-name">{{$inf->user}}</div>
-                           
+<div class="row">
+    <div class="col-lg-8 col-lg-offset-2">
+        <article class="card-typical">
+            <div class="card-typical-section">
+                <div class="user-card-row">
+                    <div class="tbl-row">
+                        <div class="tbl-cell">
+                            <p class="user-card-row-name">Carteles del más recientes</p>
+                            <p class="color-blue-grey-lighter">Últimos 5</p>
                         </div>
-                         </br><div class="activity-line-item-user-status">{{$inf->user->email}}</div>
-                    </header>
-                    <div class="activity-line-action-list">
-                        <section class="activity-line-action">
-                            <div class="time">{{$inf->hora()}}</div>
-                            <div class="cont">
-                                <div class="cont-in">
-                                    <div class="activity-line-item-user-name text-shadow "><strong>{{$inf->titulo}}</strong></div>
-                                    <ul class="previews">
-                                        <div>
-                                           <div class="activity-line-item-user-status"></br>{{$inf->contenido}}</div>
-                                        </div>
-                                    </ul>
-                                </div>
-                            </div>
-                        </section><!--.activity-line-action-->
+                        <div class="tbl-cell tbl-cell-status">
+<!--                             <a href="#" class="glyphicon glyphicon-plus"></a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-typical-section card-typical-content">
+                <div id="carouselExampleIndicators" class="carousel slide text-center" data-ride="carousel">
+                    <?php
+                        $index2 = 0;
+                    ?>
+                    <ol class="carousel-indicators hidden-sm-down" style="z-index:3;">
+                        @foreach($images as $image)
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{$index2}}" class="btn btn-primary-outline btn-sm @if($index2 == 0) active @endif"></li>
+                        <?php
+                            $index2++;
+                        ?>
+                        @endforeach
+                    </ol>
+                    
+                    <?php
+                        $index2 = 0;
+                    ?>
+                    <div class="carousel-inner" role="listbox">
+                        @foreach($images as $image)
+                        
                        
-                    </div><!--.activity-line-action-list-->
-                </article><!--.activity-line-item-->
+                        
+                        <div class="carousel-item  @if($index2 == 0) active @endif">
+                            <header class="title"><a href="{{$image->imagen}}" target="_blank">{{$image->titulo}}</a></header>
+                            <article class="gallery-item">
+                                <img class="gallery-picture d-block img-fluid img-size" src="{{$image->imagen}}" alt="{{$image->titulo}}">
+                                <div class="gallery-hover-layout">
+                                    <div class="gallery-hover-layout-in">
+                                        <p class="gallery-item-title">{{$image->titulo}}</p>
+                                        <p>Autor: {{$image->user}}</p>
+                                        <div class="btn-group">
+                                            <a href="{{$image->imagen}}" class="btn" target="_blank">
+                                                <i class="font-icon font-icon-eye"></i>
+                                            </a>
+                                        </div>
+                                        <p>Fecha de actualización: {{$image->FechaActualizacion()}}</p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <?php
+                            $index2++;
+                        ?>
+                        @endforeach
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-xs-6">
+                            <a class="btn btn-sm" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <span class="font-icon font-icon-arrow-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-6">
+                            <a class="btn btn-sm" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <span class="font-icon font-icon-arrow-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <br/>
+                    <br/>
+                </div>
+            </div>
+        </article><!--.card-typical-->
+    </div>
+</div>
+<br/>
 
+<h4 class="with-border text-center">Avisos <span class="label label-pill label-default"><strong>{{$messages->count()}}</strong></span></h4>
+
+<div class="container">
+    <div class="row" >
+        @foreach($messages as $message)
+        <div class="col-lg-3 col-md-4 tasks-grid-col purple">
+            <section class="box-typical task-card task">
+                <!--<div class="task-card-photo">
+                    <img src="/Template/img/img-task.jpg" alt="">
+                </div>-->
+                <div class="task-card-in">
+                    <div class="task-card-title">
+                        {{$message->titulo}}
+                        <br/>
+                        <span class="task-card-title-label">{{$message->usuario()}}</span>
+                        <br/>
+                        <span class="task-card-title-label">{{$message->destino()}}</span>
+                        <br/>
+                        <br/>
+                        <div class="progress-compact-style-label">{{$message->contenido}}</div>
+                    </div>
+                </div>
                 
-            </section><!--.activity-line-->
-            @endforeach
-            {!!with(new App\Pagination\HDPresenter($info))->render()!!}
-        </div>
+                <div class="task-card-footer">
+                    <div class="task-card-meta-item"><i class="font-icon font-icon-calend"></i>{{$message->dateUpdate()}}</div>
+                    
+                    <div class="avatar-preview avatar-preview-32">
+                        <a href="#">
+                            <img src="/Template/img/avatar-1-64.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </section><!--.task-card-->
+        </div> <!--col-->
+        @endforeach
+    </div><!--row-->
+</div>
 
-                    </div><!--.tab-pane-->
+<h4 class="with-border text-center">Información reciente <span class="label label-pill label-default"><strong>{{$infos->count()}}</strong></span></h4>
 
-
-                    <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-2">
-                        
-                        <div class="row ">
-                        @foreach($images->sortByDesc('updated_at') as $img) 
-                            <div class="col-md-1 col-sm-6"></div>
-                                 <div class="col-md-2 col-sm-6 ">
-                           <div class="gallery-col">
-                        
-                            <article class="gallery-item">
-                             <p ALIGN=center ><strong>{{$img->titulo}}</strong></p>
-                                <img class="gallery-picture" src="{{$img->imagen}}" alt="" height="158">
-                                <div class="gallery-hover-layout">
-                                    <div class="gallery-hover-layout-in">
-                                        <p class="gallery-item-title">{{$img->titulo}}</p>
-                                        <div class="btn-group">
-                                                <a target="_blank" class="font-icon font-icon-picture" href="{{$img->imagen}}"></a>
-                                        </div>
-                                    </div>
+<div class="container">
+    <div class="row">
+        @foreach($infos as $info)
+            <div class="col-lg-4 col-md-6" style="padding:20px;">
+                <article class="card-typical">
+                    <div class="card-typical-section">
+                        <div class="user-card-row">
+                            <div class="tbl-row">
+                                <div class="tbl-cell tbl-cell-photo">
+                                    <a href="#">
+                                        <img src="/Template/img/avatar-1-64.png" alt="">
+                                    </a>
                                 </div>
-                            </article>
-                        </div>
-                        </div>
-                        @endforeach
-                        </div>
-
-
-
-                    </div><!--.tab-pane-->
-
-
-                    <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">
-
-                        <div class="row">
-                        @foreach($video->sortByDesc('updated_at') as $vi) 
-                            <div class="col-md-1 col-sm-6"></div>
-                                 <div class="col-md-2 col-sm-6">
-                           <div class="gallery-col">
-                           
-                            <article class="gallery-item">
-                            <p ALIGN=center ><strong>{{$vi->titulo}}</strong></p>
-                                <img class="gallery-picture" src="{{$vi->imagen}}" alt="" height="158">
-                                <div class="gallery-hover-layout">
-                                    <div class="gallery-hover-layout-in">
-                                        <p class="gallery-item-title">{{$vi->titulo}}</p>
-                                        <div class="btn-group">
-                                            
-                                                <a target="_blank" class="font-icon font-icon-picture" href="{{$vi->link}}"></a>
-                                               
-                                          
-                                        </div>
-                                    </div>
+                                <div class="tbl-cell">
+                                    <p class="user-card-row-name"><a href="#">{{$info->user}}</a></p>
+                                    <p class="color-blue-grey-lighter">{{$info->FechaActualizacion()}}</p>
                                 </div>
-                            </article>
-                        </div>
-                        </div>
-                        @endforeach
-                        </div>
-
-
-                    </div><!--.tab-pane-->
-
-                    <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-4">
-
-                        <div class="row">
-                         @foreach($tutorials->sortByDesc('updated_at') as $t)
-                            <div class="col-md-1"></div>
-                                 <div class="col-md-2">
-                           <div class="gallery-col">
-                           
-                            <article class="gallery-item">
-                            <p ALIGN=center ><strong>{{$t->titulo}}</strong></p>
-                                <img class="gallery-picture" src="{{$t->imagen}}" alt="" height="158">
-                                <div class="gallery-hover-layout">
-                                    <div class="gallery-hover-layout-in">
-                                        <p class="gallery-item-title">{{$t->titulo}}</p>
-                                        <div class="btn-group">
-                                            
-                                                <a target="_blank" class="font-icon font-icon-picture" href="{{$t->link}}"></a>
-                                               
-                                           
-                                        </div>
-                                    </div>
+                                <div class="tbl-cell tbl-cell-status">
+                                    <a class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal" onclick="update('{{$info->user}}', '{{$info->FechaActualizacion()}}', '{{$info->titulo}}', '{{$info->contenido}}');"></a>
                                 </div>
-                            </article>
+                            </div>
                         </div>
-                        </div>
-                       @endforeach
-                        </div>
+                    </div>
+                    <div class="card-typical-section card-typical-content">
+                        <header class="title"><a href="#">{{$info->titulo}}</a></header>
+                        <p>{{str_limit($info->contenido, $limit = 255, $end = "...")}}</p>
+                    </div>
+                    <div class="card-typical-section">
+                        <div class="card-typical-linked"><a href="{{$info->user->facebook}}" target="_blank">Facebook</a></div>
+                    </div>
+                </article><!--.card-typical-->
+            </div>
+        @endforeach
+    </div>
+</div>
 
-
-                    </div><!--.tab-pane-->
-
-                </div><!--.tab-content-->
-            </section>
+<div class="row">
+    <div class="col-lg-10 col-lg-offset-1 col-md-10 col-md-offset-1">
+        <section class="widget">
+            <header class="widget-header-dark">Mapas del IMSS</header>
+            <div class="tab-content widget-tabs-content">
+                <div class="tab-pane active" id="w-1-tab-1" role="tabpanel">
+                    <center>
+                        {!!$subdel->mapa!!}
+                    </center>
+                </div>
+                <div class="tab-pane" id="w-1-tab-2" role="tabpanel">
+                    <center>
+                        {!!$clinic1->mapa!!}
+                    </center>
+                </div>
+                <div class="tab-pane" id="w-1-tab-3" role="tabpanel">
+                    <center>
+                        {!!$clinic2->mapa!!}
+                    </center>
+                </div>
+                <div class="tab-pane" id="w-1-tab-4" role="tabpanel">
+                    <center>
+                        {!!$clinic3->mapa!!}
+                    </center>
+                </div>
+            </div>
+            <div class="widget-tabs-nav bordered">
+                <ul class="tbl-row" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#w-1-tab-1" role="tab">
+                            <i class="font-icon font-icon-map"></i>
+                            <div class="hidden-sm-down">Sub Delegación</div>
+                            <div class="hidden-sm-up">Sub Del.</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#w-1-tab-2" role="tab">
+                            <i class="font-icon font-icon-map"></i>
+                            <div class="hidden-sm-down">{{$clinic1->name()}} ({{$clinic1->place->nombre}})</div>
+                            <div class="hidden-sm-up">{{$clinic1->name()}}</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#w-1-tab-3" role="tab">
+                            <i class="font-icon font-icon-map"></i>
+                            <div class="hidden-sm-down">{{$clinic2->name()}} ({{$clinic2->place->nombre}})</div>
+                            <div class="hidden-sm-up">{{$clinic2->name()}}</div>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#w-1-tab-4" role="tab">
+                            <i class="font-icon font-icon-map"></i>
+                            <div class="hidden-sm-down">{{$clinic3->name()}} ({{$clinic3->place->nombre}})</div>
+                            <div class="hidden-sm-up">{{$clinic3->name()}}</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section><!--.widget-->
+    </div>
+    <div class="col-lg-1 col-md-12">
+        <p class="color-blue-grey-lighter">*Información de los mapas con sus respectivas rutas desde la escuela</p>
+    </div>
+</div>
 
 @stop
 
 @section('scripts')
+    <script src="/Template/js/lib/select2/select2.full.min.js"></script>
+    <script src="/Template/js/lib/salvattore/salvattore.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            checkPosition();
+        });
+        
+        function checkPosition() {
+            if (window.matchMedia('(max-width: 768px)').matches) {
+                $('.img-size').css({
+                    'height':'180px',
+                    'width':'auto',
+                    'margin':'auto',
+                });
+            } else {
+                $('.img-size').css({
+                    'height':'400px',
+                    'width':'auto',
+                    'margin':'auto',
+                });
+            }
+        }
+        
+        function update(user, date,  title, content){
+            document.getElementById('myModalLabel').innerHTML = title;
+            document.getElementById('bodyModal').innerHTML = content;
+            document.getElementById('dateModal').innerHTML = date;
+            document.getElementById('userModal').innerHTML = 'Autor: '+user;
+        }
+    </script>
 @stop

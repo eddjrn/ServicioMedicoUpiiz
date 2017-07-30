@@ -49,6 +49,7 @@ Route::post('/profile/edit1', 'profileController@update1');
 // ---------------------------------------------------------------------------------------
 
 Route::get('/admin', 'adminController@index');
+Route::get('/admin/blog', 'adminController@blog');
 Route::get('/admin/lists', 'adminController@lists');
 
 Route::post('/admin', 'adminController@message');

@@ -148,7 +148,10 @@
 	<div class="mobile-menu-left-overlay"></div> <!--=Index en este caso solo sirve para el estilo CSS-->
 	<ul class="main-nav nav nav-inline">
 		<li class="nav-item">
-			<a class="nav-link @if($index==1)active @endif" href="/admin">Blog</a>
+			<a class="nav-link @if($index==5)active @endif" href="/admin">Inicio</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link @if($index==1)active @endif" href="/admin/blog">Blog</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link @if($index==2)active @endif" href="/admin/lists">Listado</a>

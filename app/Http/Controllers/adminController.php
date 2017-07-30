@@ -25,14 +25,29 @@ class adminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+     
+    public function index(){
+        $index = 5;
+        $images = \App\images::all()->sortByDesc('updated_at')->take(5);
+        $messages = \App\message::all()->sortByDesc('updated_at')->where('destino', null)->take(6);
+        $infos = \App\info::all()->sortByDesc('updated_at')->take(6);
+        
+        $subdel = \App\clinic::find(1);
+        $clinic1 = \App\clinic::find(2);
+        $clinic2 = \App\clinic::find(5);
+        $clinic3 = \App\clinic::find(6);
+        
+        return view('Admin.start',['index' => $index, 'images'=>$images, 'messages'=>$messages, 'infos'=>$infos, 'subdel'=>$subdel, 'clinic1'=>$clinic1, 'clinic2'=>$clinic2, 'clinic3'=>$clinic3]);
+    }
+     
+    public function blog()
     {
         $index = 1;
         $info=\App\info::paginate(10);
         $images=\App\images::all();
         $video=\App\video::all();
         $tutorials=\App\tutorials::all();
-        return view('Admin.start', ['index'=>$index,'info'=> $info,'images'=> $images,'video'=> $video,'tutorials'=> $tutorials]);
+        return view('Admin.blog', ['index'=>$index,'info'=> $info,'images'=> $images,'video'=> $video,'tutorials'=> $tutorials]);
     }
     
     public function getMessages(){
@@ -668,7 +683,7 @@ class adminController extends Controller
         $tareasOpc = $request->input('check-toggle-5', 'false');
         
         if($studentsOpc == 'true'){
-            $students = \App\student::all();
+            $students = \App\student::all()->where('estatus_id', 1);
             foreach($students as $student){
                 $student->update([
                     'estatus_id' => 2,
