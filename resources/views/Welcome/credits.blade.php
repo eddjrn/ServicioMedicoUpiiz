@@ -21,27 +21,26 @@ Creditos
 	<div class="col-md-9">
 
 <div class="container-fluid">
-			<div class="cards-grid" ><div class="column size-1of2"><div class="card-grid-col">
-					<article class="card-typical box-typical box-typical-padding documentation">
-						 <header class="documentation-header">
-        <h2>Objetivo</h2>
-        <p class="lead color-blue-grey"> </p>
-    </header>
-    <div class="text-block text-block-typical">
-        <p>
-          Nuestra principal labor es la prevención, educación y detección de enfermedades. Se brinda  orientación  sobre las diferentes áreas de la salud, buscando mejorar la capacidad de aprendizaje de la Comunidad Politécnica,  por lo cual  se genera un historial clínico de cada uno de las personas que asisten a Servicio Médico a través de: </br>  
-            </br><p>• Medicina Preventiva</p>   
-            <p>• Orientación de Nutrición</p>   
-            <p>• Consulta Médica</p>
-          </br>Dentro de los servicios que además proporciona el Área de Servicio médico es:     
-            </br></br><p>1. Realizar la afiliación al Instituto Mexicano del Seguro Social (IMSS), a todos los alumnos de la Unidad Académica que no cuenten con alguna Seguridad Social ya sea por parte de sus padres  o de  trabajo, de contar con este servicio se deberá entregar la carta responsiva, ya que es un requisito obligatorio para los alumnos tener Seguro Social  para realizar  salidas  ó prácticas escolares fuera de la Unidad Académica.</p>     
-            </br><p>2. Todos los alumnos del IPN que  estén inscritos  cuentan con un Seguro de Vida contratado por el IPN, el cual cuenta con una cobertura durante las 24 hrs. de los 365 días del año y en cualquier lugar de la Repblica Mexicana.</p>                     ​  
-        </p>
-        <p>Horario de atención: 7:00 - 17:00hrs </p>
+    <div class="cards-grid" ><div class="column size-1of2"><div class="card-grid-col">
+        <article class="card-typical box-typical box-typical-padding documentation">
+            <header class="documentation-header">
+                <h2>Objetivo</h2>
+                <p class="lead color-blue-grey"> </p>
+            </header>
+        <div class="text-block text-block-typical">
+            <p>
+            Nuestra principal labor es la prevención, educación y detección de enfermedades. Se brinda  orientación  sobre las diferentes áreas de la salud, buscando mejorar la capacidad de aprendizaje de la Comunidad Politécnica,  por lo cual  se genera un historial clínico de cada uno de las personas que asisten a Servicio Médico a través de: </br>  
+                </br><p>• Medicina Preventiva</p>   
+                <p>• Orientación de Nutrición</p>   
+                <p>• Consulta Médica</p>
+            </br>Dentro de los servicios que además proporciona el Área de Servicio médico es:     
+                </br></br><p>1. Realizar la afiliación al Instituto Mexicano del Seguro Social (IMSS), a todos los alumnos de la Unidad Académica que no cuenten con alguna Seguridad Social ya sea por parte de sus padres  o de  trabajo, de contar con este servicio se deberá entregar la carta responsiva, ya que es un requisito obligatorio para los alumnos tener Seguro Social  para realizar  salidas  ó prácticas escolares fuera de la Unidad Académica.</p>     
+                </br><p>2. Todos los alumnos del IPN que  estén inscritos  cuentan con un Seguro de Vida contratado por el IPN, el cual cuenta con una cobertura durante las 24 hrs. de los 365 días del año y en cualquier lugar de la Repblica Mexicana.</p>                     ​  
+            </p>
+        </div>
         
-    </div>
-					</article><!--.card-typical-->
-				</div><div class="card-grid-col">
+        </article><!--.card-typical-->
+            </div><div class="card-grid-col">
 					
 				</div><div class="card-grid-col">
 					
@@ -59,9 +58,9 @@ Creditos
 						</div>
 						<div class="card-typical-section card-typical-content">
 							<header class="title"></header>
-							<p>Proyecto : Servicio Medico Upiiz</p>
+							<p>Proyecto : Servicio Médico Upiiz</p>
 							</br><p> Isaul Ibarra Belmonte</p>
-							<p> Eduardo Javier reyes norman</p>
+							<p> Eduardo Javier Reyes Norman</p>
 							<p> Olga Alejandra Beltran Silva</p>
 						</div>
 						<div class="card-typical-section">
