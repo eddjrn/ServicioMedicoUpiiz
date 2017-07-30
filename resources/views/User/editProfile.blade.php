@@ -8,6 +8,26 @@
 @stop
 
 @section('popUp')
+<div class="modal fade"
+        id="myModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+        aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                    <i class="font-icon-close-2"></i>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">¿Cómo pongo el link de Facebook?</h4>
+            </div>
+            <div class="modal-body text-center">
+                <img src="/Template/img/Facebookprocess.gif" class="img-size round">
+            </div>
+        </div>
+    </div>
+</div><!--.modal-->
 @stop
 
 @section('subHead')
@@ -112,11 +132,13 @@ Edición de los datos personales
                     <div class="col-md-4 col-sm-6">
                         <fieldset class="form-group">
                             <label class="form-label" for="exampleInputDisabled">Facebook</label>
-                            {!!Form::text('facebook', $student->user->facebook, ['class'=>'form-control', 'placeholder'=>'Ej: Link de Facebook', 'id'=>'facebook'])!!}
+                            <div class="input-group">
+                                {!!Form::text('facebook', $student->user->facebook, ['class'=>'form-control', 'placeholder'=>'Link de Facebook', 'id'=>'facebook'])!!}
+                                <div class="input-group-addon">
+                                    <a data-toggle="modal" data-target="#myModal"><span class="font-icon font-icon-eye"></span></a>
+                                </div>
+                            </div>
                         </fieldset>
-                        <div class="form-group">
-                            <a href="https://www.facebook.com/" target="_blank">Página de Facebook</a>
-                        </div>
                     </div>
                 </div>
                 

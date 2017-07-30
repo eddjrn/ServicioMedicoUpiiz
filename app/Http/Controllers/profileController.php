@@ -370,6 +370,7 @@ class profileController extends Controller
                 'estado_id'=>$request->estado,
                 'sexo'=>$request->sexo,
                 'documentacion'=>'2',
+                'observaciones'=>'Favor de pasar a servicio médico para mas información.',
                 'turno'=>$request->turno,
                 'telefono'=>$request->telefono,
                 'calle'=>$request->calle,

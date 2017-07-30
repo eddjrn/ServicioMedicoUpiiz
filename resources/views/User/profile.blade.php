@@ -26,7 +26,7 @@ Perfil de usuario
         <i class="font-icon font-icon-award"></i>
     </div>
     <div>{{$student->carrer->nombre}}</div>
-    <div><a href="{{$student->user->facebook}}" target="_blank">Facebook</a></div>
+    @unless($student->user->facebook == null) <div><a href="{{$student->user->facebook}}" target="_blank">Facebook</a></div> @endunless
     
     <div class="widget-user-stat hidden-md-down">
         <div class="item">
