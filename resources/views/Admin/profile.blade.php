@@ -121,7 +121,7 @@
                     <button type="button" class="btn btn-rounded btn-warning" data-toggle="modal" data-target=".bd-example-modal-sm">Editar perfíl</button>
                     <p class="sign-note"><a href="{{$user->facebook}}" target="_blank">Facebook</a></p>
                     
-                    <a href="/admin"><button type="button" class="close">
+                    <a href="{{asset('/admin')}}"><button type="button" class="close">
                         <span aria-hidden="true">&times;</span>
                     </button></a>
                 </form>
