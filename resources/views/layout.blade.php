@@ -9,12 +9,12 @@
 	
 	@yield('css')
 
-	<link href="/Template/img/favicon.144x144.png" rel="apple-touch-icon" type="/image/png" sizes="144x144">
-	<link href="/Template/img/favicon.114x114.png" rel="apple-touch-icon" type="/image/png" sizes="114x114">
-	<link href="/Template/img/favicon.72x72.png" rel="apple-touch-icon" type="/image/png" sizes="72x72">
-	<link href="/Template/img/favicon.57x57.png" rel="apple-touch-icon" type="/image/png">
-	<link href="/Template/img/favicon.png" rel="icon" type="image/png">
-	<link href="/Template/img/favicon.ico" rel="shortcut icon">
+	<link href="{{asset('/Template/img/favicon.144x144.png')}}" rel="apple-touch-icon" type="/image/png" sizes="144x144">
+	<link href="{{asset('/Template/img/favicon.114x114.png')}}" rel="apple-touch-icon" type="/image/png" sizes="114x114">
+	<link href="{{asset('/Template/img/favicon.72x72.png')}}" rel="apple-touch-icon" type="/image/png" sizes="72x72">
+	<link href="{{asset('/Template/img/favicon.57x57.png')}}" rel="apple-touch-icon" type="/image/png">
+	<link href="{{asset('/Template/img/favicon.png')}}" rel="icon" type="image/png">
+	<link href="{{asset('/Template/img/favicon.ico')}}" rel="shortcut icon">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -22,8 +22,8 @@
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 	
-    <link rel="stylesheet" href="/Template/css/lib/font-awesome/font-awesome.min.css">
-    <link rel="stylesheet" href="/Template/css/main.css">
+    <link rel="stylesheet" href="{{asset('/Template/css/lib/font-awesome/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/Template/css/main.css')}}">
 </head>
 
 <body class="horizontal-navigation">
@@ -97,9 +97,9 @@
 @unless($index==4) <!--= No se muestra la cabecera-->
     <header class="site-header">
 	    <div class="container-fluid">
-	        <a href="#" class="site-logo">
-	            <img class="hidden-md-down" src="/Template/img/logo upiiz estilo ipn_small2.png" alt="">
-	            <img class="hidden-lg-up" src="/Template/img/logo upiiz estilo ipn_small3.png" alt="">
+	        <a class="site-logo">
+	            <img class="hidden-md-down" src="{{asset('/Template/img/logo upiiz estilo ipn_small2.png')}}" alt="">
+	            <img class="hidden-lg-up" src="{{asset('/Template/img/logo upiiz estilo ipn_small3.png')}}" alt="">
 	        </a>       
 	        
 	        <button class="hamburger hamburger--htla">
@@ -114,10 +114,10 @@
                         @if(Auth::check()) <!--=Solo se muestra el menu de perfil si se esta iniciado sesion-->
 	                    <div class="dropdown user-menu">
 	                        <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                            <img src="/Template/img/LogoSMUPIIZ.svg" alt="">
+	                            <img src="{{asset('/Template/img/LogoSMUPIIZ.svg')}}" alt="">
 	                        </button>
 	                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
-	                            <a class="dropdown-item" href="/profile"><span class="font-icon glyphicon glyphicon-user"></span>Perfil</a>
+	                            <a class="dropdown-item" href="{{asset('/profile')}}"><span class="font-icon glyphicon glyphicon-user"></span>Perfil</a>
 	                            <a class="dropdown-item" data-toggle="modal" data-target=".bd-example-modal-sm"><span class="font-icon glyphicon glyphicon-cog"></span>Configuración</a>
 	                            <a class="dropdown-item" data-toggle="modal" data-target=".bd-examplee-modal-sm"><span class="font-icon font-icon-refresh"></span>Cambiar Contraseña</a>
 	                           
@@ -127,13 +127,13 @@
 	                            <a class="dropdown-item" target="_blank" href="http://www.zacatecas.ipn.mx/Paginas/Inicio.aspx"><span class="font-icon font-icon-home"></span>Sitio UPIIZ</a>
 	                            
 	                            <div class="dropdown-divider"></div>
-	                            <a class="dropdown-item" href="/logout"><span class="font-icon glyphicon glyphicon-log-out"></span>Salir</a>
+	                            <a class="dropdown-item" href="{{asset('/logout')}}"><span class="font-icon glyphicon glyphicon-log-out"></span>Salir</a>
 	                        </div>
 	                    </div>
 	                    @endif
 	                    
-	                    <a href="#" class="site-logo">
-                            <img class="hidden-md-down" src="/Template/img/escudo ipn negro_small.png" alt="">
+	                    <a class="site-logo">
+                            <img class="hidden-md-down" src="{{asset('/Template/img/escudo ipn negro_small.png')}}" alt="">
                         </a>
 	                    
 	                </div><!--.site-header-shown-->
@@ -149,33 +149,33 @@
 	<div class="mobile-menu-left-overlay" ></div> <!--=Index en este caso solo sirve para el estilo CSS-->
 	<ul class="main-nav nav nav-inline">
 		<li class="nav-item">
-			<a class="nav-link @if($index==1)active @endif" href="/">Inicio</a>
+			<a class="nav-link @if($index==1)active @endif" href="{{asset('/')}}">Inicio</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link @if($index==2)active @endif" href="/news">Novedades</a>
+			<a class="nav-link @if($index==2)active @endif" href="{{asset('/news')}}">Novedades</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link @if($index==3)active @endif" href="/contact">Contactanos</a>
+			<a class="nav-link @if($index==3)active @endif" href="{{asset('/contact')}}">Contactanos</a>
 		</li>
         <li class="nav-item">
-			<a class="nav-link @if($index==6)active @endif" href="/tutorials">Tutoriales</a>
+			<a class="nav-link @if($index==6)active @endif" href="{{asset('/tutorials')}}">Tutoriales</a>
 		</li>
         <li class="nav-item">
-			<a class="nav-link @if($index==9)active @endif" href="/maps">lista de clinicas IMSS</a>
+			<a class="nav-link @if($index==9)active @endif" href="{{asset('/maps')}}">lista de clinicas IMSS</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link @if($index==12)active @endif" href="/credits">Creditos</a>
+			<a class="nav-link @if($index==12)active @endif" href="{{asset('/credits')}}">Creditos</a>
 		</li>
 		@if(Auth::check())
         <li class="nav-item">
-			<a class="nav-link @if($index==7)active @endif" href="/forms">Formularios</a>
+			<a class="nav-link @if($index==7)active @endif" href="{{asset('/forms')}}">Formularios</a>
 		</li>
 		<!--<li class="nav-item">
 			<a class="nav-link @if($index==8)active @endif" href="/lifeInsurance">Seguro de vida</a>
 		</li>-->
 		@else
 		<li class="nav-item">
-			<a class="nav-link @if($index==5)active @endif" href="/login">Iniciar sesión</a>
+			<a class="nav-link @if($index==5)active @endif" href="{{asset('/login')}}">Iniciar sesión</a>
 		</li>
 		@endif
 	</ul>
@@ -191,13 +191,13 @@
 	</div><!--.page-content-->
 @endunless
 
-	<script src="/Template/js/lib/jquery/jquery.min.js"></script>
-	<script src="/Template/js/lib/tether/tether.min.js"></script>
-	<script src="/Template/js/lib/bootstrap/bootstrap.min.js"></script>
-	<script src="/Template/js/plugins.js"></script>
+	<script src="{{asset('/Template/js/lib/jquery/jquery.min.js')}}"></script>
+	<script src="{{asset('/Template/js/lib/tether/tether.min.js')}}"></script>
+	<script src="{{asset('/Template/js/lib/bootstrap/bootstrap.min.js')}}"></script>
+	<script src="{{asset('/Template/js/plugins.js')}}"></script>
 	
 	@yield('scripts')
 
-    <script src="/Template/js/app.js"></script>
+    <script src="{{asset('/Template/js/app.js')}}"></script>
 </body>
 </html> 
