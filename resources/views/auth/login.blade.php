@@ -13,7 +13,7 @@
         <div class="container-fluid">
             {!!Form::open(array('url'=>'/login', 'class'=>'sign-box', 'method'=>'post'))!!}
                 <div class="sign-avatar">
-                    <img src="Template/img/LogoSMUPIIZ.svg" alt="">
+                    <img src="{{asset('Template/img/LogoSMUPIIZ.svg')}}" alt="">
                 </div>
                 
                 @include('alerts.formError')
@@ -32,13 +32,13 @@
                         <label for="remember">Recordarme</label>
                     </div>
                     <div class="float-right reset">
-                        <a href="/forgetPass">¡Olvide mi Contraseña!</a>
+                        <a href="{{asset('/forgetPass')}}">¡Olvide mi Contraseña!</a>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-rounded">Entrar</button>
-                <p class="sign-note">¿Nuevo en el sitio? <a href="/signup">Registrarme</a></p>
+                <p class="sign-note">¿Nuevo en el sitio? <a href="{{asset('/signup')}}">Registrarme</a></p>
                 
-                <a href="/"><button type="button" class="close">
+                <a href="{{asset('/')}}"><button type="button" class="close">
                     <span aria-hidden="true">&times;</span>
                 </button></a>
             {!!Form::close()!!}

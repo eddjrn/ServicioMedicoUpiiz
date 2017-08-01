@@ -51,7 +51,7 @@
             <div class="modal-footer">
 <!--                 <button type="button" class="btn btn-rounded btn-default" data-dismiss="modal">Close</button> -->
                 <div class="text-center">
-                    <button type="button" class="btn btn-rounded btn-warning" formaction="/" id="formi" onclick="upOperation()" data-dismiss="modal">Guardar cambios</button>
+                    <button type="button" class="btn btn-rounded btn-warning" formaction="{{asset('/')}}" id="formi" onclick="upOperation()" data-dismiss="modal">Guardar cambios</button>
                 </div>
             </div>
             {!!Form::close()!!}
@@ -71,7 +71,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
-                                <button type="button" class="btn btn-rounded btn-primary btn-danger btn-inline" formaction="/" id="formButton2" data-dismiss="modal" onclick="delOperation();">Eliminar</button>
+                                <button type="button" class="btn btn-rounded btn-primary btn-danger btn-inline" formaction="{{asset('/')}}" id="formButton2" data-dismiss="modal" onclick="delOperation();">Eliminar</button>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <button type="button" class="btn btn-rounded btn-primary btn-inline" onclick="toggle();">Cancelar</button>
@@ -513,14 +513,14 @@ Listas de todos los alumnos en el sistema
 </section><!--.tabs-section-->
 
 <div class="text-center">
-    <a href="/admin/lists" class="btn btn-rounded btn-secondary" id="updateList">Actualizar datos de las tablas</a>
+    <a href="{{asset('/admin/lists')}}" class="btn btn-rounded btn-secondary" id="updateList">Actualizar datos de las tablas</a>
 </div>
 
 @stop
 
 @section('scripts')
-    <script src="/Template/js/lib/bootstrap-select/bootstrap-select.min.js"></script>
-    <script src="/Template/js/custom/listsEdits.js"></script>
+    <script src="{{asset('/Template/js/lib/bootstrap-select/bootstrap-select.min.js')}}"></script>
+    <script src="{{asset('/Template/js/custom/listsEdits.js')}}"></script>
     
     <script> /*script para que se puedan enviar peticiones POST desde javascript*/
         $.ajaxSetup({

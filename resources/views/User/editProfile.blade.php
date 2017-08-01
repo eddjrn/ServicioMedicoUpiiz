@@ -23,7 +23,7 @@
                 <h4 class="modal-title" id="myModalLabel">¿Cómo pongo el link de Facebook?</h4>
             </div>
             <div class="modal-body text-center">
-                <img src="/Template/img/Facebookprocess.gif" class="img-size round">
+                <img src="{{asset('/Template/img/Facebookprocess.gif')}}" class="img-size round">
             </div>
         </div>
     </div>
@@ -56,7 +56,7 @@ Edición de los datos personales
                 <div class="tbl-row">
                     <div class="tbl-cell tbl-cell-photo">
                         <a href="#">
-                            <img src="/Template/img/photo-64-2.jpg" alt="">
+                            <img src="{{asset('/Template/img/photo-64-2.jpg')}}" alt="">
                         </a>
                     </div>
                     <div class="tbl-cell">
@@ -608,13 +608,13 @@ Edición de los datos personales
 @stop
 
 @section('scripts')
-    <script src="/Template/js/lib/bootstrap-select/bootstrap-select.min.js"></script>
-    <script src="/Template/js/lib/select2/select2.full.min.js"></script>
-    <script src="/Template/js/custom/completeProfileToggle.js"></script>
+    <script src="{{asset('/Template/js/lib/bootstrap-select/bootstrap-select.min.js')}}"></script>
+    <script src="{{asset('/Template/js/lib/select2/select2.full.min.js')}}"></script>
+    <script src="{{asset('/Template/js/custom/completeProfileToggle.js')}}"></script>
     
-    <script src="/Template/js/lib/clockpicker/bootstrap-clockpicker.min.js"></script>
-    <script src="/Template/js/lib/clockpicker/bootstrap-clockpicker-init.js"></script>
-    <script src="/Template/js/lib/daterangepicker/daterangepicker.js"></script>
+    <script src="{{asset('/Template/js/lib/clockpicker/bootstrap-clockpicker.min.js')}}"></script>
+    <script src="{{asset('/Template/js/lib/clockpicker/bootstrap-clockpicker-init.js')}}"></script>
+    <script src="{{asset('/Template/js/lib/daterangepicker/daterangepicker.js')}}"></script>
     
     <script>
         $(document).ready(function(){

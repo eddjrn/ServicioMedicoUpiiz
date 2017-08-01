@@ -56,7 +56,7 @@ Mensajes creados <span class="label label-pill label-default"><strong>{{$message
                         <span class="task-card-title-label">{{$message->usuario()}}</span>
                         <br/>
                         @unless($message->destino == null)
-                        <span class="task-card-title-label"><a href="/admin/lists/{{$message->alumnoId()}}" >{{$message->destino()}}</a></span>
+                        <span class="task-card-title-label"><a href="{{asset('/admin/lists/')}}{{$message->alumnoId()}}" >{{$message->destino()}}</a></span>
                         @else
                         <span class="task-card-title-label">{{$message->destino()}}</span>
                         @endunless
@@ -82,7 +82,7 @@ Mensajes creados <span class="label label-pill label-default"><strong>{{$message
                     
                     <div class="avatar-preview avatar-preview-32">
                         <a href="#">
-                            <img src="/Template/img/photo-64-2.jpg" alt="">
+                            <img src="{{asset('/Template/img/photo-64-2.jpg')}}" alt="">
                         </a>
                     </div>
                 </div>

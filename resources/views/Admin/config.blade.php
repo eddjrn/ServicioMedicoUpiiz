@@ -5,7 +5,7 @@
 @stop
 
 @section('css')
-    <link href="/Template/css/lib/charts-c3js/c3.min.css" rel="stylesheet" type="text/css">
+    <link href="{{asset('/Template/css/lib/charts-c3js/c3.min.css')}}" rel="stylesheet" type="text/css">
 @stop
 
 @section('popUp')
@@ -535,7 +535,7 @@
                 <button type="button" class="btn btn-rounded btn-danger btn-inline" data-toggle="modal" data-target=".bd-example-modal-sm" onclick="authUserSpecialFunctions('Configuraciones especiales', 1);">Más opciones</button>
             </div>
             <div class="col-lg-6 col-md-6">
-                <a href="/admin" class="btn btn-rounded btn-primary btn-inline">Regresar</a>
+                <a href="{{asset('/admin')}}" class="btn btn-rounded btn-primary btn-inline">Regresar</a>
             </div>
         </div>
     </div>
@@ -551,9 +551,9 @@ Hola
 @stop
 
 @section('scripts')
-    <script src="/Template/js/lib/d3/d3.min.js"></script>
-    <script src="/Template/js/lib/charts-c3js/c3.min.js"></script>
-    <script src="/Template/js/custom/configEdit.js"></script>
+    <script src="{{asset('/Template/js/lib/d3/d3.min.js')}}"></script>
+    <script src="{{asset('/Template/js/lib/charts-c3js/c3.min.js')}}"></script>
+    <script src="{{asset('/Template/js/custom/configEdit.js')}}"></script>
     
     <script>
         $(document).ready(function() {

@@ -9,12 +9,12 @@
 	
 	
 
-	<link href="/Template/img/favicon.144x144.png" rel="apple-touch-icon" type="/image/png" sizes="144x144">
-	<link href="/Template/img/favicon.114x114.png" rel="apple-touch-icon" type="/image/png" sizes="114x114">
-	<link href="/Template/img/favicon.72x72.png" rel="apple-touch-icon" type="/image/png" sizes="72x72">
-	<link href="/Template/img/favicon.57x57.png" rel="apple-touch-icon" type="/image/png">
-	<link href="/Template/img/favicon.png" rel="icon" type="image/png">
-	<link href="/Template/img/favicon.ico" rel="shortcut icon">
+	<link href="{{asset('/Template/img/favicon.144x144.png')}}" rel="apple-touch-icon" type="/image/png" sizes="144x144">
+	<link href="{{asset('/Template/img/favicon.114x114.png')}}" rel="apple-touch-icon" type="/image/png" sizes="114x114">
+	<link href="{{asset('/Template/img/favicon.72x72.png')}}" rel="apple-touch-icon" type="/image/png" sizes="72x72">
+	<link href="{{asset('/Template/img/favicon.57x57.png')}}" rel="apple-touch-icon" type="/image/png">
+	<link href="{{asset('/Template/img/favicon.png')}}" rel="icon" type="image/png">
+	<link href="{{asset('/Template/img/favicon.ico')}}" rel="shortcut icon">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -22,8 +22,8 @@
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
 	
-    <link rel="stylesheet" href="/Template/css/lib/font-awesome/font-awesome.min.css">
-    <link rel="stylesheet" href="/Template/css/main.css">
+    <link rel="stylesheet" href="{{asset('/Template/css/lib/font-awesome/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/Template/css/main.css')}}">
     
     @yield('css')
 </head>
@@ -35,8 +35,8 @@
     <header class="site-header">
 	    <div class="container-fluid">
 	        <a href="#" class="site-logo">
-	            <img class="hidden-md-down" src="/Template/img/logo upiiz estilo ipn_small2.png" alt="">
-	            <img class="hidden-lg-up" src="/Template/img/logo upiiz estilo ipn_small3.png" alt="">
+	            <img class="hidden-md-down" src="{{asset('/Template/img/logo upiiz estilo ipn_small2.png')}}" alt="">
+	            <img class="hidden-lg-up" src="{{asset('/Template/img/logo upiiz estilo ipn_small3.png')}}" alt="">
 	        </a>       
 	        
 	        <button class="hamburger hamburger--htla">
@@ -90,7 +90,7 @@
 	                                    <div class="dropdown-menu-messages-list">
                                             @foreach($messages->take(4) as $message)
 	                                        <a href="#" class="mess-item">
-	                                            <span class="avatar-preview avatar-preview-32"><img src="/Template/img/photo-64-2.jpg" alt=""></span>
+	                                            <span class="avatar-preview avatar-preview-32"><img src="{{asset('/Template/img/photo-64-2.jpg')}}" alt=""></span>
 	                                            <span class="mess-item-name">{{$message->titulo}}</span>
 	                                            <span class="mess-item-txt">{{$message->contenido}}</span>
 	                                        </a>
@@ -114,25 +114,25 @@
 	                                </div>
 	                            </div>
 	                            <div class="dropdown-menu-notif-more">
-	                                <a href="/admin/messages">Ver más</a>
+	                                <a href="{{asset('/admin/messages')}}">Ver más</a>
 	                            </div>
 	                        </div>
 	                    </div>
 	                
 	                    <div class="dropdown user-menu">
 	                        <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                            <img src="/Template/img/LogoSMadmin.svg" alt="">
+	                            <img src="{{asset('/Template/img/LogoSMadmin.svg')}}" alt="">
 	                        </button>
 	                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
-	                            <a class="dropdown-item" href="/admin/profile"><span class="font-icon glyphicon glyphicon-user"></span>Perfil</a>
-	                            <a class="dropdown-item" href="/admin/config"><span class="font-icon glyphicon glyphicon-cog"></span>Configuración</a>
+	                            <a class="dropdown-item" href="{{asset('/admin/profile')}}"><span class="font-icon glyphicon glyphicon-user"></span>Perfil</a>
+	                            <a class="dropdown-item" href="{{asset('/admin/config')}}"><span class="font-icon glyphicon glyphicon-cog"></span>Configuración</a>
 	                            <div class="dropdown-divider"></div>
-	                            <a class="dropdown-item" href="/logout"><span class="font-icon glyphicon glyphicon-log-out"></span>Salir</a>
+	                            <a class="dropdown-item" href="{{asset('/logout')}}"><span class="font-icon glyphicon glyphicon-log-out"></span>Salir</a>
 	                        </div>
 	                    </div>
 	                    
 	                    <a href="#" class="site-logo">
-                            <img class="hidden-md-down" src="/Template/img/escudo ipn negro_small.png" alt="">
+                            <img class="hidden-md-down" src="{{asset('/Template/img/escudo ipn negro_small.png')}}" alt="">
                         </a>
 	                    
 	                </div><!--.site-header-shown-->
@@ -148,19 +148,19 @@
 	<div class="mobile-menu-left-overlay"></div> <!--=Index en este caso solo sirve para el estilo CSS-->
 	<ul class="main-nav nav nav-inline">
 		<li class="nav-item">
-			<a class="nav-link @if($index==5)active @endif" href="/admin">Inicio</a>
+			<a class="nav-link @if($index==5)active @endif" href="{{asset('/admin')}}">Inicio</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link @if($index==1)active @endif" href="/admin/blog">Blog</a>
+			<a class="nav-link @if($index==1)active @endif" href="{{asset('/admin/blog')}}">Blog</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link @if($index==2)active @endif" href="/admin/lists">Listado</a>
+			<a class="nav-link @if($index==2)active @endif" href="{{asset('/admin/lists')}}">Listado</a>
 		</li>
         <li class="nav-item">
-			<a class="nav-link @if($index==3)active @endif" href="/admin/add">Agregar</a>
+			<a class="nav-link @if($index==3)active @endif" href="{{asset('/admin/add')}}">Agregar</a>
 		</li>
         <li class="nav-item">
-			<a class="nav-link @if($index==4)active @endif" href="/admin/search">Buscar</a>
+			<a class="nav-link @if($index==4)active @endif" href="{{asset('/admin/search')}}">Buscar</a>
 		</li>
         <li class="nav-item">
 			<a class="nav-link" href="{{Auth::user()->facebook}}" target="_blank">Facebook</a>
@@ -181,13 +181,13 @@
 	
 	@endunless
 
-	<script src="/Template/js/lib/jquery/jquery.min.js"></script>
-	<script src="/Template/js/lib/tether/tether.min.js"></script>
-	<script src="/Template/js/lib/bootstrap/bootstrap.min.js"></script>
-	<script src="/Template/js/plugins.js"></script>
+	<script src="{{asset('/Template/js/lib/jquery/jquery.min.js')}}"></script>
+	<script src="{{asset('/Template/js/lib/tether/tether.min.js')}}"></script>
+	<script src="{{asset('/Template/js/lib/bootstrap/bootstrap.min.js')}}"></script>
+	<script src="{{asset('/Template/js/plugins.js')}}"></script>
 	
 	@yield('scripts')
 
-    <script src="/Template/js/app.js"></script>
+    <script src="{{asset('/Template/js/app.js')}}"></script>
 </body>
 </html> 

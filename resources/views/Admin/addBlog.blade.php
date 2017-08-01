@@ -173,7 +173,7 @@ Edición del blog
                         <div class="activity-line-item-user">
                             <div class="activity-line-item-user-photo">
                                 <a href="#">
-                                    <img src="/Template/img/avatar-1-64.png" alt="">
+                                    <img src="{{asset('/Template/img/avatar-1-64.png')}}" alt="">
                                 </a>
                             </div>
                             <div class="activity-line-item-user-name" id="lineUser" >{{$in->user}}</div>
@@ -938,8 +938,8 @@ Edición del blog
 @stop
 
 @section('scripts')
-<script src="\Template\js\custom\vewInfo.js"></script>
-<script src="\Template\js\custom\vewImg.js"></script>
-<script src="\Template\js\custom\vewVide.js"></script>
-<script src="\Template\js\custom\vewTuto.js"></script>
+<script src="{{asset('\Template\js\custom\vewInfo.js')}}"></script>
+<script src="{{asset('\Template\js\custom\vewImg.js')}}"></script>
+<script src="{{asset('\Template\js\custom\vewVide.js')}}"></script>
+<script src="{{asset('\Template\js\custom\vewTuto.js')}}"></script>
 @stop

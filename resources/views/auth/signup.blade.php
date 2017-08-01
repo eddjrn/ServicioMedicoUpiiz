@@ -24,7 +24,7 @@
                 <h4 class="modal-title" id="myModalLabel">¿Cómo pongo el link de Facebook?</h4>
             </div>
             <div class="modal-body text-center">
-                <img src="/Template/img/Facebookprocess.gif" class="img-size round">
+                <img src="{{asset('/Template/img/Facebookprocess.gif')}}" class="img-size round">
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
         <div class="container-fluid">
             {!!Form::open(array('url'=>'/signup', 'class'=>'sign-box', 'method'=>'post'))!!}
                 <div class="sign-avatar no-photo">
-                    <img src="Template/img/LogoSMplus.svg" alt="">
+                    <img src="{{asset('Template/img/LogoSMplus.svg')}}" alt="">
                 </div>
                 
                 @include('alerts.formError')
@@ -76,9 +76,9 @@
                 </div>
                 
                 <button type="submit" class="btn btn-rounded btn-success sign-up">Registrar</button>
-                <p class="sign-note">¿Tienes una cuenta? <a href="/login">Iniciar sesión</a></p>
+                <p class="sign-note">¿Tienes una cuenta? <a href="{{asset('/login')}}">Iniciar sesión</a></p>
                 
-                <a href="/"><button type="button" class="close">
+                <a href="{{asset('/')}}"><button type="button" class="close">
                     <span aria-hidden="true">&times;</span>
                 </button></a>
             {!!Form::close()!!}

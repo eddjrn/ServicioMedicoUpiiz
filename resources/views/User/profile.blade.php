@@ -17,9 +17,9 @@ Perfil de usuario
 @section('content')
 
 <section class="widget widget-user">
-    <div class="widget-user-bg" style="background-image: url('/Template/img/user-bg.jpg')"></div>
+    <div class="widget-user-bg" style="background-image: url('{{asset('/Template/img/user-bg.jpg')}}')"></div>
     <div class="widget-user-photo">
-        <img src="/Template/img/upiiz_avatar.png" alt="">
+        <img src="{{asset('/Template/img/upiiz_avatar.png')}}" alt="">
     </div>
     <div class="widget-user-name">
         {{$student->user}}
@@ -530,5 +530,5 @@ Perfil de usuario
 @stop
 
 @section('scripts')
-    <script src="/Template/js/lib/select2/select2.full.min.js"></script>
+    <script src="{{asset('/Template/js/lib/select2/select2.full.min.js')}}"></script>
 @stop 

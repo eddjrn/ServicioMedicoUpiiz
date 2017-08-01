@@ -5,7 +5,7 @@
 @stop
 
 @section('css')
-<link rel="stylesheet" href="/Template/css/lib/colorpicker/bootstrap-colorpicker.min.css">
+<link rel="stylesheet" href="{{asset('/Template/css/lib/colorpicker/bootstrap-colorpicker.min.css')}}">
 @stop
 
 @section('popUp')
@@ -369,9 +369,9 @@ Hola
 @stop
 
 @section('scripts')
-    <script src="/Template/js/custom/configEdit.js"></script>
-    <script src="/Template/js/lib/select2/select2.full.min.js"></script>
-    <script src="/Template/js/lib/colorpicker/bootstrap-colorpicker.min.js"></script>
+    <script src="{{asset('/Template/js/custom/configEdit.js')}}"></script>
+    <script src="{{asset('/Template/js/lib/select2/select2.full.min.js')}}"></script>
+    <script src="{{asset('/Template/js/lib/colorpicker/bootstrap-colorpicker.min.js')}}"></script>
     
     <script>
         $(document).ready(function(){

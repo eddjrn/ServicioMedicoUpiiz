@@ -36,7 +36,7 @@
 
 @section('subHead')
 <div class="sign-avatar">
-    <img src="Template/img/LogoSMadmin.svg" alt="" style="height:120px;width:auto;">
+    <img src="{{asset('/Template/img/LogoSMadmin.svg')}}" alt="" style="height:120px;width:auto;">
 </div>
 Bienvenido al servicio médico
 @stop
@@ -157,7 +157,7 @@ Bienvenido al servicio médico
                     
                     <div class="avatar-preview avatar-preview-32">
                         <a href="#">
-                            <img src="/Template/img/avatar-1-64.png" alt="">
+                            <img src="{{asset('/Template/img/avatar-1-64.png')}}" alt="">
                         </a>
                     </div>
                 </div>
@@ -179,7 +179,7 @@ Bienvenido al servicio médico
                             <div class="tbl-row">
                                 <div class="tbl-cell tbl-cell-photo">
                                     <a href="#">
-                                        <img src="/Template/img/avatar-1-64.png" alt="">
+                                        <img src="{{asset('/Template/img/avatar-1-64.png')}}" alt="">
                                     </a>
                                 </div>
                                 <div class="tbl-cell">
@@ -273,8 +273,8 @@ Bienvenido al servicio médico
 @stop
 
 @section('scripts')
-    <script src="/Template/js/lib/select2/select2.full.min.js"></script>
-    <script src="/Template/js/lib/salvattore/salvattore.min.js"></script>
+    <script src="{{asset('/Template/js/lib/select2/select2.full.min.js')}}"></script>
+    <script src="{{asset('/Template/js/lib/salvattore/salvattore.min.js')}}"></script>
     
     <script>
         $(document).ready(function() {

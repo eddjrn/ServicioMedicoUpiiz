@@ -59,12 +59,12 @@ Busqueda de registro
                             <div class="tbl-row">
                                 <div class="tbl-cell tbl-cell-photo">
                                     <a href="#">
-                                        <img src="/Template/img/2-64.png" alt="">
+                                        <img src="{{asset('/Template/img/2-64.png')}}" alt="">
                                     </a>
                                 </div>
                                 <div class="tbl-cell">
                                     <p>
-                                        <a href="/admin/lists/{{$u->student->id}}" class="semibold">{{$u}}</a>
+                                        <a href="{{asset('/admin/lists/')}}{{$u->student->id}}" class="semibold">{{$u}}</a>
                                     </p>
                                     <p>
                                         <a href="{{$u->facebook}}" class="semibold" target="_blank">Facebook</a>
@@ -132,7 +132,7 @@ Busqueda de registro
                                 </div>
                                 <div class="tbl-cell">
                                     <p>
-                                        <a href="/admin/lists/{{$m->user->student->id}}" class="semibold">{{$m->user}}</a>
+                                        <a href="{{asset('/admin/lists/')}}{{$m->user->student->id}}" class="semibold">{{$m->user}}</a>
                                     </p>
                                     <p>
                                         <a href="{{$m->user->facebook}}" class="semibold" target="_blank">Facebook</a>
@@ -190,7 +190,7 @@ Busqueda de registro
                                 </div>
                                 <div class="tbl-cell">
                                     <p>
-                                        <a href="/admin/lists/{{$s->id}}" class="semibold">{{$s->user}}</a>
+                                        <a href="{{asset('/admin/lists/')}}{{$s->id}}" class="semibold">{{$s->user}}</a>
                                     </p>
                                     <p>
                                         <a href="{{$s->user->facebook}}" class="semibold" target="_blank">Facebook</a>
@@ -234,7 +234,7 @@ Busqueda de registro
 @stop
 
 @section('scripts')
-    <script src="/Template/js/custom/search.js"></script>
+    <script src="{{asset('/Template/js/custom/search.js')}}"></script>
     
     <script>
         $.ajaxSetup({

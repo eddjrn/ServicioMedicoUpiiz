@@ -71,7 +71,7 @@ Vista previa del blog
                         <div class="activity-line-item-user">
                             <div class="activity-line-item-user-photo">
                                 <a href="#">
-                                    <img src="/Template/img/avatar-1-64.png" alt="">
+                                    <img src="{{asset('/Template/img/avatar-1-64.png')}}" alt="">
                                 </a>
                             </div>
                             <div class="activity-line-item-user-name">{{$inf->user}}</div>

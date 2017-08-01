@@ -64,5 +64,5 @@ Servicio Medico Upiiz
 @stop
 
 @section('scripts')
-    <script src="Template/js/lib/select2/select2.full.min.js"></script>
+    <script src="{{asset('/Template/js/lib/select2/select2.full.min.js')}}"></script>
 @stop

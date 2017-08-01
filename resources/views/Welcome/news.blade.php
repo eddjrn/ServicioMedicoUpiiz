@@ -60,7 +60,7 @@
                         <div class="activity-line-item-user">
                             <div class="activity-line-item-user-photo">
                                 <a href="#">
-                                    <img src="/Template/img/avatar-1-64.png" alt="">
+                                    <img src="{{asset('/Template/img/avatar-1-64.png')}}" alt="">
                                 </a>
                             </div>
                             <div class="activity-line-item-user-name">{{$inf->user}}</div>
@@ -151,5 +151,5 @@
 @stop
 
 @section('scripts')
-    <script src="Template/js/lib/select2/select2.full.min.js"></script>
+    <script src="{{asset('/Template/js/lib/select2/select2.full.min.js')}}"></script>
 @stop

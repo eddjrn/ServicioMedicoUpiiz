@@ -47,7 +47,7 @@
                 @if(isset($edit))
                 {!!Form::model($user, array('url'=>'/admin/profile', 'method'=>'patch', 'class'=>'sign-box'))!!}
                     <div class="sign-avatar">
-                        <img src="/Template/img/avatar-sign.png" alt="">
+                        <img src="{{asset('/Template/img/avatar-sign.png')}}" alt="">
                     </div>
                     
                     @include('alerts.formError')
@@ -91,14 +91,14 @@
                     
                     <button type="submit" class="btn btn-rounded btn-danger" data-toggle="modal" data-target=".bd-example-modal-sm">Actualizar perfíl</button>
                     
-                    <a href="/admin/profile"><button type="button" class="close">
+                    <a href="{{asset('/admin/profile')}}"><button type="button" class="close">
                         <span aria-hidden="true">&times;</span>
                     </button></a>
                 {!!Form::close()!!}
                 @else
                  <form class="sign-box">
                     <div class="sign-avatar">
-                        <img src="/Template/img/LogoSMadmin.svg" alt="">
+                        <img src="{{asset('/Template/img/LogoSMadmin.svg')}}" alt="">
                     </div>
                     <header class="sign-title">{{$user}}</header>
                     
@@ -142,6 +142,6 @@ Hola
 @stop
 
 @section('scripts')
-    <script src="/Template/js/lib/hide-show-password/bootstrap-show-password.min.js"></script>
-    <script src="/Template/js/lib/hide-show-password/bootstrap-show-password-init.js"></script>
+    <script src="{{asset('/Template/js/lib/hide-show-password/bootstrap-show-password.min.js')}}"></script>
+    <script src="{{asset('/Template/js/lib/hide-show-password/bootstrap-show-password-init.js')}}"></script>
 @stop

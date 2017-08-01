@@ -34,7 +34,7 @@
                         <div class="contacts-page-col-right">
                             <section class="contacts-page-section">
                                 <div class="sign-avatar text-center">
-                                    <img src="Template/img/LogoSMquestion.svg" alt="" style="height:100px;width:auto;">
+                                    <img src="{{asset('/Template/img/LogoSMquestion.svg')}}" alt="" style="height:100px;width:auto;">
                                 </div>
                                 <hr/>
                                 <header class="box-typical-header-sm">Contacto en redes sociales:</header>
@@ -58,5 +58,5 @@
 @stop
 
 @section('scripts')
-    <script src="Template/js/lib/select2/select2.full.min.js"></script>
+    <script src="{{asset('/Template/js/lib/select2/select2.full.min.js')}}"></script>
 @stop

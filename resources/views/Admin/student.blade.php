@@ -80,7 +80,7 @@
             <div class="modal-footer">
 <!--                 <button type="button" class="btn btn-rounded btn-default" data-dismiss="modal">Close</button> -->
                 <div class="text-center">
-                    <button type="submit" class="btn btn-rounded btn-primary" formaction="/" id="formi">Guardar cambios</button>
+                    <button type="submit" class="btn btn-rounded btn-primary" formaction="{{asset('/')}}" id="formi">Guardar cambios</button>
                 </div>
             </div>
             {!!Form::close()!!}
@@ -100,7 +100,7 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-6 col-md-6">
-                                <button type="submit" class="btn btn-rounded btn-primary btn-danger" formaction="/" id="formButton2">Eliminar</button>
+                                <button type="submit" class="btn btn-rounded btn-primary btn-danger" formaction="{{asset('/')}}" id="formButton2">Eliminar</button>
                             </div>
                             <div class="col-lg-6 col-md-6">
                                 <button type="button" class="btn btn-rounded btn-primary" onclick="toggle();">Cancelar</button>
@@ -121,9 +121,9 @@ Información del alumno
 @section('content')
 
 <section class="widget widget-user">
-    <div class="widget-user-bg" style="background-image: url('/Template/img/user-bg.jpg')"></div>
+    <div class="widget-user-bg" style="background-image: url('{{asset('/Template/img/user-bg.jpg')}}')"></div>
     <div class="widget-user-photo">
-        <img src="/Template/img/upiiz_avatar.png" alt="">
+        <img src="{{asset('/Template/img/upiiz_avatar.png')}}" alt="">
     </div>
     <div class="widget-user-name">
         {{$student->user}}
@@ -661,9 +661,9 @@ Información del alumno
 @stop
 
 @section('scripts')
-    <script src="/Template/js/lib/bootstrap-select/bootstrap-select.min.js"></script>
-    <script src="/Template/js/lib/select2/select2.full.min.js"></script>
-    <script src="/Template/js/custom/listsEdits.js"></script>
+    <script src="{{asset('/Template/js/lib/bootstrap-select/bootstrap-select.min.js')}}"></script>
+    <script src="{{asset('/Template/js/lib/select2/select2.full.min.js')}}"></script>
+    <script src="{{asset('/Template/js/custom/listsEdits.js')}}"></script>
     <script>
         $(document).ready(function(){
             $('.remove-example').find('[value=0]').remove();
