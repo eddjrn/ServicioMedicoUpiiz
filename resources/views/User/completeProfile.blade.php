@@ -334,7 +334,7 @@
                         {!!Form::text('numExt', null, ['class'=>'form-control', 'id'=>'numExt', 'placeholder'=>'Número interior'])!!}
                     </div>
                     <div class="col-md-3 form-group">
-                        {!!Form::text('numInt', null, ['class'=>'form-control', 'id'=>'numInt', 'placeholder'=>'Número exteriorr'])!!}
+                        {!!Form::text('numInt', null, ['class'=>'form-control', 'id'=>'numInt', 'placeholder'=>'Número exterior'])!!}
                     </div>
                     <div class="col-md-3 form-group"></div>
                 </div>
