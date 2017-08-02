@@ -14,7 +14,7 @@
     <div class="row moreBtn">
         <div class="col-lg-2 col-md-2 col-xs-12">
             <div class="font-11 color-blue-grey-lighter uppercase">Nombre</div>
-            <a href="/admin/lists/{{$student['id']}}">{{$user}}</a>
+            <a href="{{asset('/admin/lists')}}/{{$student['id']}}">{{$user}}</a>
         </div>
         @if($indexSection == 2 || $indexSection == 3 || $indexSection == 4)
         <div class="col-lg-2 col-md-2 hidden-lg-down helpHighlight" style="word-wrap: break-word;">

@@ -728,6 +728,8 @@ class adminController extends Controller
     }
     
     public function insertRegister(Request $request, $variable){
+        return redirect('/blocked');
+        
         if($variable == 1){
             $this->validate($request, [
                 'nombre' => 'required|min:5|max:255',
@@ -837,6 +839,8 @@ class adminController extends Controller
     }
     
     public function deleteRegister(Request $request, $variable){
+        return redirect('/blocked');
+        
         if($variable == 1){
             $carrer = \App\carrer::find($request->idVal2);
             $carrer->delete();

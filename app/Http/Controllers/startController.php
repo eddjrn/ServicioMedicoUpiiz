@@ -43,9 +43,10 @@ class startController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function stop()
     {
-        //
+        $index = 4;
+        return view('errors.unavailable', ['index'=>$index]);
     }
 
     /**

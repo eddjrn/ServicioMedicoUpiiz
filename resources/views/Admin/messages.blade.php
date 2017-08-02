@@ -56,7 +56,7 @@ Mensajes creados <span class="label label-pill label-default"><strong>{{$message
                         <span class="task-card-title-label">{{$message->usuario()}}</span>
                         <br/>
                         @unless($message->destino == null)
-                        <span class="task-card-title-label"><a href="{{asset('/admin/lists/')}}{{$message->alumnoId()}}" >{{$message->destino()}}</a></span>
+                        <span class="task-card-title-label"><a href="{{asset('/admin/lists')}}/{{$message->alumnoId()}}" >{{$message->destino()}}</a></span>
                         @else
                         <span class="task-card-title-label">{{$message->destino()}}</span>
                         @endunless
@@ -103,7 +103,7 @@ Mensajes creados <span class="label label-pill label-default"><strong>{{$message
                 <br/>\
                 <textarea rows="4" class="form-control" placeholder="Contenido" id="contenidoMensaje" name="contenidoMensaje">${content}</textarea>\
             `;
-            document.getElementById('saveButton').setAttribute('formaction', '/admin/messageEdit/'+id);
+            document.getElementById('saveButton').setAttribute('formaction', '{{asset("/admin/messageEdit")}}/'+id);
             document.getElementById('saveButton').setAttribute('class', 'btn btn-rounded btn-primary');
             document.getElementById('saveButton').innerHTML = 'Guardar';
         }
@@ -118,7 +118,7 @@ Mensajes creados <span class="label label-pill label-default"><strong>{{$message
                 <input class="form-control" id="tituloMensaje" placeholder="Titulo" type="text" name="tituloMensaje" readonly value="${title}">\
                 <input type="hidden" value="${id}" name="message">\
             `;
-            document.getElementById('saveButton').setAttribute('formaction', '/admin/messageDel');
+            document.getElementById('saveButton').setAttribute('formaction', '{{asset("/admin/messageDel")}}');
             document.getElementById('saveButton').setAttribute('class', 'btn btn-rounded btn-danger');
             document.getElementById('saveButton').innerHTML = 'Eliminar';
         }

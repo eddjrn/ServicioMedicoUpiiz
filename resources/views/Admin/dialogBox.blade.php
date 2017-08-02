@@ -110,7 +110,7 @@
                         @elseif($variable == 6)
                             clínicas
                         @endif
-                <a href="/admin/config"><button type="button" class="widget-header-btn">
+                <a href="{{asset('/admin/config')}}"><button type="button" class="widget-header-btn">
                     <i class="font-icon font-icon-del"></i>
                 </button></a>
             </header>
@@ -180,7 +180,7 @@ Ej: HGZMF
                 </div>
                 
                 <div class="text-center">
-                    <button type="submit" class="btn btn-rounded btn-primary btn-warning" formaction="/admin/config/insert/{{$variable}}">Agregar</button>
+                    <button type="submit" class="btn btn-rounded btn-primary btn-warning" formaction="{{asset('/admin/config/insert')}}/{{$variable}}">Agregar</button>
                 </div>
                 {!!Form::close()!!}
                 
@@ -234,7 +234,7 @@ Ej: HGZMF
                                 @foreach(\App\state::all() as $state)
                                 <tr>
                                     <td class="table-check">
-                                        <div class="font-11 color-blue-grey-lighter uppercase">Carrera</div>
+                                        <div class="font-11 color-blue-grey-lighter uppercase">Estado</div>
                                         {{$state->nombre}}
                                     </td>
                                     <td class="table-check">
@@ -256,7 +256,7 @@ Ej: HGZMF
                                 @foreach(\App\medicalInstitute::all() as $institute)
                                 <tr>
                                     <td class="table-check">
-                                        <div class="font-11 color-blue-grey-lighter uppercase">Carrera</div>
+                                        <div class="font-11 color-blue-grey-lighter uppercase">Institucione médica</div>
                                         {{$institute->nombre}}
                                     </td>
                                     <td class="table-check">

@@ -8,10 +8,10 @@ function updateInputs(id, userName, status, documentation, text, insurance){
     $('#seguro').val(insurance);
     $('#seguro').change();
     
-    document.getElementById("formi").formAction = "/admin/lists/"+id;
+    document.getElementById("formi").formAction = window.location.href+"/"+id;
     
     document.getElementById("idVal2").value = id;
-    document.getElementById("formButton2").formAction = "/admin/lists";
+    document.getElementById("formButton2").formAction = window.location.href;
 }
 
 function upOperation(){
@@ -143,16 +143,17 @@ function toggle(){
 // function para actualizar los inputs de la pagina de estudiante detallada
 function updateInputsProfile(id, userName){
     document.getElementById('myModalLabel').innerHTML=userName;
-    document.getElementById("formi").formAction = "/admin/lists/"+id;
+    document.getElementById("formi").formAction = window.location.href;
     
     document.getElementById("idVal2").value = id;
-    document.getElementById("formButton2").formAction = "/admin/lists";
+    document.getElementById("formButton2").formAction = window.location.href;
 }
 
 function loadPages(page, container, buttonsHtml, table, index){
 //     el page es el numero de pagina, container es el id del div donde se carga la pagina, buttonsHtml con los botones html generados para navegacion de las paginas, table es el objeto json que contiene el array de los usuarios (ids)
+    var url = window.location.href+"All/pagination/"+page;
     
-    $("#"+container).load("/admin/pagination/"+page, {'data':table, 'id':container, 'index':index}, function(response){
+    $("#"+container).load(url, {'data':table, 'id':container, 'index':index}, function(response){
         //alert(response);
     });
     

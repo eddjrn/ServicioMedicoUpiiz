@@ -47,12 +47,12 @@
                             <div class="tbl-row">
                                 <div class="tbl-cell tbl-cell-photo">
                                     <a href="#">
-                                        <img src="/Template/img/2-64.png" alt="">
+                                        <img src="{{asset('/Template/img/2-64.png')}}" alt="">
                                     </a>
                                 </div>
                                 <div class="tbl-cell">
                                     <p>
-                                        <a href="/forget/questionPass/{{$u->student->id}}" class="semibold">{{$u}}</a>
+                                        <a href="{{asset('/forget/questionPass')}}/{{$u->student->id}}" class="semibold">{{$u}}</a>
                                     </p>
                                    
                                     <p>

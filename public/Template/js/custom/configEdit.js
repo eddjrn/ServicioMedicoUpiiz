@@ -3,8 +3,8 @@ function  updateInputs(title, name, variable, id){
     document.getElementById('nombre').value = name;
     document.getElementById('idVal').value = id;
     document.getElementById('idVal2').value = id;
-    document.getElementById("formButton").formAction = "/admin/config/insert/"+variable;
-    document.getElementById("formButton2").formAction = "/admin/config/insert/"+variable;
+    document.getElementById("formButton").formAction = window.location.href; //variable
+    document.getElementById("formButton2").formAction = window.location.href;
     
 //         $("#estatus").val(status);
 //     $("#estatus").change();
@@ -18,8 +18,8 @@ function  updateInputs2(title, name, variable, id, place, number, mapa){
     document.getElementById('nombre').value = name;
     document.getElementById('idVal').value = id;
     document.getElementById('idVal2').value = id;
-    document.getElementById("formButton").formAction = "/admin/config/insert/"+variable;
-    document.getElementById("formButton2").formAction = "/admin/config/insert/"+variable;
+    document.getElementById("formButton").formAction = window.location.href; //variable
+    document.getElementById("formButton2").formAction = window.location.href;
     
     document.getElementById('numero2').value = number;
     $("#municipio2").val(place);
@@ -36,15 +36,15 @@ function  updateInputs3(title, name, variable, id, color){
     document.getElementById('nombre').value = name;
     document.getElementById('idVal').value = id;
     document.getElementById('idVal2').value = id;
-    document.getElementById("formButton").formAction = "/admin/config/insert/"+variable;
-    document.getElementById("formButton2").formAction = "/admin/config/insert/"+variable;
+    document.getElementById("formButton").formAction = window.location.href; //variable
+    document.getElementById("formButton2").formAction = window.location.href;
     $("#color2").val(color);
     $("#color2").change();
 }
 
 function authUser(title, variable){
     document.getElementById('windowTitle').innerHTML=title;
-    document.getElementById("formButton").formAction = "/admin/config/"+variable;
+    document.getElementById("formButton").formAction = window.location.href+"/"+variable;
     document.getElementById("formButton").setAttribute('onclick', '');
     document.getElementById("formButton").setAttribute('type', 'submit');
     document.getElementById('specialPopUp').innerHTML = '';
@@ -61,7 +61,7 @@ function authUserSpecialFunctions(title, variable){
 
 function openWindow(){
     var data = $('#passForm').serialize();
-    var url = '/admin/config/7';
+    var url = window.location.href+'/7';
     $('.bd-example-modal-sm').modal('hide');
     $.post(url, data, function(result){
         //alert('x');
@@ -114,7 +114,7 @@ function openWindow(){
         </div>\
         `;
         $('.bd-example-modal-sm2').modal('show');
-        document.getElementById("formButton2").formAction = "/admin/extraConfig";
+        document.getElementById("formButton2").formAction = window.location.href+"s/extraConfig"; ///admin/configs/extraConfig
     }).fail(function (){
         alert('no se pudo :v');
         

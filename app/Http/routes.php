@@ -58,7 +58,7 @@ Route::post('/admin/newMessage', 'adminController@newMessage');
 Route::post('/admin/messageEdit/{message}', 'adminController@editMessage');
 Route::post('/admin/messageDel', 'adminController@destroyMessage');
 
-Route::post('/admin/pagination/{list}', 'adminController@pagination');
+Route::post('/admin/listsAll/pagination/{list}', 'adminController@pagination');
 
 Route::get('/admin/lists/{id}', 'adminController@show');
 Route::post('/admin/lists/{id}', 'adminController@edit');
@@ -77,7 +77,7 @@ Route::post('/admin/config/insert/{variable}', 'adminController@insertRegister')
 Route::patch('/admin/config/insert/{variable}', 'adminController@updateRegister');
 Route::delete('/admin/config/insert/{variable}', 'adminController@deleteRegister');
 
-Route::post('/admin/extraConfig', 'adminController@specialFunctions');
+Route::post('/admin/configs/extraConfig', 'adminController@specialFunctions');
 
 Route::get('/admin/search', 'adminController@search');
 Route::post('/admin/search', 'adminController@getSearch');
@@ -113,3 +113,4 @@ Route::post('/questionPass/edit1', 'forgetPassController@update3');
 //--------------------
 
 Route::get('/2016670126', 'backController@index');
+Route::get('/blocked', 'startController@stop');

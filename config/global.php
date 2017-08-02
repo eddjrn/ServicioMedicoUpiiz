@@ -41,6 +41,7 @@ return [
         '',
         'Administrador',
         'Alumno',
+        'Desarrollador',
     ),
     'proveedores' => array(
         'Seleccionar',
@@ -133,6 +134,8 @@ return [
         'TwentySeven',
         'TwentyEight',
         'TwentyNine',
+        'Thirty',
+        'ThirtyOne',
     ),
     //Fin estilos
 ];
