@@ -37,7 +37,7 @@
                     </div>
 						</div>
 						
-					<input type="hidden" value="{{$student->user->id}}" id="studentId" name="studentId">
+					<input type="hidden" value="{{$student->id}}" id="studentId" name="studentId">
 					<input type="hidden" name="clave" value="{{$student->respuesta}}" id="clave">
 						<div class="text-center">
     				<button type="submit" class="btn btn-rounded btn-inline btn-warning">Aceptar</button>
@@ -55,5 +55,3 @@
     <script src="{{asset('/Template/js/lib/clockpicker/bootstrap-clockpicker-init.js')}}"></script>
     <script src="{{asset('/Template/js/lib/daterangepicker/daterangepicker.js')}}"></script>
 @stop
-
-{{asset('/Template/js/lib/select2/select2.full.min.js')}}

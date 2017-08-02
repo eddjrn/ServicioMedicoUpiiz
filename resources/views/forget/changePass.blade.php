@@ -35,7 +35,7 @@
                         </div>
                     </div>
 						</div>
-                    <input type="hidden" value="{{$student->id}}" id="studentId" name="studentId">
+                    <input type="hidden" value="{{$student->usuario_id}}" id="studentId" name="studentId">
 						<div class="text-center">
     				<button type="submit" class="btn btn-rounded btn-inline btn-warning">Guardar</button>
 						</div>
