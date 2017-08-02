@@ -22,6 +22,16 @@ class userTableSeeder extends Seeder
             'tipo' => '1',
         ]);
         
+        DB::table('usuario')->insert([
+            'nombre' => 'UPIIZ-IPN',
+            'apellidoPaterno' => 'Desarrolladores',
+            'apellidoMaterno' => 'SM',
+            'email' => 'eemail@correo.com',
+            'password' => bcrypt('desarrollo'),
+            'identificacion' => '12345678',
+            'tipo' => '3',
+        ]);
+        
         if(config('global.desarrollo')){
             DB::table('usuario')->insert([
                 'nombre' => 'Juanito',

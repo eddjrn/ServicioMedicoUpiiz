@@ -26,7 +26,7 @@ class medicalDataTableSeeder extends Seeder
             
             for($i = 0; $i <= $limit; $i++){
                 DB::table('datosMedicos')->insert([
-                    'usuario_id' => $i+3,
+                    'usuario_id' => $i+4,
                     'numSeguro' => rand(10 , 99).rand(10 , 99).' '.rand(10 , 99).' '.rand(10 , 99).rand(10 , 99).rand(0 , 9),
                     'clinica_id' => rand(2 , 54),
                     'proveedorSeguro' => rand(1 , 3),

@@ -64,7 +64,7 @@ class studentTableSeeder extends Seeder
                 }
             
                 DB::table('alumno')->insert([
-                    'usuario_id' => $i+3,
+                    'usuario_id' => $i+4,
                     'carrera_id' => rand(1 , 5),
                     'municipio_id' => rand(1 , 58),
                     'estado_id' => rand (1 , 31),

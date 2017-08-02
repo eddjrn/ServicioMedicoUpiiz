@@ -2,7 +2,7 @@
 
 return [
     //Desarrollo
-    'desarrollo' => true,
+    'desarrollo' => false,
     'limite' => 100,
     //Fin desarrollo
     

@@ -58,7 +58,7 @@ class medicalRecordTableSeeder extends Seeder
                 }
                 
                 DB::table('historiaMedica')->insert([
-                    'usuario_id' => $i+3,
+                    'usuario_id' => $i+4,
 
                     'alergias' => $allergy,
                     
