@@ -78,5 +78,5 @@
 @stop
 
 @section('scripts')
-<script src="/Template/js/custom/search.js"></script>
+<script src="{{asset('/Template/js/custom/search.js')}}"></script>
 @stop

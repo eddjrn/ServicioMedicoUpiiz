@@ -47,11 +47,13 @@
 @stop
 
 @section('scripts')
-    <script src="/Template/js/lib/bootstrap-select/bootstrap-select.min.js"></script>
-    <script src="/Template/js/lib/select2/select2.full.min.js"></script>
-    <script src="/Template/js/custom/completeProfileToggle.js"></script>
+    <script src="{{asset('/Template/js/lib/bootstrap-select/bootstrap-select.min.js')}}"></script>
+    <script src="{{asset('/Template/js/lib/select2/select2.full.min.js')}}"></script>
+    <script src="{{asset('/Template/js/custom/completeProfileToggle.js')}}"></script>
     
-    <script src="/Template/js/lib/clockpicker/bootstrap-clockpicker.min.js"></script>
-    <script src="/Template/js/lib/clockpicker/bootstrap-clockpicker-init.js"></script>
-    <script src="/Template/js/lib/daterangepicker/daterangepicker.js"></script>
+    <script src="{{asset('/Template/js/lib/clockpicker/bootstrap-clockpicker.min.js')}}"></script>
+    <script src="{{asset('/Template/js/lib/clockpicker/bootstrap-clockpicker-init.js')}}"></script>
+    <script src="{{asset('/Template/js/lib/daterangepicker/daterangepicker.js')}}"></script>
 @stop
+
+{{asset('/Template/js/lib/select2/select2.full.min.js')}}

@@ -31,7 +31,7 @@
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <label class="form-label" for="hide-show-password">Repetir contraseña</label>
-                        <input id="hide-show-password2" type="text" class="form-control" value="" name="clave2">
+                       <input id="hide-show-password2" type="text" class="form-control" value="" name="clave2">
                         </div>
                     </div>
 						</div>
@@ -45,12 +45,12 @@
 
 @section('scripts')
 
-    <script src="/Template/js/lib/bootstrap-select/bootstrap-select.min.js"></script>
-    <script src="/Template/js/lib/select2/select2.full.min.js"></script>
-    <script src="/Template/js/custom/completeProfileToggle.js"></script>
+    <script src="{{asset('/Template/js/lib/bootstrap-select/bootstrap-select.min.js')}}"></script>
+    <script src="{{asset('/Template/js/lib/select2/select2.full.min.js')}}"></script>
+    <script src="{{asset('/Template/js/custom/completeProfileToggle.js')}}"></script>
     
-    <script src="/Template/js/lib/clockpicker/bootstrap-clockpicker.min.js"></script>
-    <script src="/Template/js/lib/clockpicker/bootstrap-clockpicker-init.js"></script>
-    <script src="/Template/js/lib/daterangepicker/daterangepicker.js"></script>
+    <script src="{{asset('/Template/js/lib/clockpicker/bootstrap-clockpicker.min.js')}}"></script>
+    <script src="{{asset('/Template/js/lib/clockpicker/bootstrap-clockpicker-init.js')}}"></script>
+    <script src="{{asset('/Template/js/lib/daterangepicker/daterangepicker.js')}}"></script>
 
 @stop
