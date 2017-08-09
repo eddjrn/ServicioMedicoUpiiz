@@ -13,7 +13,7 @@ class medicalDataTableSeeder extends Seeder
     {
         if(config('global.desarrollo')){
             DB::table('datosMedicos')->insert([
-                'usuario_id' => '2',
+                'usuario_id' => '3',
                 'numSeguro' => '1175 48 36420',
                 'clinica_id' => '1',
                 'proveedorSeguro' => '1',

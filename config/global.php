@@ -2,8 +2,8 @@
 
 return [
     //Desarrollo
-    'desarrollo' => false,
-    'limite' => 100,
+    'desarrollo' => true,
+    'limite' => 150,
     //Fin desarrollo
     
     //Constantes

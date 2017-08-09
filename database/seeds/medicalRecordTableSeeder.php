@@ -14,7 +14,7 @@ class medicalRecordTableSeeder extends Seeder
         //
         if(config('global.desarrollo')){
             DB::table('historiaMedica')->insert([
-                'usuario_id' => '2',
+                'usuario_id' => '3',
                 
                 'alergias' => 'asma,polvo,gatos',
                 

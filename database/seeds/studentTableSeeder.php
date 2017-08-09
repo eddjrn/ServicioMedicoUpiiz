@@ -14,7 +14,7 @@ class studentTableSeeder extends Seeder
     {
         if(config('global.desarrollo')){
             DB::table('alumno')->insert([
-                'usuario_id' => '2',
+                'usuario_id' => '3',
                 'carrera_id' => '1',
                 'municipio_id' => '6',
                 'estado_id' => '15',
