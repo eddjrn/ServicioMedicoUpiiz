@@ -11,7 +11,15 @@ class medicalData extends Model
     
     protected $table = 'datosMedicos';
     
-    protected $fillable = ['usuario_id', 'numSeguro', 'clinica_id', 'proveedorSeguro', 'seguroVida', 'institucionSeguro_id', 'tipoSangre'];
+    protected $fillable = [
+    	'usuario_id',
+    	'numSeguro',
+    	'clinica_id',
+    	'proveedorSeguro',
+    	'seguroVida',
+    	'institucionSeguro_id',
+    	'tipoSangre',
+    ];
     
     protected $searchableColumns = [
         'numSeguro' => 20,

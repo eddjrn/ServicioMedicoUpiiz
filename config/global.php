@@ -46,7 +46,7 @@ return [
     'proveedores' => array(
         'Seleccionar',
         'UPIIZ-IPN',
-        'Padres',
+        //'Padres',
         'Trabajo',
     ),
     'SeguroVida' => array(

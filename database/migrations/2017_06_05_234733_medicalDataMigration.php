@@ -18,9 +18,9 @@ class MedicalDataMigration extends Migration
             $table->integer('usuario_id')->unsigned()->index();
             $table->foreign('usuario_id')->references('id')->on('usuario')->onDelete('cascade');
             
-            $table->string('numSeguro', 25)->unique();
-            $table->integer('proveedorSeguro');
-            $table->integer('seguroVida');
+            $table->string('numSeguro', 25)->unique()->nullable();
+            $table->integer('proveedorSeguro')->default(1);
+            $table->integer('seguroVida')->default(2);
             
             $table->integer('clinica_id')->unsigned()->index()->nullable();
             $table->foreign('clinica_id')->references('id')->on('clinica')->onDelete('set null');
@@ -28,7 +28,7 @@ class MedicalDataMigration extends Migration
             $table->integer('institucionSeguro_id')->unsigned()->index()->nullable();
             $table->foreign('institucionSeguro_id')->references('id')->on('institucionSeguro')->onDelete('set null');
             
-            $table->integer('tipoSangre');
+            $table->integer('tipoSangre')->default(1);
             
             
             $table->timestamps();

@@ -31,5 +31,8 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'prevent-back-history' => \App\Http\Middleware\PreventBackHistory::class,
         'admin' => \App\Http\Middleware\AdminAuth::class,
+        'student' => \App\Http\Middleware\StudentAuth::class,
+        'studentComplete' => \App\Http\Middleware\StudentCompleteAuth::class,
+        'avoidUser' => \App\Http\Middleware\AvoidAuth::class,
     ];
 }

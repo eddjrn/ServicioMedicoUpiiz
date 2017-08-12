@@ -121,7 +121,7 @@
 	                
 	                    <div class="dropdown user-menu">
 	                        <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                            <img src="{{asset('/Template/img/LogoSMadmin.svg')}}" alt="">
+	                            <img src="{{asset(Auth::user()->foto)}}" alt="">
 	                        </button>
 	                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
 	                            <a class="dropdown-item" href="{{asset('/admin/profile')}}"><span class="font-icon glyphicon glyphicon-user"></span>Perfil</a>
@@ -137,7 +137,7 @@
 	                    
 	                </div><!--.site-header-shown-->
 	                
-	                <span class="lbl hidden-md-down" style="font-size:25px">Unidad Profesional Interdisciplinaria de Ingeniería Campus Zacatecas</span>
+	                <span class="lbl hidden-md-down" style="font-size:25px;margin: 0 0 10px -150px;">Unidad Profesional Interdisciplinaria de Ingeniería Campus Zacatecas</span>
                     <span class="lbl hidden-lg-up" style="font-size:25px">UPIIZ-IPN</span>
                     
 	            </div><!--site-header-content-in-->

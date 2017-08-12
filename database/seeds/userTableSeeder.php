@@ -20,6 +20,7 @@ class userTableSeeder extends Seeder
             'password' => bcrypt('admin'),
             'identificacion' => '111128',
             'tipo' => '1',
+            'completado' => true,
         ]);
         
         DB::table('usuario')->insert([
@@ -30,6 +31,7 @@ class userTableSeeder extends Seeder
             'password' => bcrypt('desarrollo'),
             'identificacion' => '12345678',
             'tipo' => '3',
+            'completado' => true,
         ]);
         
         if(config('global.desarrollo')){
@@ -42,6 +44,7 @@ class userTableSeeder extends Seeder
                 'password' => bcrypt('1234'),
                 'identificacion' => '2016670126',
                 'tipo' => '2',
+                'completado' => true,
             ]);
 
             $limit = config('global.limite');
@@ -67,6 +70,7 @@ class userTableSeeder extends Seeder
                     'password' => bcrypt('norman'),
                     'identificacion' => '20'.rand(10 , 99).rand(10 , 99).rand(10 , 99).rand(10 , 99),
                     'tipo' => '2',
+                    'completado' => true,
                 ]);
             }
         }

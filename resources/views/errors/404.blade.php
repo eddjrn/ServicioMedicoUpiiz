@@ -15,8 +15,8 @@
     <div class="page-center-in">
         <div class="container-fluid">
             <div class="page-error-box">
-                <div class="error-code">503</div>
-                <div class="error-title">Volveremos pronto ;)</div>
+                <div class="error-code">404</div>
+                <div class="error-title">Página no disponible :(</div>
                 <a href="/" class="btn btn-rounded">Inicio</a>
             </div>
         </div>

@@ -133,8 +133,8 @@ class profileController extends Controller
             'sexo'=>'required',
             'telefono'=>'required',
             'turno'=>'required',
-            'numExterior'=>'required',
-            'numInterior'=>'required',
+            //'numExterior'=>'required',
+            //'numInterior'=>'required',
             'colonia'=>'required',
             'codigoPostal'=>'required',
             'localidad'=>'required',
@@ -188,11 +188,17 @@ class profileController extends Controller
             'respuesta' => $request->respuesta,
         ]);
         
+        $clinicInstitute = $request->institucionClinica;
+        $clinic = $request->numClinica;
+        if($clinicInstitute != 1){
+        	$clinic = null;
+        }
+        
         $medicalData = $user->medicalData;
         $medicalData->update([
             'numSeguro'=>$request->numSeguro,
             'proveedorSeguro'=>$request->proveedorSeguro,
-            'clinica_id'=>$request->numClinica,
+            'clinica_id'=>$clinic,
             'institucionSeguro_id'=>$request->institucionClinica,
             'tipoSangre'=>$request->sangre,
         ]);
@@ -254,6 +260,22 @@ class profileController extends Controller
         return redirect('/profile');
     }
     
+    public function destroyPhoto(Request $request){
+    	$user = \App\user::find($request->user);
+    	$user->update([
+    		'foto'=>null,
+    	]);
+    	return back();
+    }
+    
+    public function updatePhoto(Request $request){
+    	$user = \App\user::find($request->user);
+    	$user->update([
+    		'foto'=>'/Template/img/avatar-1-64.png',
+    	]);
+    	return back();
+    }
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -300,8 +322,8 @@ class profileController extends Controller
      */
     public function create()
     {
-        if(Auth::user()->student){
-            session()->flash('message', '¡Bienvenido!');
+        if(Auth::user()->completado == '1'){
+            session()->flash('message', '¡Bienvenido '. Auth::user(). '!');
             session()->flash('type', 'success');
 
             return redirect('/');
@@ -358,13 +380,13 @@ class profileController extends Controller
        // $dateFormated = Carbon::createFromFormat($input, $date)->format($output);
         //return $dateFormated;
         
-        if(Auth::user()->student){
+        if(Auth::user()->completado == '1'){
             return redirect('/')->withErrors([
                 'El alumno ya existe en la base de datos',
             ]);
         } else{
-            student::create([
-                'usuario_id'=>Auth::user()->id,
+        	$student = Auth::user()->student;
+            $student->update([
                 'carrera_id'=>$request->carrera,
                 'municipio_id'=>$request->municipio,
                 'estado_id'=>$request->estado,
@@ -390,8 +412,8 @@ class profileController extends Controller
                 'respuesta' => $request->respuesta,
             ]);
             
-            medicalData::create([
-                'usuario_id'=>Auth::user()->id,
+            $medicalData = Auth::user()->medicalData;
+            $medicalData->update([
                 'numSeguro'=>$request->numSeguro,
                 'proveedorSeguro'=>$request->proveedorSeguro,
                 'seguroVida'=>'2',
@@ -400,11 +422,8 @@ class profileController extends Controller
                 'tipoSangre'=>$request->sangre,
             ]);
             
-            medicalRecord::create([
-                'usuario_id'=>Auth::user()->id,
-                'fumar'=>'0',
-                'alcohol'=>'0',
-                'transfusiones'=>'0',
+            Auth::user()->update([
+            	'completado'=>true,
             ]);
             
             session()->flash('message', '¡Bienvenido! - Nuevo usuario');

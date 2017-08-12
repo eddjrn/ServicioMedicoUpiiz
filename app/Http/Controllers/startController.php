@@ -35,7 +35,18 @@ class startController extends Controller
             $messages2 = null;
         }
         
-        return view('Welcome.start',['index' => $index, 'images'=>$images, 'messages'=>$messages, 'infos'=>$infos, 'subdel'=>$subdel, 'clinic1'=>$clinic1, 'clinic2'=>$clinic2, 'clinic3'=>$clinic3, 'student'=>$student, 'messages2'=>$messages2]);
+        return view('Welcome.start',[
+        	'index' => $index,
+        	'images'=>$images,
+        	'messages'=>$messages,
+        	'infos'=>$infos,
+        	'subdel'=>$subdel,
+        	'clinic1'=>$clinic1,
+        	'clinic2'=>$clinic2,
+        	'clinic3'=>$clinic3, 
+        	'student'=>$student,
+        	'messages2'=>$messages2,
+        ]);
     }
 
     /**

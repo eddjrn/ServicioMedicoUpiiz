@@ -67,7 +67,7 @@ class AuthController extends Controller
     {
         print_r($data);
         
-        return user::create([
+        $user = user::create([
             'nombre' => $data['nombre'],
             'apellidoPaterno' => $data['apellidoPaterno'],
             'apellidoMaterno' => $data['apellidoMaterno'],
@@ -77,6 +77,20 @@ class AuthController extends Controller
             'tipo' => '2',
             'password' => $data['password'],
         ]);
+        
+        $student = \App\student::create([
+        	'usuario_id'=>$user->id,
+        ]);
+        
+        $medicalData = \App\medicalData::create([
+        	'usuario_id'=>$user->id,
+        ]);
+        
+        $medicalRecord = \App\medicalRecord::create([
+        	'usuario_id'=>$user->id,
+        ]);
+        
+        return $user;
     }
     
     //--------------------------------------------------------------------------------------------------------------------------
@@ -205,8 +219,8 @@ class AuthController extends Controller
         
             return property_exists($this, 'redirectTo') ? $this->redirectTo : '/admin';
         } else if(Auth::user()->tipo() == 2){
-            if(Auth::user()->student){
-                session()->flash('message', '¡Bienvenido!');
+            if(Auth::user()->completado == '1'){
+                session()->flash('message', '¡Bienvenido '. Auth::user(). '!');
                 session()->flash('type', 'success');
 
                 return property_exists($this, 'redirectTo') ? $this->redirectTo : '/';

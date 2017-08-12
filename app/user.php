@@ -31,7 +31,18 @@ class user extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $fillable = ['nombre', 'apellidoPaterno', 'apellidoMaterno', 'email', 'facebook', 'identificacion', 'tipo', 'password'];
+    protected $fillable = [
+    	'nombre',
+    	'apellidoPaterno',
+    	'apellidoMaterno',
+    	'email',
+    	'facebook',
+    	'identificacion',
+    	'tipo',
+    	'password',
+    	'foto',
+    	'completado',
+    ];
     //protected $guarded = ['tipo'];
 
     /**
@@ -102,6 +113,25 @@ class user extends Model implements AuthenticatableContract,
     
     public function setPasswordAttribute($password) {
         $this->attributes['password'] = bcrypt($password);
+    }
+    
+    public function getCompletadoAttribute($value){
+    	if($value){
+    		return "Perfìl completo";
+    	} else{
+    		return "Perfìl incompleto";
+    	}
+    }
+    public function completado(){
+    	return $this->getOriginal('completado');
+    }
+    
+    public function getFotoAttribute($value){
+    	if($value == null){
+    		return "/Template/img/avatar.svg";
+    	} else{
+    		return $value;
+    	}
     }
     
     public function generation(){

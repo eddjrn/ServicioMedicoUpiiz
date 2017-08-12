@@ -15,7 +15,7 @@ class medicalDataTableSeeder extends Seeder
             DB::table('datosMedicos')->insert([
                 'usuario_id' => '3',
                 'numSeguro' => '1175 48 36420',
-                'clinica_id' => '1',
+                'clinica_id' => '2',
                 'proveedorSeguro' => '1',
                 'seguroVida' => '1',
                 'institucionSeguro_id' => '1',
@@ -29,7 +29,7 @@ class medicalDataTableSeeder extends Seeder
                     'usuario_id' => $i+4,
                     'numSeguro' => rand(10 , 99).rand(10 , 99).' '.rand(10 , 99).' '.rand(10 , 99).rand(10 , 99).rand(0 , 9),
                     'clinica_id' => rand(2 , 54),
-                    'proveedorSeguro' => rand(1 , 3),
+                    'proveedorSeguro' => rand(1 , 2),
                     'seguroVida' => rand(1 , 2),
                     'institucionSeguro_id' => rand(1 , 6),
                     'tipoSangre' => rand(1 , 8),

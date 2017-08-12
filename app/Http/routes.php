@@ -11,21 +11,21 @@
 |
 */
 
-Route::get('/', 'startController@index');
+Route::get('/', 'startController@index')->middleware('avoidUser');
 
-Route::get('/news', 'newsController@index');
-Route::get('/contact','contactController@index');
-Route::get('/tutorials','tutorialsController@index');
-Route::get('/maps', 'mapsController@index');
+Route::get('/news', 'newsController@index')->middleware('avoidUser');
+Route::get('/contact','contactController@index')->middleware('avoidUser');
+Route::get('/tutorials','tutorialsController@index')->middleware('avoidUser');
+Route::get('/maps', 'mapsController@index')->middleware('avoidUser');
 
-Route::get('/credits', 'creditsController@index');
+Route::get('/credits', 'creditsController@index')->middleware('avoidUser');
 
-Route::get('/antecedentes','antecedentesController@index');
-Route::get('/imss','imssController@index');
-Route::get('/carta','cartaController@index');
+Route::get('/antecedentes','antecedentesController@index')->middleware('studentComplete');
+Route::get('/imss','imssController@index')->middleware('studentComplete');
+Route::get('/carta','cartaController@index')->middleware('studentComplete');
 
-Route::get('/forms', 'formsController@index');
-Route::get('/lifeInsurance', 'lifeInsuranceController@index');
+Route::get('/forms', 'formsController@index')->middleware('studentComplete');
+Route::get('/lifeInsurance', 'lifeInsuranceController@index')->middleware('studentComplete');
 
 Route::get('/login', 'Auth\AuthController@getLogin');
 Route::post('/login', 'Auth\AuthController@postLogin');
@@ -35,17 +35,19 @@ Route::post('/signup', 'Auth\AuthController@postRegister');
 
 Route::get('/logout','Auth\AuthController@getLogout');
 
-Route::get('/profile', 'profileController@index');
-Route::get('/profile/newStudent', 'profileController@create');
-Route::post('/profile/newStudent', 'profileController@store');
-Route::post('/profile/check', 'profileController@checkPassword');
+Route::get('/profile', 'profileController@index')->middleware('studentComplete');
+Route::get('/profile/newStudent', 'profileController@create')->middleware('student');
+Route::post('/profile/newStudent', 'profileController@store')->middleware('student');
+Route::post('/profile/check', 'profileController@checkPassword')->middleware('studentComplete');
 
-Route::get('/profile/edit', 'profileController@edit');
-Route::post('/profile/edit', 'profileController@update');
+Route::get('/profile/edit', 'profileController@edit')->middleware('studentComplete');
+Route::post('/profile/edit', 'profileController@update')->middleware('studentComplete');
+Route::post('/profile/photoDel', 'profileController@destroyPhoto')->middleware('studentComplete');
+Route::post('/profile/photoUp', 'profileController@updatePhoto')->middleware('studentComplete');
 
-Route::post('/profile/check1', 'profileController@checkPassword1');
-Route::get('/profile/edit1', 'profileController@edit1');
-Route::post('/profile/edit1', 'profileController@update1');
+Route::post('/profile/check1', 'profileController@checkPassword1')->middleware('studentComplete');
+Route::get('/profile/edit1', 'profileController@edit1')->middleware('studentComplete');
+Route::post('/profile/edit1', 'profileController@update1')->middleware('studentComplete');
 // ---------------------------------------------------------------------------------------
 
 Route::get('/admin', 'adminController@index');
@@ -69,6 +71,8 @@ Route::get('/admin/add', 'adminController@addBlog');
 Route::get('/admin/profile', 'adminController@profile');
 Route::post('/admin/profile', 'adminController@profilePassword');
 Route::patch('/admin/profile', 'adminController@editProfile');
+Route::post('/admin/photoDel', 'adminController@destroyPhoto');
+Route::post('/admin/photoUp', 'adminController@updatePhoto');
 
 Route::get('/admin/config', 'adminController@configIndex');
 Route::post('/admin/config/{variable}', 'adminController@checkPassword');
@@ -112,5 +116,5 @@ Route::post('/questionPass/edit1', 'forgetPassController@update3');
 
 //--------------------
 
-Route::get('/2016670126', 'backController@index');
+//Route::get('/2016670126', 'backController@index');
 Route::get('/blocked', 'startController@stop');

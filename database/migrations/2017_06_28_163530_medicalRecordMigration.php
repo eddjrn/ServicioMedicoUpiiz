@@ -21,14 +21,14 @@ class MedicalRecordMigration extends Migration
             
             $table->text('alergias')->nullable();
 
-            $table->integer('fumar');
+            $table->boolean('fumar')->default(false);
             $table->integer('numFumar')->nullable();
             $table->integer('edadFumar')->nullable();
             
-            $table->integer('alcohol');
+            $table->boolean('alcohol')->default(false);
             $table->integer('numAlcohol')->nullable();
             
-            $table->integer('transfusiones');
+            $table->boolean('transfusiones')->default(false);
             $table->integer('edadTransfusiones')->nullable();
             
             $table->text('cirugias')->nullable();

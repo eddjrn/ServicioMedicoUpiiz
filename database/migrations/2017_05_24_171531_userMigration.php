@@ -21,7 +21,9 @@ class UserMigration extends Migration
             $table->text('facebook')->nullable();
             $table->string('password', 60);
             $table->integer('identificacion')->unique();
-            $table->integer('tipo');
+            $table->integer('tipo')->default(1);
+            $table->string('foto')->nullable();
+            $table->boolean('completado')->default(false);
             $table->timestamps();
             $table->rememberToken();
         });

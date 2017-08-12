@@ -27,29 +27,29 @@ class StudentMigration extends Migration
             $table->integer('estado_id')->unsigned()->index()->nullable();
             $table->foreign('estado_id')->references('id')->on('estado')->onDelete('set null');
             
-            $table->integer('sexo');
-            $table->integer('documentacion');
+            $table->integer('sexo')->default(1);
+            $table->integer('documentacion')->default(2);
             $table->text('observaciones')->nullable();
-            $table->integer('turno');
+            $table->integer('turno')->default(1);
             
-            $table->string('telefono', 15);
-            $table->string('calle', 50);
-            $table->string('numExterior', 8);
-            $table->string('numInterior', 8);
-            $table->string('colonia', 50);
-            $table->integer('codigoPostal');
-            $table->string('localidad', 50);
+            $table->string('telefono', 15)->nullable();
+            $table->string('calle', 50)->nullable();
+            $table->string('numExterior', 8)->nullable();
+            $table->string('numInterior', 8)->nullable();
+            $table->string('colonia', 50)->nullable();
+            $table->integer('codigoPostal')->nullable();
+            $table->string('localidad', 50)->nullable();
             
             $table->string('curp', 20)->unique();
-            $table->date('fechaNacimiento');
+            $table->date('fechaNacimiento')->default('1995-01-01');
             
-            $table->string('tutor', 150);
-            $table->string('telefonoTutor', 15);
-            $table->string('celularTutor', 15);
-            $table->integer('parentescoTutor');
+            $table->string('tutor', 150)->nullable();
+            $table->string('telefonoTutor', 15)->nullable();
+            $table->string('celularTutor', 15)->nullable();
+            $table->integer('parentescoTutor')->default(1);
             
-            $table->text('pregunta',50);
-            $table->text('respuesta',50);
+            $table->string('pregunta',50)->default("sin especificar");
+            $table->string('respuesta',50)->default("sin especificar");
             
             $table->integer('estatus_id')->unsigned()->index()->nullable();
             $table->foreign('estatus_id')->references('id')->on('estatus')->onDelete('set null');

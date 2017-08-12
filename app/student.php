@@ -13,7 +13,32 @@ class student extends Model
     
     protected $table = 'alumno';
     
-    protected $fillable = ['usuario_id', 'carrera_id', 'municipio_id', 'estado_id', 'sexo', 'documentacion', 'observaciones', 'turno', 'telefono', 'calle', 'numExterior', 'numInterior', 'colonia', 'codigoPostal', 'localidad', 'curp', 'fechaNacimiento', 'tutor', 'telefonoTutor', 'celularTutor', 'parentescoTutor', 'estatus_id','pregunta','respuesta'];
+    protected $fillable = [
+    	'usuario_id',
+    	'carrera_id',
+    	'municipio_id',
+    	'estado_id',
+    	'sexo',
+    	'documentacion',
+    	'observaciones',
+    	'turno',
+    	'telefono',
+    	'calle',
+    	'numExterior',
+    	'numInterior',
+    	'colonia',
+    	'codigoPostal',
+    	'localidad',
+    	'curp',
+    	'fechaNacimiento',
+    	'tutor',
+    	'telefonoTutor',
+    	'celularTutor',
+    	'parentescoTutor',
+    	'estatus_id',
+    	'pregunta',
+    	'respuesta',
+    ];
     //protected $guarded = ['usuario_id'];
     
     protected $dates = [

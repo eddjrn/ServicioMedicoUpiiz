@@ -37,7 +37,16 @@ class adminController extends Controller
         $clinic2 = \App\clinic::find(5);
         $clinic3 = \App\clinic::find(6);
         
-        return view('Admin.start',['index' => $index, 'images'=>$images, 'messages'=>$messages, 'infos'=>$infos, 'subdel'=>$subdel, 'clinic1'=>$clinic1, 'clinic2'=>$clinic2, 'clinic3'=>$clinic3]);
+        return view('Admin.start',[
+        	'index' => $index,
+        	'images'=>$images,
+        	'messages'=>$messages,
+        	'infos'=>$infos,
+        	'subdel'=>$subdel,
+        	'clinic1'=>$clinic1,
+        	'clinic2'=>$clinic2,
+        	'clinic3'=>$clinic3,
+        ]);
     }
      
     public function blog()
@@ -624,6 +633,22 @@ class adminController extends Controller
         session()->flash('type', 'success');
         
         return redirect('/admin/profile');
+    }
+    
+    public function destroyPhoto(Request $request){
+    	$user = \App\user::find($request->user);
+    	$user->update([
+    		'foto'=>null,
+    	]);
+    	return redirect('/admin/profile');
+    }
+    
+    public function updatePhoto(Request $request){
+    	$user = \App\user::find($request->user);
+    	$user->update([
+    		'foto'=>'/Template/img/avatar-1-64.png',
+    	]);
+    	return redirect('/admin/profile');
     }
     
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

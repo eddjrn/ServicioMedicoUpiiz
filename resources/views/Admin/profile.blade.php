@@ -39,6 +39,63 @@
         </div>
     </div>
 </div><!--.modal-->
+@else
+<div class="modal fade"
+        id="photoModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="photoModalLabel"
+        aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                    <i class="font-icon-close-2"></i>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Cambiar foto de perfil</h4>
+            </div>
+            <div class="modal-body text-center">
+                <div class="widget-user-photo">
+					<img src="{{asset($user->foto)}}" alt="" class="img-size">
+				</div>
+            </div>
+            <div class="modal-footer text-center">
+            	{!!Form::open(array('method'=>'post'))!!}
+            	<input type="hidden" value="{{$user->id}}" name="user">
+            	<div class="row">
+            		<div class="col-lg-6 col-md-6 col-sm-6">
+						<button type="submit" class="btn btn-rounded btn-inline btn-warning" formaction="{{asset('/admin/photoUp')}}">Cambiar foto</button>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						<button type="submit" class="btn btn-rounded btn-inline btn-danger" formaction="{{asset('/admin/photoDel')}}">Eliminar foto</button>
+					</div>
+				</div>
+				{!!Form::close()!!}
+			</div>
+        </div>
+    </div>
+</div><!--.modal-->
+
+<div class="modal fade"
+        id="myModalFace"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalFaceLabel"
+        aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                    <i class="font-icon-close-2"></i>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">¿Cómo pongo el link de Facebook?</h4>
+            </div>
+            <div class="modal-body text-center">
+                <img src="{{asset('/Template/img/Facebookprocess.gif')}}" class="img-size round">
+            </div>
+        </div>
+    </div>
+</div><!--.modal-->
 @endunless
 
 <div class="page-center">
@@ -47,7 +104,7 @@
                 @if(isset($edit))
                 {!!Form::model($user, array('url'=>'/admin/profile', 'method'=>'patch', 'class'=>'sign-box'))!!}
                     <div class="sign-avatar">
-                        <img src="{{asset('/Template/img/avatar-sign.png')}}" alt="">
+                        <a data-toggle="modal" data-target="#photoModal"><img src="{{asset($user->foto)}}" alt=""></a>
                     </div>
                     
                     @include('alerts.formError')
@@ -70,7 +127,12 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="exampleInputDisabled2">Facebook</label>
-                        {!!Form::text('facebook', null, ['class'=>'form-control', 'placeholder'=>'Ej: ejemplo@correo.com'])!!}
+                        <div class="input-group">
+                            {!!Form::text('facebook', null, ['class'=>'form-control', 'placeholder'=>'Link de Facebook', 'id'=>'facebook'])!!}
+                            <div class="input-group-addon">
+                                <a data-toggle="modal" data-target="#myModalFace"><span class="font-icon font-icon-eye"></span></a>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="exampleInputDisabled2">Identificación</label>
@@ -98,7 +160,7 @@
                 @else
                  <form class="sign-box">
                     <div class="sign-avatar">
-                        <img src="{{asset('/Template/img/LogoSMadmin.svg')}}" alt="">
+                        <img src="{{asset($user->foto)}}" alt="">
                     </div>
                     <header class="sign-title">{{$user}}</header>
                     
@@ -144,4 +206,26 @@ Hola
 @section('scripts')
     <script src="{{asset('/Template/js/lib/hide-show-password/bootstrap-show-password.min.js')}}"></script>
     <script src="{{asset('/Template/js/lib/hide-show-password/bootstrap-show-password-init.js')}}"></script>
+    
+    <script>
+    	$(document).ready(function(){
+        	checkPosition();
+        });
+        
+        function checkPosition() {
+		    if (window.matchMedia('(max-width: 768px)').matches) {
+		        $('.img-size').css({
+		            'height':'170px',
+		            'width':'auto',
+		            'margin':'auto',
+		        });
+		    } else {
+		        $('.img-size').css({
+		            'height':'350px',
+		            'width':'auto',
+		            'margin':'auto',
+		        });
+		    }
+		}
+    </script>
 @stop

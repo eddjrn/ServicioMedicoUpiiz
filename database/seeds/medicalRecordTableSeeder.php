@@ -18,14 +18,14 @@ class medicalRecordTableSeeder extends Seeder
                 
                 'alergias' => 'asma,polvo,gatos',
                 
-                'fumar' => '1',
+                'fumar' => true,
                 'NumFumar' => '3',
                 'edadFumar' => '17',
                 
-                'alcohol' => '1',
+                'alcohol' => true,
                 'numAlcohol' => '2',
                 
-                'transfusiones' => '1',
+                'transfusiones' => true,
                 'edadTransfusiones' => '18',
                 
                 'cirugias' => 'garganta,corazon',
