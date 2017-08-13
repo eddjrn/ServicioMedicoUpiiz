@@ -8,11 +8,22 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
+            	<div class="row">
+            		<div class="col-lg-1 col-md-1">
+				    	<div class="tbl-cell tbl-cell-photo">
+				            <a href="#">
+				                <img src="{{asset('/Template/img/avatar.svg')}}" alt="" style="height:50px;width:auto;" id="photoUser">
+				            </a>
+				        </div>
+		            </div>
+		            <div class="col-lg-11 col-md-11">
+		            	<h4 class="modal-title" id="myModalLabel"></h4>
+               			 <p class="color-blue-grey-lighter" id="userModal"> </p>
+		            </div>
+                </div>
                 <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
                     <i class="font-icon-close-2"></i>
                 </button>
-                <h4 class="modal-title" id="myModalLabel"></h4>
-                <p class="color-blue-grey-lighter" id="userModal"> </p>
             </div>
             <div class="modal-body" id="bodyModal"></div>
             <div class="modal-footer">
@@ -34,7 +45,7 @@
                     <div class="tbl-row">
                         <div class="tbl-cell">
                             <p class="user-card-row-name">Carteles del más recientes</p>
-                            <p class="color-blue-grey-lighter">Últimos 5</p>
+                            <p class="color-blue-grey-lighter">Últimos {{$images->count()}}</p>
                         </div>
                         <div class="tbl-cell tbl-cell-status">
 <!--                             <a href="#" class="glyphicon glyphicon-plus"></a> -->
@@ -47,7 +58,7 @@
                     <?php
                         $index2 = 0;
                     ?>
-                    <ol class="carousel-indicators hidden-sm-down" style="z-index:3;">
+                    <ol class="carousel-indicators hidden-xs-down" style="z-index:3;">
                         @foreach($images as $image)
                         <li data-target="#carouselExampleIndicators" data-slide-to="{{$index2}}" class="btn btn-primary-outline btn-sm @if($index2 == 0) active @endif"></li>
                         <?php
@@ -120,7 +131,7 @@ Avisos <span class="label label-pill label-default"><strong>{{$messages->count()
 <div class="container">
     <div class="row" >
         @foreach($messages as $message)
-        <div class="col-lg-3 col-md-4 tasks-grid-col purple">
+        <div class="col-lg-3 col-md-4 col-sm-6 tasks-grid-col purple">
             <section class="box-typical task-card task">
                 <!--<div class="task-card-photo">
                     <img src="/Template/img/img-task.jpg" alt="">
@@ -143,7 +154,7 @@ Avisos <span class="label label-pill label-default"><strong>{{$messages->count()
                     
                     <div class="avatar-preview avatar-preview-32">
                         <a href="#">
-                            <img src="{{asset('/Template/img/avatar-1-64.png')}}" alt="">
+                            <img src="{{asset($message->user->foto)}}" alt="">
                         </a>
                     </div>
                 </div>
@@ -153,7 +164,7 @@ Avisos <span class="label label-pill label-default"><strong>{{$messages->count()
         
         @if(Auth::check() && isset($messages2))
             @foreach($messages2 as $message)
-            <div class="col-lg-3 col-md-4 tasks-grid-col red">
+            <div class="col-lg-3 col-md-4 col-sm-6 tasks-grid-col red">
                 <section class="box-typical task-card task">
                     <!--<div class="task-card-photo">
                         <img src="/Template/img/img-task.jpg" alt="">
@@ -176,7 +187,7 @@ Avisos <span class="label label-pill label-default"><strong>{{$messages->count()
                         
                         <div class="avatar-preview avatar-preview-32">
                             <a href="#">
-                                <img src="{{asset('/Template/img/avatar-1-64.png')}}" alt="">
+                                <img src="{{asset($message->user->foto)}}" alt="">
                             </a>
                         </div>
                     </div>
@@ -199,7 +210,7 @@ Avisos <span class="label label-pill label-default"><strong>{{$messages->count()
                             <div class="tbl-row">
                                 <div class="tbl-cell tbl-cell-photo">
                                     <a href="#">
-                                        <img src="{{asset('/Template/img/avatar-1-64.png')}}" alt="">
+                                        <img src="{{asset($message->user->foto)}}" alt="">
                                     </a>
                                 </div>
                                 <div class="tbl-cell">
@@ -207,7 +218,7 @@ Avisos <span class="label label-pill label-default"><strong>{{$messages->count()
                                     <p class="color-blue-grey-lighter">{{$info->FechaActualizacion()}}</p>
                                 </div>
                                 <div class="tbl-cell tbl-cell-status">
-                                    <a class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal" onclick="update('{{$info->user}}', '{{$info->FechaActualizacion()}}', '{{$info->titulo}}', '{{$info->contenido}}');"></a>
+                                    <a class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal" onclick="update('{{$info->user}}', '{{$info->FechaActualizacion()}}', '{{$info->titulo}}', '{{$info->contenido}}', '{{asset($message->user->foto)}}');"></a>
                                 </div>
                             </div>
                         </div>
@@ -257,28 +268,28 @@ Avisos <span class="label label-pill label-default"><strong>{{$messages->count()
                         <a class="nav-link active" data-toggle="tab" href="#w-1-tab-1" role="tab">
                             <i class="font-icon font-icon-map"></i>
                             <div class="hidden-sm-down">Sub Delegación</div>
-                            <div class="hidden-sm-up">Sub Del.</div>
+                            <div class="hidden-md-up">Sub Del.</div>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#w-1-tab-2" role="tab">
                             <i class="font-icon font-icon-map"></i>
                             <div class="hidden-sm-down">{{$clinic1->name()}} ({{$clinic1->place->nombre}})</div>
-                            <div class="hidden-sm-up">{{$clinic1->name()}}</div>
+                            <div class="hidden-md-up">{{$clinic1->name()}}</div>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#w-1-tab-3" role="tab">
                             <i class="font-icon font-icon-map"></i>
                             <div class="hidden-sm-down">{{$clinic2->name()}} ({{$clinic2->place->nombre}})</div>
-                            <div class="hidden-sm-up">{{$clinic2->name()}}</div>
+                            <div class="hidden-md-up">{{$clinic2->name()}}</div>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#w-1-tab-4" role="tab">
                             <i class="font-icon font-icon-map"></i>
                             <div class="hidden-sm-down">{{$clinic3->name()}} ({{$clinic3->place->nombre}})</div>
-                            <div class="hidden-sm-up">{{$clinic3->name()}}</div>
+                            <div class="hidden-md-up">{{$clinic3->name()}}</div>
                         </a>
                     </li>
                 </ul>

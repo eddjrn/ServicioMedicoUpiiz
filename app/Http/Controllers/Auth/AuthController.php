@@ -219,7 +219,7 @@ class AuthController extends Controller
         
             return property_exists($this, 'redirectTo') ? $this->redirectTo : '/admin';
         } else if(Auth::user()->tipo() == 2){
-            if(Auth::user()->completado == '1'){
+            if(Auth::user()->completado()){
                 session()->flash('message', '¡Bienvenido '. Auth::user(). '!');
                 session()->flash('type', 'success');
 

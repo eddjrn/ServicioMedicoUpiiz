@@ -82,7 +82,7 @@ Mensajes creados <span class="label label-pill label-default"><strong>{{$message
                     
                     <div class="avatar-preview avatar-preview-32">
                         <a href="#">
-                            <img src="{{asset('/Template/img/photo-64-2.jpg')}}" alt="">
+                            <img src="{{asset($message->user->foto)}}" alt="">
                         </a>
                     </div>
                 </div>

@@ -90,7 +90,9 @@
 	                                    <div class="dropdown-menu-messages-list">
                                             @foreach($messages->take(4) as $message)
 	                                        <a href="#" class="mess-item">
-	                                            <span class="avatar-preview avatar-preview-32"><img src="{{asset('/Template/img/photo-64-2.jpg')}}" alt=""></span>
+	                                            <span class="avatar-preview avatar-preview-32">
+	                                            	<img src="{{asset($message->user->foto)}}" alt="">
+	                                            </span>
 	                                            <span class="mess-item-name">{{$message->titulo}}</span>
 	                                            <span class="mess-item-txt">{{$message->contenido}}</span>
 	                                        </a>

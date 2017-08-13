@@ -58,8 +58,8 @@ Busqueda de registro
                         <div class="user-card-row">
                             <div class="tbl-row">
                                 <div class="tbl-cell tbl-cell-photo">
-                                    <a href="#">
-                                        <img src="{{asset('/Template/img/2-64.png')}}" alt="">
+                                    <a href="{{asset('/admin/lists')}}/{{$u->student->id}}">
+                                        <img src="{{asset($u->foto)}}" alt="">
                                     </a>
                                 </div>
                                 <div class="tbl-cell">

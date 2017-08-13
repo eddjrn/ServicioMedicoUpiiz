@@ -49,11 +49,12 @@ Bienvenido al servicio médico
             }
         }
         
-        function update(user, date,  title, content){
+        function update(user, date,  title, content, photo){
             document.getElementById('myModalLabel').innerHTML = title;
             document.getElementById('bodyModal').innerHTML = content;
             document.getElementById('dateModal').innerHTML = date;
             document.getElementById('userModal').innerHTML = 'Autor: '+user;
+            document.getElementById('photoUser').setAttribute('src', photo);
         }
     </script>
 @stop

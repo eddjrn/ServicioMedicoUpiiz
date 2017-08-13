@@ -15,7 +15,7 @@ class StudentAuth
      */
     public function handle($request, Closure $next)
     {
-    	if(Auth::check() && (Auth::user()->tipo() != 2 || Auth::user()->completado == '1') || !Auth::check()){
+    	if(Auth::check() && (Auth::user()->tipo() != 2 || Auth::user()->completado()) || !Auth::check()){
             return redirect('/');
         }
     	
