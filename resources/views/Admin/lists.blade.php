@@ -28,7 +28,9 @@
                     <div class="row">
                         <div class="col-lg-5 col-lg-offset-1 col-md-5 col-md-offset-1">
                             <h5 class="m-t-lg with-border">Estatus en el sistema</h5>
-                            <!--{{$estatus=\App\status::lists('nombre', 'id')}} -->
+                            <?php
+                              $estatus=\App\status::lists('nombre', 'id');
+                             ?>
                             {!!Form::select('estatus', $estatus, 1, ['class'=>'bootstrap-select bootstrap-select-arrow form-control', 'id'=>'estatus'])!!}
                         </div>
                         <div class="col-lg-5 col-md-5">
@@ -55,14 +57,14 @@
                 </div>
             </div>
             {!!Form::close()!!}
-            
+
              <div class="modal-footer">
                 <div class="text-center">
                     <a onclick="toggle();" id="more">Mostrar más</a>
                 </div>
             </div>
-            
-            {!!Form::open(array('method'=>'delete', 'style'=>'display:none', 'class'=>'details', 'id'=>'formDest'))!!}            
+
+            {!!Form::open(array('method'=>'delete', 'style'=>'display:none', 'class'=>'details', 'id'=>'formDest'))!!}
                 <input type="hidden" name="idVal2" id="idVal2" value="">
                 <div class="modal-footer">
                     <div class="container text-center">
@@ -133,19 +135,21 @@ Listas de todos los alumnos en el sistema
 
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane fade in active" id="tabs-1-tab-1">
-        
+
             <section class="widget widget-accordion" id="accordion" role="tablist" aria-multiselectable="true">
             <!--{{$x=0}} contador del array ($numbers) que viene del controlador y sirve para las clases de los acordeones-->
             @foreach($carrers as $carrer)
-            
+
             <?php
 //                 filtra los estudiantes a solo inscritos y no inscritos para las carreras y los ordena de manera descendente
                 $studentsFiltered = $carrer->students->filter(function ($student){
                     return $student->estatus_id == 1 || $student->estatus_id == 2;
                 })->sortByDesc('id');
+
+                $studentAll3 = $studentsFiltered->lists('id');
             ?>
-            
-            <!--     {{$studentAll3 = $studentsFiltered->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
+
+            <!-- $studentAll3 pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
                 <!--el 1 es el numero de pagina, c{carrer id} es el id del div donde se cargaran las tablas, pagerc{carrer id} es el nav donde se cargaran los botones de navegacion de paginas, se envia un objeto json a la funcion javascript-->
                 <article class="panel">
                     <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'c{{$carrer->id}}','pagerc{{$carrer->id}}', {{json_encode($studentAll3)}}, 1);">
@@ -162,7 +166,7 @@ Listas de todos los alumnos en el sistema
                     </div>
                     <div id="collapse{{$numbers[$x]}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$numbers[$x]}}">
                         <div class="panel-collapse-in">
-                        
+
                             <section class="box-typical box-typical-max-280">
                                 <header class="box-typical-header">
                                     <div class="tbl-row">
@@ -190,7 +194,7 @@ Listas de todos los alumnos en el sistema
                                                 <div id="c{{$carrer->id}}">
                                                     <!--Tabla generada por el script .load() de jquery-->
                                                 </div>
-                                                
+
                                                 <div class="text-center">
                                                     <nav id="pagerc{{$carrer->id}}">
                                                         <!--Paginador de la tabla generado por el script innerHTML-->
@@ -201,20 +205,23 @@ Listas de todos los alumnos en el sistema
                                     </div>
                                 </div><!--.box-typical-body-->
                             </section><!--.box-typical-->
-                            
+
                         </div>
                     </div>
                 </article>
                 <!--{{$x++}}-->
             @endforeach
             </section>
-            
+
         </div><!--.tab-pane-->
         <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-2">
-        
+
          <section class="widget widget-accordion" id="accordion" role="tablist" aria-multiselectable="true">
             @foreach($status as $statu)
-            <!--     {{$studentAll4 = $statu->students->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
+            <?php
+              $studentAll4 = $statu->students->lists('id');
+             ?>
+            <!-- $studentAll4 pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
                 <article class="panel">
                     <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 's{{$statu->id}}','pagers{{$statu->id}}', {{json_encode($studentAll4)}}, 2);">
                         <a data-toggle="collapse"
@@ -229,7 +236,7 @@ Listas de todos los alumnos en el sistema
                     </div>
                     <div id="collapse{{$numbers[$x]}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$numbers[$x]}}">
                         <div class="panel-collapse-in">
-                        
+
                             <section class="box-typical box-typical-max-280">
                                 <header class="box-typical-header">
                                     <div class="tbl-row">
@@ -242,7 +249,7 @@ Listas de todos los alumnos en el sistema
                                             ?>
                                                     <span class="label label-{{config('global.hasState')[1]}}">Completos: {{$studentsDocuments->where('documentacion', 1)->count()}}</span>
                                                     <span class="label label-{{config('global.hasState')[2]}}">Incompletos: {{$studentsDocuments->where('documentacion', 2)->count()}}</span>
-                                                
+
                                             </h3>
                                         </div>
                                     </div>
@@ -254,7 +261,7 @@ Listas de todos los alumnos en el sistema
                                                 <div id="s{{$statu->id}}">
                                                     <!--Tabla generada por el script .load() de jquery-->
                                                 </div>
-                                                
+
                                                 <div class="text-center">
                                                     <nav id="pagers{{$statu->id}}">
                                                         <!--Paginador de la tabla generado por el script innerHTML-->
@@ -265,15 +272,15 @@ Listas de todos los alumnos en el sistema
                                     </div>
                                 </div><!--.box-typical-body-->
                             </section><!--.box-typical-->
-                            
+
                         </div>
                     </div>
                 </article>
                 <!--{{$x++}}-->
             @endforeach
             </section>
-            
-        
+
+
         <section class="widget widget-accordion" id="accordion" role="tablist" aria-multiselectable="true">
                 <?php
                     $on = false;
@@ -281,7 +288,10 @@ Listas de todos los alumnos en el sistema
                 ?>
                 @foreach(config('global.documentacion') as $doc)
                 @if($on == true)
-                <!--     {{$studentAll5 = $studentAll->where('documentacion', $docStyle)->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
+                  <?php
+                    $studentAll5 = $studentAll->where('documentacion', $docStyle)->lists('id');
+                   ?>
+                <!-- $studentAll5 pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
                 <article class="panel">
                     <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'd{{$docStyle}}','pagerd{{$docStyle}}', {{json_encode($studentAll5)}}, 3);">
                         <a data-toggle="collapse"
@@ -296,7 +306,7 @@ Listas de todos los alumnos en el sistema
                     </div>
                     <div id="collapse{{$numbers[$x]}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$numbers[$x]}}">
                         <div class="panel-collapse-in">
-                        
+
                             <section class="box-typical box-typical-max-280">
                                 <header class="box-typical-header">
                                     <div class="tbl-row">
@@ -318,7 +328,7 @@ Listas de todos los alumnos en el sistema
                                                 <div id="d{{$docStyle}}">
                                                     <!--Tabla generada por el script .load() de jquery-->
                                                 </div>
-                                                
+
                                                 <div class="text-center">
                                                     <nav id="pagerd{{$docStyle}}">
                                                         <!--Paginador de la tabla generado por el script innerHTML-->
@@ -329,7 +339,7 @@ Listas de todos los alumnos en el sistema
                                     </div>
                                 </div><!--.box-typical-body-->
                             </section><!--.box-typical-->
-                            
+
                         </div>
                     </div>
                 </article>
@@ -341,17 +351,17 @@ Listas de todos los alumnos en el sistema
                 ?>
                 @endforeach
             </section>
-        
+
         </div><!--.tab-pane-->
         <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">
-        
-        
+
+
         </div><!--.tab-pane-->
         <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-4">
-        
-            
-            
-            
+
+
+
+
             <section class="widget widget-accordion" id="accordion" role="tablist" aria-multiselectable="true">
                 <?php
                     $on = false;
@@ -360,18 +370,21 @@ Listas de todos los alumnos en el sistema
                 @foreach(config('global.proveedores') as $prov)
                 @if($on == true)
                 <article class="panel">
-<!--                 {{$studentsM = new Illuminate\Database\Eloquent\Collection()}} -->
-                                                
-                @foreach($medicalDatas->where('proveedorSeguro', $prov) as $medicalData)                           
-<!--                     {{$studentsM->push($medicalData)}} -->
+                  <?php
+                    $studentsM = new Illuminate\Database\Eloquent\Collection();
+                   ?>
+
+                @foreach($medicalDatas->where('proveedorSeguro', $prov) as $medicalData)
+                  <?php
+                    $studentsM->push($medicalData);
+                   ?>
                 @endforeach
-                
-                 <!--     {{$studentAll8 = $studentsM->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
-                 
-                 <script>
-                    //alert({{$studentAll8}});
-                 </script>
-                
+
+                <?php
+                  $studentAll8 = $studentsM->lists('id');
+                 ?>
+                 <!-- $studentAll8 pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
+
                     <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'm{{$medicStyle}}','pagerm{{$medicStyle}}', {{json_encode($studentAll8)}}, 4);">
                         <a data-toggle="collapse"
                             data-parent="#accordion"
@@ -385,7 +398,7 @@ Listas de todos los alumnos en el sistema
                     </div>
                     <div id="collapse{{$numbers[$x]}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$numbers[$x]}}">
                         <div class="panel-collapse-in">
-                        
+
                             <section class="box-typical box-typical-max-280">
                                 <header class="box-typical-header">
                                     <div class="tbl-row">
@@ -408,11 +421,11 @@ Listas de todos los alumnos en el sistema
                                 <div class="box-typical-body">
                                     <div class="table-responsive">
                                         <table class="table table-hover">
-                                            <tbody>                                                
+                                            <tbody>
                                                 <div id="m{{$medicStyle}}">
                                                     <!--Tabla generada por el script .load() de jquery-->
                                                 </div>
-                                                
+
                                                 <div class="text-center">
                                                     <nav id="pagerm{{$medicStyle}}">
                                                         <!--Paginador de la tabla generado por el script innerHTML-->
@@ -423,7 +436,7 @@ Listas de todos los alumnos en el sistema
                                     </div>
                                 </div><!--.box-typical-body-->
                             </section><!--.box-typical-->
-                            
+
                         </div>
                     </div>
                 </article>
@@ -434,9 +447,9 @@ Listas de todos los alumnos en el sistema
                     $medicStyle++;
                 ?>
                 @endforeach
-            </section>  
-            
-            
+            </section>
+
+
             <section class="widget widget-accordion" id="accordion" role="tablist" aria-multiselectable="true">
                 <?php
                     $on = false;
@@ -445,14 +458,20 @@ Listas de todos los alumnos en el sistema
                 @foreach(config('global.SeguroVida') as $seg)
                 @if($on == true)
                 <article class="panel">
-<!--                 {{$studentsI1 = new Illuminate\Database\Eloquent\Collection()}} -->
-                                                
-                @foreach($medicalDatas->where('seguroVida', $segStyle) as $medicalData)                           
-<!--                     {{$studentsI1->push($medicalData)}} -->
+                  <?php
+                    $studentsI1 = new Illuminate\Database\Eloquent\Collection();
+                   ?>
+
+                @foreach($medicalDatas->where('seguroVida', $segStyle) as $medicalData)
+                  <?php
+                    $studentsI1->push($medicalData);
+                   ?>
                 @endforeach
-                
-                 <!--     {{$studentAll10 = $studentsI1->lists('id')}} pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
-                 
+                <?php
+                  $studentAll10 = $studentsI1->lists('id');
+                 ?>
+                 <!-- $studentAll10  pone en una lista los estudiantes filtrados para enviarlos a la paginacion-->
+
                     <div class="panel-heading" role="tab" id="heading{{$numbers[$x]}}" onclick="loadPages(1, 'I{{$segStyle}}','pagerI{{$segStyle}}', {{json_encode($studentAll10)}}, 5);">
                         <a data-toggle="collapse"
                             data-parent="#accordion"
@@ -466,7 +485,7 @@ Listas de todos los alumnos en el sistema
                     </div>
                     <div id="collapse{{$numbers[$x]}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$numbers[$x]}}">
                         <div class="panel-collapse-in">
-                        
+
                             <section class="box-typical box-typical-max-280">
                                 <header class="box-typical-header">
                                     <div class="tbl-row">
@@ -484,7 +503,7 @@ Listas de todos los alumnos en el sistema
                                                 <div id="I{{$segStyle}}">
                                                     <!--Tabla generada por el script .load() de jquery-->
                                                 </div>
-                                                
+
                                                 <div class="text-center">
                                                     <nav id="pagerI{{$segStyle}}">
                                                         <!--Paginador de la tabla generado por el script innerHTML-->
@@ -495,7 +514,7 @@ Listas de todos los alumnos en el sistema
                                     </div>
                                 </div><!--.box-typical-body-->
                             </section><!--.box-typical-->
-                            
+
                         </div>
                     </div>
                 </article>
@@ -507,7 +526,7 @@ Listas de todos los alumnos en el sistema
                 ?>
                 @endforeach
             </section>
-        
+
         </div><!--.tab-pane-->
     </div><!--.tab-content-->
 </section><!--.tabs-section-->
@@ -521,14 +540,14 @@ Listas de todos los alumnos en el sistema
 @section('scripts')
     <script src="{{asset('/Template/js/lib/bootstrap-select/bootstrap-select.min.js')}}"></script>
     <script src="{{asset('/Template/js/custom/listsEdits.js')}}"></script>
-    
+
     <script> /*script para que se puedan enviar peticiones POST desde javascript*/
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        
+
         $(document).ready(function(){
             $('.remove-example').find('[value=0]').remove();
         });

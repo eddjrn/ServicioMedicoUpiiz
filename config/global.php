@@ -5,7 +5,7 @@ return [
     'desarrollo' => true,
     'limite' => 150,
     //Fin desarrollo
-    
+
     //Constantes
     'nombresAntecedentes' => array(
         'Ninguno',
@@ -66,7 +66,7 @@ return [
         'AB-',
     ),
     //fin constantes
-    
+
     //Estilos
     'statusStyleTextBox' => array(
         ' ',
