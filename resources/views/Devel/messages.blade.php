@@ -1,4 +1,4 @@
-@extends('Admin.layout2')
+@extends('Devel.layout3')
 
 @section('title')
 <title>Mensajes creados</title>

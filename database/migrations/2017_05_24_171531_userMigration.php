@@ -20,7 +20,7 @@ class UserMigration extends Migration
             $table->string('email', 50)->unique();
             $table->text('facebook')->nullable();
             $table->string('password', 60);
-            $table->integer('identificacion')->unique();
+            $table->string('identificacion')->unique();
             $table->integer('tipo')->default(1);
             $table->string('foto')->nullable();
             $table->boolean('completado')->default(false);

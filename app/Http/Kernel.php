@@ -34,5 +34,7 @@ class Kernel extends HttpKernel
         'student' => \App\Http\Middleware\StudentAuth::class,
         'studentComplete' => \App\Http\Middleware\StudentCompleteAuth::class,
         'avoidUser' => \App\Http\Middleware\AvoidAuth::class,
+        'devel' => \App\Http\Middleware\DevelAuth::class,
+        'avoidStudent' => \App\Http\Middleware\AvoidStudentAuth::class,
     ];
 }

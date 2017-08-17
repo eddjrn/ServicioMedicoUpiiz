@@ -19,24 +19,24 @@ class adminController extends Controller
         $this->middleware('auth');
         $this->middleware('admin');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-     
+
     public function index(){
         $index = 5;
         $images = \App\images::all()->sortByDesc('updated_at')->take(5);
         $messages = \App\message::all()->sortByDesc('updated_at')->where('destino', null)->take(6);
         $infos = \App\info::all()->sortByDesc('updated_at')->take(6);
-        
+
         $subdel = \App\clinic::find(1);
         $clinic1 = \App\clinic::find(2);
         $clinic2 = \App\clinic::find(5);
         $clinic3 = \App\clinic::find(6);
-        
+
         return view('Admin.start',[
         	'index' => $index,
         	'images'=>$images,
@@ -48,7 +48,7 @@ class adminController extends Controller
         	'clinic3'=>$clinic3,
         ]);
     }
-     
+
     public function blog()
     {
         $index = 1;
@@ -58,120 +58,66 @@ class adminController extends Controller
         $tutorials=\App\tutorials::all();
         return view('Admin.blog', ['index'=>$index,'info'=> $info,'images'=> $images,'video'=> $video,'tutorials'=> $tutorials]);
     }
-    
-    public function getMessages(){
-        $index = 0;
-        //$messages = \App\message::all()->where('usuario_id', Auth::user()->id)->sortByDesc('updated_at');
-        $messages = Auth::user()->messages->sortByDesc('updated_at');
-        
-        return view('Admin.messages', ['index'=>$index, 'messages'=>$messages]);
-    }
-    
+
     public function newMessage(Request $request){
         $this->validate($request, [
             'tituloMensaje' => 'required',
             'contenidoMensaje' => 'required',
         ]);
-        
+
         $message = \App\message::create([
             'usuario_id' => Auth::user()->id,
             'titulo' => $request->tituloMensaje,
             'contenido' => $request->contenidoMensaje,
             'destino' => $request->usuarioMensaje,
         ]);
-        
+
         session()->flash('message', 'Se creó nuevo aviso con el titulo: '. $request->tituloMensaje);
         session()->flash('type', 'success');
-        
+
         return back();
     }
-    
-    public function message(Request $request){
-        $this->validate($request, [
-            'titulo' => 'required',
-            'contenido' => 'required',
-        ]);
-    
-        $message = \App\message::create([
-            'usuario_id' => Auth::user()->id,
-            'titulo' => $request->titulo,
-            'contenido' => $request->contenido,
-        ]);
-        
-        session()->flash('message', 'Se creó nuevo aviso para toda la comunidad con el titulo: '. $request->titulo);
-        session()->flash('type', 'success');
-        
-        return back();
-    }
-    
-    public function editMessage(Request $request, $message){
-        $this->validate($request, [
-            'tituloMensaje' => 'required',
-            'contenidoMensaje' => 'required',
-        ]);
-        
-        $updateMessage = \App\message::find($message);
-        $updateMessage->update([
-            'titulo' => $request->tituloMensaje,
-            'contenido' => $request->contenidoMensaje,
-        ]);
-    
-        session()->flash('message', 'Se actualizó mensaje con el titulo: '. $request->tituloMensaje);
-        session()->flash('type', 'success');
-        
-        return back();
-    }
-    
-    public function destroyMessage(Request $request){
-        $message = \App\message::find($request->message);
-        $message->delete();
-        
-        session()->flash('message', 'Se elimió el mensaje con el titulo: '. $request->tituloMensaje);
-        session()->flash('type', 'danger');
-        
-        return back();
-    }
-    
+
     public function lists()
     {
         $index = 2;
-        
+
         $numbers = config('global.numbers');
-        
+
         $carrers = \App\carrer::all();
         $status = \App\status::all();
         $studentAll = \App\student::all();
         $medicalDatas = \App\medicalData::all();
-        
-        
+
+
         return view('Admin.lists', ['index'=>$index, 'numbers'=>$numbers, 'carrers'=>$carrers, 'status'=>$status, 'studentAll'=>$studentAll, 'medicalDatas'=>$medicalDatas]);
     }
-    
+
     public function pagination(Request $request, $list){
         $array = $request->data;
         $idUniqueSection = $request->id;
         $indexSection = $request->index;
-        
+
         $students = new Collection();
-        
+
         $page = ($list-1) * 5;
         $slice = array_slice($array,$page,5);
-        
+
         //return $slice;
-        
+
         foreach($slice as $a){
             $students->push(\App\student::find($a));
         }
         //return print_r($students);
-        
+
         //$studentsPaginated = $students->forPage($list, 5);
-        
+
         $lastPage = count($array) / 5;
-        
+
         $statusStyle = config('global.statusStyleTextBox');
         return view('Admin.list', ['list'=>$list, 'array'=>$array, 'statusStyle'=>$statusStyle, 'studentsPaginated'=>$students, 'lastPage'=>$lastPage, 'idUniqueSection'=>$idUniqueSection, 'indexSection'=>$indexSection]);
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -181,12 +127,12 @@ class adminController extends Controller
     public function show($id)
     {
         $index = 0;
-        
+
         $student = \App\student::find($id);
-        
+
         return view('Admin.student', ['index'=>$index, 'student'=>$student]);
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -196,21 +142,21 @@ class adminController extends Controller
     public function edit(Request $request, $id)
     {
         //abort(500);
-        
+
         //return ':v';
-        
+
         $student = \App\student::find($id);
         $student->update([
             'documentacion'=>$request->documentacion,
             'estatus_id'=>$request->estatus,
             'observaciones'=>$request->observaciones,
         ]);
-        
+
         $medicalData = $student->user->medicalData;
         $medicalData->update([
             'seguroVida'=>$request->seguro,
         ]);
-        
+
         if($request->ajax()){
             $user = $student->user;
             return response()->json([
@@ -220,107 +166,107 @@ class adminController extends Controller
                 "carrer" => $student->carrer->nombre,
             ]);
         }
-        
+
         return back();
     }
-    
+
     public function search(){
         $index = 4;
-        
+
         return view('Admin.search', ['index'=>$index]);
     }
-    
+
     public function getSearch(Request $request){
         $index = 4;
-        
+
         switch($request->opc){
             case 1:
                 $this->validate($request, [
                     'busqueda' => 'required'
                 ]);
-            
+
                 $user = \App\user::search($request->busqueda)->where('tipo', 2)->get();
-                
+
                 if(count($user) == 0){
                     session()->flash('message', 'No se encontró ningun registro con: '.$request->busqueda);
                     session()->flash('type', 'danger');
                 }
-                
+
                 return view('Admin.search', ['index'=>$index, 'user'=>$user]);
             break;
-            
+
             case 2:
                 $this->validate($request, [
                     'busqueda' => 'required'
                 ]);
-                
+
                 $user = \App\user::where('identificacion', $request->busqueda)->where('tipo', 2)->get();
-                
+
                 if(count($user) == 0){
                     session()->flash('message', 'No se encontró ningun registro con la boleta: '.$request->busqueda);
                     session()->flash('type', 'danger');
                 }
-                
+
                 return view('Admin.search', ['index'=>$index, 'user'=>$user]);
             break;
-            
+
             case 3:
                 $this->validate($request, [
                     'busqueda' => 'required'
                 ]);
-                
+
                 $medicalData = \App\medicalData::where('numSeguro', 'like', $request->busqueda)->get();
-                
+
                 if(count($medicalData) == 0){
                     session()->flash('message', 'No se encontró ningun registro con número: '.$request->busqueda);
                     session()->flash('type', 'danger');
                 }
-                
+
                 return view('Admin.search', ['index'=>$index, 'medicalData'=>$medicalData]);
             break;
-            
+
             case 4:
                 $this->validate($request, [
                     'busqueda' => 'required'
                 ]);
-                
+
                 $user = \App\user::where('email', $request->busqueda)->where('tipo', 2)->get();
-                
+
                 if(count($user) == 0){
                     session()->flash('message', 'No se encontró ningun registro con el correo: '.$request->busqueda);
                     session()->flash('type', 'danger');
                 }
-                
+
                 return view('Admin.search', ['index'=>$index, 'user'=>$user]);
             break;
-            
+
             case 5:
                 $this->validate($request, [
                     'busqueda' => 'required'
                 ]);
-                
+
                 $medicalData = \App\medicalData::search($request->busqueda)->get();
-                
+
                 if(count($medicalData) == 0){
                     session()->flash('message', 'No se encontró ningun registro con número: '.$request->busqueda);
                     session()->flash('type', 'danger');
                 }
-                
+
                 return view('Admin.search', ['index'=>$index, 'medicalData'=>$medicalData]);
             break;
-            
+
             case 6:
                 $this->validate($request, [
                     'busqueda' => 'required'
                 ]);
-            
+
                 $student = \App\student::search($request->busqueda)->get();
-                
+
                 if(count($student) == 0){
                     session()->flash('message', 'No se encontró ningun registro con boleta: '.$request->busqueda);
                     session()->flash('type', 'danger');
                 }
-                
+
                 return view('Admin.search', ['index'=>$index, 'student'=>$student]);
             break;
         }
@@ -368,12 +314,12 @@ class adminController extends Controller
     public function destroy(Request $request)
     {
         //abort(500);
-        
+
         $student = \App\student::find($request->idVal2);
         $user = $student->user;
-        
+
         $user->delete();
-        
+
         if($request->ajax()){
             return response()->json([
                 "message" => "Se ha eliminado a el usuario:",
@@ -382,26 +328,26 @@ class adminController extends Controller
                 "carrer" => $student->carrer->nombre,
             ]);
         }
-        
+
         session()->flash('message', 'Se eliminó a: '.$user. ' con boleta de: '. $user->identificacion);
-        
+
         $user->delete();
-        
+
         session()->flash('type', 'danger');
-        
+
         return redirect('/admin/lists');
     }
-    
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
+
     public function addBlog(){
-        
+
         $index = 3;
         $info=\App\info::all();
         $images=\App\images::all();
         $video=\App\video::all();
         $tutorials=\App\tutorials::all();
-        
+
         return view('Admin.addBlog', ['index'=>$index,'info'=> $info,'images'=> $images,'video'=> $video,'tutorials'=> $tutorials]);
 
     }
@@ -467,7 +413,7 @@ class adminController extends Controller
 
             'contenidoImg'=>'required|min:40',
             'tituloImg'=>'required|min:4'
-            
+
             ]);
 
         $post=\App\images::find($request->id_postImg);
@@ -485,7 +431,7 @@ class adminController extends Controller
         $post->delete();
         return back();
     }
-    
+
  public function newVideo(Request $request)
     {
         $this->validate($request,[
@@ -499,7 +445,7 @@ class adminController extends Controller
                 'usuario_id'=> Auth::user()->id,
                 'titulo'=>$request->Titulo_Del_Video,
                 'link'=>$request->Link_Del_Video,
-                'imagen' => $request->Link_De_la_imagen   
+                'imagen' => $request->Link_De_la_imagen
             ]);
         return back();
     }
@@ -517,7 +463,7 @@ class adminController extends Controller
             'titulo'=>$request->eTituloVid,
             'link'=>$request->eContenidoVid,
             'imagen'=>$request->eContenidoVidImg
-            
+
             ]);
         return back();
 
@@ -543,7 +489,7 @@ class adminController extends Controller
                 'usuario_id'=> Auth::user()->id,
                 'titulo'=>$request->Titulo_Del_Tutorial,
                 'link'=>$request->Link_Del_Tutorial,
-                'imagen' => $request->Link_De_la_imagen_Tutorial   
+                'imagen' => $request->Link_De_la_imagen_Tutorial
             ]);
         return back();
     }
@@ -562,7 +508,7 @@ class adminController extends Controller
             'titulo'=>$request->eTituloTuto,
             'link'=>$request->eContenidoTuto,
             'imagen'=>$request->eContenidoTutoImg
-            
+
             ]);
         return back();
 
@@ -575,87 +521,10 @@ class adminController extends Controller
         return back();
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    public function profile(){
-        $index = -1;
-        
-        $user = Auth::user();
-        
-        return view('Admin.profile', ['index'=>$index, 'user'=>$user]);
-    }
-    
-    public function profilePassword(Request $request){
-        $this->validate($request, [
-            'clave' => 'required',
-        ]);
-    
-        if(Hash::check($request->clave, Auth::user()->password)){
-            $index = -1;
-            
-            $edit = true;
-            $user = Auth::user();
-            
-            return view('Admin.profile', ['index'=>$index, 'edit'=>$edit, 'user'=>$user]);
-        } else{
-            return redirect('/admin/profile')
-            ->withErrors([
-                $request->clave => 'No coinciden las contraseñas',
-            ]);
-        }
-    }
-    
-    public function editProfile(Request $request){
-        $this->validate($request, [
-            'nombre' => 'required|min:3|max:50',
-            'apellidoPaterno' => 'required|min:3|max:50',
-            'apellidoMaterno' => 'required|min:3|max:50',
-            'email' => 'required|email:min:5|max:50',
-            'facebook' => 'url',
-            'identificacion' => 'required|same:identificacion2|max:11|:min:5',
-            'identificacion2' => 'required',
-            'clave' => 'required|same:clave2|min:6|max:30',
-            'clave2' => 'required',
-        ]);
-        
-        $user = Auth::user();
-        
-        $user->update([
-            'nombre' => $request->nombre,
-            'apellidoPaterno' => $request->apellidoPaterno,
-            'apellidoMaterno' => $request->apellidoMaterno,
-            'email' => $request->email,
-            'facebook' => $request->facebook,
-            'identificacion' => $request->identificacion,
-            'password' => $request->clave,
-        ]);
-        
-        session()->flash('message', 'Usuario '.$user. ' actualizado correctamente');
-        session()->flash('type', 'success');
-        
-        return redirect('/admin/profile');
-    }
-    
-    public function destroyPhoto(Request $request){
-    	$user = \App\user::find($request->user);
-    	$user->update([
-    		'foto'=>null,
-    	]);
-    	return redirect('/admin/profile');
-    }
-    
-    public function updatePhoto(Request $request){
-    	$user = \App\user::find($request->user);
-    	$user->update([
-    		'foto'=>'/Template/img/avatar-1-64.png',
-    	]);
-    	return redirect('/admin/profile');
-    }
-    
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
+
     public function configIndex(){
         $index = -1;
-        
+
         $students = \App\student::all();
         $carrer = \App\carrer::all();
         $clinics = \App\clinic::all();
@@ -664,8 +533,8 @@ class adminController extends Controller
         $place = \App\place::all();
         $medicalDatas = \App\medicalData::all();
         $status = \App\status::all();
-        
-    
+
+
         return view('Admin.config', [
             'index'=>$index,
             'students'=>$students,
@@ -678,19 +547,19 @@ class adminController extends Controller
             'status'=>$status,
         ]);
     }
-    
+
     public function checkPassword(Request $request, $variable){
         $this->validate($request, [
             'clave' => 'required',
         ]);
-        
+
         if(Hash::check($request->clave, Auth::user()->password)){
             if($request->ajax()){
                 return response()->json([
                     "message" => "Se ha eliminado a el usuario:",
                 ]);
             }
-            
+
             return redirect('/admin/config/insert/'.$variable);
         } else{
             return redirect('/admin/config')
@@ -699,14 +568,14 @@ class adminController extends Controller
             ]);
         }
     }
-    
+
     public function specialFunctions(Request $request){
         $studentsOpc = $request->input('check-toggle-1', 'false');
         $postsOpc = $request->input('check-toggle-2', 'false');
         $imagesOpc = $request->input('check-toggle-3', 'false');
         $videosOpc = $request->input('check-toggle-4', 'false');
         $tareasOpc = $request->input('check-toggle-5', 'false');
-        
+
         if($studentsOpc == 'true'){
             $students = \App\student::all()->where('estatus_id', 1);
             foreach($students as $student){
@@ -739,22 +608,22 @@ class adminController extends Controller
                 $tarea->delete();
             }
         }
-        
+
         session()->flash('message', 'Operaciones seleccionadas realizadas');
         session()->flash('type', 'success');
-        
+
         return redirect('/admin/config');
     }
-    
+
     public function getRegisterWindow($variable){
         $index = -1;
-            
+
         return view('Admin.dialogBox', ['index'=>$index, 'variable'=>$variable]);
     }
-    
+
     public function insertRegister(Request $request, $variable){
         return redirect('/blocked');
-        
+
         if($variable == 1){
             $this->validate($request, [
                 'nombre' => 'required|min:5|max:255',
@@ -772,7 +641,7 @@ class adminController extends Controller
             ]);
         }
 
-    
+
         if($variable == 1){
            \App\carrer::create([
                 'nombre' => $request->nombre,
@@ -802,10 +671,10 @@ class adminController extends Controller
                 'mapa' => $request->mapa,
             ]);
         }
-            
+
         return redirect('/admin/config/insert/'. $variable);
     }
-    
+
     public function updateRegister(Request $request, $variable){
         if($variable == 1){
             $this->validate($request, [
@@ -823,7 +692,7 @@ class adminController extends Controller
                 'nombre' => 'required',
             ]);
         }
-    
+
         if($variable == 1){
             $carrer = \App\carrer::find($request->idVal);
             $carrer->update([
@@ -859,13 +728,13 @@ class adminController extends Controller
                 'mapa' => $request->mapa,
             ]);
         }
-        
+
         return redirect('/admin/config/insert/'. $variable);
     }
-    
+
     public function deleteRegister(Request $request, $variable){
         return redirect('/blocked');
-        
+
         if($variable == 1){
             $carrer = \App\carrer::find($request->idVal2);
             $carrer->delete();
@@ -885,7 +754,7 @@ class adminController extends Controller
             $clinic = \App\clinic::find($request->idVal2);
             $clinic->delete();
         }
-        
+
         return redirect('/admin/config/insert/'. $variable);
     }
 }

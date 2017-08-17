@@ -102,7 +102,7 @@
 	                                <div class="tab-pane" id="tab-outgoing" role="tabpanel">
 	                                    <div class="dropdown-menu-messages-list">
 	                                        <a href="#">
-                                                {!!Form::open(array('url'=>'/message', 'method'=>'post'))!!}
+                                              {!!Form::open(array('url'=>'/message', 'method'=>'post'))!!}
 	                                            <input class="form-control" id="titulo" placeholder="Título" type="text" name="titulo">
 	                                            <br/>
 	                                            <textarea rows="2" class="form-control" placeholder="Contenido" id="contenido" name="contenido"></textarea>
@@ -116,7 +116,7 @@
 	                                </div>
 	                            </div>
 	                            <div class="dropdown-menu-notif-more">
-	                                <a href="{{asset('/person/messages/1')}}">Ver más</a>
+	                                <a href="{{asset('/person/messages/3')}}">Ver más</a>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -126,8 +126,8 @@
 	                            <img src="{{asset(Auth::user()->foto)}}" alt="">
 	                        </button>
 	                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
-	                            <a class="dropdown-item" href="{{asset('/person/profile/1')}}"><span class="font-icon glyphicon glyphicon-user"></span>Perfil</a>
-	                            <a class="dropdown-item" href="{{asset('/admin/config')}}"><span class="font-icon glyphicon glyphicon-cog"></span>Configuración</a>
+	                            <a class="dropdown-item" href="{{asset('/person/profile/3')}}"><span class="font-icon glyphicon glyphicon-user"></span>Perfil</a>
+	                            <a class="dropdown-item" href="{{asset('/devel/config')}}"><span class="font-icon glyphicon glyphicon-cog"></span>Configuración</a>
 	                            <div class="dropdown-divider"></div>
 	                            <a class="dropdown-item" href="{{asset('/logout')}}"><span class="font-icon glyphicon glyphicon-log-out"></span>Salir</a>
 	                        </div>
@@ -150,22 +150,7 @@
 	<div class="mobile-menu-left-overlay"></div> <!--=Index en este caso solo sirve para el estilo CSS-->
 	<ul class="main-nav nav nav-inline">
 		<li class="nav-item">
-			<a class="nav-link @if($index==5)active @endif" href="{{asset('/admin')}}">Inicio</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link @if($index==1)active @endif" href="{{asset('/admin/blog')}}">Blog</a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link @if($index==2)active @endif" href="{{asset('/admin/lists')}}">Listado</a>
-		</li>
-        <li class="nav-item">
-			<a class="nav-link @if($index==3)active @endif" href="{{asset('/admin/add')}}">Agregar</a>
-		</li>
-        <li class="nav-item">
-			<a class="nav-link @if($index==4)active @endif" href="{{asset('/admin/search')}}">Buscar</a>
-		</li>
-        <li class="nav-item">
-			<a class="nav-link" href="{{Auth::user()->facebook}}" target="_blank">Facebook</a>
+			<a class="nav-link @if($index==1)active @endif" href="{{asset('/devel')}}">Inicio</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="http://www.zacatecas.ipn.mx/Paginas/Inicio.aspx" target="_blank">UPIIZ</a>

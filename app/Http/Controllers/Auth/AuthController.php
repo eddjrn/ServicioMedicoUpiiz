@@ -66,7 +66,7 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         print_r($data);
-        
+
         $user = user::create([
             'nombre' => $data['nombre'],
             'apellidoPaterno' => $data['apellidoPaterno'],
@@ -77,31 +77,31 @@ class AuthController extends Controller
             'tipo' => '2',
             'password' => $data['password'],
         ]);
-        
+
         $student = \App\student::create([
         	'usuario_id'=>$user->id,
         ]);
-        
+
         $medicalData = \App\medicalData::create([
         	'usuario_id'=>$user->id,
         ]);
-        
+
         $medicalRecord = \App\medicalRecord::create([
         	'usuario_id'=>$user->id,
         ]);
-        
+
         return $user;
     }
-    
+
     //--------------------------------------------------------------------------------------------------------------------------
-    
+
     public function getLogin(){
         if (view()->exists('auth.authenticate')) {
             return view('auth.authenticate');
         }
-        
+
         $index = 4;
-        
+
         return view('auth.login', ['index'=>$index]);
     }
 
@@ -199,36 +199,41 @@ class AuthController extends Controller
     public function loginUsername(){
         return property_exists($this, 'username') ? $this->username : 'identificacion';
     }
-    
+
     //--------------------------------------------------------------------------------------------------------------------------------
-    
+
     public function getRegister(){
         $index = 4;
-        
+
         return view('auth.signup', ['index'=>$index]);
     }
-    
+
     public function redirectPath(){
         if (property_exists($this, 'redirectPath')) {
-            return $this->redirectPath;
+          return $this->redirectPath;
         }
-        
-        if(Auth::user()->tipo() == 1){
-            session()->flash('message', '¡Bienvenido! - Inició sesión como administrador');
-            session()->flash('type', 'warning');
-        
-            return property_exists($this, 'redirectTo') ? $this->redirectTo : '/admin';
-        } else if(Auth::user()->tipo() == 2){
-            if(Auth::user()->completado()){
-                session()->flash('message', '¡Bienvenido '. Auth::user(). '!');
-                session()->flash('type', 'success');
 
-                return property_exists($this, 'redirectTo') ? $this->redirectTo : '/';
-            } else{
-                return property_exists($this, 'redirectTo') ? $this->redirectTo : '/profile/newStudent';
-            }
+        if(Auth::user()->tipo() == 1){
+          session()->flash('message', '¡Bienvenido! - Inició sesión como administrador');
+          session()->flash('type', 'warning');
+
+          return property_exists($this, 'redirectTo') ? $this->redirectTo : '/admin';
+        } else if(Auth::user()->tipo() == 2){
+          if(Auth::user()->completado()){
+              session()->flash('message', '¡Bienvenido '. Auth::user(). '!');
+              session()->flash('type', 'success');
+
+              return property_exists($this, 'redirectTo') ? $this->redirectTo : '/';
+          } else{
+              return property_exists($this, 'redirectTo') ? $this->redirectTo : '/profile/newStudent';
+          }
+        } else if(Auth::user()->tipo() == 3){
+          session()->flash('message', '¡Bienvenido! - Inició sesión como desarrollador');
+          session()->flash('type', 'blue-dirty');
+
+          return property_exists($this, 'redirectTo') ? $this->redirectTo : '/devel';
         }
-        
+
     }
-    
+
 }

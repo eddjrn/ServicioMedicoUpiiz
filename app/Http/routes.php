@@ -54,11 +54,7 @@ Route::get('/admin', 'adminController@index');
 Route::get('/admin/blog', 'adminController@blog');
 Route::get('/admin/lists', 'adminController@lists');
 
-Route::post('/admin', 'adminController@message');
-Route::get('/admin/messages', 'adminController@getMessages');
-Route::post('/admin/newMessage', 'adminController@newMessage');
-Route::post('/admin/messageEdit/{message}', 'adminController@editMessage');
-Route::post('/admin/messageDel', 'adminController@destroyMessage');
+Route::post('/admin/newMessage', 'adminController@newMessage'); ///////////////////////////////
 
 Route::post('/admin/listsAll/pagination/{list}', 'adminController@pagination');
 
@@ -67,12 +63,6 @@ Route::post('/admin/lists/{id}', 'adminController@edit');
 Route::delete('/admin/lists', 'adminController@destroy');
 
 Route::get('/admin/add', 'adminController@addBlog');
-
-Route::get('/admin/profile', 'adminController@profile');
-Route::post('/admin/profile', 'adminController@profilePassword');
-Route::patch('/admin/profile', 'adminController@editProfile');
-Route::post('/admin/photoDel', 'adminController@destroyPhoto');
-Route::post('/admin/photoUp', 'adminController@updatePhoto');
 
 Route::get('/admin/config', 'adminController@configIndex');
 Route::post('/admin/config/{variable}', 'adminController@checkPassword');
@@ -118,3 +108,21 @@ Route::post('/questionPass/edit1', 'forgetPassController@update3');
 
 //Route::get('/2016670126', 'backController@index');
 Route::get('/blocked', 'startController@stop');
+
+//--------------------
+
+Route::get('/devel', 'develController@index');
+
+//--------------------
+
+Route::get('/person/profile/{type}', 'shareController@profile');
+Route::post('/person/profile/{type}', 'shareController@profilePassword');
+Route::patch('/person/profile/{type}', 'shareController@editProfile');
+Route::post('/person/photoDel/{type}', 'shareController@destroyPhoto');
+Route::post('/person/photoUp/{type}', 'shareController@updatePhoto');
+
+Route::post('/message', 'shareController@message');
+Route::get('/person/messages/{type}', 'shareController@getMessages');
+//Route::post('/person/newMessage', 'shareController@newMessage');
+Route::post('/person/messageEdit/{message}', 'shareController@editMessage');
+Route::post('/person/messageDel', 'shareController@destroyMessage');
