@@ -90,7 +90,7 @@ Edición de los datos personales
         </div>
         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-collapse-in">
-            
+
             <div class="user-card-row">
                 <div class="tbl-row">
                     <div class="tbl-cell tbl-cell-photo">
@@ -104,7 +104,7 @@ Edición de los datos personales
                     </div>
                 </div>
             </div>
-            
+
                 <div class="row">
                     <div class="{{$classSize}}">
                         <fieldset class="form-group">
@@ -125,7 +125,7 @@ Edición de los datos personales
                         </fieldset>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="{{$classSize}}">
                         <fieldset class="form-group">
@@ -136,7 +136,7 @@ Edición de los datos personales
                     <div class="{{$classSize}}">
                         <fieldset class="form-group">
                             <label class="form-label" for="exampleInputDisabled">Teléfono</label>
-                            {!!Form::text('telefono', null, ['class'=>'form-control', 'placeholder'=>'Ej: xxx-xxx-xx-xx', 'id'=>'telefono'])!!}
+                            {!!Form::text('telefono', $student->telefono, ['class'=>'form-control', 'id'=>'telefono'])!!}
                         </fieldset>
                     </div>
                     <div class="{{$classSize}}">
@@ -146,15 +146,15 @@ Edición de los datos personales
                         </fieldset>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="{{$classSize}}">
                         <fieldset class="form-group">
                             <label class="form-label" for="exampleInputDisabled">CURP</label>
-                            {!!Form::text('curp', null, ['class'=>'form-control', 'placeholder'=>'Ej: xxxxxxxxxxxxxxxxxx', 'id'=>'curp'])!!}
+                            {!!Form::text('curp', null, ['class'=>'form-control', 'id'=>'curp'])!!}
                         </fieldset>
                         <div class="form-group">
-                            <a href="https://consultas.curp.gob.mx/CurpSP/inicio2_2.jsp" target="_blank">Consultar CURP</a>
+                            <a href="{{config('globalInfo.curp')}}" target="_blank">Consultar CURP</a>
                         </div>
                     </div>
                     <div class="{{$classSize}}">
@@ -180,7 +180,7 @@ Edición de los datos personales
                         </fieldset>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </article>
@@ -198,7 +198,7 @@ Edición de los datos personales
         </div>
         <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
             <div class="panel-collapse-in">
-            
+
             <div class="row">
                 <div class="{{$classSize}}">
                     <fieldset class="form-group">
@@ -209,17 +209,17 @@ Edición de los datos personales
                 <div class="{{$classSize}}">
                     <fieldset class="form-group">
                         <label class="form-label" for="exampleInputDisabled">Teléfono del tutor</label>
-                        {!!Form::text('telefonoTutor', null, ['class'=>'form-control', 'placeholder'=>'Ej: Tutor', 'id'=>'telefonoTutor'])!!}
+                        {!!Form::text('telefonoTutor', null, ['class'=>'form-control', 'id'=>'telefonoTutor'])!!}
                     </fieldset>
                 </div>
                 <div class="{{$classSize}}">
                     <fieldset class="form-group">
                         <label class="form-label" for="exampleInputDisabled">Teléfono celular del tutor</label>
-                        {!!Form::text('celularTutor', null, ['class'=>'form-control', 'placeholder'=>'Ej: Tutor', 'id'=>'celularTutor'])!!}
+                        {!!Form::text('celularTutor', null, ['class'=>'form-control', 'id'=>'celularTutor'])!!}
                     </fieldset>
                 </div>
             </div>
-            
+
             <div class="row">
                 <div class="{{$classSize}}">
                     <fieldset class="form-group">
@@ -228,7 +228,7 @@ Edición de los datos personales
                     </fieldset>
                 </div>
             </div>
-            
+
             </div>
         </div>
     </article>
@@ -246,7 +246,7 @@ Edición de los datos personales
         </div>
         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
             <div class="panel-collapse-in">
-                
+
                 <div class="row">
                     <div class="{{$classSize}}">
                         <fieldset class="form-group">
@@ -267,7 +267,7 @@ Edición de los datos personales
                         </fieldset>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </article>
@@ -285,7 +285,7 @@ Edición de los datos personales
         </div>
         <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
             <div class="panel-collapse-in">
-                
+
                 <div class="row">
                     <div class="{{$classSize}}">
                         <fieldset class="form-group">
@@ -306,7 +306,7 @@ Edición de los datos personales
                         </fieldset>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="{{$classSize}}">
                         <fieldset class="form-group">
@@ -321,7 +321,7 @@ Edición de los datos personales
                         </div>
                     </div>
                 </div>
-                
+
                 <h5 class="m-t-lg with-border">Historial médico</h5>
                 <div class="row">
                     <div class="{{$classSize}}">
@@ -343,7 +343,7 @@ Edición de los datos personales
                         </fieldset>
                     </div>
                 </div>
-                
+
                 <h5 class="m-t-lg with-border">Otra información</h5>
                 <div class="row">
                     <div class="{{$classSize}}">
@@ -387,7 +387,7 @@ Edición de los datos personales
                         </div>
                     </div>
                 </div>
-                
+
                 <h5 class="m-t-lg with-border">Antecedentes de enfermedades en la familia</h5>
                 <div class="row">
                     <div class="{{$classSize}}">
@@ -486,7 +486,7 @@ Edición de los datos personales
         </div>
         <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
             <div class="panel-collapse-in">
-                
+
                 <div class="row">
                     <div class="{{$classSize}}">
                         <fieldset class="form-group">
@@ -507,7 +507,7 @@ Edición de los datos personales
                         </fieldset>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="{{$classSize}}">
                         <fieldset class="form-group">
@@ -518,11 +518,11 @@ Edición de los datos personales
                     <div class="{{$classSize}}">
                         <fieldset class="form-group">
                             <label class="form-label" for="exampleInputDisabled">Codigo postal</label>
-                            {!!Form::text('codigoPostal', null, ['class'=>'form-control', 'placeholder'=>'Ej: xxxxxx', 'id'=>'codigoPostal'])!!}
+                            {!!Form::text('codigoPostal', null, ['class'=>'form-control', 'id'=>'cp'])!!}
                         </fieldset>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="{{$classSize}}">
                         <div class="form-group">
@@ -543,7 +543,7 @@ Edición de los datos personales
                         </fieldset>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </article>
@@ -593,22 +593,31 @@ Edición de los datos personales
     <script src="{{asset('/Template/js/lib/bootstrap-select/bootstrap-select.min.js')}}"></script>
     <script src="{{asset('/Template/js/lib/select2/select2.full.min.js')}}"></script>
     <script src="{{asset('/Template/js/custom/completeProfileToggle.js')}}"></script>
-    
+
     <script src="{{asset('/Template/js/lib/clockpicker/bootstrap-clockpicker.min.js')}}"></script>
     <script src="{{asset('/Template/js/lib/clockpicker/bootstrap-clockpicker-init.js')}}"></script>
     <script src="{{asset('/Template/js/lib/daterangepicker/daterangepicker.js')}}"></script>
-    
+
+    <script src="{{asset('/Template/js/lib/input-mask/jquery.mask.min.js')}}"></script>
+
     <script>
         $(document).ready(function(){
-        	checkPosition();
-        	
+    	     checkPosition();
+
+           $('#telefono').mask('(000) 000-0000', {placeholder: "Ej: (000) 000-0000"});
+           $('#curp').mask('AAAA000000AAAAAA00', {placeholder: "Ej: AAAA000000AAAAAA00"});
+           $('#telefonoTutor').mask('(000) 000-0000', {placeholder: "Ej: (000) 000-0000"});
+           $('#celularTutor').mask('(000) 000-0000', {placeholder: "Ej:(000) 000-0000"});
+
+           $('#cp').mask('00000', {placeholder: "Ej: 00000"});
+
             $(".numForm").TouchSpin({
                 initval:2,
                 min:1,
             });
             $('.remove-example').find('[value=0]').remove();
             $('.remove-opc').find('[value=1]').remove();
-            
+
             $('.imss').change(function(){
             	var opc = $('.imss option:selected').text();
             	if(opc == "IMSS"){
@@ -618,7 +627,7 @@ Edición de los datos personales
             	}
             });
         });
-        
+
         function fumarToggle(){
             $('#fumarForms').slideToggle('show');
         }
@@ -628,7 +637,7 @@ Edición de los datos personales
         function transfusionesToggle(){
             $('#transfusionesForms').slideToggle('show');
         }
-        
+
         function checkPosition() {
 		    if (window.matchMedia('(max-width: 768px)').matches) {
 		        $('.img-size').css({
@@ -645,5 +654,5 @@ Edición de los datos personales
 		    }
 		}
     </script>
-    
-@stop 
+
+@stop

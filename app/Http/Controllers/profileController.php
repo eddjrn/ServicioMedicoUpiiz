@@ -429,12 +429,17 @@ class profileController extends Controller
                 'respuesta' => $request->respuesta,
             ]);
 
+            $clinic = $request->numClinica;
+            if($clinic == 0){
+              $clinic = null;
+            }
+
             $medicalData = Auth::user()->medicalData;
             $medicalData->update([
                 'numSeguro'=>$request->numSeguro,
                 'proveedorSeguro'=>$request->proveedorSeguro,
                 'seguroVida'=>'2',
-                'clinica_id'=>$request->numClinica,
+                'clinica_id'=>$clinic,
                 'institucionSeguro_id'=>$request->institucionClinica,
                 'tipoSangre'=>$request->sangre,
             ]);

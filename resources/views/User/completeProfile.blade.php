@@ -162,16 +162,16 @@
                     </ul>
                 </div>
 
-                <h5 class="m-t-lg with-border">Llenado de información medica</h5>
+                <h5 class="m-t-lg with-border">Llenado de información médica</h5>
                 <div class="row">
                   <div class="{{$classSizeForms}}">
                     <fieldset class="form-group">
-        							{!!Form::text('numSeguro', null, ['class'=>'form-control', 'id'=>'numSeguro', 'placeholder'=>'Número de seguro'])!!}
+        							{!!Form::text('numSeguro', null, ['class'=>'form-control', 'id'=>'numSeguro', 'placeholder'=>'Número de seguro médico'])!!}
         						</fieldset>
                   </div>
                   <div class="{{$classSizeForms}}">
                     <fieldset class="form-group">
-                      <label class="form-label">Proveedor de seguro</label>
+                      <label class="form-label">Proveedor de seguro médico</label>
                       {!!Form::select('proveedorSeguro', config('global.proveedores'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
         						</fieldset>
                   </div>

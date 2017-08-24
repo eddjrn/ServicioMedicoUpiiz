@@ -130,7 +130,7 @@ class student extends Model
         if($value == 'No tiene'){
             $this->attributes['numExterior'] = null;
         } else{
-            $this->attributes['numExterior'] = $value;
+            $this->attributes['numExterior'] = strtoupper($value);
         }
     }
     public function getNumExteriorAttribute($value){
@@ -145,7 +145,7 @@ class student extends Model
         if($value == 'No tiene'){
             $this->attributes['numInterior'] = null;
         } else{
-            $this->attributes['numInterior'] = $value;
+            $this->attributes['numInterior'] = strtoupper($value);
         }
     }
     public function getNumInteriorAttribute($value){
