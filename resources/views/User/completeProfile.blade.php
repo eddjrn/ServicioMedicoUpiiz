@@ -78,13 +78,13 @@
                 <div class="row">
                   <div class="{{$classSizeForms}}">
                     <fieldset class="form-group">
-        							{!!Form::text('telefono', null, ['class'=>'form-control', 'id'=>'telefono', 'placeholder'=>'Teléfono'])!!}
+        							{!!Form::text('telefono', null, ['class'=>'form-control', 'id'=>'telefono'])!!}
         						</fieldset>
                   </div>
                   <div class="{{$classSizeForms}}">
                     <fieldset class="form-group">
-        							{!!Form::text('curp', null, ['class'=>'form-control', 'id'=>'curp', 'placeholder'=>'CURP'])!!}
-                      <small class="text-muted"><a href="https://consultas.curp.gob.mx/CurpSP/inicio2_2.jsp" target="_blank">Consultar CURP</a></small>
+        							{!!Form::text('curp', null, ['class'=>'form-control', 'id'=>'curp'])!!}
+                      <small class="text-muted"><a href="{{config('globalInfo.curp')}}" target="_blank">Consultar CURP</a></small>
         						</fieldset>
                   </div>
                   <div class="{{$classSizeForms}}">
@@ -120,12 +120,12 @@
                   </div>
                   <div class="{{$classSizeForms}}">
                     <fieldset class="form-group">
-                      {!!Form::text('telefonoTutor', null, ['class'=>'form-control', 'id'=>'telefonoTutor', 'placeholder'=>'Teléfono del tutor'])!!}
+                      {!!Form::text('telefonoTutor', null, ['class'=>'form-control', 'id'=>'telefonoTutor'])!!}
         						</fieldset>
                   </div>
                   <div class="{{$classSizeForms}}">
                     <fieldset class="form-group">
-                      {!!Form::text('celularTutor', null, ['class'=>'form-control', 'id'=>'celularTutor', 'placeholder'=>'Teléfono celular del tutor'])!!}
+                      {!!Form::text('celularTutor', null, ['class'=>'form-control', 'id'=>'celularTutor'])!!}
         						</fieldset>
                   </div>
                 </div>
@@ -176,25 +176,15 @@
         						</fieldset>
                   </div>
                   <div class="{{$classSizeForms}}">
-                    <?php
-                      $institution=\App\medicalInstitute::lists('nombre', 'id');
-                     ?>
                     <fieldset class="form-group">
                       <label class="form-label">Institución que lo asegura</label>
-                      {!!Form::select('institucionClinica', $institution->prepend('Seleccionar', 0), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+                      {!!Form::select('institucionClinica', $institution, 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control imss'])!!}
         						</fieldset>
                   </div>
-                  <div class="{{$classSizeForms}}">
-                    <?php
-                      $clinic=\App\clinic::all();
-                      $list = array('0' => 'Seleccionar');
-                      foreach($clinic as $c){
-                        array_push($list, $c->__toString());
-                      }
-                     ?>
+                  <div class="{{$classSizeForms}} immsOnly">
                     <fieldset class="form-group">
                       <label class="form-label">Clinica a la que pertenece</label>
-                      {!!Form::select('numClinica', $list, 0, ['class'=>'select2 form-control'])!!}
+                      {!!Form::select('numClinica', $list, 0, ['class'=>'select2 form-control remove-opc'])!!}
         						</fieldset>
                   </div>
                   <div class="{{$classSizeForms}}">
@@ -243,21 +233,15 @@
                 <h5 class="m-t-lg with-border">Llenado de datos geográficos</h5>
                 <div class="row">
                   <div class="{{$classSizeForms}}">
-                    <?php
-                      $place=\App\place::lists('nombre', 'id');
-                     ?>
                     <fieldset class="form-group">
                       <label class="form-label">Municipio donde vive actualmente</label>
-                      {!!Form::select('municipio', $place->prepend('Seleccionar', 0), 0, ['class'=>'select2 form-control'])!!}
+                      {!!Form::select('municipio', $place, 0, ['class'=>'select2 form-control'])!!}
         						</fieldset>
                   </div>
                   <div class="{{$classSizeForms}}">
-                    <?php
-                      $estate=\App\state::lists('nombre', 'id');
-                     ?>
                     <fieldset class="form-group">
                       <label class="form-label">Estado de origen</label>
-                      {!!Form::select('estado', $estate->prepend('Seleccionar', 0), 0, ['class'=>'select2 form-control'])!!}
+                      {!!Form::select('estado', $estate, 0, ['class'=>'select2 form-control'])!!}
         						</fieldset>
                   </div>
                   <div class="{{$classSizeForms}}">
@@ -267,7 +251,7 @@
                   </div>
                   <div class="{{$classSizeForms}}">
                     <fieldset class="form-group">
-                      {!!Form::text('cp', null, ['class'=>'form-control', 'id'=>'cp', 'placeholder'=>'Código postal'])!!}
+                      {!!Form::text('cp', null, ['class'=>'form-control', 'id'=>'cp'])!!}
         						</fieldset>
                   </div>
                   <div class="{{$classSizeForms}}">
@@ -333,12 +317,9 @@
                 <h5 class="m-t-lg with-border">Llenado de información académica</h5>
                 <div class="row">
                   <div class="{{$classSizeForms}}">
-                    <?php
-                      $carrer=\App\carrer::lists('nombre', 'id');
-                     ?>
                     <fieldset class="form-group">
                       <label class="form-label">Programa académico</label>
-                      {!!Form::select('carrera', $carrer->prepend('Seleccionar', 0), 0, ['class'=>'select2 form-control'])!!}
+                      {!!Form::select('carrera', $carrer, 0, ['class'=>'select2 form-control'])!!}
         						</fieldset>
                   </div>
                   <div class="{{$classSizeForms}}">
@@ -400,4 +381,28 @@
     <script src="{{asset('/Template/js/lib/clockpicker/bootstrap-clockpicker.min.js')}}"></script>
     <script src="{{asset('/Template/js/lib/clockpicker/bootstrap-clockpicker-init.js')}}"></script>
     <script src="{{asset('/Template/js/lib/daterangepicker/daterangepicker.js')}}"></script>
+
+    <script src="{{asset('/Template/js/lib/input-mask/jquery.mask.min.js')}}"></script>
+
+    <script>
+    $(document).ready(function() {
+        $('#telefono').mask('(000) 000-0000', {placeholder: "Teléfono personal"});
+        $('#curp').mask('AAAA000000AAAAAA00', {placeholder: "CURP"});
+        $('#telefonoTutor').mask('(000) 000-0000', {placeholder: "Teléfono fijo del tutor"});
+        $('#celularTutor').mask('(000) 000-0000', {placeholder: "Teléfono celular del tutor"});
+
+        $('#cp').mask('00000', {placeholder: "Código postal"});
+
+        $('.remove-opc').find('[value=1]').remove();
+        $('.imss').change(function(){
+          var opc = $('.imss option:selected').text();
+          if(opc == "IMSS"){
+            $('.immsOnly').show(150);
+          } else{
+            $('.immsOnly').hide(150);
+          }
+        });
+    });
+    </script>
+
 @stop

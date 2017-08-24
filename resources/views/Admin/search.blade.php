@@ -44,7 +44,7 @@ Busqueda de registro
     <input type="hidden" id="busqueda" name="busqueda">
 {!!Form::close()!!}
 
-@if(isset($user))    
+@if(isset($user))
     <div class="container">
         <div class="row">
             <section class="widget widget-activity">
@@ -54,6 +54,7 @@ Busqueda de registro
                 </header>
                 <div>
                 @foreach($user as $u)
+                    @unless($u->completado() == 0)
                     <div class="widget-activity-item">
                         <div class="user-card-row">
                             <div class="tbl-row">
@@ -66,9 +67,11 @@ Busqueda de registro
                                     <p>
                                         <a href="{{asset('/admin/lists')}}/{{$u->student->id}}" class="semibold">{{$u}}</a>
                                     </p>
+                                    @unless($u->facebook == null)
                                     <p>
                                         <a href="{{$u->facebook}}" class="semibold" target="_blank">Facebook</a>
                                     </p>
+                                    @endunless
                                     <p>
                                         Correo: {{$u->email}}
                                     </p>
@@ -105,6 +108,36 @@ Busqueda de registro
                             </div>
                         </div>
                     </div>
+                    @else
+                    <div class="widget-activity-item">
+                        <div class="user-card-row">
+                            <div class="tbl-row">
+                                <div class="tbl-cell tbl-cell-photo">
+                                    <img src="{{asset($u->foto)}}" alt="">
+                                </div>
+                                <div class="tbl-cell">
+                                    <p>
+                                        {{$u}}
+                                    </p>
+                                    <p class="color-red">
+                                        {{$u->completado}}
+                                    </p>
+                                    @unless($u->facebook == null)
+                                    <p>
+                                        <a href="{{$u->facebook}}" class="semibold" target="_blank">Facebook</a>
+                                    </p>
+                                    @endunless
+                                    <p>
+                                        Correo: {{$u->email}}
+                                    </p>
+                                    <p>
+                                        Boleta: {{$u->identificacion}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endunless
                 @endforeach
                 </div>
             </section><!--.widget-tasks-->
@@ -122,6 +155,7 @@ Busqueda de registro
                 </header>
                 <div>
                 @foreach($medicalData as $m)
+                    @unless($m->user->completado() == 0)
                     <div class="widget-activity-item">
                         <div class="user-card-row">
                             <div class="tbl-row">
@@ -134,9 +168,11 @@ Busqueda de registro
                                     <p>
                                         <a href="{{asset('/admin/lists')}}/{{$m->user->student->id}}" class="semibold">{{$m->user}}</a>
                                     </p>
+                                    @unless($u->facebook == null)
                                     <p>
                                         <a href="{{$m->user->facebook}}" class="semibold" target="_blank">Facebook</a>
                                     </p>
+                                    @endunless
                                     <p>
                                         Número de seguro: {{$m->numSeguro}}
                                     </p>
@@ -163,6 +199,36 @@ Busqueda de registro
                             </div>
                         </div>
                     </div>
+                    @else
+                    <div class="widget-activity-item">
+                        <div class="user-card-row">
+                            <div class="tbl-row">
+                                <div class="tbl-cell tbl-cell-photo">
+                                    <img src="{{asset($u->foto)}}" alt="">
+                                </div>
+                                <div class="tbl-cell">
+                                    <p>
+                                        {{$u}}
+                                    </p>
+                                    <p class="color-red">
+                                        {{$u->completado}}
+                                    </p>
+                                    @unless($u->facebook == null)
+                                    <p>
+                                        <a href="{{$u->facebook}}" class="semibold" target="_blank">Facebook</a>
+                                    </p>
+                                    @endunless
+                                    <p>
+                                        Correo: {{$u->email}}
+                                    </p>
+                                    <p>
+                                        Boleta: {{$u->identificacion}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endunless
                 @endforeach
                 </div>
             </section><!--.widget-tasks-->
@@ -180,6 +246,7 @@ Busqueda de registro
                 </header>
                 <div>
                 @foreach($student as $s)
+                    @unless($s->user->completado() == 0)
                     <div class="widget-activity-item">
                         <div class="user-card-row">
                             <div class="tbl-row">
@@ -224,6 +291,36 @@ Busqueda de registro
                             </div>
                         </div>
                     </div>
+                    @else
+                    <div class="widget-activity-item">
+                        <div class="user-card-row">
+                            <div class="tbl-row">
+                                <div class="tbl-cell tbl-cell-photo">
+                                    <img src="{{asset($u->foto)}}" alt="">
+                                </div>
+                                <div class="tbl-cell">
+                                    <p>
+                                        {{$u}}
+                                    </p>
+                                    <p class="color-red">
+                                        {{$u->completado}}
+                                    </p>
+                                    @unless($u->facebook == null)
+                                    <p>
+                                        <a href="{{$u->facebook}}" class="semibold" target="_blank">Facebook</a>
+                                    </p>
+                                    @endunless
+                                    <p>
+                                        Correo: {{$u->email}}
+                                    </p>
+                                    <p>
+                                        Boleta: {{$u->identificacion}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endunless
                 @endforeach
                 </div>
             </section><!--.widget-tasks-->
@@ -235,7 +332,7 @@ Busqueda de registro
 
 @section('scripts')
     <script src="{{asset('/Template/js/custom/search.js')}}"></script>
-    
+
     <script>
         $.ajaxSetup({
             headers: {

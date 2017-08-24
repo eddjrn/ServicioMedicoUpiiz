@@ -10,9 +10,9 @@ use Carbon\Carbon;
 class student extends Model
 {
     use Eloquence;
-    
+
     protected $table = 'alumno';
-    
+
     protected $fillable = [
     	'usuario_id',
     	'carrera_id',
@@ -40,13 +40,13 @@ class student extends Model
     	'respuesta',
     ];
     //protected $guarded = ['usuario_id'];
-    
+
     protected $dates = [
         'created_at', // Add if you're using timestamps on the model
         'updated_at', // Add if you're using timestamps on the model
         'fechaNacimiento'
     ];
-    
+
     protected $searchableColumns = [
         'curp' => 20,
         'localidad' => 20,
@@ -56,113 +56,76 @@ class student extends Model
         'colonia' => 5,
         'codigoPostal' => 5,
     ];
-    
+
     public function user(){
         return $this->belongsTo(user::class, 'usuario_id');
     }
-    
+
     public function carrer(){
         return $this->belongsTo(carrer::class, 'carrera_id');
     }
-    
+
     public function place(){
         return $this->belongsTo(place::class, 'municipio_id');
     }
-    
+
     public function state(){
         return $this->belongsTo(state::class, 'estado_id');
     }
-    
+
     public function status(){
         return $this->belongsTo(status::class, 'estatus_id');
     }
-    
-    public function sex(){
-        return 'xxxxxxxxxxxx';
-    }
-    
+
     public function getSexoAttribute($value){
         return config('global.sexos')[$value];
     }
     public function sexo(){
         return $this->getOriginal('sexo');
     }
-    
-    public function sexTypes(){
-        $types = ['1' => 'Masculino', '2' => 'Femenino'];
-        return $types;
-    }
-    
-    public function documentation(){
-        return 'xxxxxxxxxxxxxxxxx';
-    }
-    
+
     public function getDocumentacionAttribute($value){
         return $value;
     }
     public function documentacion(){
         return config('global.documentacion')[$this->documentacion];
     }
-    
-    public function documentationTypes(){
-        $types = ['1' => 'Completa', '2' => 'Incompleta'];
-        return $types;
-    }
-    
-    public function turn(){
-        return 'xxxxxxxxxxxxxx';
-    }////////////buscar metodoas
-    
+
     public function getTurnoAttribute($value){
         return config('global.turnos')[$value];
     }
     public function turno(){
         return $this->getOriginal('turno');
     }
-    
-    
-    public function turnTypes(){
-        $types = ['1' => 'Matutino', '2' => 'Vespertino'];
-        return $types;
-    }
-    
-    public function tutorRelationship(){
-        return 'xxxxxxxxxxxxxxxx';
-    }
-    
+
     public function getParentescoTutorAttribute($value){
         return config('global.familiar')[$value];
     }
     public function parentescoTutor(){
         return $this->getOriginal('parentescoTutor');
     }
-    
-    public function tutorRelationshipTypes(){
-        $types = ['1' => 'Padre', '2' => 'Hermano', '3' => 'Tio', '4' => 'Tutor legal'];
-        return $types;
-    }
-    
+
     public function setFechaNacimientoAttribute($value){
         $this->attributes['fechaNacimiento']=Carbon::createFromFormat('d-m-Y', $value)->format('Y-m-d');
     }
-    
+
     public function getFechaNacimientoAttribute($value){
         return Carbon::parse($value)->format('d-m-Y');
     }
-    
+
     public function formatedNacimiento(){
         Date::setLocale('es');
         return Date::parse($this->fechaNacimiento)->format('j \\d\\e F \\d\\e\\l Y');
     }
-    
+
     public function age(){
         return Carbon::parse($this->fechaNacimiento)->diffInYears(Carbon::now()).' años';
     }
-    
+
     public function setCalleAttribute($value){
         $this->attributes['calle'] = ucwords($value);
     }
-    
+
     public function setNumExteriorAttribute($value){
         if($value == 'No tiene'){
             $this->attributes['numExterior'] = null;
@@ -177,7 +140,7 @@ class student extends Model
             return $value;
         }
     }
-    
+
     public function setNumInteriorAttribute($value){
         if($value == 'No tiene'){
             $this->attributes['numInterior'] = null;
@@ -192,21 +155,65 @@ class student extends Model
             return $value;
         }
     }
-    
+
     public function setColoniaAttribute($value){
         $this->attributes['colonia'] = ucwords($value);
     }
-    
+
     public function setLocalidadAttribute($value){
         $this->attributes['localidad'] = ucwords($value);
     }
-    
+
     public function setCurpAttribute($value){
         $this->attributes['curp'] = strtoupper($value);
     }
-    
+
     public function setTutorAttribute($value){
         $this->attributes['tutor'] = ucwords($value);
     }
-    
+
+    public function setTelefonoAttribute($value){
+      if($value == "No tiene teléfono"){
+        $this->attributes['telefono'] = null;
+      } else{
+        $this->attributes['telefono'] = $value;
+      }
+    }
+    public function getTelefonoAttribute($value){
+      if($value == null){
+        return "No tiene teléfono";
+      } else{
+        return $value;
+      }
+    }
+
+    public function setTelefonoTutorAttribute($value){
+      if($value == "No tiene teléfono"){
+        $this->attributes['telefonoTutor'] = null;
+      } else{
+        $this->attributes['telefonoTutor'] = $value;
+      }
+    }
+    public function getTelefonoTutorAttribute($value){
+      if($value == null){
+        return "No tiene teléfono";
+      } else{
+        return $value;
+      }
+    }
+
+    public function setCelularTutorAttribute($value){
+      if($value == "No tiene teléfono"){
+        $this->attributes['celularTutor'] = null;
+      } else{
+        $this->attributes['celularTutor'] = $value;
+      }
+    }
+    public function getCelularTutorAttribute($value){
+      if($value == null){
+        return "No tiene teléfono";
+      } else{
+        return $value;
+      }
+    }
 }

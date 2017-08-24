@@ -329,9 +329,24 @@ class profileController extends Controller
             return redirect('/');
         } else{
             $index = 4;
-            
+            $institution=\App\medicalInstitute::lists('nombre', 'id')->prepend('Seleccionar', 0);
+            $clinic=\App\clinic::all();
+            $list = array('0' => 'Seleccionar');
+            foreach($clinic as $c){
+              array_push($list, $c->__toString());
+            }
+            $place=\App\place::lists('nombre', 'id')->prepend('Seleccionar', 0);
+            $estate=\App\state::lists('nombre', 'id')->prepend('Seleccionar', 0);
+            $carrer=\App\carrer::lists('nombre', 'id')->prepend('Seleccionar', 0);
 
-            return view('User.completeProfile', ['index'=>$index]);
+            return view('User.completeProfile', [
+              'index'=>$index,
+              'institution'=>$institution,
+              'list'=>$list,
+              'place'=>$place,
+              'estate'=>$estate,
+              'carrer'=>$carrer,
+            ]);
         }
     }
 
@@ -344,23 +359,23 @@ class profileController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'telefono'=>'required',
+            'telefono'=>'',
             'curp'=>'required|unique:alumno,curp',
             'sexo'=>'required|not_in:0',
             'nacimiento'=>'required|date|before:tomorrow',
             'tutor'=>'required',
-            'telefonoTutor'=>'required',
-            'celularTutor'=>'required',
-            'parentesco'=>'required',
+            'telefonoTutor'=>'',
+            'celularTutor'=>'',
+            'parentesco'=>'required|not_in:0',
 
             'numSeguro'=>'required',
-            'proveedorSeguro'=>'required',
-            'institucionClinica'=>'required',
+            'proveedorSeguro'=>'required|not_in:0',
+            'institucionClinica'=>'required|not_in:0',
             'numClinica'=>'required',
-            'sangre'=>'required',
+            'sangre'=>'required|not_in:0',
 
-            'municipio'=>'required',
-            'estado'=>'required',
+            'municipio'=>'required|not_in:0',
+            'estado'=>'required|not_in:0',
             'localidad'=>'required',
             'cp'=>'required',
             'calle'=>'required',
@@ -368,8 +383,8 @@ class profileController extends Controller
             'numExt'=>'',
             'numInt'=>'',
 
-            'carrera'=>'required',
-            'turno'=>'required',
+            'carrera'=>'required|not_in:0',
+            'turno'=>'required|not_in:0',
 
             'pregunta' => 'required',
             'respuesta' => 'required',
