@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-<title>Creditos servicio medico</title>
+Creditos servicio medico
 @stop
 
 @section('css')
@@ -17,7 +17,7 @@ Creditos
 @section('content')
 
 <div class="row">
-<div class="col-md-1 col-xs-1"></div>	
+<div class="col-md-1 col-xs-1"></div>
 	<div class="col-md-10 col-xs-12">
 
 <div class="container-fluid">
@@ -32,16 +32,16 @@ Creditos
             </header>
         <div class="text-block text-block-typical">
             <p>
-            Nuestra principal labor es la prevención, educación y detección de enfermedades. Se brinda  orientación  sobre las diferentes áreas de la salud, buscando mejorar la capacidad de aprendizaje de la Comunidad Politécnica,  por lo cual  se genera un historial clínico de cada uno de las personas que asisten a Servicio Médico a través de: </br>  
-                </br><p>• Medicina Preventiva</p>   
-                <p>• Orientación de Nutrición</p>   
+            Nuestra principal labor es la prevención, educación y detección de enfermedades. Se brinda  orientación  sobre las diferentes áreas de la salud, buscando mejorar la capacidad de aprendizaje de la Comunidad Politécnica,  por lo cual  se genera un historial clínico de cada uno de las personas que asisten a Servicio Médico a través de: </br>
+                </br><p>• Medicina Preventiva</p>
+                <p>• Orientación de Nutrición</p>
                 <p>• Consulta Médica</p>
-            </br>Dentro de los servicios que además proporciona el Área de Servicio médico es:     
-                </br></br><p>1. Realizar la afiliación al Instituto Mexicano del Seguro Social (IMSS), a todos los alumnos de la Unidad Académica que no cuenten con alguna Seguridad Social ya sea por parte de sus padres  o de  trabajo, de contar con este servicio se deberá entregar la carta responsiva, ya que es un requisito obligatorio para los alumnos tener Seguro Social  para realizar  salidas  ó prácticas escolares fuera de la Unidad Académica.</p>     
-                </br><p>2. Todos los alumnos del IPN que  estén inscritos  cuentan con un Seguro de Vida contratado por el IPN, el cual cuenta con una cobertura durante las 24 hrs. de los 365 días del año y en cualquier lugar de la Repblica Mexicana.</p>                     ​  
+            </br>Dentro de los servicios que además proporciona el Área de Servicio médico es:
+                </br></br><p>1. Realizar la afiliación al Instituto Mexicano del Seguro Social (IMSS), a todos los alumnos de la Unidad Académica que no cuenten con alguna Seguridad Social ya sea por parte de sus padres  o de  trabajo, de contar con este servicio se deberá entregar la carta responsiva, ya que es un requisito obligatorio para los alumnos tener Seguro Social  para realizar  salidas  ó prácticas escolares fuera de la Unidad Académica.</p>
+                </br><p>2. Todos los alumnos del IPN que  estén inscritos  cuentan con un Seguro de Vida contratado por el IPN, el cual cuenta con una cobertura durante las 24 hrs. de los 365 días del año y en cualquier lugar de la Repblica Mexicana.</p>                     ​
             </p>
         </div>
-        
+
         </article><!--.card-typical-->
         </div>
         </div>
@@ -95,7 +95,7 @@ footer {
             padding:5px 0px;
             clear: both;
             text-align: right;
-            
+
         }
 
 </style>
@@ -110,4 +110,3 @@ footer {
 
 @section('scripts')
 @stop
-

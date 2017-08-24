@@ -23,7 +23,36 @@ class develController extends Controller
     public function index()
     {
         $index = 1;
-        return view ('Devel.start', ['index'=>$index]);
+        $users = \App\user::where('tipo', '!=', 2);
+        $students = \App\user::where('tipo', '=', 2);
+        $carrers = \App\carrer::all();
+        $status = \App\status::all();
+        $clinics = \App\clinic::all();
+        $states = \App\state::all();
+        $places = \App\place::all();
+        $images = \App\images::all();
+        $videos = \App\video::all();
+        $info = \App\info::all();
+        $medicalInstitute = \App\medicalInstitute::all();
+        $tutorials = \App\tutorials::all();
+        $messages = \App\message::all();
+
+        return view ('Devel.start', [
+          'index'=>$index,
+          'users'=>$users,
+          'students'=>$students,
+          'carrers'=>$carrers,
+          'status'=>$status,
+          'clinics'=>$clinics,
+          'states'=>$states,
+          'places'=>$places,
+          'images'=>$images,
+          'videos'=>$videos,
+          'info'=>$info,
+          'medicalInstitute'=>$medicalInstitute,
+          'tutorials'=>$tutorials,
+          'messages'=>$messages,
+        ]);
     }
 
     /**

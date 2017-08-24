@@ -127,7 +127,7 @@
 	                        </button>
 	                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
 	                            <a class="dropdown-item" href="{{asset('/person/profile/3')}}"><span class="font-icon glyphicon glyphicon-user"></span>Perfil</a>
-	                            <a class="dropdown-item" href="{{asset('/devel/config')}}"><span class="font-icon glyphicon glyphicon-cog"></span>Configuración</a>
+	                            <a class="dropdown-item" href="{{asset('/devel/config')}}"><span class="font-icon glyphicon glyphicon-cog"></span>Editar sistema</a>
 	                            <div class="dropdown-divider"></div>
 	                            <a class="dropdown-item" href="{{asset('/logout')}}"><span class="font-icon glyphicon glyphicon-log-out"></span>Salir</a>
 	                        </div>

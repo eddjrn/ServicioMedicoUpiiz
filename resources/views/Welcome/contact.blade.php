@@ -8,9 +8,7 @@
 @stop
 
 @section('subHead')
-<header>
-    <h1>Contáctanos</h1>
-</header>
+Contáctanos
 @stop
 
 @section('content')

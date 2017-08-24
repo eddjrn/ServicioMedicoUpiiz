@@ -1,5 +1,9 @@
 @extends('Devel.layout3')
 
+<?php
+  $classSize = "col-lg-2 col-md-3 col-sm-4";
+?>
+
 @section('title')
 <title>Inicio en modo desarrollador</title>
 @stop
@@ -18,7 +22,121 @@ Inicio en modo desarrollador
 @stop
 
 @section('content')
-Hola
+<h5 class="m-t-lg with-border">Recordatorios</h5>
+
+<h5 class="m-t-lg with-border">Recordatorios</h5>
+
+
+<h5 class="m-t-lg with-border">Registros en la base de datos</h5>
+<div class="container-fluid">
+  <div class="row">
+    <div class="{{$classSize}}">
+      <section class="widget widget-simple-sm-fill grey">
+        <div class="widget-simple-sm-icon">
+          <i class="font-icon font-icon-cogwheel"></i>
+        </div>
+        <div class="widget-simple-sm-fill-caption">Docentes [{{$users->count()}}]</div>
+      </section><!--.widget-simple-sm-fill-->
+    </div>
+    <div class="{{$classSize}}">
+      <section class="widget widget-simple-sm-fill grey">
+        <div class="widget-simple-sm-icon">
+          <i class="font-icon font-icon-user"></i>
+        </div>
+        <div class="widget-simple-sm-fill-caption">Alumnos [{{$students->count()}}]</div>
+      </section><!--.widget-simple-sm-fill-->
+    </div>
+    <div class="{{$classSize}}">
+      <section class="widget widget-simple-sm-fill red">
+        <div class="widget-simple-sm-icon">
+          <i class="font-icon font-icon-learn"></i>
+        </div>
+        <div class="widget-simple-sm-fill-caption">Carreras [{{$carrers->count()}}]</div>
+      </section><!--.widget-simple-sm-fill-->
+    </div>
+    <div class="{{$classSize}}">
+      <section class="widget widget-simple-sm-fill purple">
+        <div class="widget-simple-sm-icon">
+          <i class="font-icon font-icon-bookmark"></i>
+        </div>
+        <div class="widget-simple-sm-fill-caption">Estatus [{{$status->count()}}]</div>
+      </section><!--.widget-simple-sm-fill-->
+    </div>
+    <div class="{{$classSize}}">
+      <section class="widget widget-simple-sm-fill blue">
+        <div class="widget-simple-sm-icon">
+          <i class="font-icon font-icon-help"></i>
+        </div>
+        <div class="widget-simple-sm-fill-caption">Clínicas [{{$clinics->count()}}]</div>
+      </section><!--.widget-simple-sm-fill-->
+    </div>
+    <div class="{{$classSize}}">
+      <section class="widget widget-simple-sm-fill blue">
+        <div class="widget-simple-sm-icon">
+          <i class="font-icon font-icon-build"></i>
+        </div>
+        <div class="widget-simple-sm-fill-caption">Instituciones médicas [{{$medicalInstitute->count()}}]</div>
+      </section><!--.widget-simple-sm-fill-->
+    </div>
+    <div class="{{$classSize}}">
+      <section class="widget widget-simple-sm-fill green">
+        <div class="widget-simple-sm-icon">
+          <i class="font-icon font-icon-map"></i>
+        </div>
+        <div class="widget-simple-sm-fill-caption">Estados [{{$states->count()}}]</div>
+      </section><!--.widget-simple-sm-fill-->
+    </div>
+    <div class="{{$classSize}}">
+      <section class="widget widget-simple-sm-fill green">
+        <div class="widget-simple-sm-icon">
+          <i class="font-icon font-icon-pin-2"></i>
+        </div>
+        <div class="widget-simple-sm-fill-caption">Municipios [{{$places->count()}}]</div>
+      </section><!--.widget-simple-sm-fill-->
+    </div>
+    <div class="{{$classSize}}">
+      <section class="widget widget-simple-sm-fill orange">
+        <div class="widget-simple-sm-icon">
+          <i class="font-icon font-icon-picture"></i>
+        </div>
+        <div class="widget-simple-sm-fill-caption">Imágenes [{{$images->count()}}]</div>
+      </section><!--.widget-simple-sm-fill-->
+    </div>
+    <div class="{{$classSize}}">
+      <section class="widget widget-simple-sm-fill orange">
+        <div class="widget-simple-sm-icon">
+          <i class="font-icon font-icon-video-fill"></i>
+        </div>
+        <div class="widget-simple-sm-fill-caption">Videos [{{$videos->count()}}]</div>
+      </section><!--.widget-simple-sm-fill-->
+    </div>
+    <div class="{{$classSize}}">
+      <section class="widget widget-simple-sm-fill orange">
+        <div class="widget-simple-sm-icon">
+          <i class="font-icon font-icon-post"></i>
+        </div>
+        <div class="widget-simple-sm-fill-caption">Infomación [{{$info->count()}}]</div>
+      </section><!--.widget-simple-sm-fill-->
+    </div>
+
+    <div class="{{$classSize}}">
+      <section class="widget widget-simple-sm-fill orange">
+        <div class="widget-simple-sm-icon">
+          <i class="font-icon font-icon-play"></i>
+        </div>
+        <div class="widget-simple-sm-fill-caption">Tutoriales [{{$tutorials->count()}}]</div>
+      </section><!--.widget-simple-sm-fill-->
+    </div>
+    <div class="{{$classSize}}">
+      <section class="widget widget-simple-sm-fill orange">
+        <div class="widget-simple-sm-icon">
+          <i class="font-icon font-icon-mail"></i>
+        </div>
+        <div class="widget-simple-sm-fill-caption">Mensajes [{{$messages->count()}}]</div>
+      </section><!--.widget-simple-sm-fill-->
+    </div>
+  </div>
+</div>
 @stop
 
 @section('scripts')

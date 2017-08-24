@@ -1,5 +1,42 @@
 @extends('layout')
 
+<?php
+  $classSize = "col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1";
+  $classSizeForms = "col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2";
+
+  $personales = '
+    <div class="icon">
+        <i class="font-icon font-icon-user"></i>
+    </div>
+    <div class="caption hidden-md-up">-1-</div>
+    <div class="caption hidden-sm-down">Personales</div>
+  ';
+
+  $medicos = '
+    <div class="icon">
+        <i class="font-icon font-icon-heart"></i>
+    </div>
+    <div class="caption hidden-md-up">-2-</div>
+    <div class="caption hidden-sm-down">Médicos</div>
+  ';
+
+  $geograficos = '
+    <div class="icon">
+        <i class="font-icon font-icon-pin-2"></i>
+    </div>
+    <div class="caption hidden-md-up">-3-</div>
+    <div class="caption hidden-sm-down">Geográficos</div>
+  ';
+
+  $escolares = '
+    <div class="icon">
+        <i class="font-icon font-icon-pencil"></i>
+    </div>
+    <div class="caption hidden-md-up">-4-</div>
+    <div class="caption hidden-sm-down">Escolares</div>
+  ';
+ ?>
+
 @section('title')
 <title>Llenado de campos obligatorios</title>
 @stop
@@ -10,449 +47,341 @@
 @section('popUp')
 
 <div class="container-fluid">
+  <div class="row">
+    <div class="{{$classSize}}">
+      @include('alerts.formError')
+    </div>
+  </div>
 
 {!!Form::open(array('url'=>'/profile/newStudent', 'method'=>'post'))!!}
-    <div class="row details1" style="display:block">
-        
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-6" >
-            @include('alerts.formError')
-            <section class="box-typical steps-icon-block">
+    <div class="row details1 text-center" style="display:block">
+        <div class="{{$classSize}}">
+            <section class="box-typical">
                 <div class="steps-icon-progress" style="padding:30px">
                     <ul>
                         <li class="active">
-                            <div class="icon">
-                                <i class="font-icon font-icon-user"></i>
-                            </div>
-                            <div class="caption hidden-sm-up">-1-</div>
-                            <div class="caption hidden-sm-down">Personales</div>
+                            {!!$personales!!}
                         </li>
                         <li>
-                            <div class="icon">
-                                <i class="font-icon font-icon-card"></i>
-                            </div>
-                            <div class="caption hidden-sm-up">-2-</div>
-                            <div class="caption hidden-sm-down">Médicos</div>
+                            {!!$medicos!!}
                         </li>
                         <li>
-                            <div class="icon">
-                                <i class="font-icon font-icon-pin-2"></i>
-                            </div>
-                            <div class="caption hidden-sm-up">-3-</div>
-                            <div class="caption hidden-sm-down">Geográficos</div>
+                            {!!$geograficos!!}
                         </li>
                         <li>
-                            <div class="icon">
-                                <i class="font-icon font-icon-pencil"></i>
-                            </div>
-                            <div class="caption hidden-sm-up">-4-</div>
-                            <div class="caption hidden-sm-down">Escolares</div>
+                            {!!$escolares!!}
                         </li>
                     </ul>
                 </div>
 
-                <header class="steps-numeric-title">Llenado de información personal</header>
-                
+                <h5 class="m-t-lg with-border">Llenado de información personal</h5>
                 <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        {!!Form::text('telefono', null, ['class'=>'form-control', 'id'=>'telefono', 'placeholder'=>'Teléfono'])!!}
-                    </div>
-                    <div class="col-md-3"></div>
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+        							{!!Form::text('telefono', null, ['class'=>'form-control', 'id'=>'telefono', 'placeholder'=>'Teléfono'])!!}
+        						</fieldset>
+                  </div>
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+        							{!!Form::text('curp', null, ['class'=>'form-control', 'id'=>'curp', 'placeholder'=>'CURP'])!!}
+                      <small class="text-muted"><a href="https://consultas.curp.gob.mx/CurpSP/inicio2_2.jsp" target="_blank">Consultar CURP</a></small>
+        						</fieldset>
+                  </div>
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+                      <label class="form-label">Sexo</label>
+        							{!!Form::select('sexo', config('global.sexos'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+        						</fieldset>
+                  </div>
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+                      <label class="form-label">Fecha de nacimiento</label>
+                      <div class='input-group date'>
+                          {!!Form::text('nacimiento', null, ['class'=>'form-control', 'id'=>'date_box', 'placeholder'=>'00/00/0000'])!!}
+                          <span class="input-group-addon">
+                              <i class="font-icon font-icon-calend"></i>
+                          </span>
+                      </div>
+                  </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        {!!Form::text('curp', null, ['class'=>'form-control', 'id'=>'curp', 'placeholder'=>'CURP'])!!}
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                <div class="form-group">
-                    <a href="https://consultas.curp.gob.mx/CurpSP/inicio2_2.jsp" target="_blank">Consultar CURP</a>
-                </div>
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Sexo</label>
-                        {!!Form::select('sexo', config('global.sexos'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4 form-group">
-                        <label class="form-label">Fecha de nacimiento</label>
-                        <div class='input-group date'>
-                            {!!Form::text('nacimiento', null, ['class'=>'form-control', 'id'=>'date_box', 'placeholder'=>'00/00/0000'])!!}
-                            <span class="input-group-addon">
-                                <i class="font-icon font-icon-calend"></i>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="col-md-4"></div>
-                </div>
+
                 <h5 class="m-t-lg with-border">Datos del tutor</h5>
                 <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        {!!Form::text('tutor', null, ['class'=>'form-control', 'id'=>'tutor', 'placeholder'=>'Nombre del tutor a cargo'])!!}
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        {!!Form::text('telefonoTutor', null, ['class'=>'form-control', 'id'=>'telefonoTutor', 'placeholder'=>'Teléfono del tutor'])!!}
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        {!!Form::text('celularTutor', null, ['class'=>'form-control', 'id'=>'celularTutor', 'placeholder'=>'Teléfono celular del tutor'])!!}
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label">Parentesco con el tutor</label>
-                        {!!Form::select('parentesco', config('global.familiar'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6">
-                        <button type="button" class="btn btn-rounded" onclick="toggle1();">
-                            Siguiente →
-                        </button>
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                
-            </section><!--.steps-icon-block-->
-        </div>
-        <div class="col-md-3">
-        </div>
-    </div><!--.row-->
-    
-    <div class="row details2" style="display:none">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-6" >
-            <section class="box-typical steps-icon-block">
-                <div class="steps-icon-progress" style="padding:30px">
-                    <ul>
-                        <li class="active">
-                            <div class="icon">
-                                <i class="font-icon font-icon-user"></i>
-                            </div>
-                            <div class="caption hidden-sm-up">-1-</div>
-                            <div class="caption hidden-sm-down">Personales</div>
-                        </li>
-                        <li class="active">
-                            <div class="icon">
-                                <i class="font-icon font-icon-card"></i>
-                            </div>
-                            <div class="caption hidden-sm-up">-2-</div>
-                            <div class="caption hidden-sm-down">Médicos</div>
-                        </li>
-                        <li>
-                            <div class="icon">
-                                <i class="font-icon font-icon-pin-2"></i>
-                            </div>
-                            <div class="caption hidden-sm-up">-3-</div>
-                            <div class="caption hidden-sm-down">Geográficos</div>
-                        </li>
-                        <li>
-                            <div class="icon">
-                                <i class="font-icon font-icon-pencil"></i>
-                            </div>
-                            <div class="caption hidden-sm-up">-4-</div>
-                            <div class="caption hidden-sm-down">Escolares</div>
-                        </li>
-                    </ul>
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+        							{!!Form::text('tutor', null, ['class'=>'form-control', 'id'=>'tutor', 'placeholder'=>'Nombre del tutor a cargo'])!!}
+        						</fieldset>
+                  </div>
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+                      <label class="form-label">Parentesco con el tutor</label>
+                      {!!Form::select('parentesco', config('global.familiar'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+        						</fieldset>
+                  </div>
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+                      {!!Form::text('telefonoTutor', null, ['class'=>'form-control', 'id'=>'telefonoTutor', 'placeholder'=>'Teléfono del tutor'])!!}
+        						</fieldset>
+                  </div>
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+                      {!!Form::text('celularTutor', null, ['class'=>'form-control', 'id'=>'celularTutor', 'placeholder'=>'Teléfono celular del tutor'])!!}
+        						</fieldset>
+                  </div>
                 </div>
 
-                <header class="steps-numeric-title">Llenado de información medica</header>
-                
                 <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        {!!Form::text('numSeguro', null, ['class'=>'form-control', 'id'=>'numSeguro', 'placeholder'=>'Número de seguro'])!!}
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label" for="exampleInputDisabled">Proveedor de seguro</label>
-                        {!!Form::select('proveedorSeguro', config('global.proveedores'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label" for="exampleInputDisabled">Institución que lo asegura</label>
-                        <!--{{$institution=\App\medicalInstitute::lists('nombre', 'id')}} -->
-                        {!!Form::select('institucionClinica', $institution->prepend('Seleccionar', 0), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label" for="exampleInputDisabled">Clinica a la que pertenece</label>
-                        <!-- {{$clinic=\App\clinic::all()}} -->
-                        <?php $list = array('0' => 'Seleccionar'); ?>
-                        @foreach($clinic as $c)
-                        <!--{{array_push($list, $c->__toString())}} -->
-                        @endforeach
-                        {!!Form::select('numClinica', $list, 0, ['class'=>'select2 form-control'])!!}
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label" for="exampleInputDisabled">Tipo de sangre</label>
-                        {!!Form::select('sangre', config('global.tiposSangre'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-md-6">
-                        <button type="button" class="btn btn-rounded btn-grey" onclick="toggle2();">← Atrás</button>
-                    </div>
-                    <div class="col-md-6">
-                        <button type="button" class="btn btn-rounded" onclick="toggle1();">
+                    <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                        <button type="button" class="btn btn-rounded btn-inline" onclick="toggle1();">
                             Siguiente →
                         </button>
                     </div>
                 </div>
-                
+
             </section><!--.steps-icon-block-->
         </div>
-        <div class="col-md-3">
-        </div>
     </div><!--.row-->
-    
-    <div class="row details3" style="display:none">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-6" >
-            <section class="box-typical steps-icon-block">
+
+    <div class="row details2 text-center" style="display:none">
+        <div class="{{$classSize}}">
+            <section class="box-typical">
                 <div class="steps-icon-progress" style="padding:30px">
                     <ul>
-                        <li class="active">
-                            <div class="icon">
-                                <i class="font-icon font-icon-user"></i>
-                            </div>
-                            <div class="caption hidden-sm-up">-1-</div>
-                            <div class="caption hidden-sm-down">Personales</div>
-                        </li>
-                        <li class="active">
-                            <div class="icon">
-                                <i class="font-icon font-icon-card"></i>
-                            </div>
-                            <div class="caption hidden-sm-up">-2-</div>
-                            <div class="caption hidden-sm-down">Médicos</div>
-                        </li>
-                        <li class="active">
-                            <div class="icon">
-                                <i class="font-icon font-icon-pin-2"></i>
-                            </div>
-                            <div class="caption hidden-sm-up">-3-</div>
-                            <div class="caption hidden-sm-down">Geográficos</div>
-                        </li>
-                        <li>
-                            <div class="icon">
-                                <i class="font-icon font-icon-pencil"></i>
-                            </div>
-                            <div class="caption hidden-sm-up">-4-</div>
-                            <div class="caption hidden-sm-down">Escolares</div>
-                        </li>
+                      <li class="active">
+                          {!!$personales!!}
+                      </li>
+                      <li class="active">
+                          {!!$medicos!!}
+                      </li>
+                      <li>
+                          {!!$geograficos!!}
+                      </li>
+                      <li>
+                          {!!$escolares!!}
+                      </li>
                     </ul>
                 </div>
 
-                <header class="steps-numeric-title">Llenado de datos geográficos</header>
-                
+                <h5 class="m-t-lg with-border">Llenado de información medica</h5>
                 <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label" for="exampleInputDisabled">Municipio donde vive actualmente</label>
-                        <!--{{$place=\App\place::lists('nombre', 'id')}} -->
-                        {!!Form::select('municipio', $place->prepend('Seleccionar', 0), 0, ['class'=>'select2 form-control'])!!}
-                    </div>
-                    <div class="col-md-3"></div>
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+        							{!!Form::text('numSeguro', null, ['class'=>'form-control', 'id'=>'numSeguro', 'placeholder'=>'Número de seguro'])!!}
+        						</fieldset>
+                  </div>
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+                      <label class="form-label">Proveedor de seguro</label>
+                      {!!Form::select('proveedorSeguro', config('global.proveedores'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+        						</fieldset>
+                  </div>
+                  <div class="{{$classSizeForms}}">
+                    <?php
+                      $institution=\App\medicalInstitute::lists('nombre', 'id');
+                     ?>
+                    <fieldset class="form-group">
+                      <label class="form-label">Institución que lo asegura</label>
+                      {!!Form::select('institucionClinica', $institution->prepend('Seleccionar', 0), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+        						</fieldset>
+                  </div>
+                  <div class="{{$classSizeForms}}">
+                    <?php
+                      $clinic=\App\clinic::all();
+                      $list = array('0' => 'Seleccionar');
+                      foreach($clinic as $c){
+                        array_push($list, $c->__toString());
+                      }
+                     ?>
+                    <fieldset class="form-group">
+                      <label class="form-label">Clinica a la que pertenece</label>
+                      {!!Form::select('numClinica', $list, 0, ['class'=>'select2 form-control'])!!}
+        						</fieldset>
+                  </div>
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+                      <label class="form-label">Tipo de sangre</label>
+                      {!!Form::select('sangre', config('global.tiposSangre'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+        						</fieldset>
+                  </div>
                 </div>
+
                 <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label" for="exampleInputDisabled">Estado de origen</label>
-                        <!--{{$estate=\App\state::lists('nombre', 'id')}} -->
-                        {!!Form::select('estado', $estate->prepend('Seleccionar', 0), 0, ['class'=>'select2 form-control'])!!}
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <button type="button" class="btn btn-rounded btn-grey btn-inline" onclick="toggle2();">← Atrás</button>
                     </div>
-                    <div class="col-md-3"></div>
-                </div>
-                    <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        {!!Form::text('localidad', null, ['class'=>'form-control', 'id'=>'localidad', 'placeholder'=>'Localidad'])!!}
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                    <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        {!!Form::text('cp', null, ['class'=>'form-control', 'id'=>'cp', 'placeholder'=>'Código postal'])!!}
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        {!!Form::text('calle', null, ['class'=>'form-control', 'id'=>'calle', 'placeholder'=>'Calle'])!!}
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        {!!Form::text('colonia', null, ['class'=>'form-control', 'id'=>'colonia', 'placeholder'=>'Colonia'])!!}
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3 form-group"></div>
-                    <div class="col-md-3 form-group">
-                        {!!Form::text('numExt', null, ['class'=>'form-control', 'id'=>'numExt', 'placeholder'=>'Número interior'])!!}
-                    </div>
-                    <div class="col-md-3 form-group">
-                        {!!Form::text('numInt', null, ['class'=>'form-control', 'id'=>'numInt', 'placeholder'=>'Número exterior'])!!}
-                    </div>
-                    <div class="col-md-3 form-group"></div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-md-6">
-                        <button type="button" class="btn btn-rounded btn-grey" onclick="toggle2();">← Atrás</button>
-                    </div>
-                    <div class="col-md-6">
-                        <button type="button" class="btn btn-rounded" onclick="toggle1();">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <button type="button" class="btn btn-rounded btn-inline" onclick="toggle1();">
                             Siguiente →
                         </button>
                     </div>
                 </div>
-                
+
             </section><!--.steps-icon-block-->
         </div>
-        <div class="col-md-3">
-        </div>
     </div><!--.row-->
-    
-    <div class="row details4" style="display:none">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-6" >
-            <section class="box-typical steps-icon-block">
+
+    <div class="row details3 text-center" style="display:none">
+        <div class="{{$classSize}}">
+            <section class="box-typical">
                 <div class="steps-icon-progress" style="padding:30px">
                     <ul>
-                        <li class="active">
-                            <div class="icon">
-                                <i class="font-icon font-icon-user"></i>
-                            </div>
-                            <div class="caption hidden-sm-up">-1-</div>
-                            <div class="caption hidden-sm-down">Personales</div>
-                        </li>
-                        <li class="active">
-                            <div class="icon">
-                                <i class="font-icon font-icon-card"></i>
-                            </div>
-                            <div class="caption hidden-sm-up">-2-</div>
-                            <div class="caption hidden-sm-down">Médicos</div>
-                        </li>
-                        <li class="active">
-                            <div class="icon">
-                                <i class="font-icon font-icon-pin-2"></i>
-                            </div>
-                            <div class="caption hidden-sm-up">-3-</div>
-                            <div class="caption hidden-sm-down">Geográficos</div>
-                        </li>
-                        <li class="active">
-                            <div class="icon">
-                                <i class="font-icon font-icon-pencil"></i>
-                            </div>
-                            <div class="caption hidden-sm-up">-4-</div>
-                            <div class="caption hidden-sm-down">Escolares</div>
-                        </li>
+                      <li class="active">
+                          {!!$personales!!}
+                      </li>
+                      <li class="active">
+                          {!!$medicos!!}
+                      </li>
+                      <li class="active">
+                          {!!$geograficos!!}
+                      </li>
+                      <li>
+                          {!!$escolares!!}
+                      </li>
                     </ul>
                 </div>
 
-                <header class="steps-numeric-title">Llenado de información académica</header>
-                
+                <h5 class="m-t-lg with-border">Llenado de datos geográficos</h5>
                 <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label" for="exampleInputDisabled">Programa académico</label>
-                        <!--{{$carrer=\App\carrer::lists('nombre', 'id')}} -->
-                        {!!Form::select('carrera', $carrer->prepend('Seleccionar', 0), 0, ['class'=>'select2 form-control'])!!}
-                    </div>
-                    <div class="col-md-3"></div>
+                  <div class="{{$classSizeForms}}">
+                    <?php
+                      $place=\App\place::lists('nombre', 'id');
+                     ?>
+                    <fieldset class="form-group">
+                      <label class="form-label">Municipio donde vive actualmente</label>
+                      {!!Form::select('municipio', $place->prepend('Seleccionar', 0), 0, ['class'=>'select2 form-control'])!!}
+        						</fieldset>
+                  </div>
+                  <div class="{{$classSizeForms}}">
+                    <?php
+                      $estate=\App\state::lists('nombre', 'id');
+                     ?>
+                    <fieldset class="form-group">
+                      <label class="form-label">Estado de origen</label>
+                      {!!Form::select('estado', $estate->prepend('Seleccionar', 0), 0, ['class'=>'select2 form-control'])!!}
+        						</fieldset>
+                  </div>
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+                      {!!Form::text('localidad', null, ['class'=>'form-control', 'id'=>'localidad', 'placeholder'=>'Localidad'])!!}
+        						</fieldset>
+                  </div>
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+                      {!!Form::text('cp', null, ['class'=>'form-control', 'id'=>'cp', 'placeholder'=>'Código postal'])!!}
+        						</fieldset>
+                  </div>
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+                      {!!Form::text('calle', null, ['class'=>'form-control', 'id'=>'calle', 'placeholder'=>'Calle'])!!}
+        						</fieldset>
+                  </div>
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+                      {!!Form::text('colonia', null, ['class'=>'form-control', 'id'=>'colonia', 'placeholder'=>'Colonia'])!!}
+        						</fieldset>
+                  </div>
                 </div>
+                <hr/>
                 <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                        <label class="form-label" for="exampleInputDisabled">Turno</label>
-                        {!!Form::select('turno', config('global.turnos'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+                      {!!Form::text('numExt', null, ['class'=>'form-control', 'id'=>'numExt', 'placeholder'=>'Número interior'])!!}
+        						</fieldset>
+                  </div>
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+                      {!!Form::text('numInt', null, ['class'=>'form-control', 'id'=>'numInt', 'placeholder'=>'Número exterior'])!!}
+        						</fieldset>
+                  </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <button type="button" class="btn btn-rounded btn-grey btn-inline" onclick="toggle2();">← Atrás</button>
                     </div>
-                    <div class="col-md-3"></div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <button type="button" class="btn btn-rounded btn-inline" onclick="toggle1();">
+                            Siguiente →
+                        </button>
+                    </div>
+                </div>
+
+            </section><!--.steps-icon-block-->
+        </div>
+    </div><!--.row-->
+
+    <div class="row details4 text-center" style="display:none">
+        <div class="{{$classSize}}">
+            <section class="box-typical">
+                <div class="steps-icon-progress" style="padding:30px">
+                    <ul>
+                      <li class="active">
+                          {!!$personales!!}
+                      </li>
+                      <li class="active">
+                          {!!$medicos!!}
+                      </li>
+                      <li class="active">
+                          {!!$geograficos!!}
+                      </li>
+                      <li class="active">
+                          {!!$escolares!!}
+                      </li>
+                    </ul>
+                </div>
+
+                <h5 class="m-t-lg with-border">Llenado de información académica</h5>
+                <div class="row">
+                  <div class="{{$classSizeForms}}">
+                    <?php
+                      $carrer=\App\carrer::lists('nombre', 'id');
+                     ?>
+                    <fieldset class="form-group">
+                      <label class="form-label">Programa académico</label>
+                      {!!Form::select('carrera', $carrer->prepend('Seleccionar', 0), 0, ['class'=>'select2 form-control'])!!}
+        						</fieldset>
+                  </div>
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+                      <label class="form-label">Turno</label>
+                      {!!Form::select('turno', config('global.turnos'), 0, ['class'=>'bootstrap-select bootstrap-select-arrow form-control'])!!}
+        						</fieldset>
+                  </div>
                 </div>
 
                 <h5 class="m-t-lg with-border">Seguridad</h5>
                 <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                    <label class="form-label" for="exampleInputDisabled">La pregunta y respuesta de seguridad permitirá en un futuro cambiar tu contraseña en caso de que la pierdas.</label>
-                    </br>
-                    <label class="form-label" for="exampleInputDisabled">Escribe tu Pregunta de Seguridad</label>
-                        {!!Form::text('pregunta', null, ['class'=>'form-control', 'id'=>'pregunta', 'placeholder'=>'Ej: Villano de Marvel Favorito'])!!}
-                    </div>
-                    <div class="col-md-3"></div>
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+                      <label class="form-label">Escribe tu Pregunta de Seguridad</label>
+                      {!!Form::text('pregunta', null, ['class'=>'form-control', 'id'=>'pregunta', 'placeholder'=>'Ej: Villano de Marvel Favorito'])!!}
+        						</fieldset>
+                  </div>
+                  <div class="{{$classSizeForms}}">
+                    <fieldset class="form-group">
+                      <label class="form-label">Escribe tu Respuesta</label>
+                      {!!Form::text('respuesta', null, ['class'=>'form-control', 'id'=>'respuesta', 'placeholder'=>'Ej: Carnage'])!!}
+        						</fieldset>
+                  </div>
                 </div>
+                <small class="text-muted">La pregunta y respuesta de seguridad permitirá en un futuro cambiar tu contraseña en caso de que la pierdas.</small>
+                </br>
                 <div class="row">
-                    <div class="col-md-3"></div>
-                    <div class="col-md-6 form-group">
-                     </br>
-                    <label class="form-label" for="exampleInputDisabled">Escribe tu Respuesta</label>
-                        {!!Form::text('respuesta', null, ['class'=>'form-control', 'id'=>'respuesta', 'placeholder'=>'Ej: Carnage'])!!}
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <button type="button" class="btn btn-rounded btn-grey btn-inline" onclick="toggle2();">← Atrás</button>
                     </div>
-                    <div class="col-md-3"></div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-md-6">
-                        <button type="button" class="btn btn-rounded btn-grey" onclick="toggle2();">← Atrás</button>
-                    </div>
-                    <div class="col-md-6">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
                         <button type="submit" class="btn btn-rounded btn-inline btn-warning">
                             Finalizar
                         </button>
                     </div>
                 </div>
-                
+
             </section><!--.steps-icon-block-->
-        </div>
-        <div class="col-md-3">
         </div>
     </div><!--.row-->
 {!!Form::close()!!}
-    
+
 </div><!--.container-fluid-->
 
 @stop
@@ -467,7 +396,7 @@
     <script src="{{asset('/Template/js/lib/bootstrap-select/bootstrap-select.min.js')}}"></script>
     <script src="{{asset('/Template/js/lib/select2/select2.full.min.js')}}"></script>
     <script src="{{asset('/Template/js/custom/completeProfileToggle.js')}}"></script>
-    
+
     <script src="{{asset('/Template/js/lib/clockpicker/bootstrap-clockpicker.min.js')}}"></script>
     <script src="{{asset('/Template/js/lib/clockpicker/bootstrap-clockpicker-init.js')}}"></script>
     <script src="{{asset('/Template/js/lib/daterangepicker/daterangepicker.js')}}"></script>

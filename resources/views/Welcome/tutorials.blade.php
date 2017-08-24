@@ -1,14 +1,14 @@
 @extends('layout')
 
 @section('title')
-<title>Tutoriales Servicio Medico Tutoriales</title>
+Tutoriales Servicio Medico Tutoriales
 @stop
 
 @section('css')
 @stop
 
 @section('subHead')
-Servicio Medico Upiiz
+Tutoriales
 @stop
 
 @section('content')

@@ -8,7 +8,7 @@
 @stop
 
 @section('subHead')
-
+Novedades
 @stop
 
 @section('content')
@@ -47,9 +47,9 @@
 
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane fade in active" id="tabs-1-tab-1" class="col-md-5 col-xs-6 " >
-       
+
 <div class="container-fluid">
-@foreach($info->sortByDesc('updated_at') as $inf) 
+@foreach($info->sortByDesc('updated_at') as $inf)
             <section class="activity-line">
                 <article class="activity-line-item box-typical">
                     <div class="activity-line-date border-primary b-a round">
@@ -81,7 +81,7 @@
                                 </div>
                             </div>
                         </section><!--.activity-line-action-->
-                       
+
                     </div><!--.activity-line-action-list-->
                 </article><!--.activity-line-item-->
             </section><!--.activity-line-->
