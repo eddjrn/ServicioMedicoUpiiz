@@ -62,16 +62,16 @@ Edición del blog
                     <div role="tabpanel" class="tab-pane fade in active" id="tabs-1-tab-1" class="col-md-5 col-xs-6" >
        
 
-                    	<section class="widget widget-tabs-compact">
-						<div class="tab-content widget-tabs-content">
-							<div class="tab-pane active " id="w-2-tab-1" role="tabpanel" aria-expanded="false">
-								<div class="user-card-row">
-									<div class="tbl-row">
-				<div class="row">
-				<div class="col-md-3"></div>
-				<div class="col-md-5">
-		<div class="panel-body">
-		<div class="panel-heading">
+                        <section class="widget widget-tabs-compact">
+                        <div class="tab-content widget-tabs-content">
+                            <div class="tab-pane active " id="w-2-tab-1" role="tabpanel" aria-expanded="false">
+                                <div class="user-card-row">
+                                    <div class="tbl-row">
+                <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-5">
+        <div class="panel-body">
+        <div class="panel-heading">
             <h4>Agregar Publicacion</h4>
         </div>
        {!!Form::open(array('url'=>'/admin/add/info','method'=>'patch'))!!} 
@@ -90,21 +90,21 @@ Edición del blog
         </div>
         </div>
         </div>
-						</div>
-				    </div>
-				</div>
+                        </div>
+                    </div>
+                </div>
 
 
-							<div class="tab-pane" id="w-2-tab-2" role="tabpanel" aria-expanded="true">
-	<div class="row">
-	<div class="col-md-2 col-sm-3"></div>
-	<div class="col-md-8 col-sm-9">
-	<div class="panel panel-success">
+                            <div class="tab-pane" id="w-2-tab-2" role="tabpanel" aria-expanded="true">
+    <div class="row">
+    <div class="col-md-1 col-sm-3"></div>
+    <div class="col-md-10 col-sm-9">
+    <div class="ribbon-block round relative text-center">
         <div class="panel-heading">
             <h4>Lista de Publicaciones</h4>
         </div>
 
-        <div class="panel-body">
+        <div class="ribbon-block round relative text-center">
             <table class="table">
                 <thead>
                     <tr>
@@ -121,8 +121,8 @@ Edición del blog
     <style type="text/css">
        .table td.text {
     max-width: 177px;
-		}
-		.table td.text span {
+        }
+        .table td.text span {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -284,33 +284,33 @@ Edición del blog
     </div>
     </div>
 
-							</div>
-						</div>
-						<div class="widget-tabs-nav bordered">
-							<ul class="tbl-row" role="tablist">
-								<li class="nav-item">
-									<a class="nav-link active" data-toggle="tab" href="#w-2-tab-1" role="tab" aria-expanded="false">
-										<i class="font-icon font-icon-heart"></i>
-										Agregar
-									</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" data-toggle="tab" href="#w-2-tab-2" role="tab" aria-expanded="true">
-										<i class="font-icon font-icon-users-two"></i>
-										Editar
-									</a>
-								</li>
-							</ul>
-						</div>
-					</section>
+                            </div>
+                        </div>
+                        <div class="widget-tabs-nav bordered">
+                            <ul class="tbl-row" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab" href="#w-2-tab-1" role="tab" aria-expanded="false">
+                                        <i class="font-icon font-icon-heart"></i>
+                                        Agregar
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#w-2-tab-2" role="tab" aria-expanded="true">
+                                        <i class="font-icon font-icon-users-two"></i>
+                                        Editar
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </section>
 
 
                     </div><!--.tab-pane-->
 
 
            <!-- SEGUNDO-->         <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-2">
-                    	
-                    	
+                        
+                        
                 <section class="widget widget-tabs-compact">
                         <div class="tab-content widget-tabs-content">
                             <div class="tab-pane active " id="w-4-tab-3" role="tabpanel" aria-expanded="false">
@@ -346,14 +346,14 @@ Edición del blog
 
                             <div class="tab-pane" id="w-4-tab-4" role="tabpanel" aria-expanded="true">
     <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-9">
-    <div class="panel panel-success">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+    <div class="ribbon-block round relative text-center">
         <div class="panel-heading">
             <h4>Lista de Imagenes</h4>
         </div>
 
-        <div class="panel-body">
+        <div class="ribbon-block round relative text-center">
             <table class="table">
                 <thead>
                     <tr>
@@ -562,14 +562,14 @@ Edición del blog
 
         <div class="tab-pane" id="w-6-tab-6" role="tabpanel" aria-expanded="true">
     <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-9">
-    <div class="panel panel-success">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+    <div class="ribbon-block round relative text-center">
         <div class="panel-heading">
             <h4>Lista de Videos</h4>
         </div>
 
-        <div class="panel-body">
+        <div class="ribbon-block round relative text-center">
             <table class="table">
                 <thead>
                     <tr>
@@ -743,7 +743,7 @@ Edición del blog
                             </ul>
                         </div>
                     </section>
-                    	
+                        
 
                     </div><!--.tab-pane-->
 
@@ -789,14 +789,14 @@ Edición del blog
 
         <div class="tab-pane" id="w-8-tab-8" role="tabpanel" aria-expanded="true">
     <div class="row">
-    <div class="col-md-2"></div>
-    <div class="col-md-9">
-    <div class="panel panel-success">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+    <div class="ribbon-block round relative text-center">
         <div class="panel-heading">
             <h4>Lista de Tutoriales</h4>
         </div>
 
-        <div class="panel-body">
+        <div class="ribbon-block round relative text-center">
             <table class="table">
                 <thead>
                     <tr>

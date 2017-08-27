@@ -21,7 +21,7 @@ Creditos
 	<div class="col-md-10 col-xs-12">
 
 <div class="container-fluid">
-    <div class="cards-grid" ><div class="column size-1of2"><div class="card-grid-col">
+    <div class="ribbon-block round relative text-center" ><div class="column size-1of2"><div class="card-grid-col">
     	<div class="row">
     	<div class="col-xs-2 col-md-1"></div>
     	<div class="col-xs-12 col-md-12">
@@ -49,7 +49,7 @@ Creditos
             <div class="row">
             <div class="col-xs-2 col-md-1"></div>
     		<div class="col-xs-12 col-md-12">
-					<article class="card-typical">
+					<article class="ribbon-block round relative text-center">
 						<div class="card-typical-section">
 							<div class="user-card-row">
 								<div class="tbl-row">

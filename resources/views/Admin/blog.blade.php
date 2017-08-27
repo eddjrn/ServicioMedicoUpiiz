@@ -62,7 +62,8 @@ Vista previa del blog
 <div class="container-fluid">
 @foreach($info->sortByDesc('updated_at') as $inf) 
             <section class="activity-line">
-                <article class="activity-line-item box-typical">
+                <article class="ribbon-block round relative text-center">
+                <!--activity-line-item box-typical-->
                     <div class="activity-line-date border-primary b-a round">
                         {{$inf->dia()}}<br>
                        {{$inf->Mes()}}
