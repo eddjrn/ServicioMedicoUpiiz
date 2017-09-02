@@ -16,7 +16,8 @@
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1",
         "laravelcollective/html": "5.1.*",
-        "sofa/eloquence": "~5.1"
+        "sofa/eloquence": "~5.1",
+        "intervention/image": "2.*"
     },
     "autoload": {
         "classmap": [

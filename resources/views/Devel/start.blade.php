@@ -24,6 +24,11 @@ Inicio en modo desarrollador
 @section('content')
 <h5 class="m-t-lg with-border">Recordatorios</h5>
 
+<!-- Wrap the image or canvas element with a block element (container) -->
+<div>
+  <img id="image" src="/Template/img/widget-user-bg.jpg" class="imge">
+</div>
+
 <h5 class="m-t-lg with-border">Recordatorios</h5>
 
 
@@ -140,4 +145,30 @@ Inicio en modo desarrollador
 @stop
 
 @section('scripts')
+<style>
+/* Limit image width to avoid overflow the container */
+  .imge {
+  max-width: 100%; /* This rule is very important, please do not ignore this! */
+  }
+</style>
+
+<link  href="/Template/css/custom/cropper/cropper.css" rel="stylesheet">
+<script src="/Template/js/custom/cropper/cropper.js"></script>
+
+<script>
+$('#image').cropper({
+  aspectRatio: 16 / 9,
+  crop: function(e) {
+    // Output the result data for cropping image.
+    console.log(e.x);
+    console.log(e.y);
+    console.log(e.width);
+    console.log(e.height);
+    console.log(e.rotate);
+    console.log(e.scaleX);
+    console.log(e.scaleY);
+  }
+});
+</script>
+
 @stop
