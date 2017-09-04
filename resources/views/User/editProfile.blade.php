@@ -2,9 +2,17 @@
 
 @section('title')
 <title>Editar perfil</title>
+<meta name="csrf-token" content="{{ csrf_token() }}" /> <!--cabecera para que se puedan enviar peticiones POST desde javascript-->
 @stop
 
 @section('css')
+<link rel="stylesheet" href="{{asset('/Template/css/lib/bootstrap-sweetalert/sweetalert.css')}}"/>
+<link  href="{{asset('/Template/css/lib/cropper/cropper.css')}}" rel="stylesheet">
+<style>
+  img {
+    max-width: 100%;
+  }
+</style>
 @stop
 
 @section('popUp')
@@ -45,24 +53,68 @@
             </div>
             <div class="modal-body text-center">
                 <div class="widget-user-photo">
-					<img src="{{asset($student->user->foto)}}" alt="" class="img-size">
+					<img src="{{Auth::user()->foto}}" alt="" class="img-size">
 				</div>
             </div>
             <div class="modal-footer text-center">
-            	{!!Form::open(array('method'=>'post'))!!}
-            	<input type="hidden" value="{{$student->user->id}}" name="user">
             	<div class="row">
             		<div class="col-lg-6 col-md-6 col-sm-6">
-						<button type="submit" class="btn btn-rounded btn-inline btn-warning" formaction="{{asset('/profile/photoUp')}}">Cambiar foto</button>
+						<button type="submit" class="btn btn-rounded btn-inline btn-warning" onclick="changeModal();">Cambiar foto</button>
 					</div>
+                    {!!Form::open(array('method'=>'post'))!!}
+                	<input type="hidden" value="{{$student->user->id}}" name="user">
 					<div class="col-lg-6 col-md-6 col-sm-6">
 						<button type="submit" class="btn btn-rounded btn-inline btn-danger" formaction="{{asset('/profile/photoDel')}}">Eliminar foto</button>
 					</div>
+                    {!!Form::close()!!}
 				</div>
-				{!!Form::close()!!}
 			</div>
         </div>
     </div>
+</div><!--.modal-->
+
+<div class="modal fade"
+      id="photoModalEdit"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="photoModalEditLabel"
+      aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                  <i class="font-icon-close-2"></i>
+              </button>
+              <h4 class="modal-title" id="myModalLabel">Nueva foto de perfil</h4>
+          </div>
+          <div class="modal-body text-center">
+              <div class="widget-user-photo">
+              <img id="image" src="{{asset('/Template/img/pic.jpg')}}" alt="Picture" class="img-size">
+             </div>
+          </div>
+          <div class="modal-footer text-center">
+             <input type="hidden" value="{{$student->user->id}}" name="user">
+             <div class="row">
+                 <div class="col-lg-6 col-md-6 col-sm-6">
+                   <button id="reset" class="btn btn-rounded btn-inline btn-primary"><span class="fa fa-refresh"></span></button>
+                   <button id="rotateRight" class="btn btn-rounded btn-inline btn-primary"><span class="fa fa-rotate-right"></span></button>
+                   <button id="rotateLeft" class="btn btn-rounded btn-inline btn-primary"><span class="fa fa-rotate-left"></span></button>
+
+                   <label class="btn btn-rounded btn-inline btn-primary btn-upload" for="inputImage" title="Upload image file">
+                     <input type="file" class="sr-only" id="inputImage" name="file" accept=".jpg,.jpeg,.png,.gif">
+                     <span class="docs-tooltip" data-toggle="tooltip" title="Import image with Blob URLs">
+                       <span class="fa fa-upload"></span>
+                     </span>
+                   </label>
+                 </div>
+               <div class="col-lg-6 col-md-6 col-sm-6">
+                   <button id="crop" class="btn btn-rounded btn-inline btn-success">Guardar <span class="fa fa-crop"></span></button>
+               </div>
+             </div>
+             <small class="text-muted">Utilice los controles para ajustar la imagen, haga doble click sobre la imagen para arrastarla.</small>
+          </div>
+      </div>
+  </div>
 </div><!--.modal-->
 @stop
 
@@ -95,12 +147,13 @@ Edición de los datos personales
                 <div class="tbl-row">
                     <div class="tbl-cell tbl-cell-photo">
                         <a data-toggle="modal" data-target="#photoModal">
-                            <img src="{{asset($student->user->foto)}}" alt="">
+                            <img src="{{Auth::user()->foto}}" alt="">
                         </a>
                     </div>
                     <div class="tbl-cell">
                         <p class="user-card-row-name"><a data-toggle="modal" data-target="#photoModal">{{$student->user}}</a></p>
                         <p class="user-card-row-location">{{$student->user->email}}</p>
+                        <small class="text-muted">Para cambiar foto de perfil haga click sobre la imagen.</small>
                     </div>
                 </div>
             </div>
@@ -600,6 +653,16 @@ Edición de los datos personales
 
     <script src="{{asset('/Template/js/lib/input-mask/jquery.mask.min.js')}}"></script>
 
+    <script src="{{asset('/Template/js/lib/bootstrap-sweetalert/sweetalert.min.js')}}"></script>
+
+    <script>
+        var UrlToPostForm = "{{asset('/profile/photoUp')}}";
+        var UrlToRedirectPage = "{{asset('/profile')}}";
+    </script>
+
+    <script src="{{asset('/Template/js/lib/cropper/cropper.js')}}"></script>
+    <script src="{{asset('/Template/js/custom/shared.js')}}"></script>
+
     <script>
         $(document).ready(function(){
     	     checkPosition();
@@ -638,21 +701,17 @@ Edición de los datos personales
             $('#transfusionesForms').slideToggle('show');
         }
 
-        function checkPosition() {
-		    if (window.matchMedia('(max-width: 768px)').matches) {
-		        $('.img-size').css({
-		            'height':'170px',
-		            'width':'auto',
-		            'margin':'auto',
-		        });
-		    } else {
-		        $('.img-size').css({
-		            'height':'350px',
-		            'width':'auto',
-		            'margin':'auto',
-		        });
-		    }
-		}
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        function changeModal(){
+            //alert('x');
+            $('#photoModal').modal('hide');
+            $('#photoModalEdit').modal('show');
+        }
     </script>
 
 @stop

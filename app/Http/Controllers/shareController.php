@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 use Hash;
+use Image;
 
 class shareController extends Controller
 {
@@ -33,9 +34,21 @@ class shareController extends Controller
         $user = Auth::user();
 
         if($type == 1){ //return Admin profile
-          return view('Admin.profile', ['index'=>$index, 'user'=>$user, 'type'=>$type]);
+            $urlToCancel = '/admin';
+          return view('Admin.profile', [
+              'index'=>$index,
+              'user'=>$user,
+              'type'=>$type,
+              'urlToCancel'=>$urlToCancel,
+          ]);
         } elseif($type == 3){ //return Devel profile
-          return view('Devel.profile', ['index'=>$index, 'user'=>$user, 'type'=>$type]);
+            $urlToCancel = '/devel';
+          return view('Devel.profile', [
+              'index'=>$index,
+              'user'=>$user,
+              'type'=>$type,
+              'urlToCancel'=>$urlToCancel,
+          ]);
         }
 
     }
@@ -52,9 +65,23 @@ class shareController extends Controller
             $user = Auth::user();
 
             if($type == 1){ //return Admin profile
-              return view('Admin.profile', ['index'=>$index, 'user'=>$user, 'edit'=>$edit, 'type'=>$type]);
+                $urlToCancel = '/admin';
+              return view('Admin.profile', [
+                  'index'=>$index,
+                  'user'=>$user,
+                  'edit'=>$edit,
+                  'type'=>$type,
+                  'urlToCancel'=>$urlToCancel,
+              ]);
             } elseif($type == 3){ //return Devel profile
-              return view('Devel.profile', ['index'=>$index, 'user'=>$user, 'edit'=>$edit, 'type'=>$type]);
+                $urlToCancel = '/devel';
+              return view('Devel.profile', [
+                  'index'=>$index,
+                  'user'=>$user,
+                  'edit'=>$edit,
+                  'type'=>$type,
+                  'urlToCancel'=>$urlToCancel,
+              ]);
             }
         } else{
             return redirect('/person/profile/'.$type)
@@ -104,11 +131,13 @@ class shareController extends Controller
     }
 
     public function updatePhoto(Request $request, $type){
-    	$user = \App\user::find($request->user);
-    	$user->update([
-    		'foto'=>'/Template/img/avatar-1-64.png',
-    	]);
-    	return redirect('/person/profile/'.$type);
+        $file = $request->file('croppedImage');
+        $image2 = Image::make($file->getRealPath())->resize(300, 300);
+        $image2->encode('jpg', 50);
+
+        Auth::user()->update([
+          'foto'=>$image2,
+        ]);
     }
 
     //---------------------------------------------------------------------------------------

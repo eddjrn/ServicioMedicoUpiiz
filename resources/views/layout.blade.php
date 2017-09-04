@@ -4,9 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	
+
 	@yield('title')
-	
+
 	@yield('css')
 
 	<link href="{{asset('/Template/img/favicon.144x144.png')}}" rel="apple-touch-icon" type="/image/png" sizes="144x144">
@@ -21,7 +21,7 @@
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
-	
+
     <link rel="stylesheet" href="{{asset('/Template/css/lib/font-awesome/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('/Template/css/main.css')}}">
 </head>
@@ -100,52 +100,52 @@
 	        <a class="site-logo">
 	            <img class="hidden-md-down" src="{{asset('/Template/img/logo upiiz estilo ipn_small2.png')}}" alt="">
 	            <img class="hidden-lg-up" src="{{asset('/Template/img/logo upiiz estilo ipn_small3.png')}}" alt="">
-	        </a>       
-	        
+	        </a>
+
 	        <button class="hamburger hamburger--htla">
 	            <span>toggle menu</span>
 	        </button>
-	        
+
 	        <div  class="site-header-content">
-	        
+
 	            <div class="site-header-content-in">
 	                <div class="site-header-shown">
-                        
+
                         @if(Auth::check()) <!--=Solo se muestra el menu de perfil si se esta iniciado sesion-->
 	                    <div class="dropdown user-menu">
 	                        <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	                            <img src="{{asset(Auth::user()->foto)}}" alt="">
+	                            <img src="{{Auth::user()->foto}}" alt="">
 	                        </button>
 	                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dd-user-menu">
 	                            <a class="dropdown-item" href="{{asset('/profile')}}"><span class="font-icon glyphicon glyphicon-user"></span>Perfil</a>
 	                            <a class="dropdown-item" data-toggle="modal" data-target=".bd-example-modal-sm"><span class="font-icon glyphicon glyphicon-cog"></span>Configuración</a>
 	                            <a class="dropdown-item" data-toggle="modal" data-target=".bd-examplee-modal-sm"><span class="font-icon font-icon-refresh"></span>Cambiar Contraseña</a>
-	                           
-	                            
+
+
 	                            <div class="dropdown-divider"></div>
 	                            <a class="dropdown-item" target="_blank" href="https://www.facebook.com/verodelarosa.medicaupiiz?hc_ref=SEARCH&fref=nf"><span class="font-icon font-icon-share"></span>Facebook</a>
 	                            <a class="dropdown-item" target="_blank" href="http://www.zacatecas.ipn.mx/Paginas/Inicio.aspx"><span class="font-icon font-icon-home"></span>Sitio UPIIZ</a>
-	                            
+
 	                            <div class="dropdown-divider"></div>
 	                            <a class="dropdown-item" href="{{asset('/logout')}}"><span class="font-icon glyphicon glyphicon-log-out"></span>Salir</a>
 	                        </div>
 	                    </div>
 	                    @endif
-	                    
+
 	                    <a class="site-logo">
                             <img class="hidden-md-down" src="{{asset('/Template/img/escudo ipn negro_small.png')}}" alt="">
                         </a>
-	                    
+
 	                </div><!--.site-header-shown-->
-	                
+
 	                <span class="lbl hidden-md-down" style="font-size:25px;margin: 0 0 10px -150px;">Unidad Profesional Interdisciplinaria de Ingeniería Campus Zacatecas</span>
                     <span class="lbl hidden-lg-up" style="font-size:25px">UPIIZ-IPN</span>
-                    
+
 	            </div><!--site-header-content-in-->
 	        </div><!--.site-header-content-->
 	    </div><!--.container-fluid-->
 	</header><!--.site-header-->
-	
+
 	<div class="mobile-menu-left-overlay" ></div> <!--=Index en este caso solo sirve para el estilo CSS-->
 	<ul class="main-nav nav nav-inline">
 		<li class="nav-item">
@@ -179,7 +179,7 @@
 		</li>
 		@endif
 	</ul>
-	
+
 	<div class="page-content">
 		<div class="container-fluid">
             @include('alerts.sessionAlert')
@@ -195,9 +195,9 @@
 	<script src="{{asset('/Template/js/lib/tether/tether.min.js')}}"></script>
 	<script src="{{asset('/Template/js/lib/bootstrap/bootstrap.min.js')}}"></script>
 	<script src="{{asset('/Template/js/plugins.js')}}"></script>
-	
+
 	@yield('scripts')
 
     <script src="{{asset('/Template/js/app.js')}}"></script>
 </body>
-</html> 
+</html>

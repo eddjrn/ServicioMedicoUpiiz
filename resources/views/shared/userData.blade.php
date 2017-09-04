@@ -15,7 +15,7 @@
             <div class="modal-body">
                 <div class="container">
                 	<div class="widget-user-photo text-center">
-						<img src="{{asset($student->user->foto)}}" alt="" style="height:150px;width:auto;">
+						<img src="{{Auth::user()->foto}}" alt="" style="height:150px;width:auto;">
 					</div>
 					<hr/>
                     <div class="row">
@@ -53,7 +53,7 @@
 									    <i class="font-icon {{config('global.hasIconStyle')[$student->user->medicalData->seguroVida]}}
 									     {{config('global.hasColorStyle')[$student->user->medicalData->seguroVida]}}"></i>
 									</div>
-									<input class="form-control {{config('global.hasStyleTextBox')[$student->user->medicalData->seguroVida]}}" 
+									<input class="form-control {{config('global.hasStyleTextBox')[$student->user->medicalData->seguroVida]}}"
 									readonly type="text" value="{{$student->user->medicalData->seguroVida()}}">
 								</div>
                             </fieldset>
@@ -65,9 +65,9 @@
                             </fieldset>
                         </div>
                     </div>
-                    
+
                     <h5 class="m-t-lg with-border">Historial médico</h5>
-                    
+
                     <div class="row">
                         <div class="{{$classSizeModal}}">
                             <fieldset class="form-group">
@@ -96,7 +96,7 @@
                             </fieldset>
                         </div>
                     </div>
-                    
+
                     <div class="row">
                         <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
                             <article class="profile-info-item">
@@ -143,7 +143,7 @@
                             </article><!--.profile-info-item-->
                         </div>
                     </div>
-                    
+
                     <h5 class="m-t-lg with-border">Antecedentes de enfermedades en la familia</h5>
                     <div class="row">
                         <div class="{{$classSizeModal}}">
@@ -229,7 +229,7 @@
                             </fieldset>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -243,7 +243,7 @@
 <section class="widget widget-user">
     <div class="widget-user-bg" style="background-image: url('{{asset('/Template/img/user-bg.jpg')}}')"></div>
     <div class="widget-user-photo">
-        <img src="{{asset($student->user->foto)}}" alt="">
+        <img src="{{Auth::user()->foto}}" alt="">
     </div>
     <div class="widget-user-name">
         {{$student->user}}
@@ -251,7 +251,7 @@
     </div>
     <div>{{$student->carrer->nombre}}</div>
     @unless($student->user->facebook == null) <div><a href="{{$student->user->facebook}}" target="_blank">Facebook</a></div> @endunless
-    
+
     <div class="widget-user-stat hidden-md-down">
         <div class="item">
             <div class="number">{{$student->user->medicalData->numSeguro}}</div>
@@ -265,7 +265,7 @@
             <div class="number">{{$student->user->identificacion}}</div>
             <div class="caption">Boleta</div>
         </div>
-        
+
     </div>
 </section>
 
@@ -321,10 +321,10 @@
                 <label class="form-label" for="exampleInputDisabled2">Estado de documentación</label>
                 <div class="input-group">
                     <div class="input-group-addon">
-                        <i class="font-icon {{config('global.hasIconStyle')[$student->documentacion]}} 
+                        <i class="font-icon {{config('global.hasIconStyle')[$student->documentacion]}}
                         {{config('global.hasColorStyle')[$student->documentacion]}}"></i>
                     </div>
-                    <input class="form-control {{config('global.hasStyleTextBox')[$student->documentacion]}}" 
+                    <input class="form-control {{config('global.hasStyleTextBox')[$student->documentacion]}}"
                     readonly type="text" value="{{$student->documentacion()}}">
                 </div>
                 <small class="text-muted">{{$student->observaciones}} </small>
@@ -344,15 +344,15 @@
                         <i class="font-icon {{config('global.hasIconStyle')[$student->user->medicalData->seguroVida]}}
                          {{config('global.hasColorStyle')[$student->user->medicalData->seguroVida]}}"></i>
                     </div>
-                    <input class="form-control {{config('global.hasStyleTextBox')[$student->user->medicalData->seguroVida]}}" 
+                    <input class="form-control {{config('global.hasStyleTextBox')[$student->user->medicalData->seguroVida]}}"
                     readonly type="text" value="{{$student->user->medicalData->seguroVida()}}">
                 </div>
             </fieldset>
         </div>
     </div>
-    
+
     <h5 class="m-t-lg with-border">Datos del tutor</h5>
-    
+
     <div class="row">
         <div class="{{$classSize}}">
             <fieldset class="form-group">
@@ -379,9 +379,9 @@
             </fieldset>
         </div>
     </div>
-    
+
     <h5 class="m-t-lg with-border">Datos de médicos</h5>
-    
+
     <div class="row">
     	<div class="{{$classSize}} hidden-lg-up">
             <fieldset class="form-group">
@@ -416,13 +416,13 @@
             </fieldset>
         </div>
     </div>
-    
+
     <div class="text-center">
         <button type="button" class="btn btn-rounded btn-inline btn-info" data-toggle="modal" data-target=".medicalWindow">Más información</button>
     </div>
-    
+
     <h5 class="m-t-lg with-border">Datos de escolares</h5>
-    
+
     <div class="row">
     	<div class="{{$classSize}} hidden-lg-up">
             <fieldset class="form-group">
@@ -432,7 +432,7 @@
         </div>
         <div class="{{$classSize}}">
             <fieldset class="form-group">
-                <label class="form-label" for="exampleInputDisabled2">Carrera 
+                <label class="form-label" for="exampleInputDisabled2">Carrera
                     <span class="label" style="background-color: {{$student->carrer->color}}; border-color: #D0D0D0;">____________</span>
                 </label>
                 <input type="text" readonly class="form-control" value="{{$student->carrer->nombre}}">
@@ -445,9 +445,9 @@
             </fieldset>
         </div>
     </div>
-    
+
     <h5 class="m-t-lg with-border">Datos de geográficos</h5>
-    
+
     <div class="row">
         <div class="{{$classSize}}">
             <fieldset class="form-group">
@@ -497,8 +497,8 @@
                 <input type="text" readonly class="form-control" value="{{$student->codigoPostal}}">
             </fieldset>
         </div>
-    </div>       
-    
+    </div>
+
 </div> <!--End box typical-->
 
 <!-- end profile -->

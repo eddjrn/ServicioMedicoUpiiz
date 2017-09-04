@@ -112,6 +112,8 @@ Route::get('/blocked', 'startController@stop');
 //--------------------
 
 Route::get('/devel', 'develController@index');
+Route::post('/devel', 'develController@test');
+Route::get('/devel/test', 'develController@test2');
 
 //--------------------
 

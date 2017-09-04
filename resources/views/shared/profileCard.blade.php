@@ -46,21 +46,21 @@
           </div>
           <div class="modal-body text-center">
               <div class="widget-user-photo">
-				<img src="{{asset($user->foto)}}" alt="" class="img-size">
+				<img src="{{Auth::user()->foto}}" alt="" class="img-size">
 			</div>
           </div>
           <div class="modal-footer text-center">
-          	{!!Form::open(array('method'=>'post'))!!}
-          	<input type="hidden" value="{{$user->id}}" name="user">
           	<div class="row">
           		<div class="col-lg-6 col-md-6 col-sm-6">
-					<button type="submit" class="btn btn-rounded btn-inline btn-warning" formaction="{{asset('/person/photoUp/'.$type)}}">Cambiar foto</button>
+					<button type="submit" class="btn btn-rounded btn-inline btn-warning" onclick="changeModal();">Cambiar foto</button>
 				</div>
+                {!!Form::open(array('method'=>'post'))!!}
+                <input type="hidden" value="{{$user->id}}" name="user">
 				<div class="col-lg-6 col-md-6 col-sm-6">
 					<button type="submit" class="btn btn-rounded btn-inline btn-danger" formaction="{{asset('/person/photoDel/'.$type)}}">Eliminar foto</button>
 				</div>
+                {!!Form::close()!!}
 			</div>
-			{!!Form::close()!!}
 		</div>
       </div>
   </div>
@@ -86,6 +86,50 @@
       </div>
   </div>
 </div><!--.modal-->
+
+<div class="modal fade"
+      id="photoModalEdit"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="photoModalEditLabel"
+      aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                  <i class="font-icon-close-2"></i>
+              </button>
+              <h4 class="modal-title" id="myModalLabel">Nueva foto de perfil</h4>
+          </div>
+          <div class="modal-body text-center">
+              <div class="widget-user-photo">
+              <img id="image" src="{{asset('/Template/img/pic.jpg')}}" alt="Picture" class="img-size">
+             </div>
+          </div>
+          <div class="modal-footer text-center">
+             <input type="hidden" value="{{$user->id}}" name="user">
+             <div class="row">
+                 <div class="col-lg-6 col-md-6 col-sm-6">
+                   <button id="reset" class="btn btn-rounded btn-inline btn-primary"><span class="fa fa-refresh"></span></button>
+                   <button id="rotateRight" class="btn btn-rounded btn-inline btn-primary"><span class="fa fa-rotate-right"></span></button>
+                   <button id="rotateLeft" class="btn btn-rounded btn-inline btn-primary"><span class="fa fa-rotate-left"></span></button>
+
+                   <label class="btn btn-rounded btn-inline btn-primary btn-upload" for="inputImage" title="Upload image file">
+                     <input type="file" class="sr-only" id="inputImage" name="file" accept=".jpg,.jpeg,.png,.gif">
+                     <span class="docs-tooltip" data-toggle="tooltip" title="Import image with Blob URLs">
+                       <span class="fa fa-upload"></span>
+                     </span>
+                   </label>
+                 </div>
+               <div class="col-lg-6 col-md-6 col-sm-6">
+                   <button id="crop" class="btn btn-rounded btn-inline btn-success">Guardar <span class="fa fa-crop"></span></button>
+               </div>
+             </div>
+             <small class="text-muted">Utilice los controles para ajustar la imagen, haga doble click sobre la imagen para arrastarla.</small>
+          </div>
+      </div>
+  </div>
+</div><!--.modal-->
 @endunless
 
 <div class="page-center">
@@ -95,8 +139,10 @@
           <?php $url = '/person/profile/'.$type; ?>
           {!!Form::model($user, array('url'=>$url, 'method'=>'patch', 'class'=>'sign-box'))!!}
               <div class="sign-avatar">
-                  <a data-toggle="modal" data-target="#photoModal"><img src="{{asset($user->foto)}}" alt=""></a>
+                  <a data-toggle="modal" data-target="#photoModal"><img src="{{Auth::user()->foto}}" alt=""></a>
               </div>
+              <small class="text-muted">Para cambiar foto de perfil haga click sobre la imagen.</small>
+              <br/>
 
               @include('alerts.formError')
 
@@ -144,14 +190,14 @@
 
               <button type="submit" class="btn btn-rounded btn-danger" data-toggle="modal" data-target=".bd-example-modal-sm">Actualizar perfíl</button>
 
-              <a href="{{asset('/admin/profile')}}"><button type="button" class="close">
+              <a href="{{asset($urlToCancel)}}"><button type="button" class="close">
                   <span aria-hidden="true">&times;</span>
               </button></a>
           {!!Form::close()!!}
           @else
            <form class="sign-box">
               <div class="sign-avatar">
-                  <img src="{{asset($user->foto)}}" alt="">
+                  <img src="{{Auth::user()->foto}}" alt="">
               </div>
               <header class="sign-title">{{$user}}</header>
 
@@ -172,13 +218,16 @@
               </div>
 
               <button type="button" class="btn btn-rounded btn-warning" data-toggle="modal" data-target=".bd-example-modal-sm">Editar perfíl</button>
+              @unless($user->facebook == null)
               <p class="sign-note"><a href="{{$user->facebook}}" target="_blank">Facebook</a></p>
+              @endunless
 
-              <a href="{{asset('/admin')}}"><button type="button" class="close">
+              <a href="{{asset($urlToCancel)}}"><button type="button" class="close">
                   <span aria-hidden="true">&times;</span>
               </button></a>
           </form>
           @endif
       </div>
   </div>
+
 </div><!--.page-center-->

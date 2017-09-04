@@ -22,7 +22,8 @@ class UserMigration extends Migration
             $table->string('password', 60);
             $table->string('identificacion')->unique();
             $table->integer('tipo')->default(1);
-            $table->string('foto')->nullable();
+            //$table->longText('foto')->nullable();
+            $table->binary('foto')->nullable();
             $table->boolean('completado')->default(false);
             $table->timestamps();
             $table->rememberToken();

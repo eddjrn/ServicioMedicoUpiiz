@@ -13,6 +13,7 @@ use App\medicalRecord;
 
 use Carbon\Carbon;
 use Hash;
+use Image;
 
 class profileController extends Controller
 {
@@ -269,11 +270,13 @@ class profileController extends Controller
     }
 
     public function updatePhoto(Request $request){
-    	$user = \App\user::find($request->user);
-    	$user->update([
-    		'foto'=>'/Template/img/avatar-1-64.png',
-    	]);
-    	return back();
+        $file = $request->file('croppedImage');
+        $image2 = Image::make($file->getRealPath())->resize(300, 300);
+        $image2->encode('jpg', 50);
+
+        Auth::user()->update([
+          'foto'=>$image2,
+        ]);
     }
 
     /**

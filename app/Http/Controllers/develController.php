@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Image;
+
 class develController extends Controller
 {
     public function __construct()
@@ -53,6 +55,82 @@ class develController extends Controller
           'tutorials'=>$tutorials,
           'messages'=>$messages,
         ]);
+    }
+
+    public function test(Request $request){
+      $index = 2;
+      // $file = $request->file('croppedImage');
+      // $random = str_random(10);
+      // $nombre = $random.'-'.$file->getClientOriginalName();
+      // $path = public_path('Template/'.$nombre);
+      // $url = '/Template/'.$nombre;
+      // $image = Image::make($file->getRealPath());
+      // $image->save($path);
+
+      // $file = $request->file('abrir2');
+      // $random = str_random(10);
+      // $nombre = $random.'-'.$file->getClientOriginalName();
+      // $path = public_path('Template/'.$nombre);
+      // $url = '/Template/'.$nombre;
+      // $image = Image::make($file->getRealPath());
+      // $image->save($path);
+
+      $file = $request->file('croppedImage');
+      $image2 = Image::make($file->getRealPath())->resize(300, 300);
+      $image2->encode('jpg', 50);
+      //$image2->encode('data-url');
+
+      Auth::user()->update([
+        'foto'=>$image2,
+      ]);
+
+      return view('Devel.test', [
+        'index' => $index,
+        'url' => $image2,
+      ]);
+      // $data = json_decode($request->get('croppedImage'), true);
+      // //$file = $_FILES['croppedImage'];
+      // $name = Auth::user()->id.".png";
+      // $image = Image::make($file)->crop(
+      //       intval($data['height']),
+      //       intval($data['width']),
+      //       intval($data['x']),
+      //       intval($data['y'])
+      //   );
+      // //$image->encode('data-url');
+      //
+      // return $image;
+
+    //   if(!empty($file)) {
+    //   $destinationPath = public_path() . '/Template/';
+    //
+    //   $file = str_replace('data:image/png;base64,', '', $file);
+    //   $img = str_replace(' ', '+', $file);
+    //   $data = base64_decode($img);
+    //   $filename = date('ymdhis') . '_croppedImage' . ".png";
+    //   $file = $destinationPath . $filename;
+    //   $success = file_put_contents($file, $data);
+    //
+    //   // THEN RESIZE IT
+    //   $returnData = 'Template/' . $filename;
+    //   $image = Image::make(file_get_contents(URL::asset($returnData)));
+    //   $image = $image->resize(450,450)->save($destinationPath . $filename);
+    //
+    //   if($success){
+    //   return $returnData;
+    //   }
+    // }
+
+
+    }
+
+    public function test2(){
+      $index = 2;
+      $url = 0;
+      return view('Devel.test', [
+        'index' => $index,
+        'url' => $url,
+      ]);
     }
 
     /**
