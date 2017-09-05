@@ -60,7 +60,7 @@ Busqueda de registro
                             <div class="tbl-row">
                                 <div class="tbl-cell tbl-cell-photo">
                                     <a href="{{asset('/admin/lists')}}/{{$u->student->id}}">
-                                        <img src="{{asset($u->foto)}}" alt="">
+                                        <img src="{{$u->foto}}" alt="">
                                     </a>
                                 </div>
                                 <div class="tbl-cell">
@@ -113,7 +113,7 @@ Busqueda de registro
                         <div class="user-card-row">
                             <div class="tbl-row">
                                 <div class="tbl-cell tbl-cell-photo">
-                                    <img src="{{asset($u->foto)}}" alt="">
+                                    <img src="{{$u->foto}}" alt="">
                                 </div>
                                 <div class="tbl-cell">
                                     <p>
@@ -204,7 +204,7 @@ Busqueda de registro
                         <div class="user-card-row">
                             <div class="tbl-row">
                                 <div class="tbl-cell tbl-cell-photo">
-                                    <img src="{{asset($u->foto)}}" alt="">
+                                    <img src="{{$u->foto}}" alt="">
                                 </div>
                                 <div class="tbl-cell">
                                     <p>
@@ -296,7 +296,7 @@ Busqueda de registro
                         <div class="user-card-row">
                             <div class="tbl-row">
                                 <div class="tbl-cell tbl-cell-photo">
-                                    <img src="{{asset($u->foto)}}" alt="">
+                                    <img src="{{$u->foto}}" alt="">
                                 </div>
                                 <div class="tbl-cell">
                                     <p>

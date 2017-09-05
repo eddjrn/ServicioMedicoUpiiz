@@ -46,7 +46,7 @@
           </div>
           <div class="modal-body text-center">
               <div class="widget-user-photo">
-				<img src="{{Auth::user()->foto}}" alt="" class="img-size">
+				<img src="{{Auth::user()->foto}}" alt="" class="img-size round">
 			</div>
           </div>
           <div class="modal-footer text-center">

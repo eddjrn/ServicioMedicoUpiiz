@@ -15,7 +15,7 @@
             <div class="modal-body">
                 <div class="container">
                 	<div class="widget-user-photo text-center">
-						<img src="{{Auth::user()->foto}}" alt="" style="height:150px;width:auto;">
+						<img src="{{$student->user->foto}}" alt="" style="height:150px;width:auto;" class="round">
 					</div>
 					<hr/>
                     <div class="row">
@@ -243,7 +243,7 @@
 <section class="widget widget-user">
     <div class="widget-user-bg" style="background-image: url('{{asset('/Template/img/user-bg.jpg')}}')"></div>
     <div class="widget-user-photo">
-        <img src="{{Auth::user()->foto}}" alt="">
+        <img src="{{$student->user->foto}}" alt="">
     </div>
     <div class="widget-user-name">
         {{$student->user}}

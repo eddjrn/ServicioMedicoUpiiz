@@ -11,8 +11,8 @@
             	<div class="row">
             		<div class="col-lg-1 col-md-1">
 				    	<div class="tbl-cell tbl-cell-photo">
-				            <a href="#">
-				                <img src="{{asset('/Template/img/avatar.svg')}}" alt="" style="height:50px;width:auto;" id="photoUser">
+				            <a >
+				                <img src="{{asset('/Template/img/avatar.svg')}}" alt="" style="height:50px;width:auto;" id="photoUser" class="round">
 				            </a>
 				        </div>
 		            </div>
@@ -66,15 +66,12 @@
                         ?>
                         @endforeach
                     </ol>
-                    
+
                     <?php
                         $index2 = 0;
                     ?>
                     <div class="carousel-inner" role="listbox">
                         @foreach($images as $image)
-                        
-                       
-                        
                         <div class="carousel-item  @if($index2 == 0) active @endif">
                             <header class="title"><a href="{{$image->imagen}}" target="_blank">{{$image->titulo}}</a></header>
                             <article class="gallery-item">
@@ -113,7 +110,7 @@
                             </a>
                         </div>
                     </div>
-                    
+
                     <br/>
                     <br/>
                 </div>
@@ -148,20 +145,20 @@ Avisos <span class="label label-pill label-default"><strong>{{$messages->count()
                         <div class="progress-compact-style-label">{{$message->contenido}}</div>
                     </div>
                 </div>
-                
+
                 <div class="task-card-footer">
                     <div class="task-card-meta-item"><i class="font-icon font-icon-calend"></i>{{$message->dateUpdate()}}</div>
-                    
+
                     <div class="avatar-preview avatar-preview-32">
-                        <a href="#">
-                            <img src="{{asset($message->user->foto)}}" alt="">
+                        <a >
+                            <img src="{{$message->user->foto}}" alt="">
                         </a>
                     </div>
                 </div>
             </section><!--.task-card-->
         </div> <!--col-->
         @endforeach
-        
+
         @if(Auth::check() && isset($messages2))
             @foreach($messages2 as $message)
             <div class="col-lg-3 col-md-4 col-sm-6 tasks-grid-col red">
@@ -181,13 +178,13 @@ Avisos <span class="label label-pill label-default"><strong>{{$messages->count()
                             <div class="progress-compact-style-label">{{$message->contenido}}</div>
                         </div>
                     </div>
-                    
+
                     <div class="task-card-footer">
                         <div class="task-card-meta-item"><i class="font-icon font-icon-calend"></i>{{$message->dateUpdate()}}</div>
-                        
+
                         <div class="avatar-preview avatar-preview-32">
-                            <a href="#">
-                                <img src="{{asset($message->user->foto)}}" alt="">
+                            <a >
+                                <img src="{{$message->user->foto}}" alt="">
                             </a>
                         </div>
                     </div>
@@ -209,8 +206,8 @@ Avisos <span class="label label-pill label-default"><strong>{{$messages->count()
                         <div class="user-card-row">
                             <div class="tbl-row">
                                 <div class="tbl-cell tbl-cell-photo">
-                                    <a href="#">
-                                        <img src="{{asset($message->user->foto)}}" alt="">
+                                    <a >
+                                        <img src="{{$message->user->foto}}" alt="">
                                     </a>
                                 </div>
                                 <div class="tbl-cell">
@@ -218,7 +215,7 @@ Avisos <span class="label label-pill label-default"><strong>{{$messages->count()
                                     <p class="color-blue-grey-lighter">{{$info->FechaActualizacion()}}</p>
                                 </div>
                                 <div class="tbl-cell tbl-cell-status">
-                                    <a class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal" onclick="update('{{$info->user}}', '{{$info->FechaActualizacion()}}', '{{$info->titulo}}', '{{$info->contenido}}', '{{asset($message->user->foto)}}');"></a>
+                                    <a class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal" onclick="update('{{$info->user}}', '{{$info->FechaActualizacion()}}', '{{$info->titulo}}', '{{$info->contenido}}', '{{$message->user->foto}}');"></a>
                                 </div>
                             </div>
                         </div>
