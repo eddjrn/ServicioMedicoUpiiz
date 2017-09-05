@@ -41,6 +41,7 @@ class user extends Model implements AuthenticatableContract,
     	'tipo',
     	'password',
     	'foto',
+        'origen',
     	'completado',
     ];
     //protected $guarded = ['tipo'];
@@ -141,5 +142,9 @@ class user extends Model implements AuthenticatableContract,
         } else{
             return "No es alumno";
         }
+    }
+
+    public function getOrigenAttribute($value){
+        return config('globalInfo.nombreUpiiz2');
     }
 }

@@ -24,6 +24,7 @@ class UserMigration extends Migration
             $table->integer('tipo')->default(1);
             //$table->longText('foto')->nullable();
             $table->binary('foto')->nullable();
+            $table->integer('origen')->default(1);
             $table->boolean('completado')->default(false);
             $table->timestamps();
             $table->rememberToken();

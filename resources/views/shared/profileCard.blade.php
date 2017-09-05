@@ -217,6 +217,8 @@
                   <input type="text" class="form-control" readonly placeholder="" value="{{$user->identificacion}}"/>
               </div>
 
+              <header class="sign-title">{{$user->origen}}</header>
+
               <button type="button" class="btn btn-rounded btn-warning" data-toggle="modal" data-target=".bd-example-modal-sm">Editar perfíl</button>
               @unless($user->facebook == null)
               <p class="sign-note"><a href="{{$user->facebook}}" target="_blank">Facebook</a></p>

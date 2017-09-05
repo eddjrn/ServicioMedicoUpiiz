@@ -123,8 +123,8 @@
 
 
 	                            <div class="dropdown-divider"></div>
-	                            <a class="dropdown-item" target="_blank" href="https://www.facebook.com/verodelarosa.medicaupiiz?hc_ref=SEARCH&fref=nf"><span class="font-icon font-icon-share"></span>Facebook</a>
-	                            <a class="dropdown-item" target="_blank" href="http://www.zacatecas.ipn.mx/Paginas/Inicio.aspx"><span class="font-icon font-icon-home"></span>Sitio UPIIZ</a>
+	                            <a class="dropdown-item" target="_blank" href="{{config('globalInfo.facebookUpiiz')}}"><span class="font-icon font-icon-share"></span>Facebook</a>
+	                            <a class="dropdown-item" target="_blank" href="{{config('globalInfo.webUpiiz')}}"><span class="font-icon font-icon-home"></span>Sitio UPIIZ</a>
 
 	                            <div class="dropdown-divider"></div>
 	                            <a class="dropdown-item" href="{{asset('/logout')}}"><span class="font-icon glyphicon glyphicon-log-out"></span>Salir</a>
@@ -138,8 +138,8 @@
 
 	                </div><!--.site-header-shown-->
 
-	                <span class="lbl hidden-md-down" style="font-size:25px;margin: 0 0 10px -150px;">Unidad Profesional Interdisciplinaria de Ingeniería Campus Zacatecas</span>
-                    <span class="lbl hidden-lg-up" style="font-size:25px">UPIIZ-IPN</span>
+	                <span class="lbl hidden-md-down" style="font-size:25px;margin: 0 0 10px -150px;">{{config('globalInfo.nombreUpiiz')}}</span>
+                    <span class="lbl hidden-lg-up" style="font-size:25px">{{config('globalInfo.nombreUpiiz2')}}</span>
 
 	            </div><!--site-header-content-in-->
 	        </div><!--.site-header-content-->

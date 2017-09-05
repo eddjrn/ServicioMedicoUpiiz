@@ -31,6 +31,40 @@
 <body class="horizontal-navigation">
 @yield('popUp')
 
+<div class="modal fade"
+        id="modalMessage"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="modalMessageLabel"
+        aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            	<div class="row">
+            		<div class="col-lg-1 col-md-1">
+				    	<div class="tbl-cell tbl-cell-photo">
+				            <a >
+				                <img src="{{asset('/Template/img/avatar.svg')}}" alt="" style="height:50px;width:auto;" id="modalMessagePhoto" class="round">
+				            </a>
+				        </div>
+		            </div>
+		            <div class="col-lg-11 col-md-11">
+		            	<h4 class="modal-title" id="modalMessageLabel"></h4>
+               			 <p class="color-blue-grey-lighter" id="modalMessageUser"> </p>
+		            </div>
+                </div>
+                <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                    <i class="font-icon-close-2"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalMessageBody"></div>
+            <div class="modal-footer">
+                <p class="color-blue-grey-lighter" id="modalMessageDate"> </p>
+            </div>
+        </div>
+    </div>
+</div><!--.modal-->
+
     @unless($index == -1)
     <header class="site-header">
 	    <div class="container-fluid">
@@ -89,7 +123,7 @@
 	                                <div class="tab-pane active" id="tab-incoming" role="tabpanel">
 	                                    <div class="dropdown-menu-messages-list">
                                             @foreach($messages->take(4) as $message)
-	                                        <a href="#" class="mess-item">
+	                                        <a onclick="update('{{$message->user}}', '{{$message->dateUpdate()}}', '{{$message->titulo}}', '{{$message->contenido}}', '{{$message->user->foto}}');" class="mess-item">
 	                                            <span class="avatar-preview avatar-preview-32">
 	                                            	<img src="{{$message->user->foto}}" alt="">
 	                                            </span>
@@ -139,8 +173,8 @@
 
 	                </div><!--.site-header-shown-->
 
-	                <span class="lbl hidden-md-down" style="font-size:25px;margin: 0 0 10px -150px;">Unidad Profesional Interdisciplinaria de Ingeniería Campus Zacatecas</span>
-                    <span class="lbl hidden-lg-up" style="font-size:25px">UPIIZ-IPN</span>
+	                <span class="lbl hidden-md-down" style="font-size:25px;margin: 0 0 10px -150px;">{{config('globalInfo.nombreUpiiz')}}</span>
+                    <span class="lbl hidden-lg-up" style="font-size:25px">{{config('globalInfo.nombreUpiiz2')}}</span>
 
 	            </div><!--site-header-content-in-->
 	        </div><!--.site-header-content-->
@@ -191,5 +225,16 @@
 	@yield('scripts')
 
     <script src="{{asset('/Template/js/app.js')}}"></script>
+
+	<script>
+		function update(user, date,  title, content, photo){
+			document.getElementById('modalMessageLabel').innerHTML = title;
+			document.getElementById('modalMessageBody').innerHTML = content;
+			document.getElementById('modalMessageDate').innerHTML = date;
+			document.getElementById('modalMessageUser').innerHTML = 'Autor: '+user;
+			document.getElementById('modalMessagePhoto').setAttribute('src', photo);
+			$('#modalMessage').modal('show');
+		}
+	</script>
 </body>
 </html>

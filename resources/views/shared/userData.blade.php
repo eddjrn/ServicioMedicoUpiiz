@@ -241,7 +241,7 @@
 <!-- start profile -->
 
 <section class="widget widget-user">
-    <div class="widget-user-bg" style="background-image: url('{{asset('/Template/img/user-bg.jpg')}}')"></div>
+    <div class="widget-user-bg" style="background-image: url('{{asset('/Template/img/backgroundUser.svg')}}')"></div>
     <div class="widget-user-photo">
         <img src="{{$student->user->foto}}" alt="">
     </div>
