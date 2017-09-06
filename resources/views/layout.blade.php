@@ -29,6 +29,41 @@
 <body class="horizontal-navigation">
 @yield('popUp')
 
+<div class="modal fade"
+        id="modalMessage"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="modalMessageLabel"
+        aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            	<div class="row">
+            		<div class="col-lg-1 col-md-1">
+				    	<div class="tbl-cell tbl-cell-photo">
+				            <a >
+				                <img src="{{asset('/Template/img/avatar.svg')}}" alt="" style="height:50px;width:auto;" id="modalMessagePhoto" class="round">
+				            </a>
+				        </div>
+		            </div>
+		            <div class="col-lg-11 col-md-11">
+		            	<h4 class="modal-title" id="modalMessageLabel"></h4>
+               			 <p class="color-blue-grey-lighter" id="modalMessageUser"> </p>
+		            </div>
+                </div>
+                <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                    <i class="font-icon-close-2"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalMessageBody"></div>
+            <div class="modal-footer">
+                <p class="color-blue-grey-lighter" id="modalMessageDate"> </p>
+            </div>
+        </div>
+    </div>
+</div><!--.modal-->
+
+
 @if(Auth::check()) <!--muestra el dialogo de Contraseña solo si esta iniciado sesion-->
 <div class="modal fade bd-example-modal-sm"
         tabindex="-1"
@@ -112,6 +147,56 @@
 	                <div class="site-header-shown">
 
                         @if(Auth::check()) <!--=Solo se muestra el menu de perfil si se esta iniciado sesion-->
+						<div class="dropdown dropdown-notification messages">
+
+                            <?php
+                                $messages = \App\message::all()->where('destino', Auth::user()->student->id)->sortByDesc('updated_at');
+                                //$messages = Auth::user()->messages->where('destino', null)->sortByDesc('updated_at');
+                            ?>
+
+	                        <a href="#"
+	                           class="header-alarm dropdown-toggle @if($messages->count() >= 1) active @endif"
+	                           id="dd-messages"
+	                           data-toggle="dropdown"
+	                           aria-haspopup="true"
+	                           aria-expanded="false">
+	                            <i class="font-icon-mail"></i>
+	                        </a>
+	                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-messages" aria-labelledby="dd-messages">
+	                            <div class="dropdown-menu-messages-header">
+	                                <ul class="nav" role="tablist">
+	                                    <li class="nav-item">
+	                                        <a class="nav-link active"
+	                                           data-toggle="tab"
+	                                           href="#tab-incoming"
+	                                           role="tab">
+	                                            Avisos
+	                                            <span class="label label-pill @if($messages->count() >= 1) label-danger @endif">{{$messages->count()}}</span>
+	                                        </a>
+	                                    </li>
+	                                </ul>
+	                            </div>
+	                            <div class="tab-content">
+	                                <div class="tab-pane active" id="tab-incoming" role="tabpanel">
+	                                    <div class="dropdown-menu-messages-list">
+                                            @foreach($messages->take(4) as $message)
+	                                        <a onclick="updateModalMessage('{{$message->user}}', '{{$message->dateUpdate()}}', '{{$message->titulo}}', '{{$message->contenido}}', '{{$message->user->foto}}');" class="mess-item">
+	                                            <span class="avatar-preview avatar-preview-32">
+	                                            	<img src="{{$message->user->foto}}" alt="">
+	                                            </span>
+	                                            <span class="mess-item-name">{{$message->titulo}}</span>
+	                                            <span class="mess-item-txt">{{$message->contenido}}</span>
+	                                        </a>
+	                                        @endforeach
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <div class="dropdown-menu-notif-more">
+	                                <a href="{{asset('/')}}">Ver más</a>
+	                            </div>
+	                        </div>
+	                    </div>
+
 	                    <div class="dropdown user-menu">
 	                        <button class="dropdown-toggle" id="dd-user-menu" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 	                            <img src="{{Auth::user()->foto}}" alt="">
@@ -199,5 +284,16 @@
 	@yield('scripts')
 
     <script src="{{asset('/Template/js/app.js')}}"></script>
+
+	<script>
+		function updateModalMessage(user, date,  title, content, photo){
+			document.getElementById('modalMessageLabel').innerHTML = title;
+			document.getElementById('modalMessageBody').innerHTML = content;
+			document.getElementById('modalMessageDate').innerHTML = date;
+			document.getElementById('modalMessageUser').innerHTML = 'Autor: '+user;
+			document.getElementById('modalMessagePhoto').setAttribute('src', photo);
+			$('#modalMessage').modal('show');
+		}
+	</script>
 </body>
 </html>

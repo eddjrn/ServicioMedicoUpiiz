@@ -26,7 +26,7 @@ Busqueda de registro
                     </button>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" onclick="identification(1);">Datos de usuarios</a>
-                        <a class="dropdown-item" onclick="identification(6);">Datos personales de los usuarios</a>
+                        <a class="dropdown-item" onclick="identification(6);">Datos de alumnos (CURPs o fechas)</a>
                         <a class="dropdown-item" onclick="identification(5);">Números medicos</a>
                         <div role="separator" class="dropdown-divider"></div>
                         <a class="dropdown-item" onclick="identification(2);">Boleta especifica</a>

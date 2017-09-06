@@ -89,7 +89,7 @@
                                 //$messages = Auth::user()->messages->where('destino', null)->sortByDesc('updated_at');
                             ?>
 
-	                        <a href="#"
+	                        <a
 	                           class="header-alarm dropdown-toggle @if($messages->count() >= 1) active @endif"
 	                           id="dd-messages"
 	                           data-toggle="dropdown"
@@ -123,7 +123,7 @@
 	                                <div class="tab-pane active" id="tab-incoming" role="tabpanel">
 	                                    <div class="dropdown-menu-messages-list">
                                             @foreach($messages->take(4) as $message)
-	                                        <a onclick="update('{{$message->user}}', '{{$message->dateUpdate()}}', '{{$message->titulo}}', '{{$message->contenido}}', '{{$message->user->foto}}');" class="mess-item">
+	                                        <a onclick="updateModalMessage('{{$message->user}}', '{{$message->dateUpdate()}}', '{{$message->titulo}}', '{{$message->contenido}}', '{{$message->user->foto}}');" class="mess-item">
 	                                            <span class="avatar-preview avatar-preview-32">
 	                                            	<img src="{{$message->user->foto}}" alt="">
 	                                            </span>
@@ -135,7 +135,7 @@
 	                                </div>
 	                                <div class="tab-pane" id="tab-outgoing" role="tabpanel">
 	                                    <div class="dropdown-menu-messages-list">
-	                                        <a href="#">
+	                                        <a >
                                               {!!Form::open(array('url'=>'/message', 'method'=>'post'))!!}
 	                                            <input class="form-control" id="titulo" placeholder="Título" type="text" name="titulo">
 	                                            <br/>
@@ -212,7 +212,7 @@
     <script src="{{asset('/Template/js/app.js')}}"></script>
 
 	<script>
-		function update(user, date,  title, content, photo){
+		function updateModalMessage(user, date,  title, content, photo){
 			document.getElementById('modalMessageLabel').innerHTML = title;
 			document.getElementById('modalMessageBody').innerHTML = content;
 			document.getElementById('modalMessageDate').innerHTML = date;

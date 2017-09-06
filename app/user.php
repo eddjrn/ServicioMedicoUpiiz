@@ -100,16 +100,24 @@ class user extends Model implements AuthenticatableContract,
         return $this->getOriginal('tipo');
     }
 
+    public function setIdentificacionAttribute($value){
+        $word = strtoupper($value);
+        $this->attributes['identificacion'] = $word;
+    }
+
     public function setNombreAttribute($value){
-        $this->attributes['nombre'] = ucwords($value);
+        $word = strtolower($value);
+        $this->attributes['nombre'] = ucwords($word);
     }
 
     public function setApellidoPaternoAttribute($value){
-        $this->attributes['apellidoPaterno'] = ucfirst($value);
+        $word = strtolower($value);
+        $this->attributes['apellidoPaterno'] = ucfirst($word);
     }
 
     public function setApellidoMaternoAttribute($value){
-        $this->attributes['apellidoMaterno'] = ucfirst($value);
+        $word = strtolower($value);
+        $this->attributes['apellidoMaterno'] = ucfirst($word);
     }
 
     public function setPasswordAttribute($password) {

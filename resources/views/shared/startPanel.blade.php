@@ -215,7 +215,7 @@ Avisos <span class="label label-pill label-default"><strong>{{$messages->count()
                                     <p class="color-blue-grey-lighter">{{$info->FechaActualizacion()}}</p>
                                 </div>
                                 <div class="tbl-cell tbl-cell-status">
-                                    <a class="glyphicon glyphicon-plus" data-toggle="modal" data-target="#myModal" onclick="update('{{$info->user}}', '{{$info->FechaActualizacion()}}', '{{$info->titulo}}', '{{$info->contenido}}', '{{$message->user->foto}}');"></a>
+                                    <a class="font-icon font-icon-eye" data-toggle="modal" data-target="#myModal" onclick="update('{{$info->user}}', '{{$info->FechaActualizacion()}}', '{{$info->titulo}}', '{{$info->contenido}}', '{{$message->user->foto}}');"></a>
                                 </div>
                             </div>
                         </div>

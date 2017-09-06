@@ -161,7 +161,8 @@ class student extends Model
     }
 
     public function setLocalidadAttribute($value){
-        $this->attributes['localidad'] = ucwords($value);
+        $word = strtolower($value);
+        $this->attributes['localidad'] = ucwords($word);
     }
 
     public function setCurpAttribute($value){
@@ -169,7 +170,8 @@ class student extends Model
     }
 
     public function setTutorAttribute($value){
-        $this->attributes['tutor'] = ucwords($value);
+        $word = strtolower($value);
+        $this->attributes['tutor'] = ucwords($word);
     }
 
     public function setTelefonoAttribute($value){

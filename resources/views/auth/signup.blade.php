@@ -37,11 +37,11 @@
                 <div class="sign-avatar no-photo">
                     <img src="{{asset('Template/img/LogoSMplus.svg')}}" alt="">
                 </div>
-                
+
                 @include('alerts.formError')
-                
+
                 <header class="sign-title">Nuevo usuario</header>
-                
+
                 <div class="form-group">
                     {!!Form::text('nombre', null, ['class'=>'form-control', 'placeholder'=>'Nombre(s)', 'id'=>'nombre'])!!}
                 </div>
@@ -63,21 +63,23 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    {!!Form::text('identificacion', null, ['class'=>'form-control', 'placeholder'=>'Boleta o indentificación', 'id'=>'identificacion'])!!}
+                    {!!Form::text('identificacion', null, ['class'=>'form-control', 'id'=>'identificacion'])!!}
                 </div>
                 <div class="form-group">
-                    {!!Form::text('identificacion2', null, ['class'=>'form-control', 'placeholder'=>'Repetir boleta', 'id'=>'identificacion2'])!!}
+                    {!!Form::text('identificacion2', null, ['class'=>'form-control', 'id'=>'identificacion2'])!!}
                 </div>
+                <small class="text-muted">El sistema automáticamente pasa el texto de boleta o identificación a mayúsculas.</small>
+                <br/>
                 <div class="form-group">
                     {!!Form::password('password', ['class'=>'form-control', 'placeholder'=>'Contraseña', 'id'=>'password'])!!}
                 </div>
                 <div class="form-group">
                     {!!Form::password('password2', ['class'=>'form-control', 'placeholder'=>'Repetir contraseña', 'id'=>'password2'])!!}
                 </div>
-                
+
                 <button type="submit" class="btn btn-rounded btn-success sign-up">Registrar</button>
                 <p class="sign-note">¿Tienes una cuenta? <a href="{{asset('/login')}}">Iniciar sesión</a></p>
-                
+
                 <a href="{{asset('/')}}"><button type="button" class="close">
                     <span aria-hidden="true">&times;</span>
                 </button></a>
@@ -88,25 +90,15 @@
 @stop
 
 @section('scripts')
+<script src="{{asset('/Template/js/lib/input-mask/jquery.mask.min.js')}}"></script>
+<script src="{{asset('/Template/js/custom/shared.js')}}"></script>
+
 <script>
     $(document).ready(function() {
+        $('#identificacion').mask('AA0000000000', {placeholder: 'Boleta o indentificación'});
+        $('#identificacion2').mask('AA0000000000', {placeholder: 'Repetir boleta o indentificación'});
+
         checkPosition();
     });
-    
-    function checkPosition() {
-        if (window.matchMedia('(max-width: 768px)').matches) {
-            $('.img-size').css({
-                'height':'170px',
-                'width':'auto',
-                'margin':'auto',
-            });
-        } else {
-            $('.img-size').css({
-                'height':'350px',
-                'width':'auto',
-                'margin':'auto',
-            });
-        }
-    }
 </script>
 @stop
