@@ -8,6 +8,7 @@
 @stop
 
 @section('popUp')
+
 @stop
 
 @section('subHead')
@@ -787,8 +788,17 @@ Generación de formularios
     </div><!--.tab-content-->
 
 </section><!--.tabs-section-->
+<!--<div class="panel panel-default">
+<div class="panel-heading">Imagen de perfil</div>
+<div class="panel-body">
+    <img src='uploads/{{$student->user->foto}}'alt="Tu imagen de perfil" class="img-responsive">
+
+</div>
+</div>
+-->
 @stop
 
 @section('scripts')
     <script src="{{asset('/Template/js/lib/select2/select2.full.min.js')}}"></script>
 @stop
+
