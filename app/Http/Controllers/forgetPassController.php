@@ -128,7 +128,7 @@ class forgetPassController extends Controller
 
      public function update2(Request $request)
     {
-        $index = -8;
+        $index = 4;
         $this->validate($request, [
            
             'clave' => 'required|same:clave2',

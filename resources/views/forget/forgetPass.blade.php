@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('title')
-<title>Inicio servicio medico</title>
+<title>Olvide mi Contraseña</title>
 @stop
 
 @section('css')
@@ -42,12 +42,13 @@
                 </header>
                 <div>
                 @foreach($user as $u)
+                    @unless($u->completado() == 0)
                     <div class="widget-activity-item">
                         <div class="user-card-row">
                             <div class="tbl-row">
                                 <div class="tbl-cell tbl-cell-photo">
                                     <a href="#">
-                                        <img src="{{asset('/Template/img/2-64.png')}}" alt="">
+                                        <img src="{{$u->foto}}" alt="">
                                     </a>
                                 </div>
                                 <div class="tbl-cell">
@@ -68,6 +69,7 @@
                             </div>
                         </div>
                     </div>
+                    @endunless
                 @endforeach
                 </div>
             </section><!--.widget-tasks-->
@@ -79,4 +81,11 @@
 
 @section('scripts')
 <script src="{{asset('/Template/js/custom/search.js')}}"></script>
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
 @stop

@@ -51,7 +51,7 @@ Generación de formularios
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane fade in active" id="tabs-1-tab-1">
 
-    <a href="/antecedentes" class="btn btn-inline" target="_blank" >Obtener Historia Clinica</a>
+    <a href="{{asset('/antecedentes')}}" class="btn btn-inline" target="_blank" >Obtener Historia Clinica</a>
 
 
         <div class="row" id="intento">
@@ -442,7 +442,7 @@ Generación de formularios
 
         <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-2">
           
-             <a href="/imss" class="btn btn-inline" target="_blank" >Obtener Formato Imss</a>
+             <a href="{{asset('/imss')}}" class="btn btn-inline" target="_blank" >Obtener Formato Imss</a>
 
 
              <div class="row">
@@ -753,7 +753,7 @@ Generación de formularios
 
         <div role="tabpanel" class="tab-pane fade" id="tabs-1-tab-3">
        
-        <a href="/carta" class="btn btn-inline" target="_blank" >Obtener Carta Responsiva</a>
+        <a href="{{asset('/carta')}}" class="btn btn-inline" target="_blank" >Obtener Carta Responsiva</a>
 
          <div class="row">
                  <div class="col-md-2"></div>

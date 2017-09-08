@@ -51,8 +51,8 @@ Novedades
 <div class="container-fluid">
 @foreach($info->sortByDesc('updated_at') as $inf)
             <section class="activity-line">
-                <article class="ribbon-block round relative text-center">
-                    <div class="activity-line-date border-primary b-a round">
+                <article class="ribbon-block round relative text-center tasks-grid-col purple">
+                    <div class="activity-line-date border-primary b-a round box-typical task-card task">
                         {{$inf->dia()}}<br>
                        {{$inf->Mes()}}
                     </div>
@@ -60,7 +60,7 @@ Novedades
                         <div class="activity-line-item-user">
                             <div class="activity-line-item-user-photo">
                                 <a href="#">
-                                    <img src="{{asset('/Template/img/avatar-1-64.png')}}" alt="">
+                                    <img src="{{asset('/Template/img/avatar.svg')}}" alt="" style="height:50px;width:auto;" id="modalMessagePhoto" class="round">
                                 </a>
                             </div>
                             <div class="activity-line-item-user-name">{{$inf->user}}</div>

@@ -1,13 +1,40 @@
 @extends('layout')
 
 @section('title')
-<title>Inicio servicio medico</title>
+<title>Cambiar Contraseña</title>
 @stop
 
 @section('css')
 @stop
 
 @section('popUp')
+<div class="page-center">
+    <div class="page-center-in">
+        <div class="container-fluid">
+           {!!Form::model($student, array('url'=>'/questionPass/edit1', 'method'=>'post','class'=>'sign-box'))!!}
+                <div class="sign-avatar">
+                    <img src="{{asset('Template/img/LogoSMUPIIZ.svg')}}" alt="">
+                </div>
+                
+                @include('alerts.formError')
+                
+                <header class="sign-title">Cambiar Contraseña</header>
+                <div class="form-group">
+                    <input id="hide-show-password" type="password" class="form-control" value="" name="clave" placeholder="Nueva Contraseña" required>
+                </div>
+                <div class="form-group">
+                     <input id="hide-show-password2" type="password" class="form-control" value="" name="clave2" placeholder="Repetir Contraseña" required>
+                </div>
+                
+                <input type="hidden" value="{{$student->usuario_id}}" id="studentId" name="studentId">
+                        <div class="text-center">
+                <button type="submit" class="btn btn-rounded">Guardar</button>
+                
+                
+            {!!Form::close()!!}
+        </div>
+    </div>
+</div><!--.page-center-->
 @stop
 
 @section('subHead')
@@ -15,31 +42,7 @@
 
 @section('content')
 
-				<div class="box-typical box-typical-padding documentation col-md-12">
-{!!Form::model($student, array('url'=>'/questionPass/edit1', 'method'=>'post'))!!}
-			
-				<div class="row">
-                    <div class="col-md-4 col-sm-6">
-                    <label class="form-label" for="exampleInputDisabled">Cambiar Contraseña</label>   
-                    </div> 
-                </div>
-                
-                <div class="row">
-                    <div class="col-md-4 col-sm-6">
-                        <label class="form-label" for="hide-show-password">Nueva Contraseña</label>
-                        <input id="hide-show-password" type="text" class="form-control" value="" name="clave">
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <label class="form-label" for="hide-show-password">Repetir contraseña</label>
-                       <input id="hide-show-password2" type="text" class="form-control" value="" name="clave2">
-                        </div>
-                    </div>
-						</div>
-                    <input type="hidden" value="{{$student->usuario_id}}" id="studentId" name="studentId">
-						<div class="text-center">
-    				<button type="submit" class="btn btn-rounded btn-inline btn-warning">Guardar</button>
-						</div>
-{!!Form::close()!!}
+				
 
 @stop
 
