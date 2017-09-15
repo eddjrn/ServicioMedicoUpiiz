@@ -71,7 +71,7 @@
                 <small class="text-muted">El sistema automáticamente pasa el texto de boleta o identificación a mayúsculas.</small>
                 <br/>
                 <div class="form-group">
-                    {!!Form::password('password', ['class'=>'form-control', 'placeholder'=>'Contraseña', 'id'=>'password'])!!}
+                    {!!Form::password('password', ['class'=>'form-control', 'placeholder'=>'Contraseña', 'id'=>'hide-show-password'])!!}
                 </div>
                 <div class="form-group">
                     {!!Form::password('password2', ['class'=>'form-control', 'placeholder'=>'Repetir contraseña', 'id'=>'password2'])!!}
@@ -92,6 +92,9 @@
 @section('scripts')
 <script src="{{asset('/Template/js/lib/input-mask/jquery.mask.min.js')}}"></script>
 <script src="{{asset('/Template/js/custom/shared.js')}}"></script>
+
+<script src="{{asset('/Template/js/lib/hide-show-password/bootstrap-show-password.min.js')}}"></script>
+<script src="{{asset('/Template/js/lib/hide-show-password/bootstrap-show-password-init.js')}}"></script>
 
 <script>
     $(document).ready(function() {
