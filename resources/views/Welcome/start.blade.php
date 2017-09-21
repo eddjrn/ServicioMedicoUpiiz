@@ -15,7 +15,7 @@
 <div class="sign-avatar">
     <img src="{{asset('/Template/img/LogoSMUPIIZ.svg')}}" alt="" style="height:120px;width:auto;">
 </div>
-Bienvenido al servicio médico
+Bienvenido al Servicio Médico
 @stop
 
 @section('content')
