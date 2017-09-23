@@ -938,8 +938,8 @@ Edición del blog
 @stop
 
 @section('scripts')
-<script src="{{asset('\Template\js\custom\vewInfo.js')}}"></script>
-<script src="{{asset('\Template\js\custom\vewImg.js')}}"></script>
-<script src="{{asset('\Template\js\custom\vewVide.js')}}"></script>
-<script src="{{asset('\Template\js\custom\vewTuto.js')}}"></script>
+<script src="{{asset('/Template/js/custom/vewInfo.js')}}"></script>
+<script src="{{asset('/Template/js/custom/vewImg.js')}}"></script>
+<script src="{{asset('/Template/js/custom/vewVide.js')}}"></script>
+<script src="{{asset('/Template/js/custom/vewTuto.js')}}"></script>
 @stop

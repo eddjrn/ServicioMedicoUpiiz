@@ -17,7 +17,8 @@
         "phpspec/phpspec": "~2.1",
         "laravelcollective/html": "5.1.*",
         "sofa/eloquence": "~5.1",
-        "intervention/image": "2.*"
+        "intervention/image": "2.*",
+        "maatwebsite/excel" : "~2.0"
     },
     "autoload": {
         "classmap": [

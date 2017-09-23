@@ -128,3 +128,7 @@ Route::get('/person/messages/{type}', 'shareController@getMessages');
 //Route::post('/person/newMessage', 'shareController@newMessage');
 Route::post('/person/messageEdit/{message}', 'shareController@editMessage');
 Route::post('/person/messageDel', 'shareController@destroyMessage');
+
+//-----------------------
+
+Route::get('/ExportExcel','ExcelController@exportUsers');

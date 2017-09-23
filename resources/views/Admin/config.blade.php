@@ -531,12 +531,15 @@
 <div class="container">
     <div class="row">
         <div class="text-center">
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-4 col-md-4">
                 <button type="button" class="btn btn-rounded btn-danger btn-inline" data-toggle="modal" data-target=".bd-example-modal-sm" onclick="authUserSpecialFunctions('Configuraciones especiales', 1);">Más opciones</button>
             </div>
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-4 col-md-4">
                 <a href="{{asset('/admin')}}" class="btn btn-rounded btn-primary btn-inline">Regresar</a>
             </div>
+            <div class="col-lg-4 col-md-4">
+                 <a href="{{asset('/ExportExcel')}}" class="btn btn-rounded btn-incline btn-info">Lista de Registrados</a>
+            </div> 
         </div>
     </div>
 </div>
