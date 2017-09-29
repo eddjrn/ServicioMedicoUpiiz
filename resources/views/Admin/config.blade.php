@@ -531,15 +531,18 @@
 <div class="container">
     <div class="row">
         <div class="text-center">
-            <div class="col-lg-4 col-md-4">
+            <div class="col-lg-3 col-md-3">
                 <button type="button" class="btn btn-rounded btn-danger btn-inline" data-toggle="modal" data-target=".bd-example-modal-sm" onclick="authUserSpecialFunctions('Configuraciones especiales', 1);">Más opciones</button>
             </div>
-            <div class="col-lg-4 col-md-4">
+            <div class="col-lg-3 col-md-3">
                 <a href="{{asset('/admin')}}" class="btn btn-rounded btn-primary btn-inline">Regresar</a>
             </div>
-            <div class="col-lg-4 col-md-4">
-                 <a href="{{asset('/ExportExcel')}}" class="btn btn-rounded btn-incline btn-info">Lista de Registrados</a>
-            </div> 
+            <div class="col-lg-3 col-md-3">
+                 <a href="{{asset('/ExportExcel')}}" class="btn btn-rounded btn-incline btn-warning">Lista por Carreras</a>
+            </div>
+            <div class="col-lg-3 col-md-3">
+                 <a href="{{asset('/ExportExcelAll')}}" class="btn btn-rounded btn-incline btn-info">Listado de los Registrados</a>
+            </div>  
         </div>
     </div>
 </div>
