@@ -132,3 +132,4 @@ Route::post('/person/messageDel', 'shareController@destroyMessage');
 //-----------------------
 
 Route::get('/ExportExcel','ExcelController@exportUsers');
+Route::get('/ExportExcelAll','ExcelController@All');
