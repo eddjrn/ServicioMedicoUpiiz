@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests;
 use App\Http\Controllers\Controller;
+
+use App\student;
+use App\medicalData;
+
+use Carbon\Carbon;
 
 class cartaController extends Controller
 {
@@ -22,9 +27,9 @@ class cartaController extends Controller
     public function index()
     {
         //
-        $index = 23;
+        $index = -1;
         $student = Auth::user()->student;
-        return view('Welcome.carta',['index' => $index,'student'=>$student]);
+        return view('Welcome.formularioGeneral',['index' => $index,'student'=>$student]);
     }
 
     /**
