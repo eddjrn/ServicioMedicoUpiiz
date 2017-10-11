@@ -26,6 +26,7 @@ class formsController extends Controller
     {
         $index = 7;
         $student = Auth::user()->student;
+
         return view('Welcome.formulario', ['index'=>$index,'student'=>$student]);
     }
 

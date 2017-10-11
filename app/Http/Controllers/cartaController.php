@@ -29,7 +29,17 @@ class cartaController extends Controller
         //
         $index = -1;
         $student = Auth::user()->student;
+
         return view('Welcome.formularioGeneral',['index' => $index,'student'=>$student]);
+    }
+
+    public function administrador($id)
+    {
+        $index = -1;
+
+        $student = \App\student::find($id);
+
+        return view('Welcome.formularioGeneral', ['index'=>$index, 'student'=>$student]);
     }
 
     /**

@@ -8,8 +8,11 @@
 @stop
 
 @section('popUp')
+<style type="text/css" media="print">
+.nover {display:none}
+</style>
 
-<input type="button" value="Imprime esta pagina" onclick="window.print()">
+<input type="button" value="Imprime esta pagina" class="nover" onclick="window.print()">
 <section class="card"> 
 <div class="card-block" align="Center" id="muestra" >
 	<table align="Center" width="1080">

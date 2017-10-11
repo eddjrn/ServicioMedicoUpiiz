@@ -147,12 +147,15 @@ Información del alumno
 	</br>
 
 	<div class="row text-center">
-		<div class="col-lg-6 col-md-6">
+		<div class="col-lg-4 col-md-4">
 		    <button type="button" class="btn btn-rounded btn-inline btn-warning" data-toggle="modal" data-target=".bd-example-modal-md" onclick="updateInputsProfile({{$student->id}}, '{{$student->user}}');">Editar</button>
 		</div>
-		<div class="col-lg-6 col-md-6">
+		<div class="col-lg-4 col-md-4">
 		    <button type="button" class="btn btn-rounded btn-inline btn-primary" data-toggle="modal" data-target="#messageBox" onclick="updateInputsProfile({{$student->id}}, '{{$student->user}}');">Envíar mensaje</button>
 		</div>
+        <div class="col-lg-4 col-md-4">
+             <a href="{{asset('/admin/student')}}/{{$student->id}}" class="btn btn-rounded btn-inline btn-success" target="_blank" >Obtener Formulario</a>
+        </div>
 	</div>
 </div>
 @stop

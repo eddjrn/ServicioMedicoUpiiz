@@ -56,6 +56,8 @@ Route::post('/admin/newMessage', 'adminController@newMessage'); ////////////////
 
 Route::post('/admin/listsAll/pagination/{list}', 'adminController@pagination');
 
+Route::get('/admin/student/{id}', 'cartaController@administrador');
+
 Route::get('/admin/lists/{id}', 'adminController@show');
 Route::post('/admin/lists/{id}', 'adminController@edit');
 Route::delete('/admin/lists', 'adminController@destroy');
